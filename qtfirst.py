@@ -2,45 +2,67 @@
 # import PySide2
 #
 import sys
-
+# use wscat -l 3001   to test
+#sudo tcpflow -i any -C -J port 3001
+#sudo tcpflow -i any -C
+# from PySide2 import QtWebChannel
 # from PySide2 import QtQml
 # from PySide2 import QtQuick
+
+import PySide2
+
+
 from PySide2 import QtNetwork
 from PySide2 import QtWebSockets
-# from PySide2 import QtWebChannel
 from PySide2 import QtCore
 import PySide2
 
-import typing
 from typing import Any
-
-myCall = typing.Callable
-import shiboken2 as Shiboken
-
 
 print("starting...")
 
 tolerant = QtCore.QUrl.ParsingMode.TolerantMode
+host1 = "0.0.0.0"
 
-host1 = "127.0.0.1"
+host1 = "localhost"
 port1 = 3001
-scheme1 = "http"
+scheme1 = "ws"
+scheme2 = "http"
 
 sockUrl = QtCore.QUrl()
 sockUrl.setHost(host1, tolerant)
-sockUrl.setScheme(scheme1)
+sockUrl.setScheme(scheme2)
 sockUrl.setPort(port1)
 
 myNetworkReq = QtNetwork.QNetworkRequest()
 my_header_type = QtNetwork.QNetworkRequest.ContentTypeHeader
 myNetworkReq.setHeader(my_header_type, 'GET')
+myWebSocket2 = PySide2.QtWebSockets.QWebSocket()
+myWebSocket2.setProperty("PORT", 3001)
+result = PySide2.QtWebSockets.QWebSocket.localPort(myWebSocket2)
 
-myWebSocket = PySide2.QtWebSockets.QWebSocket()
-
+print(result)
 myStr = "Hello"
 a: Any = None
+origin = "127.0.0.1"
+ba = QtCore.QByteArray(b"aaa")
+QtWebSockets.QWebSocket.open(myWebSocket2)
 
-QtWebSockets.QWebSocket.connect(myStr, a, QtWebSockets.QWebSocket.open(myWebSocket, myNetworkReq))
+a = myWebSocket.open(myNetworkReq)
+vald = myWebSocket.isValid()
+z = myWebSocket.ping(ba)
+print(z)
+print("is valid: ", vald)
+
+
+print("a is: ", a)
+
+# print("bb is: ", bb)
+myWebSocket.sendTextMessage(myStr)
+print(myWebSocket.state())
+
+ab = myWebSocket.requestUrl()
+print("ab is: ", ab)
 
 exit()
 
