@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # import PySide2
 #
-#import sys
+import sys
 
 # from PySide2 import QtQml
 # from PySide2 import QtQuick
@@ -9,6 +9,14 @@ from PySide2 import QtNetwork
 from PySide2 import QtWebSockets
 # from PySide2 import QtWebChannel
 from PySide2 import QtCore
+import PySide2
+
+import typing
+from typing import Any
+
+myCall = typing.Callable
+import shiboken2 as Shiboken
+
 
 print("starting...")
 
@@ -26,18 +34,36 @@ sockUrl.setPort(port1)
 myNetworkReq = QtNetwork.QNetworkRequest()
 my_header_type = QtNetwork.QNetworkRequest.ContentTypeHeader
 myNetworkReq.setHeader(my_header_type, 'GET')
-myWebSocket = QtWebSockets.QWebSocket()
 
-directConnection = QtCore.Qt.ConnectionType.DirectConnection
+myWebSocket = PySide2.QtWebSockets.QWebSocket()
+
 myStr = "Hello"
-myWebSocket.connect(myStr, directConnection)
+a: Any = None
 
-myWebSocket.open(myNetworkReq)
+QtWebSockets.QWebSocket.connect(myStr, a, QtWebSockets.QWebSocket.open(myWebSocket, myNetworkReq))
 
-myWebSocket.sendTextMessage("hello")
+exit()
 
 
-print("Done...")
+
+
+
+
+# PySide2.QtCore.QObject.connect(str, typing.Callable,
+#    PySide2.QtCore.Qt.ConnectionType=PySide2.QtCore.Qt.ConnectionType.AutoConnection)
+
+# myWebSocket.connect(myStr, PySide2.QtCore.SIGNAL("0"), QtCore.Qt.ConnectionType.AutoConnection)
+# my_signal = PySide2.QtWebSockets.QWebSocket.connected()
+# connect(hostLineEdit, & QLineEdit::textChanged,  this, & Client::enableGetFortuneButton);
+#
+# myWebSocket.open(myNetworkReq)
+#
+# myWebSocket.sendTextMessage("hello")
+#
+#
+# print("Done...")
+#QtWebSockets.QWebSocket.ConnnectionType()
+# autoConnection = QtCore.Qt.ConnectionType.AutoConnection()
 
 
 # myWebSocket.setProperty("id", "socket")
