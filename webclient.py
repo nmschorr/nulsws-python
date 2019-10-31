@@ -1,31 +1,30 @@
-#!/usr/bin/env python
+##########!/usr/bin/env python
 
 import asyncio
 import websockets
 
-aa = 'GET /chat HTTP/1.1\n '
-bb = 'Host: server.example\n '
-cc = 'Upgrade: websocket\n '
-dd = 'Connection: Upgrade\n '
-ee = 'Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\n '
-ff = 'Sec-WebSocket-Origin: http://schorrmedia.com\n '
-gg = 'Sec-WebSocket-Protocol: chat\n '
-hh = 'Sec-WebSocket-Version: 6\n '
+aa = 'GET /chat HTTP/1.1\n'
+bb = 'Host: server.example\n'
+cc = 'Upgrade: websocket\n'
+dd = 'Connection: Upgrade\n'
 
-newlist = 'GET /chat HTTP/1.1 \n '
-my_list = aa + bb + cc + dd + ee + ff + gg + hh
-msg = str(my_list)
+ee = 'Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\n'
+ff = 'Sec-WebSocket-Origin: http://schorrmedia.com\n'
+gg = 'Sec-WebSocket-Protocol: chat\n'
+hh = 'Sec-WebSocket-Version: 6\n'
 
+msg1 = str(aa + bb + cc + dd)
+msg2 = str(msg1 + ee + ff + gg + hh)
+
+msg = msg1
 
 jsonstr: str = '{"jsonrpc": "2.0", "method": "getChainInfo", "params": [], "id": 1234}'
-sendthis: str = ''
 
 uri7 = 'ws://demos.kaazing.com/'
-uri9 = 'ws://localhost:9001'
-echo_uri = 'wss://echo.websocket.org/'
-uri = uri7
+uri9 = 'ws://localhost:9002'
+uri2 = 'wss://echo.websocket.org/'
+uri = uri9
 
-hello = "Hello world!"
 
 async def send_msg(uri):
     print("sending this: ", msg)
