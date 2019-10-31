@@ -2,9 +2,9 @@
 //"use strict";
 
 //process.title = 'node-chat';
-var webSocketsServerPort = 9002;
-var webSocketServer = require('websocket').server;
 var http = require('http');
+var websockport = 9002;
+var webSocketServer = require('websocket').server;
 
 var history = [ ];
 var clients = [ ];
@@ -22,24 +22,22 @@ colors.sort(function(a,b) { return Math.random() > 0.5; } );
 var server = http.createServer(function(request, response) {
 });
 
-server.listen(webSocketsServerPort, function() {
-  console.log((new Date()) + " Server is listening on port "
-      + webSocketsServerPort);
+server.listen(websockport, function() {
+  console.log((new Date()) + " Server is listening on port "  + websockport);
 });
 
 
-var wsServer = new webSocketServer({
-  httpServer: server
-});
+var wsServer = new webSocketServer({  httpServer: server  });
 
 wsServer.on('request', function(request) {
-  console.log((new Date()) + ' Connection from origin '
-      + request.origin + '.');
+  console.log((new Date()) + ' Connection from origin '  + request.origin + '.');
 
   var connection = request.accept(null, request.origin);
   var index = clients.push(connection) - 1;
   var userName = false;
-  var userColor = false;  console.log((new Date()) + ' Connection accepted.');
+  var userColor = false;
+  console.log((new Date()) + ' Connection accepted.');
+
   if (history.length > 0) {
     connection.sendUTF(
         JSON.stringify({ type: 'history', data: history} ));
@@ -63,6 +61,7 @@ wsServer.on('request', function(request) {
           author: userName,
           color: userColor
         };
+
         history.push(obj);
         history = history.slice(-100);
         var json = JSON.stringify({ type:'message', data: obj });
@@ -71,7 +70,7 @@ wsServer.on('request', function(request) {
         }
       }
     }
-  });  // user disconnected
+  });
 
   connection.on('close', function(connection) {
     if (userName !== false && userColor !== false) {
