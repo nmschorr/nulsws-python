@@ -15,38 +15,38 @@ class webclient:
         return myvar[1:][:-1]
 
     def init_strings(self):
-        one_s: str = 'POST  HTTP/1.1'
+        one_s: str = 'POST HTTP/1.1'
         two_d: dict = {'Content-Type' : 'application/json;charset=UTF-8'}
         three_d: dict = { "Host" : "127.0.0.1" , "Upgrade": "websocket", "Connection" : "Upgrade"}
         four_d: dict = {'Accept' : '*/*', 'Cache-Control': 'no-cache', 'Connection': 'keep-alive'}
         BIG_d: dict = {**two_d, **three_d, **four_d}
 
-        big_s = json.dumps(BIG_d)[1:][:-1]
-        big_string = json.dumps(one_s) + ", " + big_s
+        big_s = json.dumps(BIG_d, separators=('\n', ':')  )[1:][:-1]
+        big_string = json.dumps(one_s, separators=('\n', ':')) + "\n" + big_s
         
-        five_d: dict = {'jsonrpc': '2.0',  'method': 'getChainInfo' , "params" : "[]" }
-        five_jd: str = json.dumps(five_d)[1:][:-1]
-        self.post_str = big_string + ", " + five_jd
-        print()
+        five_d: dict = {'jsonrpc': '2.0',  'method': 'getChainInfo' , "params" : [], "id" : 1234 }
+        five_jd: str = json.dumps(five_d, indent=3, separators=(',', ':') )
+        self.post_str = big_string + "\n" + five_jd
+        print("long string is: ", self.post_str)
 
         # send_this = '\{ \'POST  HTTP/1.1', 'Host: 127.0.0.1:18003', 'Content-Type: application/json;charset=UTF-8', 'Accept: */*', 'Cache-Control: no-cache' ,'Host: 127.0.0.1:18003', 'Accept-Encoding: gzip deflate' ,'Content-Length: 80' ,'Connection: keep-alive', 'cache-control: no-cache', 'jsonrpc: 2.0' , 'method : getChainInfo',  'params:[]', 'id: 1234' \}'
 
-    async def json_runner(self, uri):
+    async def json_runner_post(self, uri, json_query):
         async with websockets.connect(uri) as websocket_js:
 
-            print(f'Sending handshake {self.json_str}. Waiting for upgrade answer')
-            await websocket_js.send(self.json_str)
+            print(f'Sending post {json_query}. Waiting for post answer')
+            await websocket_js.send(json_query)
             json_resp = await websocket_js.recv()
-            print(f'Received handshake response: {json_resp}')
+            print(f'Received post response: {json_resp}')
 
 
 
-    async def runner_post(self, uri, query):
-        async with websockets.connect(uri) as websocket_hs:
-            await websocket_hs.send(self.handshake_str)
-            print(f'Sending handshake {self.handshake_str}. Waiting for handshake answer')
-            my_answer_hs = await websocket_hs.recv()
-            print(f'JUST got response: {my_answer_hs}')
+    # async def runner_handshake(self, uri, query):
+    #     async with websockets.connect(uri) as websocket_hs:
+    #         await websocket_hs.send(self.handshake_str)
+    #         print(f'Sending handshake {self.handshake_str}. Waiting for handshake answer')
+    #         my_answer_hs = await websocket_hs.recv()
+    #         print(f'JUST got response: {my_answer_hs}')
 
     def main(self):
         self.init_strings()
