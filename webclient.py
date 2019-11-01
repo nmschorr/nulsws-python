@@ -15,19 +15,27 @@ class webclient:
         return myvar[1:][:-1]
 
     def init_strings(self):
-        one_s: str = 'POST HTTP/1.1'
+        import re
+        one_str: str = 'POST HTTP/1.1'
+        one_json = json.dumps(one_str, separators=('\n', ': '))
         two_d: dict = {'Content-Type' : 'application/json;charset=UTF-8'}
         three_d: dict = { "Host" : "127.0.0.1" , "Upgrade": "websocket", "Connection" : "Upgrade"}
         four_d: dict = {'Accept' : '*/*', 'Cache-Control': 'no-cache', 'Connection': 'keep-alive'}
-        BIG_d: dict = {**two_d, **three_d, **four_d}
+        two_three_four_dict: dict = {**two_d, **three_d, **four_d}
 
-        big_s = json.dumps(BIG_d, separators=('\n', ':')  )[1:][:-1]
-        big_string = json.dumps(one_s, separators=('\n', ':')) + "\n" + big_s
-        
-        five_d: dict = {'jsonrpc': '2.0',  'method': 'getChainInfo' , "params" : [], "id" : 1234 }
-        five_jd: str = json.dumps(five_d, indent=3, separators=(',', ':') )
-        self.post_str = big_string + "\n" + five_jd
-        print("long string is: ", self.post_str)
+        two_three_four_json = json.dumps(two_three_four_dict, separators=('\n', ': ')  )[1:][:-1]
+                                                # above [1:][:-1] removes the brackets
+        all_json = one_json + "\n" + two_three_four_json
+        clean_json_header: str =  re.sub(r'"', "", all_json)
+
+        #print(clean_json_header)
+        print()
+
+
+        query_dict: dict = {'jsonrpc': '2.0',  'method': 'getChainInfo' , "params" : [], "id" : 1234 }
+        query_json: str = json.dumps(query_dict, indent=3, separators=(',', ': ') )
+        self.post_str = clean_json_header + "\n\n" + query_json
+        #print("post_str: ", self.post_str)
 
         # send_this = '\{ \'POST  HTTP/1.1', 'Host: 127.0.0.1:18003', 'Content-Type: application/json;charset=UTF-8', 'Accept: */*', 'Cache-Control: no-cache' ,'Host: 127.0.0.1:18003', 'Accept-Encoding: gzip deflate' ,'Content-Length: 80' ,'Connection: keep-alive', 'cache-control: no-cache', 'jsonrpc: 2.0' , 'method : getChainInfo',  'params:[]', 'id: 1234' \}'
 
