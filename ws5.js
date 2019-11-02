@@ -3,7 +3,9 @@
 
 //process.title = 'node-chat';
 var http = require('http');
-var websockport = 9002;
+var websockport2 = 9002;
+var websockport = 80;
+
 var webSocketServer = require('websocket').server;
 
 var history = [ ];
@@ -30,13 +32,27 @@ server.listen(websockport, function() {
 var wsServer = new webSocketServer({  httpServer: server  });
 
 wsServer.on('request', function(request) {
-  console.log((new Date()) + ' Connection from origin '  + request.origin + '.');
+      console.log((new Date()) + ' Connection from origin '  + request.origin + '.');
 
-  var connection = request.accept(null, request.origin);
-  var index = clients.push(connection) - 1;
-  var userName = false;
-  var userColor = false;
-  console.log((new Date()) + ' Connection accepted.');
+      var connection = request.accept(null, request.origin);
+      var index = clients.push(connection) - 1;
+      var userName = false;
+      var userColor = false;
+      console.log((new Date()) + ' Connection accepted.');
+
+
+
+wsServer.on('upgrade', (req, socket) => {
+    // Make sure that we only handle WebSocket upgrade requests
+    if (req.headers['upgrade'] !== 'websocket') {
+      console.log((new Date()) + ' got upgrade request.');
+
+      socket.end('HTTP/1.1 400 Bad Request');
+      return;
+    }
+    });
+
+
 
   if (history.length > 0) {
     connection.sendUTF(
@@ -57,7 +73,8 @@ wsServer.on('request', function(request) {
 
         var obj = {
           time: (new Date()).getTime(),
-          text: htmlEntities(message.utf8Data),
+          text: message.utf8Data,
+          //text: htmlEntities(message.utf8Data),
           author: userName,
           color: userColor
         };

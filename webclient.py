@@ -3,13 +3,16 @@
 import asyncio
 import websockets
 import json
-
+import requests
 
 class webclient:
     def __init__(self):
         uri4: str = 'ws://localhost:18003'
         uri92: str = 'ws://localhost:9002'
-        self.uri = uri4
+        uri9h: str = 'http://127.0.0.1:80'
+        uri5 = "ws://127.0.0.1:80"
+        self.uri = uri5
+        self.ws_uri: websockets.uri = websockets.parse_uri(self.uri)
 
     def rem_brackets(self, myvar):
         return myvar[1:][:-1]
@@ -49,22 +52,30 @@ class webclient:
 
 
 
-    # async def runner_handshake(self, uri, query):
-    #     async with websockets.connect(uri) as websocket_hs:
-    #         await websocket_hs.send(self.handshake_str)
-    #         print(f'Sending handshake {self.handshake_str}. Waiting for handshake answer')
-    #         my_answer_hs = await websocket_hs.recv()
-    #         print(f'JUST got response: {my_answer_hs}')
+    async def run_handshake(self):
+        async with websockets.connect(self.uri) as websocket_hs:
+            await websocket_hs.handshake(self.ws_uri)
+
 
     def main(self):
         self.init_strings()
-        # asyncio.get_event_loop().run_until_complete(self.runner_post(self.uri, self.post_str))
-        asyncio.get_event_loop().run_until_complete(self.json_runner_post( self.uri, self.post_str ))
+
+        asyncio.get_event_loop().run_until_complete(self.run_handshake())
+
         print('Program done')
+
+        # asyncio.get_event_loop().run_until_complete(self.json_runner_post( self.uri, self.post_str ))
+        # asyncio.get_event_loop().run_forever(self.json_runner_post( self.uri, self.post_str ))
 
 w = webclient()
 w.main()
 
+# websocket_hs.handshake()
+# hs_str = self.handshake_str
+# await websocket_hs.send(hs_str)
+# print(f'Sending handshake {hs_str}. Waiting for handshake answer')
+# my_answer_hs = await websocket_hs.recv()
+# print(f'JUST got response: {my_answer_hs}')
 
 
 
@@ -73,7 +84,32 @@ w.main()
 
 
 
-        # ee = 'Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\n'
+
+
+
+
+
+
+
+# aa = 'GET /chat HTTP/1.1\n'
+# bb = 'Host: server.example\n'
+# cc = 'Upgrade: websocket\n'
+# dd = 'Connection: Upgrade\n'
+# self.handshake_str = str(aa + bb + cc + dd)
+
+
+# r = requests.request()
+#
+# r = requests.get(uri5,
+#     headers={"Authorization": "Bearer " + sts_token},
+#     params={"transport": "websocket"},
+#     verify="FiddlerRoot.crt",
+#     proxies={
+#      'http': 'http://127.0.0.1:8888',
+#      'https': 'http://127.0.0.1:8888'
+#     })
+
+# ee = 'Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\n'
         # ff = 'Sec-WebSocket-Origin: http://schorrmedia.com\n'
         # gg = 'Sec-WebSocket-Protocol: chat\n'
         # hh = 'Sec-WebSocket-Version: 6\n'
