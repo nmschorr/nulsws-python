@@ -3,16 +3,15 @@
 import asyncio
 import websockets
 import json
-# import requests
 import re
-#import sys
 
 
 class webclient:
     def __init__(self):
         self.json_q = None
-        self.uri: str = "ws://127.0.0.1:9003"
+        self.uri: str = "ws://127.0.0.1:18003"
         self.post_str = None
+        self.query_jd = None
 
     def init_strings(self) -> str:
         method_str: str = 'POST HTTP/1.1' # method
@@ -25,15 +24,9 @@ class webclient:
         all_top3: str =  re.sub(r'{', "", all_top2)
         all_top4: str =  re.sub(r'}', "", all_top3)
 
-
-        # two_d: dict = {'Content-Type': 'application/json;charset=UTF-8'}
-        # three_d: dict = {"Host": "127.0.0.1", "Upgrade": "websocket", "Connection": "Upgrade"}
-        # four_d: dict = {'Accept': '*/*', 'Cache-Control': 'no-cache', 'Connection': 'keep-alive'}
-        # two_three_four_dict: dict = {**two_d, **three_d, **four_d}
-
         query_dict: dict = {'jsonrpc': '2.0', 'method': 'getChainInfo', "params": [], "id": 1234}
-        query_jd: str = json.dumps(query_dict, indent=3, separators=(',', ': '))
-        query_str = all_top4 + "\n\n" + query_jd
+        self.query_jd: str = json.dumps(query_dict, indent=3, separators=(',', ': '))
+        query_str = all_top4 + "\n\n" + self.query_jd
         return query_str
 
 
@@ -41,7 +34,10 @@ class webclient:
         async with websockets.connect(self.uri) as wshs:
             print(f'Sending post. Waiting for post answer...\n')
             # the_str: str = "hi"
-            await wshs.send(self.json_q)
+            # await wshs.send(self.json_q)
+            await wshs.request_headers()
+            ggd = await wshs.recv()
+            await wshs.send(self.query_jd)
             json_resp = await wshs.recv()
             print(f'Received post response:\n{json_resp}')
 
@@ -57,6 +53,19 @@ w.main()
 
 
 
+
+
+
+
+
+
+
+
+
+# two_d: dict = {'Content-Type': 'application/json;charset=UTF-8'}
+# three_d: dict = {"Host": "127.0.0.1", "Upgrade": "websocket", "Connection": "Upgrade"}
+# four_d: dict = {'Accept': '*/*', 'Cache-Control': 'no-cache', 'Connection': 'keep-alive'}
+# two_three_four_dict: dict = {**two_d, **three_d, **four_d}
 
 
 # send_this = '\{ \'POST  HTTP/1.1', 'Host: 127.0.0.1:18003', 'Content-Type: application/json;charset=UTF-8', 'Accept: */*', 'Cache-Control: no-cache' ,'Host: 127.0.0.1:18003', 'Accept-Encoding: gzip deflate' ,'Content-Length: 80' ,'Connection: keep-alive', 'cache-control: no-cache', 'jsonrpc: 2.0' , 'method : getChainInfo',  'params:[]', 'id: 1234' \}'
