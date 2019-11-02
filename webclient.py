@@ -3,44 +3,51 @@
 import asyncio
 import websockets
 import json
-import requests
+# import requests
+import re
+#import sys
+
 
 class webclient:
     def __init__(self):
         self.json_q = None
-
-        self.uri: str = "ws://127.0.0.1:80"
+        self.uri: str = "ws://127.0.0.1:9003"
         self.post_str = None
 
     def init_strings(self) -> str:
-        # one_str: str = 'POST HTTP/1.1'
-        # one_json = json.dumps(one_str, separators=('\n', ': '))
+        method_str: str = 'POST HTTP/1.1' # method
+        headers_grp: dict = {'cache-control': 'no-cache', 'Content-Type': 'application/json'};
+
+        method_jd: str = json.dumps(method_str, separators=('\n', ': '))
+        header_str_jd: str = json.dumps(headers_grp, separators=('\n', ': '))
+        all_top= method_jd + "\n" + header_str_jd
+        all_top2: str =  re.sub(r'"', "", all_top)
+        all_top3: str =  re.sub(r'{', "", all_top2)
+        all_top4: str =  re.sub(r'}', "", all_top3)
+
+
         # two_d: dict = {'Content-Type': 'application/json;charset=UTF-8'}
         # three_d: dict = {"Host": "127.0.0.1", "Upgrade": "websocket", "Connection": "Upgrade"}
         # four_d: dict = {'Accept': '*/*', 'Cache-Control': 'no-cache', 'Connection': 'keep-alive'}
         # two_three_four_dict: dict = {**two_d, **three_d, **four_d}
-        # two_three_four_json = json.dumps(two_three_four_dict, separators=(',', ':'))
-                                                # above [1:][:-1] removes the brackets
-        # all_json = one_json + "\n" + two_three_four_json
-        # clean_json_header: str =  re.sub(r'"', "", all_json)
 
         query_dict: dict = {'jsonrpc': '2.0', 'method': 'getChainInfo', "params": [], "id": 1234}
-        query_j: str = json.dumps(query_dict, indent=3, separators=(',', ': '))
-        # self.post_str = clean_json_header + "\n\n" + query_json
-        return query_j
+        query_jd: str = json.dumps(query_dict, indent=3, separators=(',', ': '))
+        query_str = all_top4 + "\n\n" + query_jd
+        return query_str
 
 
     async def run_me(self):
         async with websockets.connect(self.uri) as wshs:
-            print(f'Sending post. Waiting for post answer')
+            print(f'Sending post. Waiting for post answer...\n')
             # the_str: str = "hi"
             await wshs.send(self.json_q)
             json_resp = await wshs.recv()
-            print(f'Received post response: {json_resp}')
+            print(f'Received post response:\n{json_resp}')
 
     def main(self):
         self.json_q = self.init_strings()
-        print("sending data...")
+        print("Starting app.")
         asyncio.get_event_loop().run_until_complete(self.run_me())
         print('Program done')
 
