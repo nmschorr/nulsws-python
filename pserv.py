@@ -30,10 +30,9 @@ server = WebSocketServer(delia, port, SimpleEcho)
 server.serve_forever()
 
 
-# HANDSHAKE_STR = (
-#     'HTTP/1.1 101 Switching Protocols\r\n'
-#     'Upgrade: WebSocket\r\n'
-#     'Connection: Upgrade\r\n'
-#     'Sec-WebSocket-Accept: %(acceptstr)s\r\n\r\n'
-# )
-# from WebSocketServer init
+# # sends a header that looks like this:
+# bytearray(b'GET / HTTP/1.1\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nHost: 127.0.0.1:9005\r\nOrigin: http://127.0.0.1:9005\r\nSec-WebSocket-Key: 7DpVVvtu26/fztcG9Wp93w==\r\nSec-WebSocket-Version: 13\r\n\r\n')
+
+# bytearray(b'GET / HTTP/1.1\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nHost: 127.0.0.1:9005\r\nOrigin: http://127.0.0.1:9005\r\nSec-WebSocket-Key: 7DpVVvtu26/fztcG9Wp93w==\r\nSec-WebSocket-Version: 13\r\n\r\n')
+
+
