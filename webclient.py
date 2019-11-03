@@ -1,29 +1,50 @@
 ##########!/usr/bin/env python
-import websocket._handshake
+# conversion to JSON done by dumps() function
 
-
+import json
+import sys
 from websocket import create_connection
-# ws2 = create_connection("ws://echo.websocket.org/")
+import time
 
+mocky = "http://www.mocky.io/v2/5dbe7206330000c60fa0e3c2"
+wsecho = "ws://echo.websocket.org/"
+wsNew = "ws://127.0.0.1:9005"
 
-ws = create_connection("ws://127.0.0.1:9004")
+ws_now = wsNew
+
+a_str = {
+  "jsonrpc": "2.0",
+  "method": "methodCMD",
+  "params": [],
+  "id": 1234
+}
+j_str = json.dumps(a_str)
+
+ws = create_connection(ws_now)
+ws.settimeout(120)
+
 print("websocket status: ", ws.status)
 print("is websock connected? ", ws.connected)
+#
+# wheads = ws.getheaders.__str__()
+# print("websock headers: ", wheads)
+# print("ws.handshake_response: ", ws.handshake_response)
+# print("ws.fileno: ", ws.fileno())
 
-wheads = ws.getheaders.__str__()
 
-print("websock headers: ", wheads)
-print("ws.handshake_response: ", ws.handshake_response)
-print("ws.fileno: ", ws.fileno())
+while True:
+  print("Sending 'Hello, World'...")
+  ws.send("Hello, World")
+  print("Sent...")
+  result = ws.recv()
+  print("Received: " + result)
 
-
-print("Sending 'Hello, World'...")
-ws.send("Hello, World")
-print("Sent")
-print("Receiving...")
-result = ws.recv()
-print("Received '%s'" % result)
-
+  print("Sending json query ...")
+  ws.send(j_str)
+  print("Waiting for json query...")
+  resultj = ws.recv()
+  print("Result from json query: ", resultj)
+  time.sleep(460)
 
 ws.close()
 
