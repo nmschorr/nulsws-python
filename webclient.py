@@ -1,17 +1,18 @@
 ##########!/usr/bin/env python
+import websocket._handshake
 
-import websocket
-import json
 
 from websocket import create_connection
 # ws2 = create_connection("ws://echo.websocket.org/")
-#ws = create_connection("ws://Delia:9003", http_proxy_port=8888)
 
 
 ws = create_connection("ws://127.0.0.1:9004")
 print("websocket status: ", ws.status)
 print("is websock connected? ", ws.connected)
-print("websock headers: ", ws.getheaders)
+
+wheads = ws.getheaders.__str__()
+
+print("websock headers: ", wheads)
 print("ws.handshake_response: ", ws.handshake_response)
 print("ws.fileno: ", ws.fileno())
 
@@ -22,6 +23,8 @@ print("Sent")
 print("Receiving...")
 result = ws.recv()
 print("Received '%s'" % result)
+
+
 ws.close()
 
 
