@@ -24,7 +24,7 @@ class SimpleEcho(WebSocket):
 print("starting...")
 
 delia = '0.0.0.0'
-port = 9005
+port = 9006
 print("serving on port: ", port)
 server = WebSocketServer(delia, port, SimpleEcho)
 server.serve_forever()
