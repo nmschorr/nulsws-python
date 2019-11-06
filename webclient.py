@@ -6,6 +6,7 @@ import requests
 
 url = "http://127.0.0.1:18003"
 url2 = "ws://127.0.0.1:9006"
+url = "http://127.0.0.1:7771"
 
 
 def main():
