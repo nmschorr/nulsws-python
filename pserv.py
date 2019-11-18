@@ -3,7 +3,6 @@ import socket
 
 
 class SimpleEcho(WebSocket):
-    # print(str(WebSocket.client))
     print("this host: ", str(socket.gethostname()))
 
     def handle(self):
@@ -23,10 +22,10 @@ class SimpleEcho(WebSocket):
 
 print("starting...")
 
-delia = '0.0.0.0'
+baby = '0.0.0.0'
 port = 9006
 print("serving on port: ", port)
-server = WebSocketServer(delia, port, SimpleEcho)
+server = WebSocketServer(baby, port, SimpleEcho)
 server.serve_forever()
 
 

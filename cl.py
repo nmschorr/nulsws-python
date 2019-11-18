@@ -1,45 +1,129 @@
-import websocket
-import json
-import asyncio
 
-class n_socket(object):
+####/usr/bin/env python
+# -*- coding: utf-8 -*-
 
-    def __init__(self):
+from tornado.ioloop import IOLoop, PeriodicCallback
+from tornado import gen
+from tornado.websocket import websocket_connect
 
-        self.url: str = "ws://127.0.0.1:7771"
-        self.websock_obj = websocket
-        self.data = {
-            "MessageID": "45sdj8jcf8899ekffEFefee",
-            "Timestamp": "1542102459",
-            "TimeZone": "-8",
-            "MessageType": "Request",
-            "MessageData": {
-                "SubscriptionEventCounter": "3",
-                "SubscriptionPeriod": "0",
-                "SubscriptionRange": "0",
-                "ResponseMaxSize": "0",
-                "RequestMethods": [
-                    {
-                    "GetBalance": {
-                        "Address": "tNULSeBaMnrs6JKrCy6TQdzYJZkMZJDng7QAsD"
-                    }
-                    }
-                ]
-                }
-            }
 
-    async def main(self):
-        ws_conn = self.websock_obj.create_connection(self.url)
-        payload = self.data
+class Client(object):
+    def __init__(self, url, timeout):
+        self.url = url
+        self.timeout = timeout
+        self.ioloop = IOLoop.instance()
+        self.ws = None
+        self.connect()
+	PeriodicCallback(self.keep_alive, 20000).start()
+        self.ioloop.start()
 
-        print("Sending json query ...")
-        ws_conn.send_frame(payload)
-        #ws_conn.send(payload, websocket.ABNF.OPCODE_TEXT)
-        await ws_conn.recv_data()
+    @gen.coroutine
+    def connect(self):
+        print "trying to connect"
+        try:
+            self.ws = yield websocket_connect(self.url)
+        except Exception as e:
+            print("connection error")
+        else:
+            print("connected")
+            self.run()
 
-n = n_socket()
-asyncio.get_event_loop().run_until_complete(n.main())
+    @gen.coroutine
+    def run(self):
+        while True:
+            msg = yield self.ws.read_message()
+            if msg is None:
+                print("connection closed")
+                self.ws = None
+                break
 
+    def keep_alive(self):
+        if self.ws is None:
+            self.connect()
+        else:
+            self.ws.write_message("keep alive")
+
+if __name__ == "__main__":
+    client = Client("ws://localhost:9006", 5)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# import json
+# import asyncio
+# from tornado import platform.
+#
+#
+# # OPCODE=TEXT, FIN=0, MSG="Too much "
+# from websocket.tests.test_websocket import TRACEABLE
+#
+#
+# class n_socket(object):
+#
+#     def __init__(self):
+#         ws.enableTrace(TRACEABLE)
+#
+#         self.url: str = "ws://127.0.0.1:7771"
+#
+#         sock = ws.WebSocket()
+#         sock.set_mask_key(_abnf.create_mask_key)
+#         self.data = {
+#             "MessageID": "45sdj8jcf8899ekffEFefee",
+#             "Timestamp": "1542102459",
+#             "TimeZone": "-8",
+#             "MessageType": "Request",
+#             "MessageData": {
+#                 "SubscriptionEventCounter": "3",
+#                 "SubscriptionPeriod": "0",
+#                 "SubscriptionRange": "0",
+#                 "ResponseMaxSize": "0",
+#                 "RequestMethods": [
+#                     {
+#                     "GetBalance": {
+#                         "Address": "tNULSeBaMnrs6JKrCy6TQdzYJZkMZJDng7QAsD"
+#                     }
+#                     }
+#                 ]
+#                 }
+#             }
+#
+#         self.sock = sock
+#
+#
+#     async def main(self):
+#         ws_conn = self.sock.create_connection(self.url)
+#
+#         frame = ABNF.create_frame(self.data, OPCODE='TEXT', fin=0)
+#
+#         print("Sending json query frame ...")
+#
+#         ws_conn.send_frame(frame)
+#         await ws_conn.recv_data()
+#
+# n = n_socket()
+# asyncio.get_event_loop().run_until_complete(n.main())
+#
 
 
 
