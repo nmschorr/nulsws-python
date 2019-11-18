@@ -5,47 +5,71 @@
 from tornado.ioloop import IOLoop, PeriodicCallback
 from tornado import gen
 from tornado.websocket import websocket_connect
+# import tornado
+# import tornado.platform
+from tornado import escape
 
 
 class Client(object):
     def __init__(self, url, timeout):
         self.url = url
+        self.ws = None
         self.timeout = timeout
         self.ioloop = IOLoop.instance()
-        self.ws = None
-        self.connect()
-	PeriodicCallback(self.keep_alive, 20000).start()
+        self.connect1()
+        PeriodicCallback(self.keep_alive2, 20000).start()
         self.ioloop.start()
 
     @gen.coroutine
-    def connect(self):
-        print "trying to connect"
+    def connect1(self):
+        print("trying to connect")
         try:
             self.ws = yield websocket_connect(self.url)
         except Exception as e:
             print("connection error")
         else:
             print("connected")
-            self.run()
+
+            self.run3()
+
+
+    def keep_alive2(self):
+        if self.ws is None:
+            self.connect1()
+        else:
+            self.ws.write_message("keep alive")
+
 
     @gen.coroutine
-    def run(self):
+    def run3(self):
+        # send_this = '\{ \'POST  HTTP/1.1', 'Host: 127.0.0.1:18003', 'Content-Type: application/json;charset=UTF-8', 'Accept: */*', 'Cache-Control: no-cache' ,'Host: 127.0.0.1:18003', 'Accept-Encoding: gzip deflate' ,'Content-Length: 80' ,'Connection: keep-alive', 'cache-control: no-cache', 'jsonrpc: 2.0' , 'method : getChainInfo',  'params:[]', 'id: 1234' \}'
+        send_this = "{ 'POST  HTTP/1.1', 'Host: 127.0.0.1:18003', 'Content-Type: application/json;charset=UTF-8', 'Accept: */*', 'Cache-Control: no-cache' ,'Host: 127.0.0.1:18003', 'Accept-Encoding: gzip deflate' ,'Content-Length: 80' ,'Connection: keep-alive', 'cache-control: no-cache', 'jsonrpc: 2.0' , 'method : getChainInfo',  'params:[]', 'id: 1234' }"
+        json_str = escape.json_encode(send_this)
         while True:
             msg = yield self.ws.read_message()
             if msg is None:
                 print("connection closed")
                 self.ws = None
-                break
+                #break
+            else:
+                yield self.ws.write_message("hello1")
+                yield self.ws.write_message(json_str)
+                res = yield self.ws.read_message()
+                self.assertEqual(res, "hello1")
+                res = yield self.ws.read_message()
+                self.assertEqual(res, json_str)
 
-    def keep_alive(self):
-        if self.ws is None:
-            self.connect()
-        else:
-            self.ws.write_message("keep alive")
 
 if __name__ == "__main__":
-    client = Client("ws://localhost:9006", 5)
+    method : str = "ws://"
+    host = "localhost"
+    port = "9006"
+    #port = "18003"
+    uri : str = ''.join([method, host, ":", port])
+    print(" uri:  ", uri)
+    client = Client(uri, 5)
 
+# send_this = '\{ \'POST  HTTP/1.1', 'Host: 127.0.0.1:18003', 'Content-Type: application/json;charset=UTF-8', 'Accept: */*', 'Cache-Control: no-cache' ,'Host: 127.0.0.1:18003', 'Accept-Encoding: gzip deflate' ,'Content-Length: 80' ,'Connection: keep-alive', 'cache-control: no-cache', 'jsonrpc: 2.0' , 'method : getChainInfo',  'params:[]', 'id: 1234' \}'
 
 
 
