@@ -1,73 +1,137 @@
 
-####/usr/bin/env python
-# -*- coding: utf-8 -*-
+##### python 3.7
 
-from tornado.ioloop import IOLoop, PeriodicCallback
-from tornado import gen
-from tornado.websocket import websocket_connect
-# import tornado
-# import tornado.platform
-from tornado import escape
+# class WebSocketClientConnection(simple_httpclient._HTTPConnection):
+"""WebSocket client connection.
 
-
-class Client(object):
-    def __init__(self, url, timeout):
-        self.url = url
-        self.ws = None
-        self.timeout = timeout
-        self.ioloop = IOLoop.instance()
-        self.connect1()
-        PeriodicCallback(self.keep_alive2, 20000).start()
-        self.ioloop.start()
-
-    @gen.coroutine
-    def connect1(self):
-        print("trying to connect")
-        try:
-            self.ws = yield websocket_connect(self.url)
-        except Exception as e:
-            print("connection error")
-        else:
-            print("connected")
-
-            self.run3()
+This class should not be instantiated directly; use the
+`websocket_connect` function instead.
+"""
+# Override `on_message` to handle incoming messages, and use
+# `write_message` to send messages to the client.
 
 
-    def keep_alive2(self):
-        if self.ws is None:
-            self.connect1()
-        else:
-            self.ws.write_message("keep alive")
+from tornado.websocket import websocket_connect, WebSocketClosedError
+from tornado.websocket import WebSocketHandler
+import json
+import asyncio
+import tornado
 
 
-    @gen.coroutine
-    def run3(self):
-        # send_this = '\{ \'POST  HTTP/1.1', 'Host: 127.0.0.1:18003', 'Content-Type: application/json;charset=UTF-8', 'Accept: */*', 'Cache-Control: no-cache' ,'Host: 127.0.0.1:18003', 'Accept-Encoding: gzip deflate' ,'Content-Length: 80' ,'Connection: keep-alive', 'cache-control: no-cache', 'jsonrpc: 2.0' , 'method : getChainInfo',  'params:[]', 'id: 1234' \}'
-        send_this = "{ 'POST  HTTP/1.1', 'Host: 127.0.0.1:18003', 'Content-Type: application/json;charset=UTF-8', 'Accept: */*', 'Cache-Control: no-cache' ,'Host: 127.0.0.1:18003', 'Accept-Encoding: gzip deflate' ,'Content-Length: 80' ,'Connection: keep-alive', 'cache-control: no-cache', 'jsonrpc: 2.0' , 'method : getChainInfo',  'params:[]', 'id: 1234' }"
-        json_str = escape.json_encode(send_this)
-        while True:
-            msg = yield self.ws.read_message()
-            if msg is None:
-                print("connection closed")
-                self.ws = None
-                #break
-            else:
-                yield self.ws.write_message("hello1")
-                yield self.ws.write_message(json_str)
-                res = yield self.ws.read_message()
-                self.assertEqual(res, "hello1")
-                res = yield self.ws.read_message()
-                self.assertEqual(res, json_str)
+class WsClient(WebSocketHandler):
+
+    def __init__(self):
+        method: str = "ws://"
+        host = "localhost"
+        port = "9006"
+        # port = "18003"
+        self.my_url: str = ''.join([method, host, ":", port])
+        self.msg = self.get_msg_body()
+        self.answer = None
+        self.answer1 = None
+        self.going = True
+
+    async def handle_stuff(self):
+        while self.going:
+            try:
+                connection = await websocket_connect(self.my_url)
+                await asyncio.sleep(1)
+
+                self.answer1 = await connection.write_message(u"helloThere!!!!!!")
+
+                print("first answer: " , self.answer1)
+                await asyncio.sleep(1)
+                self.answer = await connection.write_message(self.msg)
+                print("received answer!!!!  :  ", self.answer)
+            except WebSocketClosedError as e:
+                print(e)
+
+    def get_msg_body(self) -> str:
+        dataj = {
+            "jsonrpc": "2.0",
+            "method": "getChainInfo",
+            "params": [],
+            "id": 1234
+        }
+        data_body = json.dumps(dataj)
+        return data_body
+
+
+    async def main(self):
+        await self.handle_stuff()
 
 
 if __name__ == "__main__":
-    method : str = "ws://"
-    host = "localhost"
-    port = "9006"
-    #port = "18003"
-    uri : str = ''.join([method, host, ":", port])
-    print(" uri:  ", uri)
-    client = Client(uri, 5)
+    w = WsClient()
+    asyncio.run(w.main(), debug=True)
+
+
+
+
+
+#
+#
+# ####/usr/bin/env python
+# # -*- coding: utf-8 -*-
+#
+# from tornado.ioloop import IOLoop, PeriodicCallback
+# from tornado.websocket import websocket_connect
+# from tornado import websocket
+#
+# # import tornado
+# # import tornado.platform
+#
+#
+# class Client(websocket):
+#     def __init__(self, url, timeout):
+#         self.url = url
+#         self.ws = None
+#         self.timeout = timeout
+#         self.ioloop = IOLoop.instance()
+#         #self.connect1()
+#         self.ioloop.start()
+#
+#         send_this = "{ 'POST  HTTP/1.1', 'Host: 127.0.0.1:18003', 'Content-Type: application/json;charset=UTF-8', 'Accept: */*', 'Cache-Control: no-cache' ,'Host: 127.0.0.1:18003', 'Accept-Encoding: gzip deflate' ,'Content-Length: 80' ,'Connection: keep-alive', 'cache-control: no-cache', 'jsonrpc: 2.0' , 'method : getChainInfo',  'params:[]', 'id: 1234' }"
+#
+#
+#
+#     def on_open(self):
+#         print("WebSocket opened")
+#
+#     def on_message(self, message):
+#         self.write_message(u"You said: " + message)
+#
+#     def on_close(self):
+#         print("WebSocket closed")
+#
+#     async def open(self):
+#         conn = await websocket_connect(url)
+#
+#         async def proxy_loop():
+#             while True:
+#                 msg = await conn.read_message()
+#                 if msg is None:
+#                     break
+#                 await self.write_message(msg)
+#
+#         self.ioloop.IOLoop.current().spawn_callback(proxy_loop)
+#
+#
+# if __name__ == "__main__":
+#     method: str = "ws://"
+#     host = "localhost"
+#     port = "9006"
+#     #port = "18003"
+#     url : str = ''.join([method, host, ":", port])
+#     print(" uri:  ", url)
+#     client = Client(url, 5)
+#     client.open()
+#
+#
+#
+
+
+
 
 # send_this = '\{ \'POST  HTTP/1.1', 'Host: 127.0.0.1:18003', 'Content-Type: application/json;charset=UTF-8', 'Accept: */*', 'Cache-Control: no-cache' ,'Host: 127.0.0.1:18003', 'Accept-Encoding: gzip deflate' ,'Content-Length: 80' ,'Connection: keep-alive', 'cache-control: no-cache', 'jsonrpc: 2.0' , 'method : getChainInfo',  'params:[]', 'id: 1234' \}'
 
