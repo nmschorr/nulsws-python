@@ -1,19 +1,12 @@
-[Default]
-MessageID=45sdj8jcf8899ekffEFefee
-Timestamp=1542102459
-TimeZone=-8
-MessageType=Request
-MessageData=yes
-
 [MessageData]
 SubscriptionEventCounter=3
 SubscriptionPeriod=0
 SubscriptionRange=0
 ResponseMaxSize=0
-RequestMethods=yes
+RequestMethods=0
 
 [RequestMethods]
-GetBalance=yes
+GetBalance=0
 
 [GetBalance]
 Address=tNULSeBaMnrs6JKrCy6TQdzYJZkMZJDng7QAsD

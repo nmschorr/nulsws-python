@@ -10,15 +10,35 @@ This class should not be instantiated directly; use the
 # Override `on_message` to handle incoming messages, and use
 # `write_message` to send messages to the client.
 
+# NegotiateConnection,
+# NegotiateConnectionResponse,  Request,  Unsubscribe,  Response,  Ack,
+# RegisterCompoundMethod and UnregisterCompoundMethod.
+
+# All messages will have a common base structure composed of six fields:
+# •  ProtocolVersion: Represents the protocol version that the caller needs the
+# service to understand, it is composed by two numbers, major and minor and
+# follows semantic rules, which means that if the major number is different the
+# connection is refused, if the minor number varies then a successful
+# connection can be established.
+# •  MessageID: This is a string that identifies a request. Its length should not
+# surpass 256 characters.
+# •  Timestamp:  Number  of  seconds  since  epoch  (January  1,  1970
+# at 00:00:00 GMT)
+# •  TimeZone: The time zone where the request was originated and it is
+# represented as a number between -12 and 12
+# •  MessageType: The message type, these are specified on section 3]
+# •  MessageData: A Json object that holds the payload of the message.
+
 
 from tornado.websocket import websocket_connect, WebSocketClosedError
 from tornado.websocket import WebSocketHandler
 import json
 import asyncio
-import tornado
+import configparser
+from datetime import datetime
+import string, random
 
-
-class WsClient(WebSocketHandler):
+class NulsWebsocket(WebSocketHandler):
 
     def __init__(self):
         method: str = "ws://"
@@ -26,47 +46,115 @@ class WsClient(WebSocketHandler):
         port = "9006"
         # port = "18003"
         self.my_url: str = ''.join([method, host, ":", port])
-        self.msg = self.get_msg_body()
         self.answer = None
-        self.answer1 = None
-        self.going = True
+        self.connection = None
+        self.timestamp = datetime.utcnow().strftime('%Y%m%d%H%M%S')
+        self.mdict = {1: 'NegotiateConnection', 2: 'NegotiateConnectionResponse', 3: 'Request', 4:
+            'Unsubscribe', 5: 'Response', 6: 'Ack', 7: 'RegisterCompoundMethod', 8:
+            'UnregisterCompoundMethod'}
 
-    async def handle_stuff(self):
-        while self.going:
-            try:
-                connection = await websocket_connect(self.my_url)
-                await asyncio.sleep(1)
+    async def first_connect(self):
+        try:
+            self.connection = await websocket_connect(self.my_url)
 
-                self.answer1 = await connection.write_message(u"helloThere!!!!!!")
+            await self.connection.write_message(u"helloThere!")
+            self.answer = await self.connection.read_message()
+            print("Received answer!  :  ", self.answer)
+        except WebSocketClosedError as e:
+            print(e)
 
-                print("first answer: " , self.answer1)
-                await asyncio.sleep(1)
-                self.answer = await connection.write_message(self.msg)
-                print("received answer!!!!  :  ", self.answer)
-            except WebSocketClosedError as e:
-                print(e)
+    def get_top_info(self, msg_type) -> dict:
 
-    def get_msg_body(self) -> str:
-        dataj = {
-            "jsonrpc": "2.0",
-            "method": "getChainInfo",
-            "params": [],
-            "id": 1234
-        }
-        data_body = json.dumps(dataj)
-        return data_body
+        m_id: str = ''.join(random.choices(string.ascii_uppercase + string.digits, k=24))
 
+        mtype = self.mdict.get(msg_type)
+        ts = self.timestamp
+        top_info = {"ProtocolVersion": '1.0', "MessageID": m_id, "Timestamp": ts, "TimeZone": -8,
+                    "MessageType": mtype}
+        return top_info
 
-    async def main(self):
-        await self.handle_stuff()
+    def read_data_file(self, filename, mtyp):
+        cparser = configparser.ConfigParser()
+        cparser.read(filename)
+        sects = cparser._sections
+
+        top_info_dict: dict = self.get_top_info(mtyp)        # top info
+
+        if mtyp == 3:
+            MessageDataD: dict = sects.get('MessageData')
+            RequestMethodsD: dict = sects.get('RequestMethods')
+            GetBalanceD: dict = sects.get('GetBalance')
+
+        RequestMethodsD.update({'getbalance': GetBalanceD})  # bottom
+
+        MessageDataD.update({'requestmethods': RequestMethodsD})  # next up
+
+        top_info_dict.update({'messagedata': MessageDataD})
+
+        print(json.dumps(top_info_dict, indent=2))
+
+    async def ws_runner(self):
+        await self.first_connect()
+        self.read_data_file("dataRequest.ncf", 3)                       # in same dir as program
+
+    def main(self):
+        asyncio.run(self.ws_runner(), debug=True)   # starts event loop
 
 
 if __name__ == "__main__":
-    w = WsClient()
-    asyncio.run(w.main(), debug=True)
+    NulsWebsocket().main()
+
+    # async def rw_msg(self):
+    #     try:
+    #         await self.connection.write_message(self.data_body)
+    #         fun = await self.connection.read_message()
+    #         print("message received from server: ", fun)
+    #     except WebSocketClosedError as e:
+    #         print(e)
+
+
+    # def get_msg_body(self):
+    #     dataj = {
+    #         "jsonrpc": "2.0",
+    #         "method": "getChainInfo",
+    #         "params": [],
+    #         "id": 1234
+    #     }
+    #     db = json.dumps(dataj)
+    #     return db
+    #
+    # async def my_sleep(self, amsg="done sleeping"):
+    #     sleep(2)
+    #     print(amsg)
 
 
 
+
+
+    #
+    #
+    # def big_data(self):
+    #     self.bigdata = {
+    #         "MessageID": "45sdj8jcf8899ekffEFefee",
+    #         "Timestamp": "1542102459",
+    #         "TimeZone": "-8",
+    #         "MessageType": "Request",
+    #         "MessageData": {
+    #             "SubscriptionEventCounter": "3",
+    #             "SubscriptionPeriod": "0",
+    #             "SubscriptionRange": "0",
+    #             "ResponseMaxSize": "0",
+    #             "RequestMethods": [
+    #                 {
+    #                 "GetBalance": {
+    #                     "Address": "tNULSeBaMnrs6JKrCy6TQdzYJZkMZJDng7QAsD"
+    #                 }
+    #                 }
+    #             ]
+    #             }
+    #         }
+    #
+    #
 
 
 #
