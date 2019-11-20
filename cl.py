@@ -29,6 +29,9 @@ This class should not be instantiated directly; use the
 # •  MessageType: The message type, these are specified on section 3]
 # •  MessageData: A Json object that holds the payload of the message.
 
+# This file reads the datafile as in dataRequest or dataNegotiateConnection
+# converts it into JSON format and sends it to the server.
+
 
 from tornado.websocket import websocket_connect, WebSocketClosedError
 from tornado.websocket import WebSocketHandler
