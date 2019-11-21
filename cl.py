@@ -49,25 +49,6 @@ import string, random
 
 class NulsWebsocket(WebSocketHandler):
 
-    def myswitcher(self, the_type, mytup):
-        switcher = {
-
-
-    if mtyp == 2:  self.read_type2(mytup)
-
-    if mtyp == 3:  self.read_type3(mytup)
-
-    if mtyp == 4: self.read_type4(mytup)
-
-    if mtyp == 5:  self.read_type5(mytup)
-
-    if mtyp == 6: self.read_type6(mytup)
-
-    if mtyp == 7: self.read_type7(mytup)
-
-    if mtyp == 8: self.read_type8(mytup)
-
-
     def __init__(self):
         method: str = "ws://"
         host: str = "127.0.0.1"
@@ -80,7 +61,11 @@ class NulsWebsocket(WebSocketHandler):
         self.timestamp: str = datetime.utcnow().strftime('%Y%m%d%H%M%S')
         self.mdict: Dict = self.get_mdict()
         self.filenames: Dict = self.get_fnames()
-
+        self.mytup: tuple = None
+        self.sects = None
+        self.mdata = None
+        
+        
     def get_fnames(self) -> Dict:
         f_dict: Dict = {0:'dataSimple.ncf', 1: 'dataNegConn1.ncf', 2: 'dataNegConnResp2.ncf',
                3: 'dataRequest3.ncf', 4: 'dataUnsub4.ncf', 5: 'dataResp5.ncf',
@@ -130,77 +115,91 @@ class NulsWebsocket(WebSocketHandler):
         top_info = {"MessageID": m_id, "Timestamp": ts, "TimeZone": -8,"MessageType": mtype}
         return top_info
 
-    def read_type0(self, scts, mdt):   ## this function only for testing
-        subhead = dict()
-        header: dict = scts.get('top')  ## ordered dict
-        header.update({'MessageData': mdt})
-        subhead.update(header)
-        return subhead
+    def read_type0(self):   ## this function only for testing
+        top_part = dict()
+        header: dict = self.sects.get('top')  ##
+        header.update({'MessageData': self.mdata})
+        top_part.update(header)
+        return top_part
 
-    def read_type2(self, scts, mdt):   ## this function only for testing
-        subhead = self.get_top_info(2)
-        header: dict = scts.get('top')  ## ordered dict
-        header.update({'MessageData': mdt})
-        subhead.update(header)
-        return subhead
+    def read_type1(self):   ##
+        top_part = self.get_top_info(2)
+        header: dict = self.sects.get('top')  #
+        header.update({'MessageData': self.mdata})
+        top_part.update(header)
+        return top_part
 
-    def read_type3(self, scts, mdta):  ## this function only for testing
-        subhead = self.get_top_info(3)
-        bal: dict = scts.get('GetBalance')
-        reqmeths: dict = scts.get('RequestMethods')
+    def read_type2(self):   ##
+        top_part = self.get_top_info(2)
+        header: dict = self.sects.get('top')  ##
+        header.update({'MessageData': self.mdata})
+        top_part.update(header)
+        return top_part
+
+    def read_type3(self):  ## t
+        top_part = self.get_top_info(3)
+        bal: dict = self.sects.get('GetBalance')
+        reqmeths: dict = self.sects.get('RequestMethods')
         reqmeths.update({'GetBalance': bal})  # bottom
-        mdta.update({'RequestMethods': reqmeths})  # next up
-        subhead.update({'MessageData': mdta})
-        return subhead
+        self.mdata.update({'RequestMethods': reqmeths})  # next up
+        top_part.update({'MessageData': self.mdata})
+        return top_part
 
-    def read_type4(self, scts, mdta):  ## this function only for testing
-        subhead = self.get_top_info(4)
-        unsubmeths: dict = scts.get('UnsubscribeMethods')
-        mdta.update({'UnsubscribeMethods': unsubmeths})  # next up
-        subhead.update({'MessageData': mdta})
-        return subhead
+    def read_type4(self):  ## this function only for testing
+        top_part = self.get_top_info(4)
+        unsubmeths: dict = self.sects.get('UnsubscribeMethods')
+        self.mdata.update({'UnsubscribeMethods': unsubmeths})  # next up
+        top_part.update({'MessageData': self.mdata})
+        return top_part
 
+    def read_type5(self):  ## this function only for testing
+        top_part = self.get_top_info(5)
+        respdata: dict = self.sects.get('ResponseData')
+        self.mdata.update({'MessageData': respdata})  # next up
+        top_part.update({'MessageData': self.mdata})
+        return top_part
 
-    def read_data_file(self, mtyp: int) ->dict:
+    def read_data_file(self, mtyp) ->dict:
         filename: str = self.filenames.get(mtyp)
         custom_parser = configparser.RawConfigParser()   ## to preserve case
         custom_parser.optionxform = lambda option: option
         custom_parser.read(filename)
         sects = custom_parser._sections
         mdata: dict = sects.get('MessageData')
-        mytup = (sects, mdata)
-
-
-        if mtyp == 0:
-            subhead = self.read_type0(mytup)
+        self.sects = sects
+        self.mdata = mdata
+        top_part = None
 
         if mtyp == 1:
-            subhead = self.get_top_info(mtyp)  ## simple one needs no sub routine
-            subhead.update({'MessageData': mdata})
+            top_part = self.get_top_info(mtyp)  ## simple one needs no sub routine
+            top_part.update({'MessageData': mdata})
 
-        if mtyp == 2:
-            subhead = self.read_type2(mytup)
+        elif mtyp == 0:
+            top_part = self.read_type0()
 
-        if mtyp == 3:
-            subhead = self.read_type3(mytup)
+        elif mtyp == 2:
+            top_part = self.read_type2()
 
-        if mtyp == 4:
-            subhead = self.read_type4(mytup)
+        elif mtyp == 3:
+            top_part = self.read_type3()
 
-        if mtyp == 5:
-            subhead = self.read_type5(mytup)
+        elif mtyp == 4:
+            top_part = self.read_type4()
 
-        if mtyp == 6:
-            subhead = self.read_type6(mytup)
+        elif mtyp == 5:
+            top_part = self.read_type5()
 
-        if mtyp == 7:
-            subhead = self.read_type7(mytup)
+        elif mtyp == 6:
+            top_part = self.read_type6()
 
-        if mtyp == 8:
-            subhead = self.read_type8(mytup)
+        elif mtyp == 7:
+            top_part = self.read_type7()
 
-        print(subhead)
-        return subhead
+        else mtyp == 8:
+            top_part = self.read_type8()
+
+        print(top_part)
+        return top_part
 
     def mypretty(self, jsonfile):
         print(json.dumps(jsonfile, indent=4))
