@@ -59,12 +59,10 @@ class NulsWebsocket(WebSocketHandler):
         print("the url:  ", self.my_url)
         self.connection = None
         self.timestamp: str = datetime.utcnow().strftime('%Y%m%d%H%M%S')
+        self.m_id: str = ''.join(random.choices(string.ascii_uppercase + string.digits, k=15))
         self.mdict: Dict = self.get_mdict()
         self.filenames: Dict = self.get_fnames()
-        self.mytup: tuple = None
-        self.sects = None
-        self.mdata = None
-        
+
         
     def get_fnames(self) -> Dict:
         f_dict: Dict = {0:'dataSimple.ncf', 1: 'dataNegConn1.ncf', 2: 'dataNegConnResp2.ncf',
@@ -92,114 +90,120 @@ class NulsWebsocket(WebSocketHandler):
         try:
             self.connection = await websocket_connect(self.my_url)
             msg_d = self.read_data_file(the_type)
-
-            jsn = json.dumps(msg_d)
-            #jsn = json.JSONEncoder().encode(json.dumps(msg_d))
-
+            print("sending: ", json.dumps(msg_d))
             resp = await self.connection.write_message(json.dumps(msg_d))
-            print("resp:  ", resp)
+            print("Waiting for response...")
             answer = await self.connection.read_message()
             print("Received answer!  :  ", answer)
         except WebSocketClosedError as e:
             print(e)
 
-
-    def get_top_info(self, msg_type: int) -> dict:
-        # (5 known properties: "TimeZone", "MessageID", "Timestamp", "MessageType", "MessageData"])
-
-        m_id: str = ''.join(random.choices(string.ascii_uppercase + string.digits, k=15))
-        mtype = self.mdict.get(msg_type)
-        ts = self.timestamp
         # origtop_info = {"ProtocolVersion": '1.0', "MessageID": m_id, "Timestamp": ts, "TimeZone":
         #     -8, "MessageType": mtype}
+
+    def get_top(self, msg_type: int) -> dict:
+        m_id = self.m_id
+        mtype = self.mdict.get(msg_type)
+        ts = self.timestamp
         top_info = {"MessageID": m_id, "Timestamp": ts, "TimeZone": -8,"MessageType": mtype}
         return top_info
 
-    def read_type0(self):   ## this function only for testing
-        top_part = dict()
-        header: dict = self.sects.get('top')  ##
-        header.update({'MessageData': self.mdata})
-        top_part.update(header)
-        return top_part
+    def read_type0(self, sections, main_sect, mdata):   
+        main_sect.update(mdata)
+        return main_sect
 
-    def read_type1(self):   ##
-        top_part = self.get_top_info(2)
-        header: dict = self.sects.get('top')  #
-        header.update({'MessageData': self.mdata})
-        top_part.update(header)
-        return top_part
+    def read_type1(self, sections, main_sect, mdata):   ##
+        main_sect.update({'MessageData': mdata})
+        return main_sect
 
-    def read_type2(self):   ##
-        top_part = self.get_top_info(2)
-        header: dict = self.sects.get('top')  ##
-        header.update({'MessageData': self.mdata})
-        top_part.update(header)
-        return top_part
+    def read_type2(self, sections, main_sect, mdata):   ##
+        main_sect.update({'MessageData': mdata})
+        return main_sect
 
-    def read_type3(self):  ## t
-        top_part = self.get_top_info(3)
-        bal: dict = self.sects.get('GetBalance')
-        reqmeths: dict = self.sects.get('RequestMethods')
-        reqmeths.update({'GetBalance': bal})  # bottom
-        self.mdata.update({'RequestMethods': reqmeths})  # next up
-        top_part.update({'MessageData': self.mdata})
-        return top_part
+    def read_type3(self, sections, main_sect, mdata):  ## t
+        bal: dict = sections.get('GetBalance')
+        reqmeths: dict = sections.get('RequestMethods')
+        
+        reqmeths.update({'GetBalance': bal})  # bottom section
+        mdata.update({'RequestMethods': reqmeths})  # next up
+        main_sect.update({'MessageData': mdata})
+        return main_sect
 
-    def read_type4(self):  ## this function only for testing
-        top_part = self.get_top_info(4)
-        unsubmeths: dict = self.sects.get('UnsubscribeMethods')
-        self.mdata.update({'UnsubscribeMethods': unsubmeths})  # next up
-        top_part.update({'MessageData': self.mdata})
-        return top_part
+    def read_type4(self, sections, main_sect, mdata):  
+        unsubmeths: dict = sections.get('UnsubscribeMethods')
+        mdata.update({'UnsubscribeMethods': unsubmeths})  # next up
+        main_sect.update({'MessageData': mdata})
+        return main_sect
 
-    def read_type5(self):  ## this function only for testing
-        top_part = self.get_top_info(5)
-        respdata: dict = self.sects.get('ResponseData')
-        self.mdata.update({'MessageData': respdata})  # next up
-        top_part.update({'MessageData': self.mdata})
-        return top_part
+    def read_type5(self, sections, main_sect, mdata):  
+        respdata: dict = sections.get('ResponseData')
+        mdata.update({'ResponseData': respdata})  # next up
+        main_sect.update({'MessageData': mdata})
+        return main_sect
 
-    def read_data_file(self, mtyp) ->dict:
+    def read_type6(self, sections, main_sect, mdata):  
+        respdata: dict = sections.get('ResponseData')
+        mdata.update({'ResponseData': respdata})  # next up
+        main_sect.update({'MessageData': mdata})
+        return main_sect
+
+    def read_type7(self, sections, main_sect, mdata):  
+        cmeth: dict = sections.get('CompoundMethods')
+        bal: dict = sections.get('GetBalance')
+        cmeth.update({'GetBalance': bal})  # bottom section
+        mdata.update({'CompoundMethods': cmeth})  # next up
+        main_sect.update({'MessageData': mdata})
+        return main_sect
+
+    def read_type8(self, sections, main_sect, mdata):  
+        main_sect.update({'MessageData': mdata})
+        return main_sect
+    
+
+    def get_section(self, mtyp, sects, subhead, mdata):
+        if mtyp == 0:
+            main_sect = self.read_type0(sects, subhead, mdata)
+
+        elif mtyp == 1:
+            main_sect = self.read_type1(sects, subhead, mdata)
+
+        elif mtyp == 2:
+            main_sect = self.read_type2(sects,  subhead, mdata)
+
+        elif mtyp == 3:
+            main_sect = self.read_type3(sects, subhead, mdata)
+
+        elif mtyp == 4:
+            main_sect = self.read_type4(sects, subhead, mdata)
+
+        elif mtyp == 5:
+            main_sect = self.read_type5(sects, subhead, mdata)
+
+        elif mtyp == 6:
+            main_sect = self.read_type6(sects, subhead, mdata)
+
+        elif mtyp == 7:
+            main_sect = self.read_type7(sects, subhead, mdata)
+
+        elif mtyp == 8:
+            main_sect = self.read_type8(sects, subhead, mdata)
+
+        return main_sect
+
+
+
+    def read_data_file(self, mtyp: int) -> dict:
         filename: str = self.filenames.get(mtyp)
         custom_parser = configparser.RawConfigParser()   ## to preserve case
         custom_parser.optionxform = lambda option: option
         custom_parser.read(filename)
         sects = custom_parser._sections
+        main_sect: dict = None
         mdata: dict = sects.get('MessageData')
-        self.sects = sects
-        self.mdata = mdata
-        top_part = None
+        subhead = self.get_top(mtyp)
 
-        if mtyp == 1:
-            top_part = self.get_top_info(mtyp)  ## simple one needs no sub routine
-            top_part.update({'MessageData': mdata})
-
-        elif mtyp == 0:
-            top_part = self.read_type0()
-
-        elif mtyp == 2:
-            top_part = self.read_type2()
-
-        elif mtyp == 3:
-            top_part = self.read_type3()
-
-        elif mtyp == 4:
-            top_part = self.read_type4()
-
-        elif mtyp == 5:
-            top_part = self.read_type5()
-
-        elif mtyp == 6:
-            top_part = self.read_type6()
-
-        elif mtyp == 7:
-            top_part = self.read_type7()
-
-        else mtyp == 8:
-            top_part = self.read_type8()
-
-        print(top_part)
-        return top_part
+        main_sect = self.get_section(mtyp, sects, subhead, mdata)
+        return main_sect
 
     def mypretty(self, jsonfile):
         print(json.dumps(jsonfile, indent=4))
@@ -209,7 +213,7 @@ class NulsWebsocket(WebSocketHandler):
         await print()
 
     async def ws_runner(self):
-        mtype = 3
+        mtype = 6
         await self.real_connect(mtype)                       # in same dir as program
 
     def main(self):

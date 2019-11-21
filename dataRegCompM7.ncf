@@ -9,4 +9,4 @@ CompoundMethodDescription=Get_Useful_Information
 
 [GetBalance]
 Address=GetBalanceAddress
-GetHeight
+GetHeight=0
