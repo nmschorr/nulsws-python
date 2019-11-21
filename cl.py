@@ -35,7 +35,13 @@ This class should not be instantiated directly; use the
 
 from tornado.websocket import websocket_connect, WebSocketClosedError
 from tornado.websocket import WebSocketHandler
+#from typing import Dict, List, AnyStr  ## using Dict messes up json so don't use! but it will
+# create
+                             ## and ordered Dict
+
+from typing import Dict
 import json
+import json.encoder
 import asyncio
 import configparser
 from datetime import datetime
@@ -43,69 +49,184 @@ import string, random
 
 class NulsWebsocket(WebSocketHandler):
 
+    def myswitcher(self, the_type, mytup):
+        switcher = {
+
+
+    if mtyp == 2:  self.read_type2(mytup)
+
+    if mtyp == 3:  self.read_type3(mytup)
+
+    if mtyp == 4: self.read_type4(mytup)
+
+    if mtyp == 5:  self.read_type5(mytup)
+
+    if mtyp == 6: self.read_type6(mytup)
+
+    if mtyp == 7: self.read_type7(mytup)
+
+    if mtyp == 8: self.read_type8(mytup)
+
+
     def __init__(self):
         method: str = "ws://"
-        host = "localhost"
+        host: str = "127.0.0.1"
         port = "9006"
-        # port = "18003"
+        port = "7771"
+        dport = "18003"
         self.my_url: str = ''.join([method, host, ":", port])
-        self.answer = None
+        print("the url:  ", self.my_url)
         self.connection = None
-        self.timestamp = datetime.utcnow().strftime('%Y%m%d%H%M%S')
-        self.mdict = {1: 'NegotiateConnection', 2: 'NegotiateConnectionResponse', 3: 'Request', 4:
-            'Unsubscribe', 5: 'Response', 6: 'Ack', 7: 'RegisterCompoundMethod', 8:
-            'UnregisterCompoundMethod'}
+        self.timestamp: str = datetime.utcnow().strftime('%Y%m%d%H%M%S')
+        self.mdict: Dict = self.get_mdict()
+        self.filenames: Dict = self.get_fnames()
 
-    async def first_connect(self):
+    def get_fnames(self) -> Dict:
+        f_dict: Dict = {0:'dataSimple.ncf', 1: 'dataNegConn1.ncf', 2: 'dataNegConnResp2.ncf',
+               3: 'dataRequest3.ncf', 4: 'dataUnsub4.ncf', 5: 'dataResp5.ncf',
+               6: 'dataAck6.ncf', 7: 'dataRegCompM7.ncf', 8: 'dataUnregCompM8.ncf'}
+        return f_dict
+
+    def get_mdict(self) -> Dict:
+        m_dict: Dict = {0:'Simple', 1: 'NegotiateConnection', 2: 'NegotiateConnectionResponse',
+                3: 'Request', 4:  'Unsubscribe', 5: 'Response', 6: 'Ack',
+                7: 'RegisterCompoundMethod', 8: 'UnregisterCompoundMethod'}
+        return m_dict
+
+    async def first_connect(self, mtype)-> None :
         try:
             self.connection = await websocket_connect(self.my_url)
-
             await self.connection.write_message(u"helloThere!")
-            self.answer = await self.connection.read_message()
-            print("Received answer!  :  ", self.answer)
+            answer = await self.connection.read_message()
+            print("Received answer!  :  ", answer)
         except WebSocketClosedError as e:
             print(e)
 
-    def get_top_info(self, msg_type) -> dict:
 
-        m_id: str = ''.join(random.choices(string.ascii_uppercase + string.digits, k=24))
+    async def real_connect(self, the_type)-> None :
+        try:
+            self.connection = await websocket_connect(self.my_url)
+            msg_d = self.read_data_file(the_type)
 
+            jsn = json.dumps(msg_d)
+            #jsn = json.JSONEncoder().encode(json.dumps(msg_d))
+
+            resp = await self.connection.write_message(json.dumps(msg_d))
+            print("resp:  ", resp)
+            answer = await self.connection.read_message()
+            print("Received answer!  :  ", answer)
+        except WebSocketClosedError as e:
+            print(e)
+
+
+    def get_top_info(self, msg_type: int) -> dict:
+        # (5 known properties: "TimeZone", "MessageID", "Timestamp", "MessageType", "MessageData"])
+
+        m_id: str = ''.join(random.choices(string.ascii_uppercase + string.digits, k=15))
         mtype = self.mdict.get(msg_type)
         ts = self.timestamp
-        top_info = {"ProtocolVersion": '1.0', "MessageID": m_id, "Timestamp": ts, "TimeZone": -8,
-                    "MessageType": mtype}
+        # origtop_info = {"ProtocolVersion": '1.0', "MessageID": m_id, "Timestamp": ts, "TimeZone":
+        #     -8, "MessageType": mtype}
+        top_info = {"MessageID": m_id, "Timestamp": ts, "TimeZone": -8,"MessageType": mtype}
         return top_info
 
-    def read_data_file(self, filename, mtyp):
-        cparser = configparser.ConfigParser()
-        cparser.read(filename)
-        sects = cparser._sections
+    def read_type0(self, scts, mdt):   ## this function only for testing
+        subhead = dict()
+        header: dict = scts.get('top')  ## ordered dict
+        header.update({'MessageData': mdt})
+        subhead.update(header)
+        return subhead
 
-        top_info_dict: dict = self.get_top_info(mtyp)        # top info
+    def read_type2(self, scts, mdt):   ## this function only for testing
+        subhead = self.get_top_info(2)
+        header: dict = scts.get('top')  ## ordered dict
+        header.update({'MessageData': mdt})
+        subhead.update(header)
+        return subhead
+
+    def read_type3(self, scts, mdta):  ## this function only for testing
+        subhead = self.get_top_info(3)
+        bal: dict = scts.get('GetBalance')
+        reqmeths: dict = scts.get('RequestMethods')
+        reqmeths.update({'GetBalance': bal})  # bottom
+        mdta.update({'RequestMethods': reqmeths})  # next up
+        subhead.update({'MessageData': mdta})
+        return subhead
+
+    def read_type4(self, scts, mdta):  ## this function only for testing
+        subhead = self.get_top_info(4)
+        unsubmeths: dict = scts.get('UnsubscribeMethods')
+        mdta.update({'UnsubscribeMethods': unsubmeths})  # next up
+        subhead.update({'MessageData': mdta})
+        return subhead
+
+
+    def read_data_file(self, mtyp: int) ->dict:
+        filename: str = self.filenames.get(mtyp)
+        custom_parser = configparser.RawConfigParser()   ## to preserve case
+        custom_parser.optionxform = lambda option: option
+        custom_parser.read(filename)
+        sects = custom_parser._sections
+        mdata: dict = sects.get('MessageData')
+        mytup = (sects, mdata)
+
+
+        if mtyp == 0:
+            subhead = self.read_type0(mytup)
+
+        if mtyp == 1:
+            subhead = self.get_top_info(mtyp)  ## simple one needs no sub routine
+            subhead.update({'MessageData': mdata})
+
+        if mtyp == 2:
+            subhead = self.read_type2(mytup)
 
         if mtyp == 3:
-            MessageDataD: dict = sects.get('MessageData')
-            RequestMethodsD: dict = sects.get('RequestMethods')
-            GetBalanceD: dict = sects.get('GetBalance')
+            subhead = self.read_type3(mytup)
 
-        RequestMethodsD.update({'getbalance': GetBalanceD})  # bottom
+        if mtyp == 4:
+            subhead = self.read_type4(mytup)
 
-        MessageDataD.update({'requestmethods': RequestMethodsD})  # next up
+        if mtyp == 5:
+            subhead = self.read_type5(mytup)
 
-        top_info_dict.update({'messagedata': MessageDataD})
+        if mtyp == 6:
+            subhead = self.read_type6(mytup)
 
-        print(json.dumps(top_info_dict, indent=2))
+        if mtyp == 7:
+            subhead = self.read_type7(mytup)
+
+        if mtyp == 8:
+            subhead = self.read_type8(mytup)
+
+        print(subhead)
+        return subhead
+
+    def mypretty(self, jsonfile):
+        print(json.dumps(jsonfile, indent=4))
+
+
+    async def mytest(self):
+        await print()
 
     async def ws_runner(self):
-        await self.first_connect()
-        self.read_data_file("dataRequest.ncf", 3)                       # in same dir as program
+        mtype = 3
+        await self.real_connect(mtype)                       # in same dir as program
 
     def main(self):
         asyncio.run(self.ws_runner(), debug=True)   # starts event loop
 
 
 if __name__ == "__main__":
-    NulsWebsocket().main()
+    w = NulsWebsocket()
+    w.main()
+
+
+
+
+
+
+
 
     # async def rw_msg(self):
     #     try:

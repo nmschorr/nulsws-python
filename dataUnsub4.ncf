@@ -1,0 +1,8 @@
+[top]
+MessageType=Unsubscribe
+
+[MessageData]
+
+[UnsubscribeMethods]
+GetBalance=
+GetHeight=

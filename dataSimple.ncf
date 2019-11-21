@@ -1,0 +1,8 @@
+[top]
+MessageType=Request
+
+[MessageData]
+jsonrpc=2.0
+method=getChainInfo
+params=[]
+MessageID=1234

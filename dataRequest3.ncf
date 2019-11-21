@@ -1,12 +1,15 @@
+[top]
+MessageType=Request
+
 [MessageData]
 SubscriptionEventCounter=3
 SubscriptionPeriod=0
 SubscriptionRange=0
 ResponseMaxSize=0
-RequestMethods=0
 
 [RequestMethods]
-GetBalance=0
 
 [GetBalance]
 Address=tNULSeBaMnrs6JKrCy6TQdzYJZkMZJDng7QAsD
+
+[GetHeight]
