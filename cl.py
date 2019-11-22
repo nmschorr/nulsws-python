@@ -52,8 +52,8 @@ class NulsWebsocket(WebSocketHandler):
     def __init__(self):
         method: str = "ws://"
         host: str = "127.0.0.1"
-        port = "9006"
-        sport = "7771"
+        wport = "9006"
+        port = "7771"
         dport = "18003"
         self.my_url: str = ''.join([method, host, ":", port])
         print("the url:  ", self.my_url)
@@ -84,14 +84,15 @@ class NulsWebsocket(WebSocketHandler):
             msg_d = self.read_data_file(the_type)
             print("sending: ", json.dumps(msg_d))
             resp = await self.connection.write_message(json.dumps(msg_d))
-            print("Waiting for response...")
+            print("Got response.")
+            print("Waiting for data...")
             answer = await self.connection.read_message()
             print("Received answer!  :  ", answer)
         except WebSocketClosedError as e:
             print(e)
 
     async def ws_runner(self):
-        mtype = 8
+        mtype = 3
         await self.connect_serve(mtype)                       # in same dir as program
 
     def main(self):
@@ -101,6 +102,11 @@ class NulsWebsocket(WebSocketHandler):
 if __name__ == "__main__":
     w = NulsWebsocket()
     w.main()
+
+
+
+
+
 
     # origtop_info = {"ProtocolVersion": '1.0', "MessageID": m_id, "Timestamp": ts, "TimeZone":
     #     -8, "MessageType": mtype}

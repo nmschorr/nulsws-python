@@ -2,14 +2,14 @@
   "MessageType": "Request",
   "MessageData": {
     "RequestType": "1",
-    "SubscriptionEventCounter": "3",
-    "SubscriptionPeriod": "0",
-    "SubscriptionRange": "0",
+    "SubscriptionEventCounter": "0",
+    "SubscriptionPeriod": "1",
+    "SubscriptionRange": "[100]",
     "ResponseMaxSize": "0",
     "RequestMethods": [
       {
         "GetBalance": {
-          "Address": "N234rFr4Rtgg5ref4$45tgg5f43335emcnd"
+          "Address": "tNULSeBaMnrs6JKrCy6TQdzYJZkMZJDng7QAsD"
         }
       },
       {
