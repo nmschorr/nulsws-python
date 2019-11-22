@@ -1,18 +1,4 @@
-
-##### python 3.7
-
-# class WebSocketClientConnection(simple_httpclient._HTTPConnection):
-"""WebSocket client connection.
-
-This class should not be instantiated directly; use the
-`websocket_connect` function instead.
-"""
-# Override `on_message` to handle incoming messages, and use
-# `write_message` to send messages to the client.
-
-# NegotiateConnection,
-# NegotiateConnectionResponse,  Request,  Unsubscribe,  Response,  Ack,
-# RegisterCompoundMethod and UnregisterCompoundMethod.
+#!usr/bin/python3.7
 
 # All messages will have a common base structure composed of six fields:
 # •  ProtocolVersion: Represents the protocol version that the caller needs the
@@ -29,26 +15,22 @@ This class should not be instantiated directly; use the
 # •  MessageType: The message type, these are specified on section 3]
 # •  MessageData: A Json object that holds the payload of the message.
 
-# This file reads the datafile as in dataRequest or dataNegotiateConnection
-# converts it into JSON format and sends it to the server.
+# This file reads the json file as in dataRequest or dataNegotiateConnection
+# adds info to it and sends it to the server.
+# Note: be careful with typing.Dict - it can cause json problems when converted
 
 
 from tornado.websocket import websocket_connect, WebSocketClosedError
-from tornado.websocket import WebSocketHandler
-#from typing import Dict, List, AnyStr  ## using Dict messes up json so don't use! but it will
-# create
-                             ## and ordered Dict
-
 from typing import Dict
-import json
-import json.encoder
-import asyncio
-from datetime import datetime
-import string, random
-from configdata import ConfigData
+from json import load, dumps
+from asyncio import run
+from random import choices
+from string import ascii_uppercase, digits
+from time import time
+from configdata import ConfigData as cd
 
-class NulsWebsocket(WebSocketHandler):
 
+class NulsWebsocket(object):
     def __init__(self):
         method: str = "ws://"
         host: str = "127.0.0.1"
@@ -57,70 +39,45 @@ class NulsWebsocket(WebSocketHandler):
         dport = "18003"
         self.my_url: str = ''.join([method, host, ":", port])
         print("the url:  ", self.my_url)
-        self.connection = None
-        self.tstamp: str = datetime.utcnow().strftime('%Y%m%d%H%M%S')
-        self.m_id: str = ''.join(random.choices(string.ascii_uppercase + string.digits, k=15))
-        cd = ConfigData()
-        self.fndict: Dict = cd.get_fnames()
-        self.mdict: Dict = cd.get_mdict()
 
     def get_top(self, msg_type: int) -> dict:
-        mtype = self.mdict.get(msg_type)
-        return {"MessageID": self.m_id, "Timestamp": self.tstamp, "TimeZone": -8,"MessageType":
-            mtype}
+        ts = int(time())
+        m_id: str = ''.join(choices(ascii_uppercase + digits, k=15))
+        mtype = cd().get_mdict().get(msg_type)
+        return {"MessageID": m_id, "Timestamp": ts, "TimeZone": -8, "MessageType": mtype}
 
     def read_data_file(self, mtyp: int):
-        fname: str = self.fndict.get(mtyp)
+        fname: str = cd().get_fnames().get(mtyp)
         print("filename is: ", fname)
         with open(fname, 'r') as f:
-            mdd = json.load(f).get("MessageData")
+            mdd = load(f).get("MessageData")
         mainpart = self.get_top(mtyp)
-        mainpart.update({"MessageData": mdd})  ## add bottom part
+        mainpart.update({"MessageData": mdd})     # adding bottom part
         return mainpart
 
-    async def connect_serve(self, the_type)-> None :
+    async def connect_serve(self, the_type) -> None:
         try:
-            self.connection = await websocket_connect(self.my_url)
+            answer = None
+            connection = await websocket_connect(self.my_url)
             msg_d = self.read_data_file(the_type)
-            print("sending: ", json.dumps(msg_d))
-            resp = await self.connection.write_message(json.dumps(msg_d))
-            print("Got response.")
+            print("sending: ", dumps(msg_d))
+            resp = await connection.write_message(dumps(msg_d))
+            if resp:
+                print("Got response: ", resp)
             print("Waiting for data...")
-            answer = await self.connection.read_message()
-            print("Received answer!  :  ", answer)
+            answer = await connection.read_message()
+            if answer is not None:
+                print("Received answer!  :  ", answer)
         except WebSocketClosedError as e:
             print(e)
 
-    async def ws_runner(self):
-        mtype = 3
+    async def ws_runner(self, mtype):
         await self.connect_serve(mtype)                       # in same dir as program
 
     def main(self):
-        asyncio.run(self.ws_runner(), debug=True)   # starts event loop
+        mtype = 1
+        run(self.ws_runner(mtype), debug=True)   # starts event loop
 
 
 if __name__ == "__main__":
-    w = NulsWebsocket()
-    w.main()
-
-
-
-
-
-
-    # origtop_info = {"ProtocolVersion": '1.0', "MessageID": m_id, "Timestamp": ts, "TimeZone":
-    #     -8, "MessageType": mtype}
-
-    # def mypretty(self, jsonfile):
-    #     print(json.dumps(jsonfile, indent=4))
-    # async def first_connect(self, mtype)-> None :
-    #     try:
-    #         self.connection = await websocket_connect(self.my_url)
-    #         await self.connection.write_message(u"helloThere!")
-    #         answer = await self.connection.read_message()
-    #         print("Received answer!  :  ", answer)
-    #     except WebSocketClosedError as e:
-    #         print(e)
-
-
-
+    NulsWebsocket().main()
