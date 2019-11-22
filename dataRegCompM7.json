@@ -1,0 +1,16 @@
+{
+	"MessageType": "RegisterCompoundMethod",
+	"MessageData": {
+		"CompoundMethodName": "GetMyInfo",
+		"CompoundMethodDescription": "Get useful information.",
+		"CompoundMethods": [{
+				"GetBalance": {
+					"Address": "GetBalanceAddress"
+				}
+			},
+			{
+				"GetHeight": {}
+			}
+		]
+	}
+}

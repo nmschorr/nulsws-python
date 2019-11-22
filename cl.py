@@ -91,7 +91,7 @@ class NulsWebsocket(WebSocketHandler):
             print(e)
 
     async def ws_runner(self):
-        mtype = 1
+        mtype = 8
         await self.connect_serve(mtype)                       # in same dir as program
 
     def main(self):

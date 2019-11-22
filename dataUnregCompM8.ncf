@@ -1,5 +1,0 @@
-[top]
-MessageType=UnregisterCompoundMethod
-
-[MessageData]
-UnregisterCompoundMethodName=GetMyInfo

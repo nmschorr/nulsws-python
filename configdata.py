@@ -7,9 +7,9 @@ class ConfigData(object):
         pass
 
     def get_fnames(self) -> Dict:
-        f_dict: Dict = {0: 'dataSimple.ncf', 1: 'dataNegConn1.ncf', 2: 'dataNegConnResp2.ncf',
-                             3: 'dataRequest3.ncf', 4: 'dataUnsub4.ncf', 5: 'dataResp5.ncf',
-                             6: 'dataAck6.ncf', 7: 'dataRegCompM7.ncf', 8: 'dataUnregCompM8.ncf'}
+        f_dict: Dict = {0: 'dataSimple.json', 1: 'dataNegConn1.json', 2: 'dataNegConnResp2.json',
+                             3: 'dataRequest3.json', 4: 'dataUnsub4.json', 5: 'dataResp5.json',
+                             6: 'dataAck6.json', 7: 'dataRegCompM7.json', 8: 'dataUnregCompM8.json'}
         return f_dict
 
     def get_mdict(self) -> Dict:
