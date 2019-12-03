@@ -55,29 +55,74 @@ class NulsWebsocket(object):
         mainpart.update({"MessageData": mdd})     # adding bottom part
         return mainpart
 
-    async def connect_serve(self, the_type) -> None:
-        try:
+
+
+
+
+
+    # the first object that should be sent - only if the negotiation is ok service may process
+    # further requests -otherwise a NegotiateConnectionResponse object should be received with
+    # Status set to 0 (Failure) and disconnect immediately.
+    # "MessageType": "NegotiateConnection",
+    # "MessageData": {
+    #     "CompressionAlgorithm": "zlib",
+    #     "CompressionRate": "3"
+
+    def one_lib(self, comp_name = "zlib", comp_int = 3):
+        self.send_negotiate_conn()
+
+
+    def send_negotiate_conn(self, compression_algorithm = "zlib", compression_rate = 3):
+        message_type = "NegotiateConnection"
+        if compression_algorithm not in ["zlib", 0]:
+            compression_algorithm = 0
+            #exit(1)  ## message - wrong compression_algorithm
+        if compression_rate not in [2, 3]: #change later
+            compression_rate = 3
+            exit(1)  ## message - wrong compression_rate
+
+
+        if compression_algorithm == "zlib":
+
+            compression_algorithm = "zlib"
+            compression_rate = 3
+            #
+
+        def myprint(self, x):
+            print(x)
+
+        async def connect_serve(self, the_type="zlib", comp = 3) -> None:
             answer = None
-            connection = await websocket_connect(self.my_url)
-            msg_d = self.read_data_file(the_type)
-            print("sending: ", dumps(msg_d))
-            resp = await connection.write_message(dumps(msg_d))
-            if resp:
-                print("Got response: ", resp)
-            print("Waiting for data...")
-            answer = await connection.read_message()
-            if answer is not None:
-                print("Received answer!  :  ", answer)
-        except WebSocketClosedError as e:
-            print(e)
+            try:
+                if the_type != "zlib":  # neg_conn
+                    the_type = "zlib"
+                if comp != 3:  # neg_conn
+                    comp = 3
 
-    async def ws_runner(self, mtype):
-        await self.connect_serve(mtype)                       # in same dir as program
+                connection = await websocket_connect(self.my_url)
+                msg_d = self.read_data_file(the_type)
+                print("sending: ", dumps(msg_d))
+                resp = await connection.write_message(dumps(msg_d))
+                if resp:
+                    print("Got response: ", resp)
+                print("Waiting for data...")
+                answer = await connection.read_message()
+                if answer is not None:
+                    print("Received answer!  :  ", answer)
+            except WebSocketClosedError as e:
+                print(e)
 
-    def main(self):
-        mtype = 1
-        run(self.ws_runner(mtype), debug=True)   # starts event loop
+        # waiting for a resp of: type: NegotiateConnectionResponse; NegotiationStatus=1; 1=good
+    async def ws_runner(self, mtype, vars):
+        await self.connect_serve(mtype, vars)                       # in same dir as
+
+    def main(self, type, the_vars):
+        run(self.ws_runner(type, the_vars), debug=True)   # starts event loop
 
 
-if __name__ == "__main__":
-    NulsWebsocket().main()
+n = NulsWebsocket()
+mtype = 1
+comp_type= "zlib"
+comp_int = 3
+the_vars = [comp_type, comp_int]
+n.main(mtype, the_vars)
