@@ -31,12 +31,12 @@ import nulsuserone as nu
 
 class NulsWebsocket(object):
     def __init__(self):
-        nw.myprint("the url:  ", self.nu.my_url)
+        nw.myprint("the url:  ", nu.my_url)
 
     async def connect_serve1(self, t_vars):
         try:
-            ztype, zcomp, good_msg = nw.prep_async()
-            connection = await websocket_connect(nu.my_url )
+            ztype, zcomp, good_msg = nw.prep_async(t_vars)
+            connection = await websocket_connect(nu.my_url)
                 ### only continue if connection is ok
             json_str = nw.prep_data1(ztype, zcomp)
 
@@ -53,8 +53,8 @@ class NulsWebsocket(object):
             print(e)
 
     async def ws_runner(self, mtype, vars):
-        if mtype == 1:
-            await self.connect_serve1(vars)                       # in same dir as
+        #if mtype == 1:
+        await self.connect_serve1(vars)                       # in same dir as
 
     def main(self):
         args_list = [nu.comp_type, str(nu.comp_int)]
