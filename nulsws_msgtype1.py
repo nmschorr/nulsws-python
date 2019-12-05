@@ -1,4 +1,4 @@
-#!usr/bin/python3.7
+#!/usr/bin/python3.7
 
 '''
  Instructions for Message type One - Negotiate Connection
@@ -16,7 +16,7 @@
 # ------ mtype --------------------
 #  Message Type - string
 
-mtype = "1"
+msg_type = "1"
 
 # ----- host ----------------------------------------------
 
@@ -27,8 +27,8 @@ host = "127.0.0.1"    ## change to suit
 # is in the works
 # ---------------------------------------------------
 
-method = "ws://"
-# method: str = "wss://"
+connect_method = "ws://"
+# connect_method: str = "wss://"
 
 # ------- port --------------------------------------------
 # this is the port to communicate with on the Nulstar blockchain.  7771 is standard.
@@ -41,12 +41,12 @@ port = "7771"
 
 # change compression type if necessary although these settings are standard. zlib
 # is the standard as it is
-comp_type= "zlib"
+compression_type= "zlib"
 
 # An integer between 0 and 9, 3 being the default setting
 comp_int = 3
 
-my_url: str = ''.join([method, host, ":", port])
+websock_url: str = ''.join([connect_method, host, ":", port])
 
 # print("the url:  ", my_url)
 

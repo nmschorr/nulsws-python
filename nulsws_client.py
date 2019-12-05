@@ -26,17 +26,17 @@
 
 from asyncio import run
 from tornado.websocket import websocket_connect, WebSocketClosedError
-import NulsWSLib as nw
-import nulsuserone as nu
+import nulsws_library as nw
+import nulsws_msgtype1 as nu
 
 class NulsWebsocket(object):
     def __init__(self):
-        nw.myprint("the url:  ", nu.my_url)
+        nw.myprint("the url:  ", nu.websock_url)
 
     async def connect_serve1(self, t_vars):
         try:
             ztype, zcomp, good_msg = nw.prep_async(t_vars)
-            connection = await websocket_connect(nu.my_url)
+            connection = await websocket_connect(nu.websock_url)
                 ### only continue if connection is ok
             json_str = nw.prep_data1(ztype, zcomp)
 
@@ -57,8 +57,8 @@ class NulsWebsocket(object):
         await self.connect_serve1(vars)                       # in same dir as
 
     def main(self):
-        args_list = [nu.comp_type, str(nu.comp_int)]
-        run(self.ws_runner(nu.mtype, args_list), debug=True)   # starts event loop
+        args_list = [nu.compression_type, str(nu.comp_int)]
+        run(self.ws_runner(nu.msg_type, args_list), debug=True)   # starts event loop
 
 
 n = NulsWebsocket()
