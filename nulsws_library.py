@@ -27,8 +27,26 @@ from time import time, timezone
 import json
 
 
+# {
+#   "MessageData":{
+#     "CompressionAlgorithm":"zlib",
+#     "CompressionRate":"0",
+#     "ProtocolVersion":"0.1"
+#   },
+#   "MessageID":"1569897424187-1",
+#   "MessageType":"NegotiateConnection",
+#   "TimeZone":"-4",
+#   "Timestamp":"1569897424187"
+# }
+#
+
+## must keep this list updated
+__all__ = ["prep_data1", "myprint", "prep_async", "check_answer"]
+
 def prep_data1(c_alg, cr_intstr):
-    # return {"MessageID": m_id, "Timestamp": t_stamp, "TimeZone": tzone, "MessageType": mtype}
+    # return {"Protocol Version": "0.1" "MessageID": m_id, "Timestamp": t_stamp, "TimeZone":
+    # tzone,  "MessageType": mtype}
+
     mid_name = "MessageID"
     ts_name = "Timestamp"
     tz_name = "TimeZone"
@@ -37,17 +55,19 @@ def prep_data1(c_alg, cr_intstr):
     msg_data_label = "MessageData"
     ca_label = "CompressionAlgorithm"
     cr_label = "CompressionRate"
+    proto_label = "ProtocolVersion"
     the_time = time()
     tz = timezone
 
     t_stamp = str(int(the_time * 1000))       # change float to int
     m_id = str(int(the_time * 100000))     # change float to int
     tzone = str(int(tz / 3600))   # change float to int to str
+    from nulsws_msgtype1 import proto_ver
     jlist = { mid_name: m_id,
               ts_name: t_stamp,
               tz_name: tzone,
               msg_type_label: msg_type,
-              msg_data_label: {ca_label : c_alg, cr_label : cr_intstr}
+              msg_data_label: {proto_label: proto_ver, ca_label: c_alg, cr_label: cr_intstr}
              }
     json_str = json.dumps(jlist, separators=(',', ':'))
     return json_str
@@ -73,18 +93,17 @@ def check_answer(answer) -> bool:
     msg_negotiate_lab = 'NegotiationStatus'
     mtyp_lab = "MessageType"
     mt_good_answr = "NegotiateConnectionResponse"
-    j = json.loads(answer)
-    print(j)
+    jload = json.loads(answer)
+    jds = json.dumps(jload, separators=(':', ','), indent=4)
+    print(jds)
 
-    msg_d_answer = j.get(msg_data_lab)
-    mt = j.get(mtyp_lab)
+    msg_d_answer = jload.get(msg_data_lab)
+    mt = jload.get(mtyp_lab)
 
     if mt == mt_good_answr:
         final_int = msg_d_answer.get(msg_negotiate_lab)
-        if final_int == 1:
-            print("all is good")
+        if final_int == '1':
+            print("Negotiate Status was 1. All is good")
             return True
         else:
             return False
-
-
