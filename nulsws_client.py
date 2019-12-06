@@ -26,16 +26,17 @@
 
 from asyncio import run
 from tornado.websocket import websocket_connect, WebSocketClosedError
-from nulsws_library import *
-from nulsws_msgtype1 import websock_url1, compress_tp1, comp_int1
+from nulsws_library import prep_data_section,  myprint, check_answer
+from nulsws_msgtype1 import websock_url1, compress_type1, comp_rate1
+import nulsws_library
 
-import nulsws_msgtype1 as m1
+# import nulsws_msgtype1 as m1
 
 class NulsWebsocket(object):
     def __init__(self):
         myprint("the url:  ", websock_url1)
 
-    async def client_connect(self, json_str, deb=False):
+    async def client_connect(self, json_str, debug=False):
         try:
             connection = await websocket_connect(websock_url1)
                 ### only continue if connection is ok
@@ -53,21 +54,17 @@ class NulsWebsocket(object):
         except WebSocketClosedError as e:
             print(e)
 
-    async def ws_runner(self, args_list, jsonstr):
-        await self.client_connect(jsonstr)                       # in same
+    async def ws_runner(self, jsonstr):
+        await self.client_connect(jsonstr, debug=True)     # in same
         # dir as
 
     def prep_run(self, args_list):
-        ztype, zcomp, good_msg = prep_async(args_list)
-        json_str = prep_data1(ztype, zcomp)
         myprint('sending: \n\n', json_str)
         run(self.ws_runner(args_list, json_str))   # starts event loop
 
     def main(self, mtype):
-        if mtype == 1:
-            compr_type = compress_tp1
-        args = [mtype, [compr_type, str(comp_int1)]]
-        self.prep_run(args)  # starts event loop
+        mtype = 1
+        json_str = prep_data_section(mtype)
 
 
 if __name__ == '__main__':

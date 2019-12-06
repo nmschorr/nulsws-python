@@ -47,74 +47,155 @@ This file right now provides support for the the client only.
 '''
 
 import json
+import random
 from time import time, timezone
 from nulsws_msgtype1 import proto_ver
+from nulsws_msgtype1 import compress_type1, comp_rate1
 
+compress_type_label = "CompressionAlgorithm"
+compress_rate_label = "CompressionRate"
+msg_data_label = "MessageData"
 msg_id_label = "MessageID"
-tmstmp_label = "Timestamp"
-tmzone_label = "TimeZone"
 msg_type_label = "MessageType"
 negotiate_conn_label = "NegotiateConnection"
-msg_data_label = "MessageData"
-ca_label = "CompressionAlgorithm"
-cr_label = "CompressionRate"
-proto_label = "ProtocolVersion"
-msg_data_label = "MessageData"
 negotiate_stat_label = 'NegotiationStatus'
-negotiate_conn_resp = "NegotiateConnectionResponse"
-tz = timezone
+negotiate_conn_resp_label = "NegotiateConnectionResponse"
+proto_label = "ProtocolVersion"
+tmstmp_label = "Timestamp"
+tmzone_label = "TimeZone"
+request_label = "Request"
 json_seps = (',', ':')
+json_d = None
 
+# message type - data
+m_dict: dict = {0: 'None', 1: 'NegotiateConnection',
+                2: 'NegotiateConnectionResponse',
+                3: 'Request', 4: 'Unsubscribe', 5: 'Response', 6: 'Ack',
+                7: 'RegisterCompoundMethod', 8: 'UnregisterCompoundMethod'}
 
 ## must keep this list updated
-__all__ = ["prep_data1", "myprint", "prep_async", "check_answer"]
 
-def prep_data1(c_alg, cr_intstr):
+def do_math():
+    rand = random.random()
+    ws_rand = round(rand * 100000)
+    rand_ending = str(int(ws_rand))
+
     the_time = time()
+    m_id1 = str(int(the_time * 100000))  # change float to int to str
+    part_id = m_id1[4:]  # remove the first 4 chars
+    m_id = part_id + rand_ending
+    tzone = str(int(timezone / 3600))   # change float to int to str
     t_stamp = str(int(the_time * 1000))       # change float to int
-    m_id = str(int(the_time * 100000))     # change float to int
-    tzone = str(int(tz / 3600))   # change float to int to str
-    jlist = { msg_id_label: m_id,
+    return t_stamp, tzone, m_id
+
+def prep_header_section(msg_type: int):         # this section builds 4 items:
+    #1 "MessageID": "1569897424187-1",
+    #2 "TimeZone": "-4",
+    #3 "Timestamp": "1569897424187"
+    #4 "MessageType": "NegotiateConnection",
+    x = m_dict.__getitem__(msg_type)
+    t_stamp, tzone, m_id= do_math()
+    top_part = { msg_id_label: m_id,
               tmstmp_label : t_stamp,
               tmzone_label: tzone,
-              msg_type_label: negotiate_conn_label,
-              msg_data_label: {proto_label: proto_ver, ca_label: c_alg, cr_label: cr_intstr}
-             }
-    json_str = json.dumps(jlist, separators=json_seps)
+              msg_type_label: x}
+    return top_part
 
-
-
+#-------------------------------------------------#
+def prep_data_type1():
+    # this section has any number of items depending on the msg type
+    top_sect = prep_header_section(1)
+    compress_rate = "0"
+    data_part = {msg_data_label: {proto_label: proto_ver,
+                                  compress_type_label: compress_type1,
+                                  compress_rate_label: comp_rate1}}
+    whole_dict = top_sect.update(data_part)
+    json_str = json.dumps(whole_dict, separators=json_seps)
     return json_str
 
-def myprint( x, y=None):
-    debug = True
-    if y is not None:
-        x = x + ' ' + y
-    if debug:
-        print(x)
+#-------------------------------------------------#
 
-def prep_async( t_vars):
-    ztype = t_vars[0]
-    zcomp = t_vars[1]
-    good_msg = "all is good, was 1, ok to continue"
 
-    if ztype != 'zlib':  # neg_conn
-        ztype = 'zlib'
-    return ztype, zcomp, good_msg
+def prep_data_type3():
+    # this section has any number of items depending on the msg type
+    top_sect = prep_header_section(3)
+    request_int = 1
+    sub_event_ct = 0
+    sub_period_int = 1
+    sub_range = "[100]"
+    res_max_size = 0
+
+    # labels:
+    request_t_label = "RequestType"
+    subscription_eventct_label = "SubscriptionEventCounter"
+    subscription_period_label= "SubscriptionPeriod"
+    sub_rg_label = "SubscriptionRange"
+    req_method_label = "RequestMethods"
+    get_bal_label = "GetBalance"
+    get_addy_label = "Address"
+    get_height_label = "GetHeight"
+    response_max_size_label = "ResponseMaxSize"
+    address_label = "Address"
+    address_val = "x"
+    get_height_label =  "GetHeight"
+    get_height_val = ''
+
+    data_zero =  { req_method_label: {[]}}
+
+    data_part_one = { request_t_label: request_int,
+                     subscription_eventct_label  : sub_event_ct,
+                     subscription_period_label: sub_period_int,
+                     sub_rg_label: sub_range,
+                      response_max_size_label : res_max_size
+                      }
+    data_part_two = {  get_bal_label : {
+                address_label : address_val
+    } }
+    data_part_three = {  get_height_label : {} }
+
+
+    data_part_one = top_sect.update(data_part)
+    json_str = json.dumps(whole_dict, separators=json_seps)
+    return json_str
+
+
+
+#   "MessageData": {
+#     "RequestType": "1",
+#     "SubscriptionEventCounter": "0",
+#     "SubscriptionPeriod": "1",
+#     "SubscriptionRange": "[100]",
+#     "ResponseMaxSize": "0",
+#     "RequestMethods": [
+#       {
+#         "GetBalance": {
+#           "Address": "tNULSeBaMnrs6JKrCy6TQdzYJZkMZJDng7QAsD"
+#         }
+#       },
+#       {
+#         "GetHeight": {}
+#       }
+#     ]
+#   }
+# }
 
 def check_answer(answer) -> bool:
-
     jload = json.loads(answer)
     jds = json.dumps(jload, separators=(':', ','), indent=4)
     print(jds)
-
     msg_d_answer = jload.get(msg_data_label)
     mt = jload.get(msg_type_label)
-
-    if mt == negotiate_conn_resp:
+    if mt == negotiate_conn_resp_label:
         final_int = msg_d_answer.get(negotiate_stat_label)
         if final_int == '1':
             print("Negotiate Status was 1. All is good")
             return True
         else:
             return False
+
+def myprint(x, y=None):
+    debug = True
+    if y is not None:
+        x = x + ' ' + y
+    if debug:
+        print(x)

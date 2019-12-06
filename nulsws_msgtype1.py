@@ -17,12 +17,13 @@
 #     "CompressionRate": "0",
 #     "ProtocolVersion": "0.1"
 # },
-
 #
 #
 #  protocool version
 
 proto_ver = "0.1"
+
+# this can be a list once other versions are supported
 compatible_proto_versions = [proto_ver]
 
 # ------ msg_type1 --------------------
@@ -38,7 +39,7 @@ host1= "127.0.0.1"    ## change to suit
 # at this time only unsecure (ws) is implemented, although secure with ssl
 # is in the works
 # ----------------c
-# onnect_method1 -----------------------------------
+# connect_method1 -----------------------------------
 
 connect_method1= "ws://"
 # connect_method1: str = "wss://"
@@ -46,7 +47,7 @@ connect_method1= "ws://"
 # ------- port1 --------------------------------------------
 # this is the port to communicate with on the Nulstar blockchain.  7771 is standard.
 
-port1 = "7770"
+#port1 = "7770"
 port1 = "7771"
 
 websock_url1: str = ''.join([connect_method1, host1, ":", port1])
@@ -55,10 +56,11 @@ websock_url1: str = ''.join([connect_method1, host1, ":", port1])
 
 # change compression type if necessary although these settings are standard. zlib
 # is the standard as it is
-compress_tp1= "zlib"
+compress_type1 = "zlib"
 
 # An integer between 0 and 9, 3 being the default setting
-comp_int1 = 0
+comp_rate1 = 0
 
 # -----------------------------------------------------------------------------------
-__all__ = ["port1", "proto_ver", "connect_method1", "websock_url1", "compress_tp1", "comp_int1"]
+# import these: "port1", "proto_ver", "connect_method1", "websock_url1", "compress_tp1"
+# "comp_int1"
