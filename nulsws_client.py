@@ -26,42 +26,53 @@
 
 from asyncio import run
 from tornado.websocket import websocket_connect, WebSocketClosedError
-import nulsws_library as nw
-import nulsws_msgtype1 as nu
+from nulsws_library import *
+from nulsws_msgtype1 import websock_url1, compress_tp1, comp_int1
+
+import nulsws_msgtype1 as m1
 
 class NulsWebsocket(object):
     def __init__(self):
-        nw.myprint("the url:  ", nu.websock_url)
+        myprint("the url:  ", websock_url1)
 
-    async def connect_serve1(self, t_vars):
+    async def client_connect(self, json_str, deb=False):
         try:
-            ztype, zcomp, good_msg = nw.prep_async(t_vars)
-            connection = await websocket_connect(nu.websock_url)
+            connection = await websocket_connect(websock_url1)
                 ### only continue if connection is ok
-            json_str = nw.prep_data1(ztype, zcomp)
 
-            nw.myprint('sending: ', json_str)
-            resp = await connection.write_message(json_str)
-            if (resp is not None) and (len(resp) > 0):
-                nw.myprint("Got response: ", resp)
-            nw.myprint("Waiting for data...")
+            response_awaited = await connection.write_message(json_str)
+
+            if (response_awaited is not None) and (len(response_awaited) > 0):
+                myprint("Got response: ", response_awaited)
+            myprint("Waiting for data...")
+
             answer = await connection.read_message()
-            result = nw.check_answer(answer)
+            result = check_answer(answer)
             if result == 1:
                 print("all is good, was 1, ok to continue")
         except WebSocketClosedError as e:
             print(e)
 
-    async def ws_runner(self, mtype, vars):
-        #if mtype == 1:
-        await self.connect_serve1(vars)                       # in same dir as
+    async def ws_runner(self, args_list, jsonstr):
+        await self.client_connect(jsonstr)                       # in same
+        # dir as
 
-    def main(self):
-        args_list = [nu.compression_type, str(nu.comp_int)]
-        run(self.ws_runner(nu.msg_type, args_list), debug=True)   # starts event loop
+    def prep_run(self, args_list):
+        ztype, zcomp, good_msg = prep_async(args_list)
+        json_str = prep_data1(ztype, zcomp)
+        myprint('sending: \n\n', json_str)
+        run(self.ws_runner(args_list, json_str))   # starts event loop
+
+    def main(self, mtype):
+        if mtype == 1:
+            compr_type = compress_tp1
+        args = [mtype, [compr_type, str(comp_int1)]]
+        self.prep_run(args)  # starts event loop
 
 
-n = NulsWebsocket()
-n.main()
+if __name__ == '__main__':
+    mtype = 1
+    n = NulsWebsocket()
+    n.main(mtype)
 ## -- enter user data via the library file nulsuserone.py
 

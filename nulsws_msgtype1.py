@@ -12,42 +12,53 @@
 
  by Nancy Schorr for Nuls, December 2, 2019
 '''
+# "MessageData": {
+#     "CompressionAlgorithm": "zlib",
+#     "CompressionRate": "0",
+#     "ProtocolVersion": "0.1"
+# },
 
-# ------ mtype --------------------
+#
+#
+#  protocool version
+
+proto_ver = "0.1"
+compatible_proto_versions = [proto_ver]
+
+# ------ msg_type1 --------------------
 #  Message Type - string
 
-msg_type = "1"
+msg_type1 = "1"
 
-# ----- host ----------------------------------------------
+# ----- host1 ----------------------------------------------
 
-host = "127.0.0.1"    ## change to suit
+host1= "127.0.0.1"    ## change to suit
 
 # Websocket method -either secure (wss) or not (ws) edit ws or wss to suit
 # at this time only unsecure (ws) is implemented, although secure with ssl
 # is in the works
-# ---------------------------------------------------
+# ----------------c
+# onnect_method1 -----------------------------------
 
-connect_method = "ws://"
-# connect_method: str = "wss://"
+connect_method1= "ws://"
+# connect_method1: str = "wss://"
 
-# ------- port --------------------------------------------
+# ------- port1 --------------------------------------------
 # this is the port to communicate with on the Nulstar blockchain.  7771 is standard.
 
-# port = "9006"
-# port = "18003"
-port = "7771"
+port1 = "7770"
+port1 = "7771"
 
-# ------- compression type --------------------------------------------
+websock_url1: str = ''.join([connect_method1, host1, ":", port1])
+
+# ------- compression type and level --------------------------------------------
 
 # change compression type if necessary although these settings are standard. zlib
 # is the standard as it is
-compression_type= "zlib"
+compress_tp1= "zlib"
 
 # An integer between 0 and 9, 3 being the default setting
-comp_int = 3
+comp_int1 = 0
 
-websock_url: str = ''.join([connect_method, host, ":", port])
-
-# print("the url:  ", my_url)
-
-
+# -----------------------------------------------------------------------------------
+__all__ = ["port1", "proto_ver", "connect_method1", "websock_url1", "compress_tp1", "comp_int1"]
