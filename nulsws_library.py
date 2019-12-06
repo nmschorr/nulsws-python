@@ -109,8 +109,8 @@ def prep_data_type1():
     data_part = {msg_data_label: {proto_label: proto_ver,
                                   compress_type_label: compress_type1,
                                   compress_rate_label: comp_rate1}}
-    whole_dict = top_sect.update(data_part)
-    json_str = json.dumps(whole_dict, separators=json_seps)
+    top_sect.update(data_part)
+    json_str = json.dumps(top_sect, separators=json_seps)
     return json_str
 
 #-------------------------------------------------#
@@ -136,26 +136,41 @@ def prep_data_type3():
     get_height_label = "GetHeight"
     response_max_size_label = "ResponseMaxSize"
     address_label = "Address"
-    address_val = "x"
     get_height_label =  "GetHeight"
-    get_height_val = ''
+    data_height = {get_height_label: {}}
 
-    data_zero =  { req_method_label: {[]}}
 
-    data_part_one = { request_t_label: request_int,
-                     subscription_eventct_label  : sub_event_ct,
-                     subscription_period_label: sub_period_int,
-                     sub_rg_label: sub_range,
-                      response_max_size_label : res_max_size
-                      }
-    data_part_two = {  get_bal_label : {
+    address_val = "NULSd6Hge7xHDnvsSpnzbR2gWHd31zJ1How11"  ## from user file
+
+    data_getbalance = {  get_bal_label : {
                 address_label : address_val
     } }
-    data_part_three = {  get_height_label : {} }
 
 
-    data_part_one = top_sect.update(data_part)
-    json_str = json.dumps(whole_dict, separators=json_seps)
+    rquest_list = [data_getbalance, data_height]
+    req_methods_sec =  { req_method_label: rquest_list }
+
+    data_part = { request_t_label: str(request_int),
+                     subscription_eventct_label  : str(sub_event_ct),
+                     subscription_period_label: str(sub_period_int),
+                     sub_rg_label: sub_range,
+                      response_max_size_label : str(res_max_size)
+                      }
+
+
+
+    data_part.update(req_methods_sec)
+
+    msg_data_sect = { msg_data_label : data_part }
+
+
+    top_sect.update(msg_data_sect)
+    jds = json.dumps(top_sect, indent=4)
+    print(jds)
+    #exit()
+
+    json_str = json.dumps(top_sect)
+    print(json_str)
     return json_str
 
 
