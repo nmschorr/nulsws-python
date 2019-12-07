@@ -35,61 +35,32 @@ class NulsWebsocket(object):
     def __init__(self):
         myprint("the url:  ", websock_url1)
 
-    async def initial_connect(self, json_str):  #only for initial connection type 1
-        try:
-            connection = await websocket_connect(websock_url1)
-                ### only continue if connection is ok
+    async def ws_runner_main(self, jsona, jsonb):
+        print("inside ws_runner_main")
+        connection = await websocket_connect(websock_url1)
+        time.sleep(1)
 
-            response_awaited = await connection.write_message(json_str)
+        response_awaiteda = await connection.write_message(jsona)
+        print("waiting for second read response...")
 
-            if (response_awaited is not None) and (len(response_awaited) > 0):
-                myprint("Got response in 1: ", response_awaited)
-            myprint("Waiting for data in 1...")
+        if (response_awaiteda is not None) and (len(str(response_awaiteda)) > 0):
+            myprint("Got response in client_connect2: ", response_awaiteda)
+        answera = await connection.read_message()
+        result = check_answer(answera)
 
-            answer1 = await connection.read_message()
-            result = check_answer(answer1)
-            if result == 1:
-                print("all is good, was 1, ok to continue")
-                time.sleep(2)
-                return connection
-            else:
-                print("broken")
-                exit(1)
-        except BaseException as e:
-            print(e)
+        response_awaited_b = await connection.write_message(jsonb)
+        if (response_awaited_b is not None) and (len(response_awaited_b) > 0):
+            myprint("Got response in client_connect_b: ", response_awaited_b)
 
-
-    async def ws_runner_a(self, jsonstr):
-        connection_main = await self.initial_connect(jsonstr)     # in same
-        print("here now a")
-        print("c: ", str(connection_main.start_time))
-        connection_main.start_time
-        return connection_main
-
-    async def client_connect2(self, connection, json_str):
-        answer_b = None
-        response_awaited = await connection.write_message(json_str)
-        if (response_awaited is not None) and (len(response_awaited) > 0):
-            myprint("Got response in client_connect2: ", response_awaited)
-        myprint("Waiting for data in client_connect2...")
-        print("c: ", str(connection.start_time))
         answer_b = await connection.read_message()
+        print("waiting for second read response...")
+
         if answer_b is not None:
             print("Got answer in b: ", answer_b)
 
 
-    async def ws_runner_b(self, connection, jsonstr):
-        await self.client_connect2(connection, jsonstr)     # in same
-        print("here now b")
-
-    def prep_run(self, json_st_a, json_st_b):
-        myprint('sending: \n\n', json_st_a)
-        connection_a = run(self.ws_runner_a(json_st_a))   # starts event loop
-        time.sleep(3)
-        myprint('sending: \n\n', json_st_b)
-        if connection_a:
-            print("we have a live connection")
-        run(self.ws_runner_b(connection_a, json_st_b))   # starts event loop
+    def first_runner(self, json_st_a, json_st_b):
+        cc = run(self.ws_runner_main(json_st_a, json_st_b))   # starts event loop
 
     def main(self, mtpe):
         json_str_b = ''
@@ -102,13 +73,15 @@ class NulsWebsocket(object):
         if mtpe == 7:
             pass
             # json_str_b = prep_data_type7()
-        self.prep_run(json_str_a, json_str_b)
+        self.first_runner(json_str_a, json_str_b)
+
 
 # if __name__ == '__main__':
-
 mtype = 3  # either 3, 5, or 7
 n = NulsWebsocket()
 n.main(mtype)
 
+
 ## -- enter user data via the library file nulsws_msgtype<1,2,3>.py
+
 

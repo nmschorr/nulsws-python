@@ -49,6 +49,7 @@ connect_method1= "ws://"
 
 #port1 = "7770"
 port1 = "7771"
+#port1 = "9006"
 
 websock_url1: str = ''.join([connect_method1, host1, ":", port1])
 

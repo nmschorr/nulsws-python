@@ -21,9 +21,9 @@ class SimpleEcho(WebSocket):
 
 
 print("starting...")
-
+#--clientport 7790 --commport 7772 --ip 1
 baby = '0.0.0.0'
-port = 9006
+port = 7790
 print("serving on port: ", port)
 server = WebSocketServer(baby, port, SimpleEcho)
 server.serve_forever()

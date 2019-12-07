@@ -1,3 +1,4 @@
+#!/usr/bin/python3.7
 
 
 '''
@@ -26,7 +27,6 @@ Example of type 3 message:
 
 '''
 
-#!/usr/bin/python3.7
 
 '''
  Instructions for Message type Three - Request
@@ -67,7 +67,7 @@ connect_method3= "ws://"
 # connect_method3: str = "wss://"
 
 # ------- port3 --------------------------------------------
-# this is the port to communicate with on the Nulstar blockchain.  7773 is standard.
+# this is the port to communicate with on the Nulstar blockchain.  7771 is standard.
 
 #port3 = "7770"
 port3 = "7771"
@@ -86,7 +86,7 @@ subscriptionRange = 0
 request_int = 1
 sub_event_ct = 0
 sub_period_int = 1
-sub_range = 0
+sub_range = ""
 res_max_size = 0
 
 address_val = "NULSd6Hggvrij3MPW9QTHJGBv7uiyMKw41i7t"  ##

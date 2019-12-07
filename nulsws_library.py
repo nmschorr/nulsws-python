@@ -52,22 +52,11 @@ from time import time, timezone
 from nulsws_msgtype1 import proto_ver, compress_type1, comp_rate1
 from nulsws_staticvals import m_dict, bigtest
 
-compress_type_label = "CompressionAlgorithm"
-compress_rate_label = "CompressionRate"
-msg_data_label = "MessageData"
-msg_id_label = "MessageID"
-msg_type_label = "MessageType"
-negotiate_conn_label = "NegotiateConnection"
-negotiate_stat_label = 'NegotiationStatus'
-negotiate_conn_resp_label = "NegotiateConnectionResponse"
-proto_label = "ProtocolVersion"
-tmstmp_label = "Timestamp"
-tmzone_label = "TimeZone"
-request_label = "Request"
-request_internalid_label = "RequestInternalID"
-request_date_label = "RequestDate"
-request_time_label = "RequestTime"
-json_seps = (',', ':')
+from nulsws_staticvals import compress_type_label, compress_rate_label, msg_data_label, \
+    msg_id_label, msg_type_label, negotiate_conn_label, negotiate_stat_label, \
+    negotiate_conn_resp_label, proto_label, tmstmp_label, tmzone_label, request_label, \
+    request_internalid_label, request_date_label, request_time_label, json_seps
+
 json_d = None
 
 
@@ -78,8 +67,10 @@ def do_math():
     m_id1 = str(int(the_time * 100000))  # change float to int to str
     part_id = m_id1[4:]  # remove the first 4 chars
     m_id = part_id + rand_ending
-    tzone = str(int(timezone / 3600))   # change float to int to str
-    t_stamp = str(int(the_time * 1000))       # change float to int
+    tzone = int(timezone / 3600)  # change float to int to str
+    if tzone < 0:
+        tzone *= -1
+    t_stamp = int(the_time * 1000)      # change float to int
     return t_stamp, tzone, m_id
 
 def prep_header_section(msg_type: int):         # this section builds 4 items:
@@ -143,17 +134,13 @@ def prep_data_type3():
 
     msg_data_sect = {msg_data_label: data_part}
     top_sect.update(msg_data_sect)
-    #jds = json.dumps(top_sect, indent=4)
-    #print(jds)
+    jds_indented = json.dumps(top_sect, indent=4)
 
-    #json_str = json.dumps(top_sect)
+    json_str = json.dumps(top_sect)
+    #jds = json.dumps(bigtest, indent=4)
     #print(json_str)
-
-    jds = json.dumps(bigtest, indent=4)
-    print(jds)
-
-    json_str = json.dumps(bigtest)
-
+    #json_str = json.dumps(bigtest)
+    print(jds_indented)
 
     return json_str
 
