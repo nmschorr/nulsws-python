@@ -55,7 +55,7 @@ msg_type3 = "3"
 
 # ----- host3 ----------------------------------------------
 
-host3= "127.0.0.1"    ## change to suit
+host3 = "127.0.0.1"    ## change to suit
 
 # Websocket method -either secure (wss) or not (ws) edit ws or wss to suit
 # at this time only unsecure (ws) is implemented, although secure with ssl
@@ -81,8 +81,16 @@ websock_url3: str = ''.join([connect_method3, host3, ":", port3])
 compress_type3= "zlib"
 
 # An integer between 0 and 9, 3 being the default setting
-comp_int3 = 0
+compress_rate3 = 0
+subscriptionRange = 0
+request_int = 1
+sub_event_ct = 0
+sub_period_int = 1
+sub_range = 0
+res_max_size = 0
 
+address_val = "NULSd6Hggvrij3MPW9QTHJGBv7uiyMKw41i7t"  ##
+# NULSd6HghM9Z9XytwZEHGDGRJLnNR5ybiy5gt
+#NULSd6Hge7xHDnvsSpnzbR2gWHd31zJ1How11
 # -----------------------------------------------------------------------------------
-# import these: "port3", "proto_ver", "connect_method3", "websock_url3", "compress_tp3"
-# "comp_int3"
+

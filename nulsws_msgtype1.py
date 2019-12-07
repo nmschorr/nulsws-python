@@ -15,7 +15,7 @@
 # "MessageData": {
 #     "CompressionAlgorithm": "zlib",
 #     "CompressionRate": "0",
-#     "ProtocolVersion": "0.1"
+#     "ProtocolVersion": "0.1.0"
 # },
 #
 #
@@ -62,5 +62,4 @@ compress_type1 = "zlib"
 comp_rate1 = 0
 
 # -----------------------------------------------------------------------------------
-# import these: "port1", "proto_ver", "connect_method1", "websock_url1", "compress_tp1"
-# "comp_int1"
+

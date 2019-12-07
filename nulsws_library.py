@@ -47,10 +47,10 @@ This file right now provides support for the the client only.
 '''
 
 import json
-import random
+from random import random
 from time import time, timezone
-from nulsws_msgtype1 import proto_ver
-from nulsws_msgtype1 import compress_type1, comp_rate1
+from nulsws_msgtype1 import proto_ver, compress_type1, comp_rate1
+from nulsws_staticvals import m_dict, bigtest
 
 compress_type_label = "CompressionAlgorithm"
 compress_rate_label = "CompressionRate"
@@ -64,21 +64,15 @@ proto_label = "ProtocolVersion"
 tmstmp_label = "Timestamp"
 tmzone_label = "TimeZone"
 request_label = "Request"
+request_internalid_label = "RequestInternalID"
+request_date_label = "RequestDate"
+request_time_label = "RequestTime"
 json_seps = (',', ':')
 json_d = None
 
-# message type - data
-m_dict: dict = {0: 'None', 1: 'NegotiateConnection',
-                2: 'NegotiateConnectionResponse',
-                3: 'Request', 4: 'Unsubscribe', 5: 'Response', 6: 'Ack',
-                7: 'RegisterCompoundMethod', 8: 'UnregisterCompoundMethod'}
-
-## must keep this list updated
 
 def do_math():
-    rand = random.random()
-    ws_rand = round(rand * 100000)
-    rand_ending = str(int(ws_rand))
+    rand_ending = str(int(round(random() * 100000)))
 
     the_time = time()
     m_id1 = str(int(the_time * 100000))  # change float to int to str
@@ -93,86 +87,75 @@ def prep_header_section(msg_type: int):         # this section builds 4 items:
     #2 "TimeZone": "-4",
     #3 "Timestamp": "1569897424187"
     #4 "MessageType": "NegotiateConnection",
-    x = m_dict.__getitem__(msg_type)
+    msg_type_name = m_dict.__getitem__(msg_type)
     t_stamp, tzone, m_id= do_math()
     top_part = { msg_id_label: m_id,
-              tmstmp_label : t_stamp,
-              tmzone_label: tzone,
-              msg_type_label: x}
+                    # request_internalid_label: "348022847492",
+                    # request_date_label: "2019-12-06",
+                    # request_time_label: "19:00:00",
+                    tmstmp_label : t_stamp,
+                    tmzone_label: tzone,
+                    msg_type_label: msg_type_name}
     return top_part
 
-#-------------------------------------------------#
+#-----------prep_data_type1--------------------------------------#
 def prep_data_type1():
     # this section has any number of items depending on the msg type
     top_sect = prep_header_section(1)
-    compress_rate = "0"
-    data_part = {msg_data_label: {proto_label: proto_ver,
-                                  compress_type_label: compress_type1,
-                                  compress_rate_label: comp_rate1}}
+    data_part = {msg_data_label: {
+                  proto_label: proto_ver,
+                  compress_type_label: compress_type1,
+                  compress_rate_label: comp_rate1}}
     top_sect.update(data_part)
     json_str = json.dumps(top_sect, separators=json_seps)
     return json_str
 
-#-------------------------------------------------#
-
+#-----------prep_data_type3--------------------------------------#
 
 def prep_data_type3():
     # this section has any number of items depending on the msg type
     top_sect = prep_header_section(3)
-    request_int = 1
-    sub_event_ct = 0
-    sub_period_int = 1
-    sub_range = "[100]"
-    res_max_size = 0
+
+    # values from user defined library/config file
+    from nulsws_msgtype3 import sub_event_ct, sub_period_int, sub_range, res_max_size, \
+        address_val, msg_type3
 
     # labels:
-    request_t_label = "RequestType"
-    subscription_eventct_label = "SubscriptionEventCounter"
-    subscription_period_label= "SubscriptionPeriod"
-    sub_rg_label = "SubscriptionRange"
-    req_method_label = "RequestMethods"
-    get_bal_label = "GetBalance"
-    get_addy_label = "Address"
-    get_height_label = "GetHeight"
-    response_max_size_label = "ResponseMaxSize"
-    address_label = "Address"
-    get_height_label =  "GetHeight"
-    data_height = {get_height_label: {}}
+    from nulsws_staticvals import request_t_label, sub_rg_label, subscrip_evnt_ct_label, \
+        subscrip_period_label, req_method_label, get_bal_label, response_max_size_label, \
+        address_label, get_height_label
 
+    data_getbalance = {get_bal_label: { address_label: address_val  }}
 
-    address_val = "NULSd6Hge7xHDnvsSpnzbR2gWHd31zJ1How11"  ## from user file
+    # data_height = {get_height_label: {}}
+    #rquest_list = [data_getbalance, {get_height_label: {}}]
+    rquest_list = [data_getbalance]
+    req_methods_sec = {req_method_label: rquest_list }
 
-    data_getbalance = {  get_bal_label : {
-                address_label : address_val
-    } }
-
-
-    rquest_list = [data_getbalance, data_height]
-    req_methods_sec =  { req_method_label: rquest_list }
-
-    data_part = { request_t_label: str(request_int),
-                     subscription_eventct_label  : str(sub_event_ct),
-                     subscription_period_label: str(sub_period_int),
-                     sub_rg_label: sub_range,
-                      response_max_size_label : str(res_max_size)
-                      }
-
-
+    data_part = {request_t_label: str(msg_type3),
+                 subscrip_evnt_ct_label: str(sub_event_ct),
+                 subscrip_period_label: str(sub_period_int),
+                 sub_rg_label: str(sub_range),
+                 response_max_size_label: str(res_max_size)
+                }
 
     data_part.update(req_methods_sec)
 
-    msg_data_sect = { msg_data_label : data_part }
-
-
+    msg_data_sect = {msg_data_label: data_part}
     top_sect.update(msg_data_sect)
-    jds = json.dumps(top_sect, indent=4)
+    #jds = json.dumps(top_sect, indent=4)
+    #print(jds)
+
+    #json_str = json.dumps(top_sect)
+    #print(json_str)
+
+    jds = json.dumps(bigtest, indent=4)
     print(jds)
-    #exit()
 
-    json_str = json.dumps(top_sect)
-    print(json_str)
+    json_str = json.dumps(bigtest)
+
+
     return json_str
-
 
 
 #   "MessageData": {
@@ -210,7 +193,7 @@ def check_answer(answer) -> bool:
 
 def myprint(x, y=None):
     debug = True
-    if y is not None:
-        x = x + ' ' + y
-    if debug:
-        print(x)
+    # if y is not None:
+    #     x = x + ' ' + y
+    # if debug:
+    #     print(x)
