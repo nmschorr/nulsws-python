@@ -59,31 +59,19 @@ from nulsws_staticvals import compress_type_label, compress_rate_label, msg_data
 
 json_d = None
 
-
-def do_math():
-    rand_ending = str(int(round(random() * 100000)))
-
-    the_time = time()
-    m_id1 = str(int(the_time * 100000))  # change float to int to str
-    part_id = m_id1[4:]  # remove the first 4 chars
-    m_id = part_id + rand_ending
+def do_math(msg_index=1):
+    t_stamp = int(time() * 1000)      # change float to int
     tzone = int(timezone / 3600)  # change float to int to str
-    if tzone < 0:
-        tzone *= -1
-    t_stamp = int(the_time * 1000)      # change float to int
+    m_id = str(t_stamp) + "-" + str(msg_index)
     return t_stamp, tzone, m_id
 
 def prep_header_section(msg_type: int):         # this section builds 4 items:
-    #1 "MessageID": "1569897424187-1",
-    #2 "TimeZone": "-4",
-    #3 "Timestamp": "1569897424187"
-    #4 "MessageType": "NegotiateConnection",
+    #1 "MessageID": "1569897424187-1",  #2 "TimeZone": "-4",   #3 "Timestamp": "1569897424187"
+                                            # #4 "MessageType": "NegotiateConnection",
     msg_type_name = m_dict.__getitem__(msg_type)
     t_stamp, tzone, m_id= do_math()
     top_part = { msg_id_label: m_id,
-                    # request_internalid_label: "348022847492",
-                    # request_date_label: "2019-12-06",
-                    # request_time_label: "19:00:00",
+
                     tmstmp_label : t_stamp,
                     tmzone_label: tzone,
                     msg_type_label: msg_type_name}
@@ -91,7 +79,7 @@ def prep_header_section(msg_type: int):         # this section builds 4 items:
 
 #-----------prep_data_type1--------------------------------------#
 def prep_data_type1():
-    # this section has any number of items depending on the msg type
+        # this section has any number of items depending on the msg type
     top_sect = prep_header_section(1)
     data_part = {msg_data_label: {
                   proto_label: proto_ver,
@@ -145,6 +133,32 @@ def prep_data_type3():
     return json_str
 
 
+def check_answer(answer) -> bool:
+    jload = json.loads(answer)
+    jds = json.dumps(jload, separators=(':', ','), indent=4)
+    print("check answer jds value= ", jds)
+    msg_d_answer = jload.get(msg_data_label)
+    mt = jload.get(msg_type_label)
+    if mt == negotiate_conn_resp_label:
+        final_int = msg_d_answer.get(negotiate_stat_label)
+        if final_int == '1':
+            print("Negotiate Status was 1. All is good")
+            return True
+        else:
+            return False
+
+def myprint(x, y=None, debug=True):
+    if debug:
+        if y:
+            print(x, end=' ')
+            print(y)
+        else:
+            print(x)
+
+
+
+
+
 #   "MessageData": {
 #     "RequestType": "1",
 #     "SubscriptionEventCounter": "0",
@@ -163,24 +177,3 @@ def prep_data_type3():
 #     ]
 #   }
 # }
-
-def check_answer(answer) -> bool:
-    jload = json.loads(answer)
-    jds = json.dumps(jload, separators=(':', ','), indent=4)
-    print(jds)
-    msg_d_answer = jload.get(msg_data_label)
-    mt = jload.get(msg_type_label)
-    if mt == negotiate_conn_resp_label:
-        final_int = msg_d_answer.get(negotiate_stat_label)
-        if final_int == '1':
-            print("Negotiate Status was 1. All is good")
-            return True
-        else:
-            return False
-
-def myprint(x, y=None):
-    debug = True
-    # if y is not None:
-    #     x = x + ' ' + y
-    # if debug:
-    #     print(x)

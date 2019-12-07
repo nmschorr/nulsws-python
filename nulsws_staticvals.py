@@ -62,4 +62,62 @@ address_label = "Address"
 get_height_label = "GetHeight"
 
 
+reg = {
+      "MessageData":{
+        "RequestAck":"0",
+        "RequestMethods":{
+          "RegisterAPI":{
+            "Abbreviation":"NSTM",
+            "ConnectionInformation":{
+              "IP":"127.0.0.1",
+              "Port":"7775"
+            },
+            "Dependencies":{
+
+            },
+            "Methods":[
+              {
+                "MethodDescription":"Query information about CPU",
+                "MethodMinEvent":"0",
+                "MethodMinPeriod":"0",
+                "MethodName":"GetCPUInfo",
+                "MethodScope":"admin",
+                "Parameters":[
+                       {
+                              "ParameterName": "lMaxCPUs",
+                              "ParameterType": "int"
+                        }
+                ]
+              },
+              {
+                "MethodDescription":"Query information about RAM memory",
+                "MethodMinEvent":"0",
+                "MethodMinPeriod":"0",
+                "MethodName":"GetRAMInfo",
+                "MethodScope":"admin",
+                "Parameters":[
+
+                ]
+              }
+            ],
+            "ModuleDomain":"Nulstar",
+            "ModuleName":"StatsManager",
+            "ModuleRoles":{
+              "Role_StatsManager":[
+                "0.1"
+              ]
+            },
+            "ModuleVersion":"0.1.0"
+          }
+        },
+        "ResponseMaxSize":"0",
+        "SubscriptionEventCounter":"0",
+        "SubscriptionPeriod":"0",
+        "SubscriptionRange":""
+      },
+      "MessageID":"1569897424187-2",
+      "MessageType":"Request",
+      "TimeZone":"-4",
+      "Timestamp":"1569897424187"
+    }
 

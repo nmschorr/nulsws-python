@@ -30,6 +30,7 @@ from nulsws_library import prep_data_type1, prep_data_type3, myprint, check_answ
 from nulsws_msgtype1 import websock_url1
 import time
 # import nulsws_msgtype1 as m1
+from nulsws_staticvals import reg
 
 class NulsWebsocket(object):
     def __init__(self):
