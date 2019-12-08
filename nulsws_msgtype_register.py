@@ -1,6 +1,6 @@
 #!/usr/bin/python3.7
 
-
+# nulsws_msgtype_register.py
 
 '''
 by Nancy Schorr for Nuls, December 2, 2019
@@ -38,15 +38,15 @@ res_max_size = 0
 zero = "0"
 address_val = "NULSd6Hggvrij3MPW9QTHJGBv7uiyMKw41i7t"  ##
 msgtype= "Request"
-# -----------------------------------------------------------------------------------
 q1= "Query information about CPU"
 q2= "Query information about RAM memory"
 role_stats_mgr = "0.1"
 sub_rng = ""
 get_ram_info = "GetRAMInfo"
 get_cpu_info = "GetCPUInfo"
+# -----------------------------------------------------------------------------------
 
-reg2={
+nulsws_register = {
     "MessageData": {
         "RequestAck": zero,
         "RequestMethods": {

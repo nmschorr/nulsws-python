@@ -28,57 +28,61 @@ from asyncio import run
 from tornado.websocket import websocket_connect, WebSocketClosedError
 from nulsws_library import prep_data_type1, prep_data_type3, myprint, check_answer
 from nulsws_msgtype1 import websock_url1
+from nulsws_msgtype_register import nulsws_register
 import time
 # import nulsws_msgtype1 as m1
 from nulsws_staticvals import reg
+
+import tornado
+from tornado.websocket import WebSocketClientConnection
+
 
 class NulsWebsocket(object):
     def __init__(self):
         myprint("the url:  ", websock_url1)
 
-    async def ws_runner_main(self, jsona, jsonb):
+
+    async def get_connection(self, json_cnnect, json_b_msg):
+        print("inside get_connection")
+        conntn = await websocket_connect(websock_url1)   # 1) CONNECT
+        response_awaiteda = await conntn.write_message(json_cnnect) # 2) WRITE
+        print("got response_awaiteda for write response...", response_awaiteda)
+
+        read_msg = conntn.read_message()    # 3 READ
+       # read_result = check_answer(read_msg)    # 4 CHECK EVALUATE ANSWER
+       # myprint("Got response in get_connection: ", read_result)
+        await self.ws_runner_main(conntn, json_b_msg)
+
+    async def ws_runner_main(self, websock_connct: WebSocketClientConnection, jsonb: str):
         print("inside ws_runner_main")
-        connection = await websocket_connect(websock_url1)
-        time.sleep(1)
+        resp_await_main = await websock_connct.write_message(jsonb) # 2) WRITE
+        print("got ws_runner_main for write response...", resp_await_main)
+        read_msg = websock_connct.read_message()    # 3 READ
+        read_result = check_answer(read_msg)    # 4 CHECK EVALUATE ANSWER
+        myprint("Got response in ws_runner_main: ", read_result)
+        myprint("Finished and exiting.")
 
-        response_awaiteda = await connection.write_message(jsona)
-        print("waiting for second read response...")
-
-        if (response_awaiteda is not None) and (len(str(response_awaiteda)) > 0):
-            myprint("Got response in client_connect2: ", response_awaiteda)
-        answera = await connection.read_message()
-        result = check_answer(answera)
-
-        response_awaited_b = await connection.write_message(jsonb)
-        if (response_awaited_b is not None) and (len(response_awaited_b) > 0):
-            myprint("Got response in client_connect_b: ", response_awaited_b)
-
-        answer_b = await connection.read_message()
-        print("waiting for second read response...")
-
-        if answer_b is not None:
-            print("Got answer in b: ", answer_b)
-
-
-    def first_runner(self, json_st_a, json_st_b):
-        cc = run(self.ws_runner_main(json_st_a, json_st_b))   # starts event loop
+    def commander(self, json_st_a, json_st_b):
+        run(self.get_connection(json_st_a, json_st_b))   # starts event loop
 
     def main(self, mtpe):
-        json_str_b = ''
-        json_str_a = prep_data_type1()
+        json_connect_type = prep_data_type1()
+        if mtpe == 99:
+            json_main_type = nulsws_register()
+
         if mtpe == 3:
-            json_str_b = prep_data_type3()
+            json_main_type = prep_data_type3()
         if mtpe == 5:
             pass
-            # json_str_b = prep_data_type5()
+            # json_main_type = prep_data_type5()
         if mtpe == 7:
             pass
-            # json_str_b = prep_data_type7()
-        self.first_runner(json_str_a, json_str_b)
+            # json_main_type = prep_data_type7()
+        self.commander(json_connect_type, json_main_type)
 
 
 # if __name__ == '__main__':
-mtype = 3  # either 3, 5, or 7
+mtype = 3                       # either 3, 5, or 7, or 99 for r
 n = NulsWebsocket()
 n.main(mtype)
 
