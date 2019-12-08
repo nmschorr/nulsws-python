@@ -23,16 +23,15 @@ Messages have a common structure composed of six fields:
 •  MessageData: A Json object with the message payload
 
 Example Negotiate Connection message - order of items doesn't matter when at the same level
-{
+{ "MessageID":"1569897424187-1",
+  "MessageType":"NegotiateConnection",
+  "TimeZone":"-4",
+  "Timestamp":"1569897424187",
   "MessageData":{
     "CompressionAlgorithm":"zlib",
     "CompressionRate":"0",
     "ProtocolVersion":"0.1"
   },
-  "MessageID":"1569897424187-1",
-  "MessageType":"NegotiateConnection",
-  "TimeZone":"-4",
-  "Timestamp":"1569897424187"
 }
 
 Compression Rate can be values 0 through 9.
@@ -47,7 +46,6 @@ This file right now provides support for the the client only.
 '''
 
 import json
-from random import random
 from time import time, timezone
 from nulsws_msgtype1 import proto_ver, compress_type1, comp_rate1
 from nulsws_staticvals import m_dict, bigtest
@@ -70,11 +68,12 @@ def prep_header_section(msg_type: int):         # this section builds 4 items:
                                             # #4 "MessageType": "NegotiateConnection",
     msg_type_name = m_dict.__getitem__(msg_type)
     t_stamp, tzone, m_id= do_math()
-    top_part = { msg_id_label: m_id,
-
-                    tmstmp_label : t_stamp,
-                    tmzone_label: tzone,
-                    msg_type_label: msg_type_name}
+    top_part = {
+                proto_label: proto_ver,
+                msg_id_label: m_id,
+                tmstmp_label : t_stamp,
+                tmzone_label: tzone,
+                msg_type_label: msg_type_name }
     return top_part
 
 #-----------prep_data_type1--------------------------------------#
@@ -91,7 +90,7 @@ def prep_data_type1():
 
 #-----------prep_data_type3--------------------------------------#
 
-def prep_data_type3():
+def prep_data_type3_old():
     # this section has any number of items depending on the msg type
     top_sect = prep_header_section(3)
 
@@ -133,7 +132,9 @@ def prep_data_type3():
     return json_str
 
 
-def check_answer(answer) -> bool:
+
+
+def check_json_answer(answer) -> bool:
     jload = json.loads(answer)
     jds = json.dumps(jload, separators=(':', ','), indent=4)
     print("check answer jds value= ", jds)
@@ -155,10 +156,34 @@ def myprint(x, y=None, debug=True):
         else:
             print(x)
 
+def prep_data_type3():   #requesttype 2 - return ack and response
+    t_stamp, zn, m_id = do_math()
+    stat_msg = {
+        "ProtocolVersion": "0.1.0",
+        "MessageID": m_id,
+        "TimeZone": zn,
+        "Timestamp": t_stamp,
+        "MessageType": "Request",
+        "MessageData": {
+            "RequestType": "2",
+            "SubscriptionEventCounter": "0",
+            "SubscriptionPeriod": "0",
+            "SubscriptionRange": "0",
+            "ResponseMaxSize": "0",
+            "RequestMethods":
+              {
+                #"GetChainID": { }
+
+              "developerNodeAddress": {}
+              }
+          }
+        }
+    print(json.dumps(stat_msg, indent=4))
+    jd = json.dumps(stat_msg)
+    return jd
 
 
-
-
+#   -------------------------------
 #   "MessageData": {
 #     "RequestType": "1",
 #     "SubscriptionEventCounter": "0",
@@ -177,3 +202,58 @@ def myprint(x, y=None, debug=True):
 #     ]
 #   }
 # }
+# def prep_data_type3_almostworks():   #requesttype 2 - return ack and response
+#     t_stamp, zn, m_id = do_math()
+#     stat_msg = {
+#         "MessageID": m_id,
+#         "TimeZone": zn,
+#         "Timestamp": t_stamp,
+#         "MessageType": "Request",
+#         "MessageData": {
+#             "RequestType": "2",
+#             "SubscriptionEventCounter": "0",
+#             "SubscriptionPeriod": "0",
+#             "SubscriptionRange": "0",
+#             "ResponseMaxSize": "0",
+#             "RequestMethods":
+#               {
+#                 "GetCPUInfo": {
+#                   "lMaxCPUs": "1"
+#                 }
+#               }
+#           }
+#         }
+
+
+
+def prep_data_type3_OLD():
+    t_stamp, zn, m_id = do_math()
+
+    stat_msg = {
+        "MessageID": m_id,
+        "TimeZone": zn,
+        "Timestamp": t_stamp,
+        "MessageType": "Request",
+        "MessageData": {
+            "ResponseMaxSize": 0,
+            "SubscriptionEventCounter": 0,
+            "SubscriptionPeriod": 0,
+            "SubscriptionRange": 0,
+            "Abbeviation": "NSTM",
+            "Methods":[
+                {
+                "MethodDescription":"Query information about CPU",
+                "MethodMinEvent":"0",
+                "MethodMinPeriod":"0",
+                "MethodName":"GetCPUInfo",
+                "MethodScope":"admin",
+                "Parameters": [  {
+                      "ParameterName": "lMaxCPUs",
+                      "ParameterType": "int"
+                        } ]
+                }]
+            } }
+
+    print(json.dumps(stat_msg, indent=4))
+    json_str = json.dumps(stat_msg)
+    return json_str
