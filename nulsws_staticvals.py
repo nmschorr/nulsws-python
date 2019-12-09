@@ -1,38 +1,9 @@
 #!/usr/bin/python3.7
 
-m_dict: dict = {0: 'None', 1: 'NegotiateConnection',
-                2: 'NegotiateConnectionResponse',
-                3: 'Request', 4: 'Unsubscribe', 5: 'Response', 6: 'Ack',
-                7: 'RegisterCompoundMethod', 8: 'UnregisterCompoundMethod'}
-
-
-
-mid = "1549960969557-4"
-
-bigtest = {"MessageData": {
-            "RequestAck": False,
-            "RequestMethods": {
-                "RegisterAPI":{
-                    "Abbreviation":"NTS","ConnectionInformation": {
-                        "IP":"127.0.0.1",
-                        "Port":"7779"},
-                    "Dependencies": {
-                        "Role_ServiceManager":"0.1"},
-                    "Methods":[],
-                    "ModuleDomain":"Nulstar",
-                    "ModuleName":"Tester",
-                    "ModuleRoles":{
-                        "Role_Tester[0.1]": ["0.1"]},
-                        "ModuleVersion":"0.1.0"}},
-                "ResponseMaxSize":"0",
-                "SubscriptionEventCounter":"0",
-                "SubscriptionPeriod":"0",
-                "SubscriptionRange":"" },
-             "MessageID":mid,
-             "MessageType":"Request",
-             "TimeZone":8,
-             "Timestamp":1549960969664
-             }
+type_name_dict: dict = {0: 'None', 1: 'NegotiateConnection',
+                        2: 'NegotiateConnectionResponse',
+                        3: 'Request', 4: 'Unsubscribe', 5: 'Response', 6: 'Ack',
+                        7: 'RegisterCompoundMethod', 8: 'UnregisterCompoundMethod'}
 
 compress_type_label = "CompressionAlgorithm"
 compress_rate_label = "CompressionRate"
@@ -61,63 +32,9 @@ response_max_size_label = "ResponseMaxSize"
 address_label = "Address"
 get_height_label = "GetHeight"
 
-
-reg = {
-      "MessageData":{
-        "RequestAck":"0",
-        "RequestMethods":{
-          "RegisterAPI":{
-            "Abbreviation":"NSTM",
-            "ConnectionInformation":{
-              "IP":"127.0.0.1",
-              "Port":"7775"
-            },
-            "Dependencies":{
-
-            },
-            "Methods":[
-              {
-                "MethodDescription":"Query information about CPU",
-                "MethodMinEvent":"0",
-                "MethodMinPeriod":"0",
-                "MethodName":"GetCPUInfo",
-                "MethodScope":"admin",
-                "Parameters":[
-                       {
-                              "ParameterName": "lMaxCPUs",
-                              "ParameterType": "int"
-                        }
-                ]
-              },
-              {
-                "MethodDescription":"Query information about RAM memory",
-                "MethodMinEvent":"0",
-                "MethodMinPeriod":"0",
-                "MethodName":"GetRAMInfo",
-                "MethodScope":"admin",
-                "Parameters":[
-
-                ]
-              }
-            ],
-            "ModuleDomain":"Nulstar",
-            "ModuleName":"StatsManager",
-            "ModuleRoles":{
-              "Role_StatsManager":[
-                "0.1"
-              ]
-            },
-            "ModuleVersion":"0.1.0"
-          }
-        },
-        "ResponseMaxSize":"0",
-        "SubscriptionEventCounter":"0",
-        "SubscriptionPeriod":"0",
-        "SubscriptionRange":""
-      },
-      "MessageID":"1569897424187-2",
-      "MessageType":"Request",
-      "TimeZone":"-4",
-      "Timestamp":"1569897424187"
-    }
-
+__ALL__ = [address_label, compress_rate_label, compress_type_label, \
+    get_bal_label, get_height_label, json_seps, msg_data_label, msg_id_label, \
+    msg_type_label, negotiate_conn_label, negotiate_conn_resp_label, negotiate_stat_label, \
+    proto_label, req_method_label, request_date_label, request_internalid_label, request_label, \
+    request_t_label, request_time_label, response_max_size_label, \
+    sub_rg_label, subscrip_evnt_ct_label, subscrip_period_label, tmstmp_label, tmzone_label]
