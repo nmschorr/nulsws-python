@@ -26,21 +26,32 @@
 
 from asyncio import run
 from tornado.websocket import websocket_connect  #, WebSocketClosedError
-from nulsws_library import prep_data_type1, prep_data_type3, myprint, check_json_answer
-from nulsws_msgtype1 import websock_url1
-from nulsws_msgtype_register import make_nulsws_reg
+from nulsws_library import myprint, check_json_answer
+from nulsws_all_msgs import compress_rate_label, compress_type_label
+
+from nulsws_usersets_negt_type1 import websock_url_negt
+from nulsws_msgtype_register import make_nulsws_registermethod
 from tornado.websocket import WebSocketClientConnection
 import asyncio
+import json
+import nulsws_library, nulsws_msgtype_register, nulsws_staticvals, nulsws_usersets_negt_type1, \
+    nulsws_usersets_req
+import nulsws_all_msgs
+from nulsws_staticvals import type_name_dict
 
 class NulsWebsocket(object):
     def __init__(self):
-        myprint("the url:  ", websock_url1)
+        myprint("the url:  ", websock_url_negt)
         self.mindex = 0
 
     async def first_connect(self, json_cnnect, the_tup):
         print("inside first_connect")
-        conntn = await websocket_connect(websock_url1)   # 1) CONNECT
+        conntn = await websocket_connect(websock_url_negt)   # 1) CONNECT
         await asyncio.sleep(2)
+        print("\nwriting this: ")
+        print(json.dumps(json_cnnect, indent=4))
+        print()
+
         response_awaiteda = await conntn.write_message(json_cnnect) # 2) WRITE
         print("got response_awaiteda for write response...", response_awaiteda)
         await asyncio.sleep(1.5)
@@ -54,20 +65,21 @@ class NulsWebsocket(object):
 
 
     async def connect_actual_msg(self, websock_connct: WebSocketClientConnection, a_tup):
-        print("inside connect_actual_msg")
-        print("sending: ", a_tup[0])
-        print(await websock_connct.write_message(a_tup[0])) # 2) WRITE
-        await asyncio.sleep(1)
+        #print("inside register method connect_actual_msg")
+        #print("sending: ", a_tup[0])
+        #print(await websock_connct.write_message(a_tup[0])) # 2 WRITE
+        #await asyncio.sleep(2)
         # websock_connct.final_callback(self.nms_callback("final callback msg read in two"))
-        print(await websock_connct.read_message(self.nms_callback("msg read in two")) ) # 3
-        await asyncio.sleep(1)
+        #abc = await websock_connct.read_message(self.nms_callback("msg read in two")) # 3
+        #print("first answer is: ", abc)
 
-        print("inside part two connect_actual_msg, sending: ")
+
+        print("\ninside part two connect_actual_msg, sending: ")
         print(a_tup[1])
-        a = a_tup[1]
-        print(await websock_connct.write_message(a_tup[1])) # 2) WRITE
-        await asyncio.sleep(1)
-        read_msg_b = await websock_connct.read_message(self.nms_callback("msg read b"))  # 3 READ
+        amsg = await websock_connct.write_message(a_tup[1])      # 2 WRITE
+        await asyncio.sleep(2)
+        print("msg rec: ", amsg)
+        read_msg_b = await websock_connct.read_message(self.nms_callback(""))  # 3 READ
         await asyncio.sleep(1)
         myprint("Got response in ws_runner_main part two: \n", read_msg_b)
         myprint("Finished and exiting.")
@@ -76,20 +88,26 @@ class NulsWebsocket(object):
         run(self.first_connect(jconnect, mytup))   # starts event loop
 
     def main(self, mtpe):
+        # we always do type 1 just before anything
+        import nulsws_all_msgs as mw
+        from nulsws_msgtype_register import make_nulsws_registermethod
         self.mindex += 1
         mind = self.mindex
-        json_main_type = None
-        json_connect_type = prep_data_type1()
-        json_reg_type = make_nulsws_reg(mind)
+
+        json_main_type = type_name_dict.get(mtpe)
+
+        json_connect_type = mw.prep_NEGOTIATE_data_type1()
+        json_reg_type = make_nulsws_registermethod(mind)
 
         if mtpe == 3:
-            json_main_type = prep_data_type3()
+            json_main_type = mw.prep_data_REQUEST_type3()
         if mtpe == 5:
             pass
-            # json_main_type = prep_data_type5()
+            # json_main_type = mw.prep_data_REQUEST_type5()
         if mtpe == 7:
             pass
-            # json_main_type = prep_data_type7()
+            # json_main_type = mw.prep_data_REQUEST_type7()
+
         json_tup = (json_reg_type, json_main_type)
         self.commander(json_connect_type, json_tup)
 
