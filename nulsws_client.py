@@ -30,11 +30,14 @@ from tornado.websocket import websocket_connect  # WebSocketClosedError
 from tornado.websocket import WebSocketClientConnection
 from nulsws_library import *
 from nulsws_usersets_negt_type1 import websock_url_negt
+from ac_get_acct_list import req_AC_GET_ACCOUNT_LIST
+
 
 class NulsWebsocket(object):
     def __init__(self):
         myprint("the url:  ", websock_url_negt)
         self.mindex = 0
+        self.sleep_time = 1
 
     def nms_callback(self, x):
         print(x)
@@ -42,9 +45,9 @@ class NulsWebsocket(object):
     async def REGISTER_REQ(self, connct: WebSocketClientConnection, regis_msg):
         json_prt(regis_msg, "* * * _REGISTER_ message going out: ")
         await connct.write_message(regis_msg)      # 2 WRITE
-        await asyncio_sleep(3)
+        await asyncio_sleep(self.sleep_time)
         read_msg_a = await connct.read_message(self.nms_callback("msg just recieved"))  # 3 READ
-        await asyncio_sleep(2)
+        await asyncio_sleep(self.sleep_time)
         if len(read_msg_a ) > 10:
             json_prt(read_msg_a, "-------! ! ! _REGISTER_ response received: ")
         print("-----------end _REGISTER_-----------------------------------")
@@ -53,27 +56,27 @@ class NulsWebsocket(object):
         json_prt(json_REG, "* * * REGULAR message going out: ")
         myprint("* * * Sending Regular request going out:")
         await websock_connct.write_message(json_REG)      # 2 WRITE
-        await asyncio_sleep(2)
+        await asyncio_sleep(self.sleep_time)
         read_REG= await websock_connct.read_message(self.nms_callback(""))  # 3 READ
-        await asyncio_sleep(2)
+        await asyncio_sleep(self.sleep_time)
         if len(read_REG) > 10:
             json_prt(read_REG, "-------! ! ! REGULAR response received: ")
         print("--------------end Regular request--------------------------------")
 
     async def negotiate(self, json_negotiate, jreg, jmain):
         connection = await websocket_connect(websock_url_negt)   # 1) CONNECT
-        await asyncio_sleep(3)
+        await asyncio_sleep(self.sleep_time)
         while (not connection):
-            await asyncio_sleep(1)
+            await asyncio_sleep(self.sleep_time)
         json_prt(json_negotiate, "* * * First message going out- Negotiate: ")
         await connection.write_message(json_negotiate) # 2) WRITE
-        await asyncio_sleep(3)
+        await asyncio_sleep(self.sleep_time)
 
         negotiate_res_MSG = await connection.read_message()    # 3 READ
-        await asyncio_sleep(2)
+        await asyncio_sleep(self.sleep_time)
         json_prt(negotiate_res_MSG, "! ! ! Negotiate response is this: ")
         print("------end Negotiate----------------------------------------")
-        await self.REGISTER_REQ(connection, jreg)
+        #await self.REGISTER_REQ(connection, jreg)
         await self.REGULAR_req(connection, jmain)
 
     def commander(self, jconnect, json_register, json_main_type):
@@ -91,7 +94,7 @@ class NulsWebsocket(object):
         json_register =  make_nulsws_REGISTER_method(mind)
 
         if mtpe == 3:
-            json_main_type = mw.prep_data_REQUEST_type3(mind)
+            json_main_type = req_AC_GET_ACCOUNT_LIST(mind)
         if mtpe == 5:
             pass
             # json_main_type = mw.prep_data_REQUEST_type5()
