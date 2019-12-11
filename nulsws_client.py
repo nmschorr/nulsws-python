@@ -31,7 +31,7 @@ from tornado.websocket import WebSocketClientConnection
 from nulsws_library import *
 from nulsws_USER_static_settings import *
 import nulsws_REQUEST as mw
-from nulsws_USER_CHOICE import MSG_TYPE
+from nulsws_USER_CHOICE import MSG_TYPE, onesy_label, onesies
 
 class NulsWebsocket(object):
     def __init__(self):
@@ -69,8 +69,33 @@ class NulsWebsocket(object):
         myprint("------end Negotiate----------------------------------------")
         await self.REGULAR_req(connection, main_request)
 
+
+    async def negotiate_onesies(self, json_negotiate, mindx, onesies):
+        connection = await websocket_connect(websock_url)  # 1) CONNECT
+        await asyncio_sleep(self.s_time)
+        while not connection:
+            await asyncio_sleep(self.s_time)
+        jd = json_dumps(json_negotiate)
+        json_prt(json_negotiate, "* * * First message going out- NEGOTIATE: ")
+        await connection.write_message(jd)  # 2) WRITE
+        await asyncio_sleep(self.s_time)
+
+        negotiate_result = await connection.read_message()  # 3 READ
+        await asyncio_sleep(self.s_time)
+        json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
+        myprint("------end Negotiate----------------------------------------")
+        for onesie in onesies:
+            main_request = onesie[0]
+            await self.REGULAR_req(connection, main_request)
+
+
+
+
     def commander(self, j_negotiate, main_request):
-        asyncio_run(self.negotiate(j_negotiate, main_request)) # starts event
+        asyncio_run(self.negotiate(j_negotiate, main_request))  # starts event
+
+    def commander_onesies(self, j_negotiate, mindx, onesies):  #multipls
+        asyncio_run(self.negotiate_onesies(j_negotiate, mindx, onesies)) # starts event
 
     def main(self, mtpe):
         # we always do type 1 just before anything
@@ -81,13 +106,15 @@ class NulsWebsocket(object):
         #json_register =  make_nulsws_REGISTER_method(mind)
 
         if mtpe == 3:
-            main_request_d = mw.prep_REQUEST_ONESIE_NO_params(m_indx) #dict
+            #main_request_d = mw.prep_REQUEST_ONESIE_NO_params(m_indx) #dict
+            #self.commander(json_negotiate, main_request_d) #one at a time
+            self.commander_onesies(json_negotiate, m_indx, onesies)  #big list
 
         # if mtpe == 5:   # not implemented yet
             # json_main_type = mw.prep_data_REQUEST_type5()
         # if mtpe == 7:   # not implemented yet
             # json_main_type = mw.prep_data_REQUEST_type7()
-        self.commander(json_negotiate, main_request_d)
+        #self.commander(json_negotiate, main_request_d)
 
 
 if __name__ == '__main__':

@@ -21,13 +21,12 @@ MSG_TYPE = 3
 ACCT_ADDRESS = ''
 from nulsws_CONSTANTS_API_names import *
 # note to coders - the __ALL__ list must be kept up to date and include all values in this file
-__ALL__ =[onesy_label, MSG_TYPE, ACCT_ADDRESS]
 
 
 from nulsws_CONSTANTS_otherlabels import CHAINID_LABEL as CL
 from nulsws_CONSTANTS_API_names import *
 
-onsies = [(AC_GET_ADDRESS_PREFIXBY_CHAINID,[CL]),
+onesies = [(AC_GET_ADDRESS_PREFIXBY_CHAINID,[CL]),
           (AC_GET_ALL_ADDRESS_PREFIX,[]),
           (AC_GET_ENCRYPTED_ADDRESS_LIST, [CL]),
           (BATCH_VALIDATE_BEGIN, [CL]),
@@ -45,7 +44,14 @@ onsies = [(AC_GET_ADDRESS_PREFIXBY_CHAINID,[CL]),
           ("c", [CL]), (CS_GET_CONSENSUS_CONFIG, [CL]),
           (CS_GET_NODE_PACKING_ADDR, [CL]),
           ("nw_getSeeds", []), ("nw_getSeeds", []),("nw_getSeeds", []),
-          ("nw_getSeeds", []), ("nw_getSeeds", []), ("nw_getSeeds", []),
+          ("nw_getSeeds", []), ("nw_getSeeds", []), ("nw_getSeeds", [])]
+
+
+__ALL__ =[onesy_label, MSG_TYPE, ACCT_ADDRESS, onesies]
+
+
+
+
 
 # "ListAPI": #works!
 # "cm_getChainsSimpleInfo":   #works!
