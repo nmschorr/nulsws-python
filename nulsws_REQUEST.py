@@ -38,7 +38,17 @@ def get_REQ_MIDDLE(bottom_part, mid_section_vals=None):   #return dict
 # -----------prep_REQUEST_ONESIE (request) --------------------------------------#
 def prep_REQUEST_ONESIE_NO_params(msg_indx, onesie):  # requesttype 2 - return ack + response
     MSG_TYPE = 3
-    msg_section_bottom = { onesie[0]: {}  }
+    count = 2
+    try:
+        both = onesie[1][0]
+    except:
+        count = 1
+
+    if count == 2:
+        msg_section_bottom = { onesie[0]: both }
+    else:
+        msg_section_bottom = { onesie[0]: []  }
+
     msg_section_MIDDLE = get_REQ_MIDDLE(msg_section_bottom)
     message_section_TOP = get_TOP_SECTION(MSG_TYPE, msg_indx)
     message_section_TOP.update(msg_section_MIDDLE)

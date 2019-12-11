@@ -46,12 +46,12 @@ class NulsWebsocket(object):
         json_REG = json_dumps(j_reg_dict)
         json_prt(json_REG, "\n* * * REGULAR message going out: ")
         await websock_connct.write_message(json_REG)      # 2 WRITE
-        await asyncio_sleep(self.s_time)
+        #await asyncio_sleep(self.s_time)
         read_REG= await websock_connct.read_message(self.nms_callback(""))  # 3 READ
-        await asyncio_sleep(self.s_time)
+        #await asyncio_sleep(self.s_time)
         if len(read_REG) > 10:
-            json_prt(read_REG, "------- ! ! ! REGULAR response received: ")
-        myprint("--------------end Regular request--------------------------------")
+            json_prt(read_REG, "   -----------> ! ! ! REGULAR response received: ")
+        myprint("--------------end previous / begin next request--------------------------------")
 
     async def negotiate(self, json_negotiate, main_request):
         connection = await websocket_connect(websock_url)   # 1) CONNECT
@@ -64,13 +64,12 @@ class NulsWebsocket(object):
         await asyncio_sleep(self.s_time)
 
         negotiate_result = await connection.read_message()    # 3 READ
-        await asyncio_sleep(self.s_time)
+        #await asyncio_sleep(self.s_time)
         json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
         myprint("------end Negotiate----------------------------------------")
         await self.REGULAR_req(connection, main_request)
 
-
-    async def negotiate_onesies(self, json_negotiate, mindx, onesies):
+    async def negotiate_onesies(self, json_negotiate, m_indx, onesies):
         connection = await websocket_connect(websock_url)  # 1) CONNECT
         await asyncio_sleep(self.s_time)
         while not connection:
@@ -84,24 +83,21 @@ class NulsWebsocket(object):
         await asyncio_sleep(self.s_time)
         json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
         myprint("------end Negotiate----------------------------------------")
+
         for onesie in onesies:
-            main_request = onesie[0]
+            main_request = mw.prep_REQUEST_ONESIE_NO_params(m_indx, onesie) #dict
             await self.REGULAR_req(connection, main_request)
-
-
-
 
     def commander(self, j_negotiate, main_request):
         asyncio_run(self.negotiate(j_negotiate, main_request))  # starts event
 
-    def commander_onesies(self, j_negotiate, mindx, onesies):  #multipls
-        asyncio_run(self.negotiate_onesies(j_negotiate, mindx, onesies)) # starts event
+    def commander_onesies(self, j_negotiate, m_indx, onesies):  #multipls
+        asyncio_run(self.negotiate_onesies(j_negotiate, m_indx, onesies)) # starts event
 
     def main(self, mtpe):
         # we always do type 1 just before anything
         self.mindex += 1
         m_indx = self.mindex
-        main_request_d: dict = dict()
         json_negotiate = mw.prep_NEGOTIATE_data_type1(m_indx)  #dict
         #json_register =  make_nulsws_REGISTER_method(mind)
 
