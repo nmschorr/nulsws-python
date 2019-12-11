@@ -4,8 +4,7 @@
 
 AC_GET_ACCOUNT_LIST = "ac_getAccountList"
 
-ZERO = "0"
-CHAINID_LABEL = "chainId"
+
 
 
 

@@ -50,10 +50,10 @@ This file right now provides support for the the client only.
 import json
 from time import time, timezone
 
-from nulsws_staticvals import msg_data_label, \
+from nulsws_labels import msg_data_label, \
     msg_type_label, negotiate_stat_label, negotiate_conn_resp_label, proto_label
-from nulsws_staticvals import msg_id_label, tmstmp_label, tmzone_label
-from nulsws_staticvals import type_name_dict
+from nulsws_labels import msg_id_label, tmstmp_label, tmzone_label
+from nulsws_labels import type_name_dict
 from nulsws_usersets_negt_type1 import proto_ver
 from json import dumps as json_dumps
 

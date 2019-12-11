@@ -2,13 +2,13 @@
 
 import json
 from nulsws_usersets_negt_type1 import proto_ver, compress_type_negt, comp_rate_negt
-from nulsws_library import prep_TOP_SECTION, json_prt
-from nulsws_staticvals import *
+from nulsws_library import prep_TOP_SECTION
+from nulsws_labels import *
 
 #-----------prep_NEGOTIATE_data_type1--------------------------------------#
-def prep_NEGOTIATE_data_type1(mind):
+def prep_NEGOTIATE_data_type1(msg_indx):
         # this section has any number of items depending on the msg type
-    top_sect = prep_TOP_SECTION(1, mind)
+    top_sect = prep_TOP_SECTION(1, msg_indx)
     data_part = { msg_data_label: {
                   proto_label: proto_ver,
                   compress_type_label: compress_type_negt,
@@ -18,31 +18,55 @@ def prep_NEGOTIATE_data_type1(mind):
     return json_str
 
 
-#-----------prep_data_REQUEST_type3--------------------------------------#
+#-----------get_REQ_MIDDLE--------------------------------------#
 
-def prep_data_REQUEST_type3(mind):   #requesttype 2 - return ack and response
-    stat_msg_top = prep_TOP_SECTION(3, mind)
+def get_REQ_MIDDLE(mid_section_vals=None):
 
-    bottom = {
-        "MessageData": {
-            "RequestType": "2",
-            "SubscriptionEventCounter": "0",
-            "SubscriptionPeriod": "0",
-            "SubscriptionRange": "0",
-            "ResponseMaxSize": "0",
-            "RequestMethods":
-              {
-                  # "ListAPI": #works!
-                  #"cm_getChainsSimpleInfo":   #works!
-                  #"getRegisteredChainInfoList" :  {}   #works
-                  #"nw_getSeeds" : {}      # works!
-                  #"nw_getMainMagicNumber": {}  #  works!
-                  #"nw_currentTimeMillis": {}  # works!
-                  #"cs_getConsensusConfig" : { "chainId": 1} #works
+    if not mid_section_vals:
+        mid_section_vals = ["2", ZERO, ZERO, ZERO, ZERO] #2 = ack+date
+    [MTL, SECL, SPL, SRL, RMS] = [*mid_section_vals]
 
+    REQ_MIDDLE = {
+        msg_data_label: {
+            msg_type_label: MTL,
+            subscrip_evnt_ct_label : SECL,
+            subscrip_period_label: SPL,
+            subscriptn_range_label: SRL,
+            response_max_size_label: RMS
+        }}
+    return REQ_MIDDLE
 
-              }
+def prep_data_REQUEST_type3(msg_indx):  # requesttype 2 - return ack and
+        # response
+    onesy_label = "nw_getSeeds"
+    MSG_TYPE = 3
+
+    message_section_top = prep_TOP_SECTION(MSG_TYPE, msg_indx)
+    msg_section_middle = get_REQ_MIDDLE()
+    msg_section_bottom = {
+        req_methods_label: {
+              onesy_label: {}  # works!
           } }
 
-    stat_msg_top.update(bottom)
-    return json.dumps(stat_msg_top)
+    msg_section_middle.update(msg_section_bottom)
+    message_section_top.update(msg_section_middle)
+    return message_section_top   # return dict
+
+# msg_section_middle = {
+    #     "MessageData": {
+    #         "RequestType": "2",
+    #         "SubscriptionEventCounter": "0",
+    #         "SubscriptionPeriod": "0",
+    #         "SubscriptionRange": "0",
+    #         "ResponseMaxSize": "0",
+    #         "RequestMethods":
+    #           {
+
+
+# "ListAPI": #works!
+# "cm_getChainsSimpleInfo":   #works!
+# "getRegisteredChainInfoList" :  {}   #works
+# "nw_getSeeds": {}  # works!
+# "nw_getMainMagicNumber": {}  #  works!
+# "nw_currentTimeMillis": {}  # works!
+# "cs_getConsensusConfig" : { "chainId": 1} #works

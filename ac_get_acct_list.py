@@ -1,10 +1,11 @@
 #Nuls.ac_getAccountList"
 
-from constants import AC_GET_ACCOUNT_LIST, CHAINID_LABEL, ZERO
+from nulsws_labels_request_name import AC_GET_ACCOUNT_LIST
 from nulsws_library import prep_TOP_SECTION
 import json
-from nulsws_staticvals import *
-from nulsws_staticvals import msg_data_label
+from nulsws_labels import *
+from nulsws_labels import CHAINID_LABEL, ZERO
+from nulsws_labels import msg_data_label
 
 ## from user settings:
 CHAINID_VAL = 1
@@ -14,12 +15,12 @@ def req_AC_GET_ACCOUNT_LIST(mind):   #requesttype 2 - return ack and response
 
     bottom = {
         msg_data_label: {
-            request_t_label: "1",
+            request_type_label: "1",
             subscrip_evnt_ct_label: ZERO,
             subscrip_period_label: ZERO,
-            sub_rg_label: ZERO,
+            subscriptn_range_label: ZERO,
             response_max_size_label: ZERO,
-            req_method_label:
+            req_methods_label:
                 {
                     AC_GET_ACCOUNT_LIST: {CHAINID_LABEL: CHAINID_VAL}
                 }

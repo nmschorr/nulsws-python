@@ -58,7 +58,7 @@ websock_url_negt: str = ''.join([connect_method_negt, host_negt, ":", port_negt]
 # is the standard as it is
 compress_type_negt = "zlib"
 
-# An integer between 0 and 9, 3 being the default setting
+# compression rate - An integer between 0 and 9, 3 being the default setting
 comp_rate_negt = 0
 
 # -----------------------------------------------------------------------------------
