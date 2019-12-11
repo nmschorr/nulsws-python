@@ -1,10 +1,10 @@
 #!/usr/bin/python3.7
 
-
 from nulsws_library import get_TOP_SECTION
-from nulsws_labels import *
+from nulsws_CONSTANTS_otherlabels import *
 from nulsws_USER_static_settings import *
 from nulsws_USER_settings import *
+from nulsws_USER_CHOICE import onesy_label
 
 # -----------prep_NEGOTIATE_data_type1--------------------------------------#
 def prep_NEGOTIATE_data_type1(msg_indx):   #return dict
@@ -21,7 +21,7 @@ def prep_NEGOTIATE_data_type1(msg_indx):   #return dict
     # set mid_section_vals in user library file
 def get_REQ_MIDDLE(bottom_part, mid_section_vals=None):   #return dict
     if not mid_section_vals:
-        mid_section_vals = ["2", ZERO, ZERO, ZERO, ZERO] #2 = ack+date
+        mid_section_vals = [ONE, ZERO, ZERO, ZERO, ZERO] #2 = ack+date
     [MTL, SECL, SPL, SRL, RMS] = [*mid_section_vals]
 
     REQ_MIDDLE = {
@@ -35,9 +35,8 @@ def get_REQ_MIDDLE(bottom_part, mid_section_vals=None):   #return dict
         }}
     return REQ_MIDDLE   #dict
 
-# -----------prep_data_onesi_REQUEST_type3--------------------------------------#
-def prep_data_onesi_REQUEST_type3(msg_indx):  # requesttype 2 - return ack + response
-    onesy_label = "nw_getSeeds"
+# -----------prep_REQUEST_ONESIE (request) --------------------------------------#
+def prep_REQUEST_ONESIE_NO_params(msg_indx):  # requesttype 2 - return ack + response
     MSG_TYPE = 3
     msg_section_bottom = { onesy_label: {}  }
     msg_section_MIDDLE = get_REQ_MIDDLE(msg_section_bottom)

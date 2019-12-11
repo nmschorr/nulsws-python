@@ -1,5 +1,5 @@
 #!/usr/bin/python3.7
-'''
+"""
 by Nancy Schorr for Nuls, December 2, 2019
 
  Instructions for Message type Three - Request
@@ -12,7 +12,7 @@ by Nancy Schorr for Nuls, December 2, 2019
 Nulstar should respond to this call with a Message of  and a number representing success or failure.
 
 Receiving a "1" means success, "0" is failure
-'''
+"""
 # Author: Nancy Schorr
 
 # compatible_proto_versions can be a list once other versions are supported

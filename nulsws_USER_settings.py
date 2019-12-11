@@ -1,5 +1,5 @@
 #!/usr/bin/python3.7
-'''
+"""
     by Nancy Schorr for Nuls, December 2, 2019
 
     Instructions for Message type Three - Request
@@ -12,17 +12,16 @@
     Nulstar should respond to this call with a Message of  and a number representing success or failure.
 
     Receiving a "1" means success, "0" is failure
-'''
-
+"""
 
 #  Message Type - string
 msg_type_req = "3"
 address_val = "NULSd6Hggvrij3MPW9QTHJGBv7uiyMKw41i7t"  ##
-RequestType = 2                    # two is ack and a response, 1 is just response
+RequestType = 2  # two is ack and a response, 1 is just response
 
 compress_type_VALUE = "zlib"
 
-compress_rate_VALUE = 0   # 0-9
+compress_rate_VALUE = 0  # 0-9
 subscriptionRange = 0
 request_int = 1
 sub_event_ct = 0
@@ -31,11 +30,11 @@ sub_range = ""
 res_max_size = 0
 
 # note to coders - the __ALL__ list must be kept up to date and include all values in this file
-__ALL__ =[address_val, msg_type_req, compress_rate_VALUE, subscriptionRange, request_int, sub_event_ct,
-          sub_period_int, sub_range, res_max_size, RequestType]
+__ALL__ = [address_val, msg_type_req, compress_rate_VALUE, subscriptionRange, request_int, sub_event_ct,
+           sub_period_int, sub_range, res_max_size, RequestType]
 
 # NULSd6HghM9Z9XytwZEHGDGRJLnNR5ybiy5gt
-#NULSd6Hge7xHDnvsSpnzbR2gWHd31zJ1How11
+# NULSd6Hge7xHDnvsSpnzbR2gWHd31zJ1How11
 # -----------------------------------------------------------------------------------
 
 #

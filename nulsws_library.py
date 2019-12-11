@@ -1,7 +1,7 @@
 #!usr/bin/python3.7
 
 
-'''
+"""
 author:  Nancy M Schorr, for Nuls
 December 2, 2019
 
@@ -45,41 +45,40 @@ Note: Don't use typing.Dict - it can cause json problems when converted.
 
 This file right now provides support for the the client only.
 
-'''
+"""
 
 import json
 from time import time, timezone
-
-from nulsws_labels import msg_data_label, \
-    msg_type_label, negotiate_stat_label, negotiate_conn_resp_label, proto_label
-from nulsws_labels import msg_id_label, tmstmp_label, tmzone_label
-from nulsws_labels import type_name_dict
-from nulsws_usersets_negt_type1 import proto_ver
 from json import dumps as json_dumps
+from nulsws_CONSTANTS_otherlabels import msg_data_label, type_name_dict, tmzone_label, msg_id_label, \
+    msg_type_label, negotiate_stat_label, negotiate_conn_resp_label, proto_label, tmstmp_label
+from nulsws_USER_static_settings import proto_ver
 
 
-#-----------get_times--------------------------------------#
+# -----------get_times--------------------------------------#
 
 def get_times(msg_index=1):
-    t_stamp = int(time() * 100000)      # change float to int
+    t_stamp = int(time() * 100000)  # change float to int
     tzone = int(timezone / 3600)  # change float to int to str
     m_id = str(t_stamp) + "-" + str(msg_index)
     return t_stamp, tzone, m_id
 
-def prep_TOP_SECTION(msg_type: int, msg_indx):         # this section builds 5 items: #0
+
+def get_TOP_SECTION(msg_type: int, msg_indx):  # this section builds 5 items: #0
     # 0  "ProtocolVersion": "0.1",
     # 1 "MessageID": "1569897424187-1",  #2 "TimeZone": "-4",   #3 "Timestamp": "1569897424187"
-                                            # #4 "MessageType": "NegotiateConnection",
+    # #4 "MessageType": "NegotiateConnection",
     msg_type_name = type_name_dict.__getitem__(msg_type)
-    t_stamp, tzone, m_id= get_times(msg_indx)
-    top_part = {    proto_label : proto_ver,
-                    msg_id_label: m_id,
-
-                    tmstmp_label : t_stamp,
-                    tmzone_label: tzone,
-                    msg_type_label: msg_type_name}
+    t_stamp, tzone, m_id = get_times(msg_indx)
+    top_part = {proto_label: proto_ver,
+                msg_id_label: m_id,
+                tmstmp_label: t_stamp,
+                tmzone_label: tzone,
+                msg_type_label: msg_type_name}
     return top_part
-#-----------check_json_answer--------------------------------------#
+
+
+# -----------check_json_answer--------------------------------------#
 
 def check_json_answer(answer) -> bool:
     jload = json.loads(answer)
@@ -94,26 +93,23 @@ def check_json_answer(answer) -> bool:
         else:
             return False
 
-#-----------myprint--------------------------------------#
+
+# -----------myprint--------------------------------------#
 
 def myprint(x, y=None, debug=True):
     if debug:
-        if y:
-            print(x, end=' ')
-            print(y)
-        else:
-            print(x)
+        print(x) if not y else print(str(x) + ' ' + str(y))
 
-#-----------json_prt--------------------------------------#
+
+# -----------json_prt--------------------------------------#
 
 def json_prt(json_str, str_msg, debug=True):
     if not isinstance(json_str, dict):
         json_str = json.loads(json_str)
     if debug:
-        aname = ''
         if str_msg:
-            aname = aname.join(str_msg)
-            print(aname)
-            print(json_dumps(json_str, indent=3))
+            aname = ''.join(str_msg)
+            # print(aname)
+            print(aname + str(json_dumps(json_str, indent=3)))
         else:
             myprint("nothing returned")

@@ -33,11 +33,13 @@ address_label = "Address"
 get_height_label = "GetHeight"
 
 ZERO = "0"
+ONE = "1"
 CHAINID_LABEL = "chainId"
 
-__ALL__ = [address_label, compress_rate_label, compress_type_label, \
-           get_bal_label, get_height_label, json_seps, msg_data_label, msg_id_label, \
-           msg_type_label, negotiate_conn_label, negotiate_conn_resp_label, negotiate_stat_label, \
-           proto_label, req_methods_label, request_date_label, request_internalid_label, request_label, \
-           request_type_label, request_time_label, response_max_size_label, \
+# if you change this file, you must keep this list updated
+__ALL__ = [ZERO, ONE, CHAINID_LABEL, compress_rate_label, compress_type_label,
+           get_bal_label, get_height_label, json_seps, msg_data_label, msg_id_label,
+           msg_type_label, negotiate_conn_label, negotiate_conn_resp_label, negotiate_stat_label,
+           proto_label, req_methods_label, request_date_label, request_internalid_label, request_label,
+           request_type_label, request_time_label, response_max_size_label,
            subscriptn_range_label, subscrip_evnt_ct_label, subscrip_period_label, tmstmp_label, tmzone_label]

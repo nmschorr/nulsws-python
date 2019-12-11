@@ -3,9 +3,9 @@
 # nulsws_msgtype_register.py
 # must register before other stuff
 
-'''
+"""
 by Nancy Schorr for Nuls, December 2, 2019
-'''
+"""
 import json
 from nulsws_library import get_TOP_SECTION
 
