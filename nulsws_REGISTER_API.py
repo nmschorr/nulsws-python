@@ -7,7 +7,7 @@
 by Nancy Schorr for Nuls, December 2, 2019
 '''
 import json
-from nulsws_library import prep_TOP_SECTION
+from nulsws_library import get_TOP_SECTION
 
 # this can be a list once other versions are supported
 
@@ -41,7 +41,7 @@ get_cpu_info = "GetCPUInfo"
 # -----------------------------------------------------------------------------------
 
 def make_nulsws_REGISTER_method(mindex):
-    top_sec = prep_TOP_SECTION(3, mindex)
+    top_sec = get_TOP_SECTION(3, mindex)
     #
     # jdd = {
     #     "MessageData": {
