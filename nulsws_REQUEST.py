@@ -37,6 +37,7 @@ def get_REQ_MIDDLE(bottom_part, mid_section_vals=None):   #return dict
 
 # -----------prep_REQUEST_ONESIE (request) --------------------------------------#
 def prep_REQUEST_ONESIE_NO_params(msg_indx, onesie):  # requesttype 2 - return ack + response
+    # onesie either has a second element of a list, or not
     MSG_TYPE = 3
     count = 2
     try:
