@@ -31,7 +31,7 @@ from tornado.websocket import WebSocketClientConnection
 from nulsws_library import *
 from nulsws_USER_static_settings import *
 import nulsws_REQUEST as mw
-from nulsws_USER_CHOICE import MSG_TYPE, onesy_label, onesies
+from nulsws_USER_CHOICE import MSG_TYPE, onesies
 
 class NulsWebsocket(object):
     def __init__(self):
@@ -46,9 +46,9 @@ class NulsWebsocket(object):
         json_REG = json_dumps(j_reg_dict)
         json_prt(json_REG, "\n* * * REGULAR message going out: ")
         await websock_connct.write_message(json_REG)      # 2 WRITE
-        #await asyncio_sleep(self.s_time)
+            #await asyncio_sleep(self.s_time)
         read_REG= await websock_connct.read_message(self.nms_callback(""))  # 3 READ
-        #await asyncio_sleep(self.s_time)
+            #await asyncio_sleep(self.s_time)
         if len(read_REG) > 10:
             json_prt(read_REG, "   -----------> ! ! ! REGULAR response received: ")
         myprint("--------------end previous / begin next request--------------------------------")
@@ -64,7 +64,7 @@ class NulsWebsocket(object):
         await asyncio_sleep(self.s_time)
 
         negotiate_result = await connection.read_message()    # 3 READ
-        #await asyncio_sleep(self.s_time)
+            #await asyncio_sleep(self.s_time)
         json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
         myprint("------end Negotiate----------------------------------------")
         await self.REGULAR_req(connection, main_request)
@@ -99,18 +99,14 @@ class NulsWebsocket(object):
         self.mindex += 1
         m_indx = self.mindex
         json_negotiate = mw.prep_NEGOTIATE_data_type1(m_indx)  #dict
-        #json_register =  make_nulsws_REGISTER_method(mind)
 
         if mtpe == 3:
             #main_request_d = mw.prep_REQUEST_ONESIE_NO_params(m_indx) #dict
             #self.commander(json_negotiate, main_request_d) #one at a time
             self.commander_onesies(json_negotiate, m_indx, onesies)  #big list
 
-        # if mtpe == 5:   # not implemented yet
             # json_main_type = mw.prep_data_REQUEST_type5()
-        # if mtpe == 7:   # not implemented yet
             # json_main_type = mw.prep_data_REQUEST_type7()
-        #self.commander(json_negotiate, main_request_d)
 
 
 if __name__ == '__main__':
