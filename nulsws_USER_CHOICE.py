@@ -16,41 +16,78 @@
 
 
 #  Message Type - string
-onesy_label = "nw_getSeeds"
 MSG_TYPE = 3
-ACCT_ADDRESS = ''
 from nulsws_CONSTANTS_API_names import *
-# note to coders - the __ALL__ list must be kept up to date and include all values in this file
-
 from nulsws_CONSTANTS_otherlabels import CHAINID_LABEL as CL
 from nulsws_CONSTANTS_API_names import GET_REGISTERED_CHAIN_INFO_LIST
 
-onesies = [(AC_GET_ADDRESS_PREFIXBY_CHAINID,[CL]),
-          (AC_GET_ALL_ADDRESS_PREFIX,[]),
-          (AC_GET_ENCRYPTED_ADDRESS_LIST, [CL]),
-          (BATCH_VALIDATE_BEGIN, [CL]),
-          (CLEAR_UNCONFIRMED_TX, [CL]),
-          (CM_CHAIN, [CL]),
-          (CM_GET_CROSS_CHAIN_SIMPLE_INFOS, []),
-          (CONNECTREADY, []),
-
-          (GET_REGISTERED_CHAIN_INFO_LIST, []),
-          (NW_GET_MAIN_NET_MAGIC_NUMBER, []),
-          (NW_CUR_TIME_MILLIS, []),
-          (CS_GET_CONSENSUS_CONFIG, []),
-
-          (CROSS_CHAIN_REGISTER_CHANGE, [CL]),
-          (CS_GET_AGENT_CHANGE_INFO, [CL]),
-          (CS_GET_CONSENSUS_CONFIG, [CL]),
-          (CS_GET_NODE_PACKING_ADDR, [CL]),
-          (NW_GET_SEEDS, [])]
+onesies = [(AC_GET_ALL_ADDRESS_PREFIX,[]),
+    (CM_GET_CROSS_CHAIN_SIMPLE_INFOS, []),
+    (REGISTER_MODULEDEPENDENCIES, []),
+    (NW_CUR_TIME_MILLIS, []),
+    (LISTENER_DEPENDENCIES_READY, []),
+    (GET_REGISTERED_CHAIN_INFO_LIST, []),
+    (NW_GET_MAIN_NET_MAGIC_NUMBER, []),
+    (CS_GET_CONSENSUS_CONFIG, []),
+    (NW_GET_SEEDS, []),
+    (CHECKUPDATES, []),
+    ]
 
 
-__ALL__ =[onesy_label, MSG_TYPE, ACCT_ADDRESS, onesies]
+#don't use: private
+# (REGISTER_API, []),
+# (CONNECTREADY, []),
+# (GET_CONSOLIDATEDAPI, [])
+
+onesies_b = [
+    (CM_CHAIN, [CL]),
+    (AC_GET_ENCRYPTED_ADDRESS_LIST, [CL]),
+    (BATCH_VALIDATE_BEGIN, [CL]),
+    (CLEAR_UNCONFIRMED_TX, [CL]),
+    (CROSS_CHAIN_REGISTER_CHANGE, [CL]),
+    (CS_GET_AGENT_CHANGE_INFO, [CL]),
+    (CS_GET_CONSENSUS_CONFIG, [CL]),
+    (CS_GET_NODE_PACKING_ADDR, [CL]),
+    (AC_ADDRESS_PREFIX, [CL]),
+    (AC_CREATE_CONTRACT_ACCT, [CL]) ]
 
 
-
-
+#
+# 1 ac_getAccountList
+# 1 ac_getAddressPrefixByChainId
+# 1 ac_getEncryptedAddressList
+# 1 batchValidateBegin
+# 1 clearUnconfirmTxs
+# 1 cm_chain
+# 1 crossChainRegisterChange
+# 1 cs_getAgentAddressList
+# 1 cs_getAgentChangeInfo
+# 1 cs_getConsensusConfig
+# 1 cs_getNodePackingAddress
+# 1 cs_getPackerInfo
+# 1 cs_getRoundInfo
+# 1 cs_getSeedNodeInfo
+# 1 cs_getWholeInfo
+# 1 cs_runChain
+# 1 cs_runMainChain
+# 1 cs_stopChain
+# 1 cs_updateAgentConsensusStatus
+# 1 getByzantineCount
+# 1 GetCPUInfo
+# 1 getStatus
+# 1 getVersion
+# 1 info
+# 1 latestBlock
+# 1 latestBlockHeader
+# 1 latestBlockHeaderPo
+# 1 latestHeight
+# 1 nw_delNodeGroup
+# 1 nw_getGroupByChainId
+# 1 nw_info
+# 1 nw_nodes
+# 1 nw_reconnect
+# 1 startallmodules
+# 1 tx_getSystemTypes
 
 # "ListAPI": #works!
 # "cm_getChainsSimpleInfo":   #works!

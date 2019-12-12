@@ -1,4 +1,14 @@
 #!usr/bin/python3.7
+# for applications using Connector module there are the  other 2 public and admin
+# private only for private means that only registered modules inside the system can use that method
+# public means that every  application can run that methid and admin means
+# that methids will be available in the admin port opened by connector
+# see, connector opens 2 ports to exrternal apps
+# one for normal use and another for admin
+# check module.ncf of Connector
+# port 0 means it is not openend by default
+
+
 
 # Messages have a common structure composed of six fields:
 # •  ProtocolVersion: version the service to understand,2 numbers, major/minor
@@ -7,6 +17,10 @@
 # •  TimeZone: The time zone where the request was originated
 # •  MessageType: The message type, these are specified on section 3
 # •  MessageData: A Json object with the message payload
+
+
+
+
 
 # the first object that should be sent - only if the negotiation is ok service may process
 # further requests -otherwise a NegotiateConnectionResponse object should be received with
@@ -30,7 +44,7 @@ from tornado.websocket import websocket_connect, WebSocketClientConnection  # We
 from nulsws_library import *
 from nulsws_USER_static_settings import *
 import nulsws_REQUEST as mw
-from nulsws_USER_CHOICE import MSG_TYPE, onesies
+from nulsws_USER_CHOICE import MSG_TYPE, onesies, onesies_b
 
 class NulsWebsocket(object):
     def __init__(self):
@@ -103,6 +117,7 @@ class NulsWebsocket(object):
             #main_request_d = mw.prep_REQUEST_ONESIE_NO_params(m_indx) #dict
             #self.commander(json_negotiate, main_request_d) #one at a time
             self.commander_onesies(json_negotiate, m_indx, onesies)  #big list
+            self.commander_onesies(json_negotiate, m_indx, onesies_b)  #big list
 
             # json_main_type = mw.prep_data_REQUEST_type5()
             # json_main_type = mw.prep_data_REQUEST_type7()
