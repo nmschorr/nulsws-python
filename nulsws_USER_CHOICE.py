@@ -22,9 +22,8 @@ ACCT_ADDRESS = ''
 from nulsws_CONSTANTS_API_names import *
 # note to coders - the __ALL__ list must be kept up to date and include all values in this file
 
-
 from nulsws_CONSTANTS_otherlabels import CHAINID_LABEL as CL
-from nulsws_CONSTANTS_API_names import *
+from nulsws_CONSTANTS_API_names import GET_REGISTERED_CHAIN_INFO_LIST
 
 onesies = [(AC_GET_ADDRESS_PREFIXBY_CHAINID,[CL]),
           (AC_GET_ALL_ADDRESS_PREFIX,[]),
@@ -33,18 +32,18 @@ onesies = [(AC_GET_ADDRESS_PREFIXBY_CHAINID,[CL]),
           (CLEAR_UNCONFIRMED_TX, [CL]),
           (CM_CHAIN, [CL]),
           (CM_GET_CROSS_CHAIN_SIMPLE_INFOS, []),
-          ("connectReady", []),
-          ("getRegisteredChainInfoList", []),
+          (CONNECTREADY, []),
+
+          (GET_REGISTERED_CHAIN_INFO_LIST, []),
           (NW_GET_MAIN_NET_MAGIC_NUMBER, []),
-          ("nw_currentTimeMillis", []),
+          (NW_CUR_TIME_MILLIS, []),
           (CS_GET_CONSENSUS_CONFIG, []),
 
           (CROSS_CHAIN_REGISTER_CHANGE, [CL]),
           (CS_GET_AGENT_CHANGE_INFO, [CL]),
-          ("c", [CL]), (CS_GET_CONSENSUS_CONFIG, [CL]),
+          (CS_GET_CONSENSUS_CONFIG, [CL]),
           (CS_GET_NODE_PACKING_ADDR, [CL]),
-          ("nw_getSeeds", []), ("nw_getSeeds", []),("nw_getSeeds", []),
-          ("nw_getSeeds", []), ("nw_getSeeds", []), ("nw_getSeeds", [])]
+          (NW_GET_SEEDS, [])]
 
 
 __ALL__ =[onesy_label, MSG_TYPE, ACCT_ADDRESS, onesies]

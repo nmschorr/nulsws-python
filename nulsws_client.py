@@ -25,9 +25,8 @@
 
 
 from asyncio import run as asyncio_run
-from asyncio import sleep as asyncio_sleep
-from tornado.websocket import websocket_connect  # WebSocketClosedError
-from tornado.websocket import WebSocketClientConnection
+from asyncio import sleep as a_sleep
+from tornado.websocket import websocket_connect, WebSocketClientConnection  # WebSocketClosedError
 from nulsws_library import *
 from nulsws_USER_static_settings import *
 import nulsws_REQUEST as mw
@@ -55,13 +54,13 @@ class NulsWebsocket(object):
 
     async def negotiate(self, json_negotiate, main_request):
         connection = await websocket_connect(websock_url)   # 1) CONNECT
-        await asyncio_sleep(self.s_time)
+        await a_sleep(self.s_time)
         while not connection:
-            await asyncio_sleep(self.s_time)
+            await a_sleep(self.s_time)
         jd = json_dumps(json_negotiate)
         json_prt(json_negotiate, "* * * First message going out- NEGOTIATE: ")
         await connection.write_message(jd)              # 2) WRITE
-        await asyncio_sleep(self.s_time)
+        await a_sleep(self.s_time)
 
         negotiate_result = await connection.read_message()    # 3 READ
             #await asyncio_sleep(self.s_time)
@@ -71,16 +70,16 @@ class NulsWebsocket(object):
 
     async def negotiate_onesies(self, json_negotiate, m_indx, onesies):
         connection = await websocket_connect(websock_url)  # 1) CONNECT
-        await asyncio_sleep(self.s_time)
+        await a_sleep(self.s_time)
         while not connection:
-            await asyncio_sleep(self.s_time)
+            await a_sleep(self.s_time)
         jd = json_dumps(json_negotiate)
         json_prt(json_negotiate, "* * * First message going out- NEGOTIATE: ")
         await connection.write_message(jd)  # 2) WRITE
-        await asyncio_sleep(self.s_time)
+        await a_sleep(self.s_time)
 
         negotiate_result = await connection.read_message()  # 3 READ
-        await asyncio_sleep(self.s_time)
+        await a_sleep(self.s_time)
         json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
         myprint("------end Negotiate----------------------------------------")
 

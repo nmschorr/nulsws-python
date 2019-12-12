@@ -4,7 +4,6 @@ from nulsws_library import get_TOP_SECTION
 from nulsws_CONSTANTS_otherlabels import *
 from nulsws_USER_static_settings import *
 from nulsws_USER_settings import *
-from nulsws_USER_CHOICE import onesy_label
 
 # -----------prep_NEGOTIATE_data_type1--------------------------------------#
 def prep_NEGOTIATE_data_type1(msg_indx):   #return dict

@@ -1,13 +1,13 @@
 
 
 
--------! ! ! REGULAR response received: 
-a={
-   "MessageData": {
-      "RequestID": "157588462348569-1",
-      "ResponseComment": "",
-      "ResponseData": {
-         "ListAPI": {
+#  -------! ! ! REGULAR response received:
+api_dict = {
+   # "MessageData": {
+   #    "RequestID": "157588462348569-1",
+   #    "ResponseComment": "",
+   #    "ResponseData": {
+          "ListAPI": {
             "Nuls.RegisterAPI": {
                "MethodDescription": "Register API",
                "MethodMinEvent": "1",
@@ -6686,17 +6686,17 @@ a={
                ]
             }
          }
-      },
-      "ResponseErrorCode": "",
-      "ResponseMaxSize": "0",
-      "ResponseProcessingTime": "1",
-      "ResponseStatus": 0
-   },
-   "MessageID": "1575848916688-8",
-   "MessageType": "Response",
-   "TimeZone": "-8",
-   "Timestamp": "1575884636505"
-}
+#       },
+#       "ResponseErrorCode": "",
+#       "ResponseMaxSize": "0",
+#       "ResponseProcessingTime": "1",
+#       "ResponseStatus": 0
+#    },
+#    "MessageID": "1575848916688-8",
+#    "MessageType": "Response",
+#    "TimeZone": "-8",
+#    "Timestamp": "1575884636505"
+# }
 --------------end Regular request--------------------------------
 
 Process finished with exit code 0
@@ -13508,19 +13508,21 @@ msg just recieved
                   }
                ]
             }
-         }
-      },
-      "ResponseErrorCode": "",
-      "ResponseMaxSize": "0",
-      "ResponseProcessingTime": "1",
-      "ResponseStatus": 0
-   },
-   "MessageID": "1575848916688-8",
-   "MessageType": "Response",
-   "TimeZone": "-8",
-   "Timestamp": "1575884636505"
-}
---------------end Regular request--------------------------------
+          }
+       }
 
-Process finished with exit code 0
+
+#       "ResponseErrorCode": "",
+#       "ResponseMaxSize": "0",
+#       "ResponseProcessingTime": "1",
+#       "ResponseStatus": 0
+   #},
+#    "MessageID": "1575848916688-8",
+#    "MessageType": "Response",
+#    "TimeZone": "-8",
+#    "Timestamp": "1575884636505"
+# }
+
+
+
 
