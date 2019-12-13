@@ -42,9 +42,9 @@ from asyncio import run as asyncio_run
 from asyncio import sleep as a_sleep
 from tornado.websocket import websocket_connect, WebSocketClientConnection  # WebSocketClosedError
 from nulsws_library import *
-from nulsws_USER_static_settings import *
+from UserSettings.nulsws_USER_static_settings import *
 import nulsws_REQUEST as mw
-from nulsws_USER_CHOICE import MSG_TYPE, onesies, onesies_b
+from UserSettings.nulsws_USER_CHOICE import MSG_TYPE, onesies, onesies_b
 
 class NulsWebsocket(object):
     def __init__(self):

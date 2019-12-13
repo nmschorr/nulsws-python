@@ -14,6 +14,25 @@
     Receiving a "1" means success, "0" is failure
 """
 
+from Constants.nulsws_CONSTANTS_params import CHAINID
+
+AC_GET_ACCOUNT_LIST_user_settings_list = [{ CHAINID: 1} ]
+AC_ADDRESS_PREFIX_user_settings_list = [{ CHAINID: 1} ]
+AC_CREATE_ACCOUNT_user_settings_list = [{ CHAINID: 1} ]
+AC_CREATE_CONTRACT_ACCT_user_settings_list = [{ CHAINID: 1}]
+AC_CREATE_MULTISIGN_ACCT_user_settings_list = []
+AC_CREATE_MULTISIGN_TRANSFER_user_settings_list = []
+AC_CREATE_OFFLINE_ACCT_user_settings_list = []
+AC_EXPORTACCOUNTKEYSTORE_user_settings_list = []
+AC_EXPORT_KEYSTORE_JSON_user_settings_list = []
+AC_EXPORT_ACCT_KEYSTORE_user_settings_list = []
+AC_GET_ACCOUNT_LIST_user_settings_list = []
+AC_GET_ADDRESS_LIST_user_settings_list = []
+
+
+
+
+
 #  Message Type - string
 msg_type_req = "3"
 address_val = "NULSd6Hggvrij3MPW9QTHJGBv7uiyMKw41i7t"  ##

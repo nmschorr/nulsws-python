@@ -17,9 +17,9 @@
 
 #  Message Type - string
 MSG_TYPE = 3
-from nulsws_CONSTANTS_API_names import *
-from nulsws_CONSTANTS_otherlabels import CHAINID_LABEL as CL
-from nulsws_CONSTANTS_API_names import GET_REGISTERED_CHAIN_INFO_LIST
+from Constants.nulsws_CONSTANTS_API_names import *
+from Constants.nulsws_CONSTANTS_otherlabels import CHAINID_LABEL as CL
+from Constants.nulsws_CONSTANTS_API_names import GET_REGISTERED_CHAIN_INFO_LIST
 
 onesies = [(AC_GET_ALL_ADDRESS_PREFIX,[]),
     (CM_GET_CROSS_CHAIN_SIMPLE_INFOS, []),
