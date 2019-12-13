@@ -348,6 +348,27 @@ __ALL__ = [AC_ADDRESS_PREFIX, AC_CREATE_ACCOUNT, AC_CREATE_CONTRACT_ACCT, AC_CRE
       TX_PACKABLETXS, TX_REGISTER, TX_ROLLBACK, TX_SAVE, TX_THREAD, TX_VERIFY_TX,
       UPDATE_CHAIN_ASSET, VERIFY_COINDATA, VERIFY_COINDATA_BATCH_PACKAGED, WITHDRAWVALID]
 
+# possible parameters - last count : 134
+
+PARAMS = ['address', 'addressPrefix', 'addressType', 'agentAddress', 'agentHash', 'algorithm', 'alias',
+          'allHits', 'amount', 'args', 'assetChainId', 'assetId', 'assetIds', 'assetInfoList', 'assetName',
+          'assets', 'begin', 'block', 'blockHash', 'blockHeader', 'blockHeight', 'blockTime', 'blockType',
+          'byteCount', 'chainId', 'chainName', 'circulateChainId', 'cmd', 'cmdRegisterList', 'command',
+          'commissionRate', 'contractAddress', 'contractBalance', 'contractCode', 'contractList',
+          'contractNonce', 'contractSender', 'count', 'data', 'decimalPlaces', 'delList', 'deposit',
+          'download', 'end', 'endHeight', 'endTimestamp', 'evidenceHeader', 'excludeNodes', 'extend',
+          'extendsData', 'fRestartIfRunning', 'filePath', 'gasLimit', 'hash', 'hashList', 'headerList',
+          'height', 'initNumber', 'inputs', 'intCount', 'interval', 'isConfirmed', 'isCross', 'isCrossGroup',
+          'jarFileData', 'joinAgentHash', 'keyStore', 'keyWord', 'lMaxCPUs', 'lModuleName', 'lModuleVersion',
+          'list', 'listFrom', 'listTo', 'longCount', 'magicNumber', 'maxIn', 'maxOut', 'maxSignatureCount',
+          'maxTxDataSize', 'messageBody', 'methodDesc', 'methodName', 'minAvailableCount',
+          'minAvailableNodeNum', 'minSigns', 'moduleCode', 'newPassword', 'nodeId', 'nodes', 'outputs',
+          'overwrite', 'packaging', 'packingAddress', 'pageNumber', 'pageSize', 'password', 'percent',
+          'preStateRoot', 'prefixList', 'priKey', 'price', 'protocolCmds', 'protocolVersion', 'pubKey',
+          'pubKeys', 'registerTime', 'remark', 'rewardAddress', 'role', 'round', 'seedIps', 'sender',
+          'shortCount', 'sig', 'signAddress', 'signPassword', 'signatureBFTRatio', 'size', 'startHeight',
+          'startPage', 'state', 'stateRoot', 'status', 'symbol', 'toAddress', 'tx', 'txHash', 'txHashList',
+          'txList', 'type', 'usable', 'value', 'verifierList']
 
 # to generate the list of constants from the dict:
 # q  = '"'
