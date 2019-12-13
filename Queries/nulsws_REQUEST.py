@@ -1,6 +1,6 @@
 #!/usr/bin/python3.7
 
-from nulsws_library import get_TOP_SECTION
+from Libraries.nulsws_library import get_TOP_SECTION
 from Constants.nulsws_CONSTANTS_otherlabels import *
 from UserSettings.nulsws_USER_static_settings import *
 from UserSettings.nulsws_USER_settings import *
