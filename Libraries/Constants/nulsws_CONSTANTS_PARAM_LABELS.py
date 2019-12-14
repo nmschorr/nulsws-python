@@ -156,5 +156,4 @@ __ALL__ = ['ADDRESS', 'ADDRESSPREFIX', 'ADDRESSTYPE', 'AGENTADDRESS', 'AGENTHASH
            'PROTOCOLVERSION', 'PUBKEY', 'PUBKEYS', 'REGISTERTIME', 'REMARK', 'REWARDADDRESS', 'ROLE', 'ROUND',
            'SEEDIPS', 'SENDER', 'SHORTCOUNT', 'SIG', 'SIGNADDRESS', 'SIGNATUREBFTRATIO', 'SIGNPASSWORD',
            'SIZE', 'STARTHEIGHT', 'STARTPAGE', 'STATE', 'STATEROOT', 'STATUS', 'SYMBOL', 'TOADDRESS', 'TX',
-           'TXHASH', 'TXHASHLIST', 'TXLIST', 'TYPE', 'USABLE', 'VALUE', 'VERIFIERLIST', '__builtins__',
-           '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__']
+           'TXHASH', 'TXHASHLIST', 'TXLIST', 'TYPE', 'USABLE', 'VALUE', 'VERIFIERLIST']
