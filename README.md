@@ -6,7 +6,7 @@ This is the repository for the (as yet unfinished) Python 3.7 libs - enabling co
  blockchain modules and platform via Nulstar and Websockets.
 
 
-###JSON and WebSockets
+### JSON and WebSockets
 Every Nuls
 microservice is both a client and a server. Therefore a full-duplex, bi-directional
 communication protocol is needed. It needs to implement a special type
