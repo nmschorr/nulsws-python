@@ -71,3 +71,37 @@ def prep_REQUEST_ONESIE_NO_params_or_just_ONE(msg_indx, api_name):  # requesttyp
     return message_section_TOP   # return dict
 
 # ----------- end library file --------------------------------------#
+
+
+
+
+
+
+# ---------------- Example -------------------------------------------------------------------
+
+#
+# Example of type 3 message:
+# {
+#     "ProtocolVersion": "0.1.0"
+#     "MessageID": m_id,
+#     "TimeZone": tzone,
+#     "Timestamp": t_stamp
+#     "MessageType": "Request",
+#     "MessageData": {
+#         "RequestType": "1",
+#         "SubscriptionEventCounter": "0",
+#         "SubscriptionPeriod": "1",
+#         "SubscriptionRange": "[100]",
+#         "ResponseMaxSize": "0",
+#         "RequestMethods": [
+#           {
+#             "GetBalance": {
+#               "Address": "tNULSeBaMnrs6JKrCy6TQdzYJZkMZJDng7QAsD"
+#             }
+#           },
+#           {
+#             "GetHeight": {}
+#           }
+#         ]
+#        }
+#     }

@@ -32,28 +32,28 @@ RUN_LIST = [
 def get_my_parameter_vals(thevar):
 #LATEST_BLOCK CHAINID needs CHAINID only
     if thevar == LATEST_BLOCK:
-        answer = mychainid
+        t_chain_id = mychainid,
     elif thevar ==  LATEST_BLOCKHEADER_PO:
-        answer = mychainid
+        t_chain_id = mychainid
     elif thevar ==  CM_CHAIN:
-        answer = mychainid
+        t_chain_id = mychainid
     elif thevar ==  AC_GET_ENCRYPTED_ADDRESS_LIST:
-        answer = mychainid
+        t_chain_id = mychainid
     elif thevar ==  AC_ADDRESS_PREFIX:
-        answer = mychainid
+        t_chain_id = mychainid
     elif thevar == BATCH_VALIDATE_BEGIN:
-        answer = mychainid
+        t_chain_id = mychainid
     elif thevar == CLEAR_UNCONFIRMED_TX:
-        answer = mychainid
+        t_chain_id = mychainid
     elif thevar == CS_GET_AGENT_CHANGE_INFO:
-        answer = mychainid
+        t_chain_id = mychainid
     elif thevar == CS_GET_CONSENSUS_CONFIG:
-        answer = mychainid
+        t_chain_id = mychainid
     elif thevar == CS_GET_NODE_PACKING_ADDR:
-        answer = mychainid
+        t_chain_id = mychainid
     elif thevar == AC_ADDRESS_PREFIX:
-        answer = mychainid
-    return answer
+        t_chain_id = mychainid
+    return t_chain_id
 
 
 BATCH_VALIDATE_BEGIN, CLEAR_UNCONFIRMED_TX, CS_GET_AGENT_CHANGE_INFO, CS_GET_CONSENSUS_CONFIG,

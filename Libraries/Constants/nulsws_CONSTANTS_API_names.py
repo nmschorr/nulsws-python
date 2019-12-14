@@ -330,3 +330,34 @@ __ALL__ = ['AC_ADDRESS_PREFIX', 'AC_CREATE_ACCOUNT', 'AC_CREATE_CONTRACT_ACCOUNT
            'TX_HASH', 'TX_HASH_LIST', 'TX_LIST', 'TX_NEWTX', 'TX_PACKABLE_TXS', 'TX_REGISTER', 'TX_ROLLBACK',
            'TX_SAVE', 'TX_VALIDATOR', 'TX_VERIFY_TX', 'UPDATE_CHAIN_ASSET', 'VERIFY_COINDATA',
            'VERIFY_COINDATA_BATCH_PACKAGED', 'WITHDRAW_VALID']
+
+
+
+# ---------------- Example -------------------------------------------------------------------
+
+#
+# Example of type 3 message:
+# {
+#     "ProtocolVersion": "0.1.0"
+#     "MessageID": m_id,
+#     "TimeZone": tzone,
+#     "Timestamp": t_stamp
+#     "MessageType": "Request",
+#     "MessageData": {
+#         "RequestType": "1",
+#         "SubscriptionEventCounter": "0",
+#         "SubscriptionPeriod": "1",
+#         "SubscriptionRange": "[100]",
+#         "ResponseMaxSize": "0",
+#         "RequestMethods": [
+#           {
+#             "GetBalance": {
+#               "Address": "tNULSeBaMnrs6JKrCy6TQdzYJZkMZJDng7QAsD"
+#             }
+#           },
+#           {
+#             "GetHeight": {}
+#           }
+#         ]
+#        }
+#     }

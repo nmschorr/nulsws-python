@@ -117,3 +117,36 @@ def json_prt(json_str, str_msg, debug=True):
             print(aname + str(json_dumps(json_str, indent=3)))
         else:
             myprint("nothing returned")
+
+
+
+
+
+# ---------------- Example -------------------------------------------------------------------
+
+#
+# Example of type 3 message:
+# {
+#     "ProtocolVersion": "0.1.0"
+#     "MessageID": m_id,
+#     "TimeZone": tzone,
+#     "Timestamp": t_stamp
+#     "MessageType": "Request",
+#     "MessageData": {
+#         "RequestType": "1",
+#         "SubscriptionEventCounter": "0",
+#         "SubscriptionPeriod": "1",
+#         "SubscriptionRange": "[100]",
+#         "ResponseMaxSize": "0",
+#         "RequestMethods": [
+#           {
+#             "GetBalance": {
+#               "Address": "tNULSeBaMnrs6JKrCy6TQdzYJZkMZJDng7QAsD"
+#             }
+#           },
+#           {
+#             "GetHeight": {}
+#           }
+#         ]
+#        }
+#     }
