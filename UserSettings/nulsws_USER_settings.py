@@ -13,22 +13,50 @@
 
     Receiving a "1" means success, "0" is failure
 """
+from Libraries.Constants.nulsws_CONSTANTS_API_names import *
 
-from Constants.nulsws_CONSTANTS_params import CHAINID
+#change settings to suit
+#return a list of vals for each constant
+mychainid = 1
+MSG_TYPE = 3
 
-AC_GET_ACCOUNT_LIST_user_settings_list = [{ CHAINID: 1} ]
-AC_ADDRESS_PREFIX_user_settings_list = [{ CHAINID: 1} ]
-AC_CREATE_ACCOUNT_user_settings_list = [{ CHAINID: 1} ]
-AC_CREATE_CONTRACT_ACCT_user_settings_list = [{ CHAINID: 1}]
-AC_CREATE_MULTISIGN_ACCT_user_settings_list = []
-AC_CREATE_MULTISIGN_TRANSFER_user_settings_list = []
-AC_CREATE_OFFLINE_ACCT_user_settings_list = []
-AC_EXPORTACCOUNTKEYSTORE_user_settings_list = []
-AC_EXPORT_KEYSTORE_JSON_user_settings_list = []
-AC_EXPORT_ACCT_KEYSTORE_user_settings_list = []
-AC_GET_ACCOUNT_LIST_user_settings_list = []
-AC_GET_ADDRESS_LIST_user_settings_list = []
+# user adjustable
+RUN_LIST = [
+    AC_GET_ENCRYPTED_ADDRESS_LIST,
+    AC_ADDRESS_PREFIX,
+    CM_CHAIN,BATCH_VALIDATE_BEGIN, CLEAR_UNCONFIRMED_TX, CS_GET_AGENT_CHANGE_INFO, CS_GET_CONSENSUS_CONFIG,
+    CS_GET_NODE_PACKING_ADDR, AC_ADDRESS_PREFIX ]
 
+
+def get_my_parameter_vals(thevar):
+#LATEST_BLOCK CHAINID needs CHAINID only
+    if thevar == LATEST_BLOCK:
+        answer = mychainid
+    elif thevar ==  LATEST_BLOCKHEADER_PO:
+        answer = mychainid
+    elif thevar ==  CM_CHAIN:
+        answer = mychainid
+    elif thevar ==  AC_GET_ENCRYPTED_ADDRESS_LIST:
+        answer = mychainid
+    elif thevar ==  AC_ADDRESS_PREFIX:
+        answer = mychainid
+    elif thevar == BATCH_VALIDATE_BEGIN:
+        answer = mychainid
+    elif thevar == CLEAR_UNCONFIRMED_TX:
+        answer = mychainid
+    elif thevar == CS_GET_AGENT_CHANGE_INFO:
+        answer = mychainid
+    elif thevar == CS_GET_CONSENSUS_CONFIG:
+        answer = mychainid
+    elif thevar == CS_GET_NODE_PACKING_ADDR:
+        answer = mychainid
+    elif thevar == AC_ADDRESS_PREFIX:
+        answer = mychainid
+    return answer
+
+
+BATCH_VALIDATE_BEGIN, CLEAR_UNCONFIRMED_TX, CS_GET_AGENT_CHANGE_INFO, CS_GET_CONSENSUS_CONFIG,
+CS_GET_NODE_PACKING_ADDR, AC_ADDRESS_PREFIX
 
 
 
@@ -52,9 +80,10 @@ res_max_size = 0
 __ALL__ = [address_val, msg_type_req, compress_rate_VALUE, subscriptionRange, request_int, sub_event_ct,
            sub_period_int, sub_range, res_max_size, RequestType]
 
-# NULSd6HghM9Z9XytwZEHGDGRJLnNR5ybiy5gt
-# NULSd6Hge7xHDnvsSpnzbR2gWHd31zJ1How11
-# -----------------------------------------------------------------------------------
+
+
+
+# ---------------- Example -------------------------------------------------------------------
 
 #
 # Example of type 3 message:

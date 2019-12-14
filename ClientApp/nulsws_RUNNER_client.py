@@ -43,8 +43,9 @@ from asyncio import sleep as a_sleep
 from tornado.websocket import websocket_connect, WebSocketClientConnection  # WebSocketClosedError
 from Libraries.nulsws_library import *
 from UserSettings.nulsws_USER_static_settings import *
-from Queries import nulsws_REQUEST as mw
-from UserSettings.nulsws_USER_CHOICE import MSG_TYPE, onesies, onesies_b
+from UserSettings.nulsws_USER_settings import MSG_TYPE, RUN_LIST
+from Libraries import nulsws_REQUEST as mw
+
 
 class NulsWebsocket(object):
     def __init__(self):
@@ -82,7 +83,7 @@ class NulsWebsocket(object):
         myprint("------end Negotiate----------------------------------------")
         await self.REGULAR_req(connection, main_request)
 
-    async def negotiate_onesies(self, json_negotiate, m_indx, onesies):
+    async def negotiate_onesies(self, json_negotiate, m_indx, RUN_LIST):
         connection = await websocket_connect(websock_url)  # 1) CONNECT
         await a_sleep(self.s_time)
         while not connection:
@@ -97,15 +98,15 @@ class NulsWebsocket(object):
         json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
         myprint("------end Negotiate----------------------------------------")
 
-        for onesie in onesies:
-            main_request = mw.prep_REQUEST_ONESIE_NO_params(m_indx, onesie) #dict
+        for onesie in RUN_LIST:
+            main_request = mw.prep_REQUEST_ONESIE_NO_params_or_just_ONE(m_indx, onesie)
             await self.REGULAR_req(connection, main_request)
 
     def commander(self, j_negotiate, main_request):
         asyncio_run(self.negotiate(j_negotiate, main_request))  # starts event
 
-    def commander_onesies(self, j_negotiate, m_indx, onesies):  #multipls
-        asyncio_run(self.negotiate_onesies(j_negotiate, m_indx, onesies)) # starts event
+    def commander_onesies(self, j_negotiate, m_indx, RUN_LIST):  #multipls
+        asyncio_run(self.negotiate_onesies(j_negotiate, m_indx, RUN_LIST)) # starts event
 
     def main(self, mtpe):
         # we always do type 1 just before anything
@@ -116,8 +117,8 @@ class NulsWebsocket(object):
         if mtpe == 3:
             #main_request_d = mw.prep_REQUEST_ONESIE_NO_params(m_indx) #dict
             #self.commander(json_negotiate, main_request_d) #one at a time
-            self.commander_onesies(json_negotiate, m_indx, onesies)  #big list
-            self.commander_onesies(json_negotiate, m_indx, onesies_b)  #big list
+            #self.commander_onesies(json_negotiate, m_indx, onesies)  #big list
+            self.commander_onesies(json_negotiate, m_indx, RUN_LIST)  #big list
 
             # json_main_type = mw.prep_data_REQUEST_type5()
             # json_main_type = mw.prep_data_REQUEST_type7()
