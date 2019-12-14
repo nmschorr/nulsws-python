@@ -7,4 +7,6 @@ bks
 tryjson.py
 UnusedSoFar/data.json
 UnusedSoFar
-/ApiDataAnalysis/
+ApiDataAnalysis/*
+ApiDataAnalysis
+
