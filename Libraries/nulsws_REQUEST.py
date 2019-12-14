@@ -39,11 +39,30 @@ def get_REQ_MIDDLE(bottom_part, mid_section_vals=None):   #return dict
 def prep_REQUEST_ONESIE_NO_params_or_just_ONE(msg_indx, api_name):  # requesttype 2 - return ack +
     # response
     # onesie either has a second element of a list, or not
-    MSG_TYPE = 3
+    from .Constants.nulsws_CONSTANTS_PARAM_LOOKUP import Required_Params
 
-    msg_section_bottom = {
-            api_name :
-                { CHAINID_LABEL : 1 }   # later substitute
+    req_params = Required_Params.get(api_name)
+
+    MSG_TYPE = 3
+    params = get_my_parameter_vals(api_name)
+    plen = len(params)
+    if plen == 0:
+        msg_section_bottom = {
+            api_name:
+                {}  # later substitute, needs to be fixed for other vals
+        }
+    if plen == 1:
+        msg_section_bottom = {
+                api_name :
+                    { CHAINID_LABEL : params[0] }   # later substitute, needs to be fixed for other vals
+            }
+
+    if plen == 2:
+        msg_section_bottom = {
+            api_name:
+                {CHAINID_LABEL: params[0]}  # later substitute, needs to be fixed for other vals
+           # {NextParamLabel: params[1]}  # later substitute, needs to be fixed for other vals
+
         }
 
     msg_section_MIDDLE = get_REQ_MIDDLE(msg_section_bottom)

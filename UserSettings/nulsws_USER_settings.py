@@ -17,7 +17,8 @@ from Libraries.Constants.nulsws_CONSTANTS_API_names import *
 
 #change settings to suit
 #return a list of vals for each constant
-mychainid = 1
+mychain = "1"
+mychainid = list(mychain)
 MSG_TYPE = 3
 
 # user adjustable
