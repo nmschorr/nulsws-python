@@ -1,18 +1,16 @@
 #!/usr/bin/python3.7
 
 from Libraries.nulsws_library import get_TOP_SECTION
-from UserSettings.nulsws_USER_static_settings import *
-from UserSettings.nulsws_USER_settings import *
+from UnusedSoFar.nulsws_USER_static_settings import *
+from UnusedSoFar.nulsws_USER_settings import *
 from Libraries.Constants.nulsws_CONSTANTS_otherlabels import *
-from Libraries.Constants.nulsws_CONSTANTS_API_LABELS import *
-from Libraries.Constants.nulsws_CONSTANTS_PARAM_LABELS import *
-from UserSettings.nulsws_USER_PARAMS import user_calls_list as uclist
+from UserSettings.nulsws_USER_PARAMS import USER_CALLS_WITH_PARAMS as uclist
 
 
 
 
 # -----------prep_NEGOTIATE_data_type1--------------------------------------#
-def prep_NEGOTIATE_data_type1(msg_indx):   #return dict
+def prep_NEGOTIATE_request(msg_indx):   #return dict
         # this section has any number of items depending on the msg type
     top_sect = get_TOP_SECTION(1, msg_indx)
     data_part = { msg_data_label: {
@@ -41,48 +39,42 @@ def get_REQ_MIDDLE(bottom_part, mid_section_vals=None):   #return dict
     return REQ_MIDDLE   #dict
 
 # -----------prep_REQUEST_ONESIE (request) --------------------------------------#
-def prep_REQUEST_ONESIE_NO_params_or_just_ONE(msg_indx, api_name_tup):  # requesttype 2 - return ack +
+def prep_REQUEST(msg_indx, api_name_tup):  # requesttype 2 - return ack +
     # response
     # onesie either has a second element of a list, or not
     # user_params_list = uc.user_parameters
     api_name = api_name_tup[0]
     api_name_word = api_name_tup[1]
-    myvarslist = []
+    myparams = []
+    msg_section_bottom = ''
 
     for i in uclist:
         if i[0] == api_name_word:
-            myvarslist = i[1]
-            for tup in myvarslist:
+            myparams = i[1]
+            for tup in myparams:
                 print(tup[0], tup[1])
-                break
+            break  # found it
 
-    msg_section_bottom = ''
-    params_len = len(myvarslist)
+    params_len = len(myparams)
+    print("params len: ", params_len)
     if params_len == 0:
+        print("doing a 0 params", api_name_tup, ": ", myparams)
         msg_section_bottom = {
-            api_name:
+            api_name_word:
                 {}  # later substitute, needs to be fixed for other vals
         }
-    if params_len == 1:
-        msg_section_bottom = {
-            api_name :
-                { myvarslist[0][0] : myvarslist[0][1] }   # later substitute, needs to be fixed for
-            }
+    else:
+        msg_section_bottom = " { " + api_name_word + ": "
+        for x in range(params_len):
+            p1 = str(myparams[x][0])
+            p2 = str(myparams[x][1])
+            openq = "{ "
+            closeq = " } "
+            colm = ": "
+            ddline = f'{openq}{p1}{colm}{p2}{closeq}'
+            msg_section_bottom = msg_section_bottom + ddline
+            #print()
 
-    if params_len == 2:
-        msg_section_bottom = {
-            api_name:
-                [ { myvarslist[0][0]: myvarslist[0][1] },  # later substitute, needs to be fixed for
-                { myvarslist[1][0]: myvarslist[1][1] }]  # later substitute, needs to be fixed for
-
-        }
-    if params_len == 3:
-        msg_section_bottom = {
-            api_name:
-                [ { myvarslist[0][0]: myvarslist[0][1] },  # later substitute, needs to be fixed for
-                { myvarslist[1][0]: myvarslist[1][1] },  # later substitute, needs to be fixed for
-                { myvarslist[2][0]: myvarslist[2][1]}]  # later substitute, needs to be fixed for
-        }
     msg_section_MIDDLE = get_REQ_MIDDLE(msg_section_bottom)
     message_section_TOP = get_TOP_SECTION(MSG_TYPE, msg_indx)
     message_section_TOP.update(msg_section_MIDDLE)

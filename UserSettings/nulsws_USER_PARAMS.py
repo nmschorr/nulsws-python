@@ -7,17 +7,29 @@ by Nancy Schorr for Nuls, None),
 """
 from Libraries.Constants.nulsws_CONSTANTS_API_LABELS import *
 from Libraries.Constants.nulsws_CONSTANTS_PARAM_LABELS import *
-from UserSettings.nulsws_CONSTANTS_PARAM_userwords import *
+from UserSettings.nulsws_USER_SETTINGS import *
 
 # change settings to suit
 # return a list of vals for each constant
 # LATEST_BLOCK CHAINID needs CHAINID only
+# settings are in this file and in nulsws_CONSTANTS_PARAMS
+myshortmsg = "Empty"
+myzero = 0
+myfalse = False
+mytrue = True
+myaddress = "NULSd6Hggvrij3MPW9QTHJGBv7uiyMKw41i7t"  ##
+myrequesttype = 2  # two is ack and a response, 1 is just response
+mycompresstype = "zlib"
+mycompressrate= 0  # 0-9
+mysubscriptionrange = 0
+myrequestint = 1
+mysubeventct = 0
+mysubperiodint = 1
+mysubrange = ""
+myresmaxsize = 0
+mynoremark = "No remarks"
 
-
-
-# a list of  lists of tuples
-
-user_calls_list = [
+USER_CALLS_WITH_PARAMS = [
 [
 REGISTER_API, None],
 [
@@ -41,7 +53,7 @@ AC_CREATE_MULTI_SIGN_TRANSFER, [
 (CHAINID, my_chainid),
 (INPUTS, None),
 (OUTPUTS, None),
-(REMARK, None),
+(REMARK, mynoremark),
 (SIGNADDRESS, None),
 (SIGNPASSWORD, my_password)
 ]], 
@@ -139,7 +151,7 @@ AC_IMPORT_ACCOUNT_BY_PRIKEY, [
 (CHAINID, my_chainid),
 (PASSWORD, my_password),
 (PRIKEY, None),
-(OVERWRITE, None)
+(OVERWRITE, mytrue)
 ]], 
 
 [
@@ -189,7 +201,7 @@ AC_SET_MULTISIGN_ALIAS, [
 AC_SET_REMARK, [
 (CHAINID, my_chainid),
 (ADDRESS, my_address),
-(REMARK, None)
+(REMARK, mynoremark)
 ]], 
 
 [
@@ -221,7 +233,7 @@ AC_TRANSFER, [
 (CHAINID, my_chainid),
 (INPUTS, None),
 (OUTPUTS, None),
-(REMARK, None)
+(REMARK, mynoremark)
 ]], 
 
 [
@@ -383,7 +395,7 @@ CM_GET_CHAIN_ASSET, [
 [
 CM_GET_CIRCULATE_CHAIN_ASSET, [
 (CIRCULATECHAINID, None),
-(ASSETCHAINID, None),
+(ASSETCHAINID, my_chainid),
 (ASSETID, None)
 ]], 
 
@@ -421,7 +433,7 @@ CREATE_CROSSTX, [
 (CHAINID, my_chainid),
 (LISTFROM, None),
 (LISTTO, None),
-(REMARK, None)
+(REMARK, mynoremark)
 ]], 
 
 [
@@ -918,8 +930,8 @@ GET_REGISTERED_CHAIN_INFO_LIST, [
 [
 GET_ROUND_BLOCKHEADERS, [
 (CHAINID, my_chainid),
-(HEIGHT, None),
-(ROUND, None)
+(HEIGHT, myzero),
+(ROUND, myzero)
 ]], 
 
 [
@@ -963,7 +975,7 @@ LISTENER_DEPENDENCIES_READY, []
 
 MSG_PROCESS,[
 (CHAINID, my_chainid),
-( NODEID, None),
+( NODEID, myzero),
 ( CMD, None),
 (MESSAGEBODY, None)
 ]], 
@@ -971,21 +983,21 @@ MSG_PROCESS,[
 [
 NEW_BLOCK_HEIGHT, [
 (CHAINID, my_chainid),
-(HEIGHT,None)
+(HEIGHT, myzero)
 ]], 
 
 [
 NW_ACTIVE_CROSS, [
 (CHAINID, my_chainid),
-( MAXOUT, None),
-( MAXIN, None),
+( MAXOUT, myzero),
+( MAXIN, myzero),
 ( SEEDIPS, None)
 ]], 
 
 [
 NW_ADD_NODES, [
 (CHAINID, my_chainid),
-( ISCROSS, None),
+( ISCROSS, myfalse),
 ( NODES, None)
 ]], 
 
@@ -993,20 +1005,20 @@ NW_ADD_NODES, [
 NW_BROADCAST, [
 ( CHAINID, my_chainid),
 ( EXCLUDENODES, None),
-( MESSAGEBODY, None),
+( MESSAGEBODY, myshortmsg),
 ( COMMAND, None),
-( ISCROSS, None),
-( PERCENT, None)
+( ISCROSS, myfalse),
+( PERCENT, myzero)
 ]], 
 
 [
 NW_CREATE_NODEGROUP, [
 ( CHAINID, my_chainid),
-( MAGICNUMBER, None),
-( MAXOUT, None),
-( MAXIN, None),
-( MINAVAILABLECOUNT, None),
-    (ISCROSSGROUP, None)
+( MAGICNUMBER, myzero),
+( MAXOUT, myzero),
+( MAXIN, myzero),
+( MINAVAILABLECOUNT, myzero),
+    (ISCROSSGROUP, myfalse)
 ]], 
 
 [
@@ -1018,7 +1030,7 @@ NW_DEL_NODES, [
 [
 NW_GET_CHAIN_CONNECT_AMOUNT, [
 ( CHAINID, my_chainid),
-( ISCROSS, None)
+( ISCROSS, myfalse)
 ]], 
 
 [
@@ -1028,22 +1040,22 @@ NW_GET_GROUP_BY_CHAINID,[
     
 [
 NW_GET_GROUPS, [
-( STARTPAGE, None),
-( PAGESIZE, None)
+( STARTPAGE, myfalse),
+( PAGESIZE, myzero)
 ]],
 
 [
 NW_GET_NODES, [
 ( CHAINID, my_chainid),
 ( STATE, None),
-( ISCROSS, None),
-( STARTPAGE, None),
-( PAGESIZE, None)
+( ISCROSS, myfalse),
+( STARTPAGE, myzero),
+( PAGESIZE, myzero)
 ]], 
 
 [
-NW_GET_SEEDS, [
-]], 
+NW_GET_SEEDS, [], 
+],
 
 [
 NW_INFO, [
@@ -1070,7 +1082,7 @@ NW_RECONNECT, [
  NW_SEND_PEERS_MSG, [
 ( CHAINID, my_chainid),
    ( NODES, None),
-   ( MESSAGEBODY, None),
+   ( MESSAGEBODY, myshortmsg),
    ( COMMAND, None)
 ]],
 
@@ -1084,10 +1096,10 @@ NW_UPDATE_NODE_INFO, [
 
 [
 PARAM_TEST_CMD, [
-( INTCOUNT, None),
+( INTCOUNT, myzero),
 ( BYTECOUNT, my_count),
-( SHORTCOUNT, None),
-( LONGCOUNT, None)
+( SHORTCOUNT, myzero),
+( LONGCOUNT, myzero)
 ]], 
 
 [
@@ -1106,54 +1118,54 @@ RECEIVE_PACKING_BLOCK, [
 RECV_CIRCULAT, [
 ( CHAINID, my_chainid),
 ( NODEID, None),
-( MESSAGEBODY, None)
+( MESSAGEBODY, myshortmsg)
 ]], 
 
 [
 RECV_CTX, [
 ( CHAINID, my_chainid),
 ( NODEID, None),
-( MESSAGEBODY, None)
+( MESSAGEBODY, myshortmsg)
 ]], 
 
 [
 RECV_CTX_HASH, [
 ( CHAINID, my_chainid),
 ( NODEID, None),
-( MESSAGEBODY, None)
+( MESSAGEBODY, myshortmsg)
 ]], 
 
 [
 RECV_CTX_SIGN, [
 ( CHAINID, my_chainid),
 ( NODEID, None),
-( MESSAGEBODY, None)
+( MESSAGEBODY, myshortmsg)
 ]], 
 
 [
 RECV_CTX_STATE, [
 ( CHAINID, my_chainid),
 ( NODEID, None),
-( MESSAGEBODY, None)
+( MESSAGEBODY, myshortmsg)
 ]], 
 
 [
 RECV_OTHER_CTX, [
 ( CHAINID, my_chainid),
 ( NODEID, None),
-( MESSAGEBODY, None)
+( MESSAGEBODY, myshortmsg)
 ]], 
 
 [
 RECV_REGCHAIN, [
 ( CHAINID, my_chainid),
 ( NODEID, None),
-( MESSAGEBODY, None)
+( MESSAGEBODY, myshortmsg)
 ]], 
 
 [
-REGISTER_MODULE_DEPENDENCIES, [
-]], 
+REGISTER_MODULE_DEPENDENCIES, []
+],
 
 [
 REGISTER_PROTOCOL, [
@@ -1228,7 +1240,7 @@ SC_CALL, [
 ( METHODNAME, None),
 ( METHODDESC, None),
 ( ARGS, None),
-( REMARK, None)
+( REMARK, myshortmsg)
 ]], 
 
 [
@@ -1279,11 +1291,11 @@ SC_CREATE, [
 ( SENDER, None),
 ( PASSWORD, None),
 ( ALIAS, None),
-( GASLIMIT, None),
+( GASLIMIT, myzero),
 ( PRICE, None),
 ( CONTRACTCODE, None),
 ( ARGS, None),
-( REMARK, None)
+( REMARK, myshortmsg)
 ]],
 
 [
@@ -1298,7 +1310,7 @@ SC_DELETE, [
 ( SENDER, None),
 ( PASSWORD, None),
 ( CONTRACTADDRESS, None),
-( REMARK, None)
+( REMARK, myshortmsg)
 ]],
 
 [
@@ -1365,19 +1377,19 @@ SC_TOKEN_ASSETS_LIST, [
 [
 SC_TOKEN_BALANCE, [
 ( CHAINID, my_chainid),
-( CONTRACTADDRESS, None),
-( ADDRESS, my_chainid)
+( CONTRACTADDRESS, myaddress),
+( ADDRESS, myaddress)
 ]],
 
 [
 SC_TOKEN_TRANSFER, [
 ( CHAINID, my_chainid),
 ( ADDRESS, my_address),
-( TOADDRESS, None),
-( CONTRACTADDRESS, None),
+( TOADDRESS, myaddress),
+( CONTRACTADDRESS, myaddress),
 ( PASSWORD, None),
-( AMOUNT, None),
-( REMARK, None)
+( AMOUNT, myzero),
+( REMARK, myshortmsg)
 ]],
 
 [
@@ -1392,12 +1404,11 @@ my_address),
 [
 SC_TRANSFER, [
 ( CHAINID, my_chainid),
-( ADDRESS,
-my_address),
+( ADDRESS, my_address),
 ( TOADDRESS, None),
-( PASSWORD, None),
+( PASSWORD, my_password),
 ( AMOUNT, None),
-( REMARK, None)
+( REMARK, myshortmsg)
 ]],
 
 [

@@ -1,9 +1,17 @@
-
-
+#!/usr/bin/python3.7
 # for use in api calls
-
 # the originally requested java types are in comments on each line
 # fill in your default params here
+
+proto_ver = "0.1"
+compatible_proto_versions = [proto_ver]
+host_req = "127.0.0.1"
+connect_method = "ws://"
+# connect_method =  "wss://"
+port_req = "7772"   # or 7771, 7773, etc.
+websock_url: str = ''.join([connect_method, host_req, ":", port_req])
+
+# be carefull with these - don't delete them
 
 my_amount: int = 0     # java-type-BigInteger
 my_initnumber: int = 0     # java-type-BigInteger
@@ -30,19 +38,19 @@ my_assetinfolist: list = []             #  l java-type-List<assetinfo>
 my_headerlist: list = []           #  java-type-List<string>
 my_args: str = ''                # java-Object
 my_lmodulename: str = ''           # java-type-String # Qstring
-my_lmoduleversion: str= None           # Qstring
+my_lmoduleversion: str= ''           # Qstring
 my_address: str = ''           # java-type-String
-my_addressprefix: str = ''           # java-type-String
+my_addressprefix: str = 'NULS'           # java-type-String
 my_agentaddress: str = ''           # java-type-String
 my_agenthash: str = ''           # java-type-String
-my_algorithm: str = ''           # java-type-String
+my_algorithm: str = 'zlib'           # java-type-String
 my_alias: str = ''           # java-type-String
 my_assetids: str = ''           # java-type-String
 my_assetname: str = ''           # java-type-String
 my_block: str = ''           # java-type-String
 my_blockhash: str = ''           # java-type-String
 my_blockheader: str = ''           # java-type-String
-my_chainname: str = ''           # java-type-String
+my_chainname: str = 'nuls'           # java-type-String
 my_cmd: str = ''           # java-type-String
 my_command: str = ''           # java-type-String
 my_contractaddress: str = ''           # java-type-String
@@ -97,10 +105,10 @@ my_packaging: bool = False           #   java-type-Boolean
 my_usable: bool = False           #   java-type-Boolean
 my_bytecount: int = 0             #  java-type-Byte
 my_addresstype: int = 0               # int
-my_assetchainid: int = 0               # int
-my_assetid: int = 0               # int
+my_assetchainid: int = 1               # int
+my_assetid: int = 1               # int
 my_blocktype: int = 0               # int
-my_chainid: int = 0               # int
+my_chainid: int = 1               # int
 my_circulatechainid: int = 0               # int
 my_commissionrate: int = 0               # int
 my_count: int = 0               # int
@@ -140,6 +148,13 @@ my_decimalplaces: int = 0                    # java-type-Short
 my_protocolversion: int = 0                   # java-type-Short
 my_shortcount: int = 0                     # java-type-Short
 
+
+
+
+__ALL1__ = [proto_ver, compatible_proto_versions, host_req, connect_method, port_req,
+           websock_url]
+
+
 __ALL__  = ['my_address', 'my_addressprefix', 'my_addresstype', 'my_agentaddress', 'my_agenthash',
            'my_algorithm', 'my_alias', 'my_allhits', 'my_amount', 'my_args', 'my_assetchainid', 'my_assetid',
            'my_assetids', 'my_assetinfolist', 'my_assetname', 'my_assets', 'my_begin', 'my_block',
@@ -162,4 +177,5 @@ __ALL__  = ['my_address', 'my_addressprefix', 'my_addresstype', 'my_agentaddress
            'my_remark', 'my_rewardaddress', 'my_role', 'my_round', 'my_seedips', 'my_sender', 'my_shortcount',
            'my_sig', 'my_signaddress', 'my_signpassword', 'my_signaturebftratio', 'my_size', 'my_startheight',
            'my_startpage', 'my_state', 'my_stateroot', 'my_status', 'my_symbol', 'my_toaddress', 'my_tx',
-           'my_txhash', 'my_txhashlist', 'my_txlist', 'my_type', 'my_usable', 'my_value', 'my_verifierlist']
+           'my_txhash', 'my_txhashlist', 'my_txlist', 'my_type', 'my_usable', 'my_value',
+            'my_verifierlist'].append(__ALL1__)

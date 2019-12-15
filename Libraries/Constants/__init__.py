@@ -1,3 +1,4 @@
+# note: Items in Constants typically don't change frequently
 
 __ALL__ = \
  ['ADDRESS', 'ADDRESSPREFIX', 'ADDRESSTYPE', 'AGENTADDRESS', 'AGENTHASH', 'ALGORITHM', 'ALIAS',

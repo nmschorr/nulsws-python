@@ -1,4 +1,8 @@
 #!usr/bin/python3.7
+# This file right now is the client only.
+# author:  Nancy M Schorr, for Nuls
+# December 2, 2019
+
 # for applications using Connector module there are the  other 2 public and admin
 # private only for private means that only registered modules inside the system can use that method
 # public means that every  application can run that methid and admin means
@@ -8,8 +12,6 @@
 # check module.ncf of Connector
 # port 0 means it is not openend by default
 
-
-
 # Messages have a common structure composed of six fields:
 # •  ProtocolVersion: version the service to understand,2 numbers, major/minor
 # •  MessageID: identifies a request.
@@ -17,10 +19,6 @@
 # •  TimeZone: The time zone where the request was originated
 # •  MessageType: The message type, these are specified on section 3
 # •  MessageData: A Json object with the message payload
-
-
-
-
 
 # the first object that should be sent - only if the negotiation is ok service may process
 # further requests -otherwise a NegotiateConnectionResponse object should be received with
@@ -33,17 +31,14 @@
 
 ## -- Enter your custom settings data via the library file nulsuserone.py
 # Note: Don't use typing.Dict - it can cause json problems when converted
-# This file right now is the client only.
-# author:  Nancy M Schorr, for Nuls
-# December 2, 2019
 
 
 from asyncio import run as asyncio_run
 from asyncio import sleep as a_sleep
 from tornado.websocket import websocket_connect, WebSocketClientConnection  # WebSocketClosedError
 from Libraries.nulsws_library import *
-from UserSettings.nulsws_USER_static_settings import *
-from UserSettings.nulsws_USER_settings import MSG_TYPE, RUN_LIST
+from UnusedSoFar.nulsws_USER_static_settings import *
+from UnusedSoFar.nulsws_USER_settings import MSG_TYPE, RUN_LIST
 from Libraries import nulsws_REQUEST as mw
 
 
@@ -67,23 +62,7 @@ class NulsWebsocket(object):
             json_prt(read_REG, "   -----------> ! ! ! REGULAR response received: ")
         myprint("--------------end previous / begin next request--------------------------------")
 
-    async def negotiate(self, json_negotiate, main_request):
-        connection = await websocket_connect(websock_url)   # 1) CONNECT
-        await a_sleep(self.s_time)
-        while not connection:
-            await a_sleep(self.s_time)
-        jd = json_dumps(json_negotiate)
-        json_prt(json_negotiate, "* * * First message going out- NEGOTIATE: ")
-        await connection.write_message(jd)              # 2) WRITE
-        await a_sleep(self.s_time)
-
-        negotiate_result = await connection.read_message()    # 3 READ
-            #await asyncio_sleep(self.s_time)
-        json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
-        myprint("------end Negotiate----------------------------------------")
-        await self.REGULAR_req(connection, main_request)
-
-    async def negotiate_one(self, json_negotiate, m_indx, RUN_LIST):
+    async def negotiate_list(self, json_negotiate, m_indx, runlist):
         connection = await websocket_connect(websock_url)  # 1) CONNECT
         await a_sleep(self.s_time)
         while not connection:
@@ -98,30 +77,25 @@ class NulsWebsocket(object):
         json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
         myprint("------end Negotiate----------------------------------------")
 
-        for run_item in RUN_LIST:
-            main_request = mw.prep_REQUEST_ONESIE_NO_params_or_just_ONE(m_indx, run_item)
+        for run_item in runlist:
+            print("starting this item: ", run_item)
+            main_request = mw.prep_REQUEST(m_indx, run_item)
             await self.REGULAR_req(connection, main_request)
 
-    def commander(self, j_negotiate, main_request):
-        asyncio_run(self.negotiate(j_negotiate, main_request))  # starts event
-
-    def commander_by_list(self, j_negotiate, m_indx, RUN_LIST):  #multipls
-        asyncio_run(self.negotiate_one(j_negotiate, m_indx, RUN_LIST)) # starts event
+    def commander_by_list(self, j_negotiate, m_indx, runlist):  #multiples
+        asyncio_run(self.negotiate_list(j_negotiate, m_indx, runlist)) # starts event
 
     def main(self, mtpe):
         # we always do type 1 just before anything
         self.mindex += 1
         m_indx = self.mindex
-        json_negotiate = mw.prep_NEGOTIATE_data_type1(m_indx)  #dict
+        json_negotiate = mw.prep_NEGOTIATE_request(m_indx)  #dict
 
         if mtpe == 3:
-            #main_request_d = mw.prep_REQUEST_ONESIE_NO_params(m_indx) #dict
-            #self.commander(json_negotiate, main_request_d) #one at a time
-            #self.commander_onesies(json_negotiate, m_indx, onesies)  #big list
             self.commander_by_list(json_negotiate, m_indx, RUN_LIST)  #big list
 
-            # json_main_type = mw.prep_data_REQUEST_type5()
-            # json_main_type = mw.prep_data_REQUEST_type7()
+        # json_main_type = mw.prep_data_REQUEST_type5()
+        # json_main_type = mw.prep_data_REQUEST_type7()
 
 
 if __name__ == '__main__':
