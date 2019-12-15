@@ -7,16 +7,12 @@ by Nancy Schorr for Nuls, None),
 """
 from Libraries.Constants.nulsws_CONSTANTS_API_LABELS import *
 from Libraries.Constants.nulsws_CONSTANTS_PARAM_LABELS import *
-
+from UserSettings.nulsws_CONSTANTS_PARAM_userwords import *
 
 # change settings to suit
 # return a list of vals for each constant
 # LATEST_BLOCK CHAINID needs CHAINID only
-mychainid = 1
-myone = 1
-mypassword = 'nuls123456'
-myaddress = '124'
-mycount = 0 
+
 
 
 # a list of  lists of tuples
@@ -29,83 +25,83 @@ REGISTER_API, None
 
 [
 AC_CREATE_ACCOUNT, [
-(CHAINID, mychainid),
-(COUNT, myone),
-(PASSWORD, mypassword)
+(CHAINID, my_chainid),
+(COUNT, my_count),
+(PASSWORD, my_password)
 ]], 
 
 [
 AC_CREATE_CONTRACT_ACCOUNT, [
-(CHAINID, mychainid)
+(CHAINID, my_chainid)
 ]], 
 
 [
 AC_CREATE_MULTI_SIGN_ACCOUNT, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (PUBKEYS, None),
 (MINSIGNS, None)
 ]], 
 
 [
 AC_CREATE_MULTI_SIGN_TRANSFER, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (INPUTS, None),
 (OUTPUTS, None),
 (REMARK, None),
 (SIGNADDRESS, None),
-(SIGNPASSWORD, mypassword)
+(SIGNPASSWORD, my_password)
 ]], 
 
 [
 AC_CREATE_OFFLINE_ACCOUNT, [
-(CHAINID, mychainid),
-(COUNT, mycount),
-(PASSWORD, mypassword)
+(CHAINID, my_chainid),
+(COUNT, my_count),
+(PASSWORD, my_password)
 ]], 
 
 [
 AC_EXPORT_ACCOUNT_KEYSTORE, [
-(CHAINID, mychainid),
-(ADDRESS, myaddress),
-(PASSWORD, mypassword),
+(CHAINID, my_chainid),
+(ADDRESS, my_address),
+(PASSWORD, my_password),
 (FILEPATH, None)
 ]], 
 
 [
 AC_EXPORT_KEYSTORE_JSON, [
-(CHAINID, mychainid),
-(ADDRESS, myaddress),
-(PASSWORD, mypassword)
+(CHAINID, my_chainid),
+(ADDRESS, my_address),
+(PASSWORD, my_password)
 ]], 
 
 [
 AC_GET_ACCOUNT_BYADDRESS, [
-(CHAINID, mychainid),
-(ADDRESS, mychainid)
+(CHAINID, my_chainid),
+(ADDRESS, my_chainid)
 ]], 
 
 [
 AC_GET_ACCOUNT_LIST, [
-(CHAINID, mychainid)
+(CHAINID, my_chainid)
 ]], 
 
 [
 
 AC_GET_ADDRESS_LIST, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (PAGENUMBER, None),
 (PAGESIZE, None)
 ]], 
 
 [
 AC_GET_ADDRESS_PREFIX_BY_CHAINID, [
-(CHAINID, mychainid)
+(CHAINID, my_chainid)
 ]], 
 
 [
 AC_GET_ALIASBY_ADDRESS, [
-(CHAINID, mychainid),
-(ADDRESS, mychainid)
+(CHAINID, my_chainid),
+(ADDRESS, my_chainid)
 ]], 
 
 [
@@ -114,119 +110,121 @@ AC_GET_ALL_ADDRESS_PREFIX, [
 
 [
 AC_GET_ALL_PRIKEY, [
-(CHAINID, mychainid),
-(PASSWORD, mypassword)
-],
+(CHAINID, my_chainid),
+(PASSWORD, my_password)
+]],
 
-
+[
 AC_GET_ENCRYPTED_ADDRESS_LIST, [
-(CHAINID, mychainid),
-], [
+(CHAINID, my_chainid),
+]],
+
+[
 AC_GET_MULTI_SIGN_ACCOUNT, [
-(CHAINID, mychainid),
-(ADDRESS, mychainid)
+(CHAINID, my_chainid),
+(ADDRESS, my_chainid)
 ]], 
 
 [
 AC_GET_PUBKEY, [
-(CHAINID, mychainid),
-(ADDRESS, myaddress),
-(PASSWORD, mypassword)
+(CHAINID, my_chainid),
+(ADDRESS, my_address),
+(PASSWORD, my_password)
 ]], 
 
 [
 AC_IMPORT_ACCOUNT_BY_KEYSTORE, [
-(CHAINID, mychainid),
-(PASSWORD, mypassword),
+(CHAINID, my_chainid),
+(PASSWORD, my_password),
 (KEYSTORE, None),
 (OVERWRITE, None)
 ]], 
 
 [
 AC_IMPORT_ACCOUNT_BY_PRIKEY, [
-(CHAINID, mychainid),
-(PASSWORD, mypassword),
+(CHAINID, my_chainid),
+(PASSWORD, my_password),
 (PRIKEY, None),
 (OVERWRITE, None)
 ]], 
 
 [
 AC_IS_ALIAS_USABLE, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (ALIAS, None)
 ]], 
 
 [
 AC_IS_MULTISIGN_ACCOUNT_BUILDER, [
-(CHAINID, mychainid),
-(ADDRESS, myaddress),
+(CHAINID, my_chainid),
+(ADDRESS, my_address),
 (PUBKEY, None)
 ]], 
 
 [
 AC_REMOVE_ACCOUNT, [
-(CHAINID, mychainid),
-(ADDRESS, myaddress),
-(PASSWORD, mypassword)
+(CHAINID, my_chainid),
+(ADDRESS, my_address),
+(PASSWORD, my_password)
 ]], 
 
 [
 AC_REMOVE_MULTISIGN_ACCOUNT, [
-(CHAINID, mychainid),
-(ADDRESS, mychainid)
+(CHAINID, my_chainid),
+(ADDRESS, my_chainid)
 ]], 
 
 [
 AC_SET_ALIAS, [
-(CHAINID, mychainid),
-(ADDRESS, myaddress),
-(PASSWORD, mypassword),
+(CHAINID, my_chainid),
+(ADDRESS, my_address),
+(PASSWORD, my_password),
 (ALIAS, None)
 ]], 
 
 [
 AC_SET_MULTISIGN_ALIAS, [
-(CHAINID, mychainid),
-(ADDRESS, myaddress),
+(CHAINID, my_chainid),
+(ADDRESS, my_address),
 (ALIAS, None),
 (SIGNADDRESS, None),
-(SIGNPASSWORD, mypassword)
+(SIGNPASSWORD, my_password)
 ]], 
 
 [
 AC_SET_REMARK, [
-(CHAINID, mychainid),
-(ADDRESS, myaddress),
+(CHAINID, my_chainid),
+(ADDRESS, my_address),
 (REMARK, None)
 ]], 
 
 [
 AC_SIGN_BLOCKDIGEST, [
-(CHAINID, mychainid),
-(ADDRESS, myaddress),
-(PASSWORD, mypassword),
+(CHAINID, my_chainid),
+(ADDRESS, my_address),
+(PASSWORD, my_password),
 (DATA, None)
 ]], 
 
 [
 AC_SIGN_DIGEST, [
-(CHAINID, mychainid),
-(ADDRESS, myaddress),
-(PASSWORD, mypassword),
+(CHAINID, my_chainid),
+(ADDRESS, my_address),
+(PASSWORD, my_password),
 (DATA, None)
 ]], 
 
 [
 AC_SIGN_MULTISIGN_TRANSACTION, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (TX, None),
 (SIGNADDRESS, None),
-(SIGNPASSWORD, mypassword)
+(SIGNPASSWORD, my_password)
 ]], 
 
 [
 AC_TRANSFER, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (INPUTS, None),
 (OUTPUTS, None),
 (REMARK, None)
@@ -234,26 +232,26 @@ AC_TRANSFER, [
 
 [
 AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD, [
-(CHAINID, mychainid),
-(ADDRESS, myaddress),
-(PASSWORD, mypassword),
-(NEWPASSWORD, mypassword),
+(CHAINID, my_chainid),
+(ADDRESS, my_address),
+(PASSWORD, my_password),
+(NEWPASSWORD, my_password),
 (PRIKEY, None)
 ]], 
 
 [
 AC_UPDATE_PASSWORD, [
-(CHAINID, mychainid),
-(ADDRESS, myaddress),
-(PASSWORD, mypassword),
-(NEWPASSWORD, mypassword)
+(CHAINID, my_chainid),
+(ADDRESS, my_address),
+(PASSWORD, my_password),
+(NEWPASSWORD, my_password)
 ]], 
 
 [
 AC_VALIDATION_PASSWORD, [
-(CHAINID, mychainid),
-(ADDRESS, myaddress),
-(PASSWORD, mypassword)
+(CHAINID, my_chainid),
+(ADDRESS, my_address),
+(PASSWORD, my_password)
 ]], 
 
 [
@@ -265,12 +263,12 @@ AC_VERIFY_SIGN_DATA, [
 
 [
 BATCH_VALIDATE_BEGIN, [
-(CHAINID, mychainid)
+(CHAINID, my_chainid)
 ]], 
 
 [
 BLOCK_VALIDATE, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (TXLIST, None)
 ]], 
 
@@ -280,70 +278,70 @@ BLOCKHEIGHT, [
 
 [
 CANCEL_CROSSCHAIN, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (ASSETID, None)
 ]], 
 
 [
 CHECK_BLOCK_VERSION, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (EXTENDSDATA, None)
 ]], 
 
 [
 CM_ASSET, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (ASSETID, None)
 ]], 
 
 [
 CM_ASSET_CIRCULATE_COMMIT, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (TXLIST, None),
 (BLOCKHEADER, None)
 ]], 
 
 [
 CM_ASSET_CIRCULATE_ROLLBACK, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (TXLIST, None),
 (BLOCKHEADER, None)
 ]], 
 
 [
 CM_ASSET_CIRCULATE_VALIDATOR, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (TX, None)
 ]], 
 
 [
 CM_ASSET_DISABLE, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (ASSETID, None),
-(ADDRESS, myaddress),
-(PASSWORD, mypassword)
+(ADDRESS, my_address),
+(PASSWORD, my_password)
 ]], 
 
 [
 CM_ASSET_REG, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (ASSETID, None),
 (SYMBOL, None),
 (ASSETNAME, None),
 (INITNUMBER, None),
 (DECIMALPLACES, None),
-(ADDRESS, myaddress),
-(PASSWORD, mypassword)
+(ADDRESS, my_address),
+(PASSWORD, my_password)
 ]], 
 
 [
 CM_CHAIN, [
-(CHAINID, mychainid)],
+(CHAINID, my_chainid)],
 ],
 
 [
 CM_CHAIN_ACTIVE, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (CHAINNAME, None),
 (ADDRESSTYPE, None),
 (ADDRESSPREFIX, None),
@@ -354,16 +352,16 @@ CM_CHAIN_ACTIVE, [
 (ASSETNAME, None),
 (INITNUMBER, None),
 (DECIMALPLACES, None),
-(ADDRESS, myaddress),
-(PASSWORD, mypassword),
+(ADDRESS, my_address),
+(PASSWORD, my_password),
 (VERIFIERLIST, None),
 (SIGNATUREBFTRATIO, None),
-(MAXSIGNATURECOUNT, mycount)
+(MAXSIGNATURECOUNT, my_count)
 ]], 
 
 [
 CM_CHAIN_REG, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (CHAINNAME, None),
 (ADDRESSTYPE, None),
 (ADDRESSPREFIX, None),
@@ -374,16 +372,16 @@ CM_CHAIN_REG, [
 (ASSETNAME, None),
 (INITNUMBER, None),
 (DECIMALPLACES, None),
-(ADDRESS, myaddress),
-(PASSWORD, mypassword),
+(ADDRESS, my_address),
+(PASSWORD, my_password),
 (VERIFIERLIST, None),
 (SIGNATUREBFTRATIO, None),
-(MAXSIGNATURECOUNT, mycount)
+(MAXSIGNATURECOUNT, my_count)
 ]], 
 
 [
 CM_GET_CHAIN_ASSET, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (ASSETCHAINID, None),
 (ASSETID, None)
 ]], 
@@ -397,20 +395,20 @@ CM_GET_CIRCULATE_CHAIN_ASSET, [
 
 [
 COMMIT_BATCH_UNCONFIRMED_TXS, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (TXLIST, None)
 ]], 
 
 [
 COMMIT_BLOCKTXS, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (TXLIST, None),
 (BLOCKHEIGHT, None)
 ]], 
 
 [
 COMMIT_UNCONFIRMEDTX, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (TX, None)
 ]], 
 
@@ -420,13 +418,13 @@ CONNECT_READY, [
 
 [
 CREATE_AGENT_VALID, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (TX, None)
 ]], 
 
 [
 CREATE_CROSSTX, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (LISTFROM, None),
 (LISTTO, None),
 (REMARK, None)
@@ -434,29 +432,31 @@ CREATE_CROSSTX, [
 
 [
 CROSSCHAIN_REGISTER_CHANGE, [
-(CHAINID, mychainid)
+(CHAINID, my_chainid)
 ]],
+
+[
 CS_ADD_BLOCK, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (BLOCKHEADER, None)
 ]], 
 
 [
 CS_ADD_EVIDENCE_RECORD, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (BLOCKHEADER, None),
 (EVIDENCEHEADER, None)
 ]], 
 
 [
 CS_CHAIN_ROLLBACK, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (HEIGHT, None)
 ]], 
 
 [
 CS_CONTRACT_DEPOSIT, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (AGENTHASH, None),
 (DEPOSIT, None),
 (CONTRACTADDRESS, None),
@@ -468,7 +468,7 @@ CS_CONTRACT_DEPOSIT, [
 
 [
 CS_CONTRACT_WITHDRAW, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (JOINAGENTHASH, None),
 (CONTRACTADDRESS, None),
 (CONTRACTSENDER, None),
@@ -479,18 +479,18 @@ CS_CONTRACT_WITHDRAW, [
 
 [
 CS_CREATE_AGENT, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (AGENTADDRESS, None),
 (PACKINGADDRESS, None),
 (REWARDADDRESS, None),
 (COMMISSIONRATE, None),
 (DEPOSIT, None),
-(PASSWORD, mypassword)
+(PASSWORD, my_password)
 ]], 
 
 [
 CS_CREATE_CONTRACT_AGENT, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (PACKINGADDRESS, None),
 (DEPOSIT, None),
 (COMMISSIONRATE, None),
@@ -503,51 +503,51 @@ CS_CREATE_CONTRACT_AGENT, [
 
 [
 CS_CREATE_MULTI_AGENT, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (AGENTADDRESS, None),
 (PACKINGADDRESS, None),
 (REWARDADDRESS, None),
 (COMMISSIONRATE, None),
 (DEPOSIT, None),
-(PASSWORD, mypassword),
-(SIGNADDRESS, mychainid)
+(PASSWORD, my_password),
+(SIGNADDRESS, my_chainid)
 ]],
 
 [
 CS_DEPOSIT_TOAGENT, [
-(CHAINID, mychainid),
-(ADDRESS, myaddress),
+(CHAINID, my_chainid),
+(ADDRESS, my_address),
 (AGENTHASH, None),
 (DEPOSIT, None),
-(PASSWORD, mypassword)
+(PASSWORD, my_password)
 ]], 
 
 [
 CS_DOUBLE_SPEND_RECORD, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (BLOCK, None),
 (TX, None)
 ]], 
 
 [
 CS_GET_AGENT_ADDRESS_LIST, [
-(CHAINID, mychainid)
+(CHAINID, my_chainid)
 ]], 
 
 [
 CS_GET_AGENT_CHANGE_INFO, [
-(CHAINID, mychainid)
+(CHAINID, my_chainid)
 ]], 
 
 [
 CS_GET_AGENT_INFO, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (AGENTHASH, None)
 ]], 
 
 [
 CS_GET_AGENT_LIST, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (PAGENUMBER, None),
 (PAGESIZE, None),
 (KEYWORD, None)
@@ -555,18 +555,18 @@ CS_GET_AGENT_LIST, [
 
 [
 CS_GET_AGENT_STATUS, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (AGENTHASH, None)
 ]], 
 
 [
 CS_GET_CONSENSUS_CONFIG, [
-(CHAINID, mychainid)
+(CHAINID, my_chainid)
 ]], 
 
 [
 CS_GET_CONTRACT_AGENT_INFO, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (AGENTHASH, None),
 (CONTRACTADDRESS, None),
 (CONTRACTSENDER, None)
@@ -574,7 +574,7 @@ CS_GET_CONTRACT_AGENT_INFO, [
 
 [
 CS_GET_CONTRACT_DEPOSIT_INFO, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (JOINAGENTHASH, None),
 (CONTRACTADDRESS, None),
 (CONTRACTSENDER, None)
@@ -582,88 +582,88 @@ CS_GET_CONTRACT_DEPOSIT_INFO, [
 
 [
 CS_GET_DEPOSIT_LIST, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (PAGENUMBER, None),
 (PAGESIZE, None),
-(ADDRESS, myaddress),
+(ADDRESS, my_address),
 (AGENTHASH, None)
 ]], 
 
 [
 CS_GET_INFO, [
-(CHAINID, mychainid),
-(ADDRESS, mychainid)
+(CHAINID, my_chainid),
+(ADDRESS, my_chainid)
 ]], 
 
 [
 CS_GET_PACKER_INFO, [
-(CHAINID, mychainid)
+(CHAINID, my_chainid)
 ]], 
 
 [
 CS_GET_PUBLISH_LIST, [
-(CHAINID, mychainid),
-(ADDRESS, myaddress),
+(CHAINID, my_chainid),
+(ADDRESS, my_address),
 (TYPE, None)
 ]], 
 
 [
 CS_GET_ROUND_INFO, [
-(CHAINID, mychainid)
+(CHAINID, my_chainid)
 ]], 
 
 [
 CS_GET_ROUND_MEMBER_LIST, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (EXTEND, None)
 ]], 
 
 [
 CS_GET_SEED_NODE_INFO, [
-(CHAINID, mychainid)
+(CHAINID, my_chainid)
 ]], 
 
 [
 CS_GET_WHOLEINFO, [
-(CHAINID, mychainid)
+(CHAINID, my_chainid)
 ]], 
 
 [
 CS_MULTI_DEPOSIT, [
-(CHAINID, mychainid),
-(ADDRESS, myaddress),
+(CHAINID, my_chainid),
+(ADDRESS, my_address),
 (AGENTHASH, None),
 (DEPOSIT, None),
-(PASSWORD, mypassword),
-(SIGNADDRESS, mychainid)
+(PASSWORD, my_password),
+(SIGNADDRESS, my_chainid)
 ]], 
 
 [
 CS_MULTI_WITHDRAW, [
-(CHAINID, mychainid),
-(ADDRESS, myaddress),
+(CHAINID, my_chainid),
+(ADDRESS, my_address),
 (TXHASH, None),
-(PASSWORD, mypassword),
-(SIGNADDRESS, mychainid)
+(PASSWORD, my_password),
+(SIGNADDRESS, my_chainid)
 ]], 
 
 [
 CS_RANDOM_RAW_SEEDS_COUNT, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (HEIGHT, None),
-(COUNT, mycount)
+(COUNT, my_count)
 ]], 
 
 [
 CS_RANDOM_RAW_SEEDS_HEIGHT, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (STARTHEIGHT, None),
 (ENDHEIGHT, None)
 ]], 
 
 [
 CS_RANDOM_SEED_COUNT, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (HEIGHT, None),
 (COUNT, 0)
 (ALGORITHM, None)
@@ -671,7 +671,7 @@ CS_RANDOM_SEED_COUNT, [
 
 [
 CS_RANDOM_SEED_HEIGHT, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (STARTHEIGHT, None),
 (ENDHEIGHT, None),
 (ALGORITHM, None)
@@ -679,47 +679,47 @@ CS_RANDOM_SEED_HEIGHT, [
 
 [
 CS_RECEIVE_HEADERLIST, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (HEADERLIST, None)
 ]], 
 
 [
 CS_RUN_CHAIN, [
-(CHAINID, mychainid)
+(CHAINID, my_chainid)
 ]], 
 
 [
 CS_RUN_MAINCHAIN, [
-(CHAINID, mychainid)
+(CHAINID, my_chainid)
 ]], 
 
 [
 CS_STOPAGENT, [
-(CHAINID, mychainid),
-(ADDRESS, myaddress),
-(PASSWORD, mypassword)
+(CHAINID, my_chainid),
+(ADDRESS, my_address),
+(PASSWORD, my_password)
 ]], 
 
 [
 CS_STOP_AGENT, [
-(CHAINID, mychainid),
-(ADDRESS, myaddress),
-(PASSWORD, mypassword)
+(CHAINID, my_chainid),
+(ADDRESS, my_address),
+(PASSWORD, my_password)
 ]], 
 
 [
 CS_STOPCHAIN, [
-(CHAINID, mychainid)
+(CHAINID, my_chainid)
 ]], 
 
 [
 CS_STOP_CHAIN, [
-(CHAINID, mychainid)
+(CHAINID, my_chainid)
 ]], 
 
 [
 CS_STOP_CONTRACT_AGENT, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (CONTRACTADDRESS, None),
 (CONTRACTSENDER, None),
 (CONTRACTBALANCE, None),
@@ -729,15 +729,15 @@ CS_STOP_CONTRACT_AGENT, [
 
 [
 CS_STOP_MULTI_AGENT, [
-(CHAINID, mychainid),
-(ADDRESS, myaddress),
-(PASSWORD, mypassword),
-(SIGNADDRESS, mychainid)
+(CHAINID, my_chainid),
+(ADDRESS, my_address),
+(PASSWORD, my_password),
+(SIGNADDRESS, my_chainid)
 ]], 
 
 [
 CS_TRIGGER_COINBASE_CONTRACT, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (TX, None),
 (BLOCKHEADER, None),
 (STATEROOT, None)
@@ -745,116 +745,116 @@ CS_TRIGGER_COINBASE_CONTRACT, [
 
 [
 CS_UPDATE_AGENT_CONSENSUS_STATUS, [
-(CHAINID, mychainid)
+(CHAINID, my_chainid)
 ]], 
 
 [
 CS_UPDATE_AGENT_STATUS, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (STATUS, None)
 ]], 
 
 [
 CS_VALIDBLOCK, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (DOWNLOAD, None),
 (BLOCK, None)
 ]], 
 
 [
 CS_WITHDRAW, [
-(CHAINID, mychainid),
-(ADDRESS, myaddress),
+(CHAINID, my_chainid),
+(ADDRESS, my_address),
 (TXHASH, None),
-(PASSWORD, mypassword)
+(PASSWORD, my_password)
 ]], 
 
 [
 DEPOSIT_VALID, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (TX, None)
 ]], 
 
 [
 GET_ASSETS_BY_ID, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (ASSETIDS, None)
 ]], 
 
 [
 GET_BALANCE, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (ASSETCHAINID, None),
 (ASSETID, None),
-(ADDRESS, mychainid)
+(ADDRESS, my_chainid)
 ]], 
 
 [
 GET_BALANCE_NONCE, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (ASSETCHAINID, None),
 (ASSETID, None),
-(ADDRESS, myaddress),
+(ADDRESS, my_address),
 (ISCONFIRMED, None)
 ]], 
 
 [
 GET_BLOCK_BY_HASH, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (HASH, None)
 ]], 
 
 [
 GET_BLOCK_BY_HEIGHT, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (HEIGHT, None)
 ]], 
 
 [
 GET_BLOCKHEADER_BY_HASH, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (HASH, None)
 ]], 
 
 [
 GET_BLOCKHEADER_BY_HEIGHT, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (HEIGHT, None)
 ]], 
 
 [
 GET_BLOCKHEADER_PO_BY_HASH, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (HASH, None)
 ]], 
 
 [
 GET_BLOCKHEADER_POBY_HEIGHT, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (HEIGHT, None)
 ]], 
 
 [
 GET_BLOCKHEADERS_BY_HEIGHT_RANGE, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (BEGIN, None),
 (END, None)
 ]], 
 
 [
 GET_BLOCKHEADERS_FOR_PROTOCOL, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (INTERVAL, None)
 ]], 
 
 [
 GET_BYZANTINE_COUNT, [
-(CHAINID, mychainid)
+(CHAINID, my_chainid)
 ]], 
 
 [
 GET_CIRCULAT, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (NODEID, None),
 (MESSAGEBODY, None)
 ]], 
@@ -865,54 +865,54 @@ GET_CROSSCHAIN_INFOS, [
 
 [
 GET_CROSSTX_STATE, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (TXHASH, None)
 ]], 
 
 [
 GET_CTX, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (NODEID, None),
 (MESSAGEBODY, None)
 ]], 
 
 [
 GET_CTX_STATE, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (NODEID, None),
 (MESSAGEBODY, None)
 ]], 
 
 [
 GET_FRIEND_CHAIN_CIRCULATE, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (ASSETIDS, None)
 ]], 
 
 [
 GET_LATEST_BLOCKHEADERS, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (SIZE, None)
 ]], 
 
 [
 GET_LATEST__ROUND_BLOCKHEADERS,[
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (ROUND, None)
 ]], 
 
 [
 GET_NONCE, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (ASSETCHAINID, None),
 (ASSETID, None),
-(ADDRESS, myaddress),
+(ADDRESS, my_address),
 (ISCONFIRMED, None)
 ]], 
 
 [
 GET_OTHERCTX, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (NODEID, None),
 (MESSAGEBODY, None)
 ]], 
@@ -923,44 +923,44 @@ GET_REGISTERED_CHAIN_INFO_LIST, [
 
 [
 GET_ROUND_BLOCKHEADERS, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (HEIGHT, None),
 (ROUND, None)
 ]], 
 
 [
 GET_STATUS, [
-(CHAINID, mychainid)
+(CHAINID, my_chainid)
 ]], 
 
 [
 GET_VERSION, [
-(CHAINID, mychainid)
+(CHAINID, my_chainid)
 ]], 
 
 [
 INFO, [
-(CHAINID, mychainid)
+(CHAINID, my_chainid)
 ]], 
 
 [
 LATEST_BLOCK, [
-(CHAINID, mychainid)
+(CHAINID, my_chainid)
 ]], 
 
 [
 LATEST_BLOCKHEADER, [
-(CHAINID, mychainid)
+(CHAINID, my_chainid)
 ]], 
 
 [
 LATEST_BLOCKHEADER_PO, [
-(CHAINID, mychainid)
+(CHAINID, my_chainid)
 ]], 
 
 [
 LATEST__HEIGHT, [
-(CHAINID, mychainid)
+(CHAINID, my_chainid)
 ]], 
 
 [
@@ -968,7 +968,7 @@ LISTENER_DEPENDENCIES_READY, []
 ], [
 
 MSG_PROCESS,[
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 ( NODEID, None),
 ( CMD, None),
 (MESSAGEBODY, None)
@@ -976,13 +976,13 @@ MSG_PROCESS,[
 
 [
 NEW_BLOCK_HEIGHT, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 (HEIGHT,None)
 ]], 
 
 [
 NW_ACTIVE_CROSS, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 ( MAXOUT, None),
 ( MAXIN, None),
 ( SEEDIPS, None)
@@ -990,14 +990,14 @@ NW_ACTIVE_CROSS, [
 
 [
 NW_ADD_NODES, [
-(CHAINID, mychainid),
+(CHAINID, my_chainid),
 ( ISCROSS, None),
 ( NODES, None)
 ]], 
 
 [
 NW_BROADCAST, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( EXCLUDENODES, None),
 ( MESSAGEBODY, None),
 ( COMMAND, None),
@@ -1007,7 +1007,7 @@ NW_BROADCAST, [
 
 [
 NW_CREATE_NODEGROUP, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( MAGICNUMBER, None),
 ( MAXOUT, None),
 ( MAXIN, None),
@@ -1017,19 +1017,19 @@ NW_CREATE_NODEGROUP, [
 
 [
 NW_DEL_NODES, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( NODES, None)
 ]], 
 
 [
 NW_GET_CHAIN_CONNECT_AMOUNT, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( ISCROSS, None)
 ]], 
 
 [
 NW_GET_GROUP_BY_CHAINID,[
-( CHAINID, mychainid)
+( CHAINID, my_chainid)
 ]],
     
 [
@@ -1040,7 +1040,7 @@ NW_GET_GROUPS, [
 
 [
 NW_GET_NODES, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( STATE, None),
 ( ISCROSS, None),
 ( STARTPAGE, None),
@@ -1053,12 +1053,12 @@ NW_GET_SEEDS, [
 
 [
 NW_INFO, [
-( CHAINID, mychainid)
+( CHAINID, my_chainid)
 ]],
 
 [
  NW_NODES, [
-( CHAINID, mychainid)
+( CHAINID, my_chainid)
 ]],
 
 [
@@ -1069,12 +1069,12 @@ NW_INFO, [
 
 [
 NW_RECONNECT, [
-( CHAINID, mychainid)
+( CHAINID, my_chainid)
 ]],
 
 [
  NW_SEND_PEERS_MSG, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
    ( NODES, None),
    ( MESSAGEBODY, None),
    ( COMMAND, None)
@@ -1082,7 +1082,7 @@ NW_RECONNECT, [
 
 [
 NW_UPDATE_NODE_INFO, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( NODEID, None),
 ( BLOCKHEIGHT, None),
 ( BLOCKHASH, None)
@@ -1091,68 +1091,68 @@ NW_UPDATE_NODE_INFO, [
 [
 PARAM_TEST_CMD, [
 ( INTCOUNT, None),
-( BYTECOUNT, mycount),
+( BYTECOUNT, my_count),
 ( SHORTCOUNT, None),
 ( LONGCOUNT, None)
 ]], 
 
 [
 PROTOCOL_VERSION_CHANGE, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( PROTOCOLVERSION, None)
 ]], 
 
 [
 RECEIVE_PACKING_BLOCK, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( BLOCK, None)
 ]], 
 
 [
 RECV_CIRCULAT, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( NODEID, None),
 ( MESSAGEBODY, None)
 ]], 
 
 [
 RECV_CTX, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( NODEID, None),
 ( MESSAGEBODY, None)
 ]], 
 
 [
 RECV_CTX_HASH, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( NODEID, None),
 ( MESSAGEBODY, None)
 ]], 
 
 [
 RECV_CTX_SIGN, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( NODEID, None),
 ( MESSAGEBODY, None)
 ]], 
 
 [
 RECV_CTX_STATE, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( NODEID, None),
 ( MESSAGEBODY, None)
 ]], 
 
 [
 RECV_OTHER_CTX, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( NODEID, None),
 ( MESSAGEBODY, None)
 ]], 
 
 [
 RECV_REGCHAIN, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( NODEID, None),
 ( MESSAGEBODY, None)
 ]], 
@@ -1163,52 +1163,52 @@ REGISTER_MODULE_DEPENDENCIES, [
 
 [
 REGISTER_PROTOCOL, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( MODULECODE, None),
 ( LIST, None)
 ]], 
 
 [
 ROLLBACK_BLOCK_TXS, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( TXLIST, None),
 ( BLOCKHEIGHT, None)
 ]], 
 
 [
 ROLLBACK_UNCONFIRM_TX, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( TX, None)
 ]], 
 
 [
 ROLLBACK_BLOCK, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( BLOCKHEADER, None)
 ]], 
 
 [
 ROLLBACK_TX_VALIDATE_STATUS, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( TX, None)
 ]], 
 
 [
 SAVE_BLOCK, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( BLOCKHEADER, None)
 ]], 
 
 [
 SC_BATCH_BEFORE_END, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( BLOCKTYPE, None),
 ( BLOCKHEIGHT, None)
 ]], 
 
 [
 SC_BATCH_BEGIN, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( BLOCKTYPE, None),
 ( BLOCKHEIGHT, None),
 ( BLOCKTIME, None),
@@ -1218,13 +1218,13 @@ SC_BATCH_BEGIN, [
 
 [
 SC_BATCH_END, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( BLOCKHEIGHT, None)
 ]],
 
 [
 SC_CALL, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( SENDER, None),
 ( PASSWORD, None),
 ( VALUE, None),
@@ -1239,49 +1239,49 @@ SC_CALL, [
 
 [
 SC_CALL_VALIDATOR, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( TX, None)
 ]],
 
 [
 SC_CONSTRUCTOR, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( CONTRACTCODE, None)
 ]], 
 
 [
 SC_CONTRACT_INFO, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( CONTRACTADDRESS, None)
 ]],
 
 [
  SC_CONTRACT_OFFLINE_TX_HASH_LIST, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( BLOCKHASH, None)
 ]],
 
 [
 SC_CONTRACT_RESULT, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( HASH, None)
 ]],
 
 [
 SC_CONTRACT_RESULT_LIST, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( HASHLIST, None)
 ]],
 
 [
 SC_CONTRACT_TX, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( HASH, None)
 ]],
 
 [
 SC_CREATE, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( SENDER, None),
 ( PASSWORD, None),
 ( ALIAS, None),
@@ -1294,13 +1294,13 @@ SC_CREATE, [
 
 [
 SC_CREATE_VALIDATOR, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( TX, None)
 ]],
 
 [
 SC_DELETE, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( SENDER, None),
 ( PASSWORD, None),
 ( CONTRACTADDRESS, None),
@@ -1309,13 +1309,13 @@ SC_DELETE, [
 
 [
 SC_DELETE_VALIDATOR, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( TX, None)
 ]],
 
 [
 SC_IMPUTED_CALL_GAS, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( SENDER, None),
 ( VALUE, None),
 ( CONTRACTADDRESS, None),
@@ -1326,7 +1326,7 @@ SC_IMPUTED_CALL_GAS, [
 
 [
 SC_IMPUTED_CREATE_GAS, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( SENDER, None),
 ( CONTRACTCODE, None),
 ( ARGS, None)
@@ -1334,20 +1334,20 @@ SC_IMPUTED_CREATE_GAS, [
 
 [
 SC_INITIAL_ACCOUNT_TOKEN, [
-( CHAINID, mychainid),
-( ADDRESS, myaddress),
+( CHAINID, my_chainid),
+( ADDRESS, my_address),
 ]],
 
 [
 SC_INVOKE_CONTRACT, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( BLOCKTYPE, None),
 ( TX, None)
 ]],
 
 [
 SC_INVOKE_VIEW, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( CONTRACTADDRESS, None),
 ( METHODNAME, None),
 ( METHODDESC, None),
@@ -1356,29 +1356,29 @@ SC_INVOKE_VIEW, [
 
 [
 SC_PACKAGE_BATCH_END, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( BLOCKHEIGHT, None)
 ]],
 
 [
 SC_TOKEN_ASSETS_LIST, [
-( CHAINID, mychainid),
-( ADDRESS, myaddress),
+( CHAINID, my_chainid),
+( ADDRESS, my_address),
 ( PAGENUMBER, None),
 ( PAGESIZE, None)
 ]],
 
 [
 SC_TOKEN_BALANCE, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( CONTRACTADDRESS, None),
-( ADDRESS, mychainid)
+( ADDRESS, my_chainid)
 ],
 
 [
 SC_TOKEN_TRANSFER, [
-( CHAINID, mychainid),
-( ADDRESS, myaddress),
+( CHAINID, my_chainid),
+( ADDRESS, my_address),
 ( TOADDRESS, None),
 ( CONTRACTADDRESS, None),
 ( PASSWORD, None),
@@ -1388,18 +1388,18 @@ SC_TOKEN_TRANSFER, [
 
 [
 SC_TOKEN_TRANSFER_LIST, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( ADDRESS,
-myaddress),
+my_address),
 ( PAGENUMBER, None),
 ( PAGESIZE, None)
 ]],
 
 [
 SC_TRANSFER, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( ADDRESS,
-myaddress),
+my_address),
 ( TOADDRESS, None),
 ( PASSWORD, None),
 ( AMOUNT, None),
@@ -1408,7 +1408,7 @@ myaddress),
 
 [
 SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( STATEROOT, None),
 ( BLOCKHEIGHT, None),
 ( CONTRACTADDRESS, None),
@@ -1417,13 +1417,13 @@ SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT, [
 
 [
 SC_UPLOAD, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( JARFILEDATA, None)
 ]],
 
 [
 SC_VALIDATE_CALL, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( SENDER, None),
 ( VALUE, None),
 ( GASLIMIT, None),
@@ -1436,7 +1436,7 @@ SC_VALIDATE_CALL, [
 
 [
 SC_VALIDATE_CREATE, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( SENDER, None),
 ( GASLIMIT, None),
 ( PRICE, None),
@@ -1446,39 +1446,39 @@ SC_VALIDATE_CREATE, [
 
 [
 SC_VALIDATE_DELETE, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( CONTRACTADDRESS, None),
 ]],
 
 [
 STOP_AGENTVALID, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( TX, None)
 ]],
 
 [
 TX_COMMIT, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( TXLIST, None),
 ( BLOCKHEADER, None)
 ]],
 
 [
 TX_VALIDATOR, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( TXLIST, None),
 ( BLOCKHEADER, None)
 ]],
 
 [
 TX_BACK_PACKABLE_TXS, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( TXLIST, None)
 ]],
 
 [
 TX_BATCH_VERIFY, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( TXLIST, None),
 ( BLOCKHEADER, None),
 ( PRESTATEROOT, None)
@@ -1486,79 +1486,79 @@ TX_BATCH_VERIFY, [
 
 [
 TX_BL_STATE, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( STATUS, None)
 ]],
 
 [
 TX_BLOCK_HEIGHT, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( HEIGHT, None)
 ]],
 
 [
 TX_CS_STATE, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( PACKAGING, None)
 ]],
 
 [
 TX_GET_BLOCKTXS, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( TXHASHLIST, None)
 ]],
 
 [
 TX_GET_BLOCKTXS_EXTEND, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( TXHASHLIST, None),
 ( ALLHITS, None)
 ]],
 
 [
 TX_GET_CONFIRMED_TX, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( TXHASH, None)
 ]],
 
 [
 TX_GET_CONFIRMED_TX_CLIENT, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( TXHASH, None)
 ]],
 
 [
 TX_GET_NONEXISTENT_UNCONFIRMED_HASHS, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( TXHASHLIST, None)
 ]],
 
 [
 TX_GET_SYSTEMTYPES, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ]],
 
 [
 TX_GET_TX, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( TXHASH, None)
 ]],
 
 [
 TX_GET_TX_CLIENT, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( TXHASH, None)
 ]],
 
 [
 TX_NEWTX, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( TX, None)
 ]],
 
 [
 TX_PACKABLE_TXS, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( ENDTIMESTAMP, None),
 ( MAXTXDATASIZE, None),
 ( BLOCKTIME, None),
@@ -1568,7 +1568,7 @@ TX_PACKABLE_TXS, [
 
 [
 TX_REGISTER, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( MODULECODE, None),
 ( LIST, None),
 ( DELLIST, None)
@@ -1576,14 +1576,14 @@ TX_REGISTER, [
 
 [
 TX_ROLLBACK, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( TXHASHLIST, None),
 ( BLOCKHEADER, None)
 ]],
 
 [
 TX_SAVE, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( TXLIST, None),
 ( CONTRACTLIST, None),
 ( BLOCKHEADER, None)
@@ -1591,31 +1591,31 @@ TX_SAVE, [
 
 [
 TX_VERIFY_TX, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( TX, None)
 ]],
 
 [
 UPDATE_CHAIN_ASSET, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( ASSETS, None)
 ]],
 
 [
 VERIFY_COINDATA, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( TX, None)
 ]],
 
 [
 VERIFY_COINDATA_BATCH_PACKAGED, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( TXLIST, None)
 ]],
 
 [
 WITHDRAW_VALID, [
-( CHAINID, mychainid),
+( CHAINID, my_chainid),
 ( TX, None)
 ]],
 
