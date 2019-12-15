@@ -7,53 +7,103 @@ by Nancy Schorr for Nuls, None),
 """
 from Libraries.Constants.nulsws_CONSTANTS_API_LABELS import *
 from Libraries.Constants.nulsws_CONSTANTS_PARAM_LABELS import *
-from UserSettings.nulsws_USER_SETTINGS import *
+# from UserSettings.nulsws_USER_SETTINGS import *
 
 # change settings to suit
-# return a list of vals for each constant
-# LATEST_BLOCK CHAINID needs CHAINID only
-# settings are in this file and in nulsws_CONSTANTS_PARAMS
-myshortmsg = "Empty"
-myzero = 0
-myfalse = False
-mytrue = True
-myaddress = "NULSd6Hggvrij3MPW9QTHJGBv7uiyMKw41i7t"  ##
-myrequesttype = 2  # two is ack and a response, 1 is just response
-mycompresstype = "zlib"
-mycompressrate= 0  # 0-9
-mysubscriptionrange = 0
-myrequestint = 1
-mysubeventct = 0
-mysubperiodint = 1
-mysubrange = ""
-myresmaxsize = 0
-mynoremark = "No remarks"
+# for use in api calls
+# fill in your default params here
 
-USER_CALLS_WITH_PARAMS = [
-[
+
+
+connect_method = "ws://"   # could be wss
+host_req = "127.0.0.1"
+port_req = "7772"    
+websock_url: str = ''.join([connect_method, host_req, ":", port_req])
+proto_ver = "0.1"
+compatible_proto_versions = [proto_ver]
+
+
+SHORT_MSG = "Empty"
+REMARK = "No remarks"
+ZERO = 0
+FALSE = False
+TRUE = True
+ZLIB = "zlib"
+
+
+my_chainid: int = 1               # int
+my_password = 'nuls123456'   # str
+my_addresstype: int = 0               # int
+my_assetchainid: int = 1               # int
+my_assetid: int = 1               # int
+my_blocktype: int = 0               # int
+my_circulatechainid: int = 0               # int
+my_commissionrate: int = 0               # int
+my_count: int = 0               # int
+my_download: int = 0               # int
+my_height: int = 0               # int
+my_intcount: int = 0               # int
+my_interval: int = 0               # int
+my_address: str = "NULSd6Hggvrij3MPW9QTHJGBv7uiyMKw41i7t"             # java-type-String
+my_addressprefix: str = 'NULS'           # java-type-String
+
+# next step:
+# AC_CREATE_ACCOUNT, [
+# (CHAINID, my_chainid),
+# (COUNT, my_count),
+# (PASSWORD, my_password)
+# ]],
+
+_1AC_CREATE_ACCOUNT_chainid = my_chainid
+_1AC_CREATE_ACCOUNT_count = my_count
+_1AC_CREATE_ACCOUNT_password = my_password
+
+_2AC_CREATE_CONTRACT_ACCOUNT_chainid = my_chainid
+
+_3AC_CREATE_ACCOUNT_chainid = my_chainid
+_3AC_CREATE_ACCOUNT_pubkeys = None
+_3AC_CREATE_ACCOUNT_minsigns = None
+
+
+AC_CREATE_ACCOUNT_chainid = my_chainid
+AC_CREATE_ACCOUNT_count = my_count
+AC_CREATE_ACCOUNT_password = my_password
+
+
+
+
+
+
+USER_CALLS = [
+[ #0
 REGISTER_API, None],
-[
+
+
+[ #1
 AC_CREATE_ACCOUNT, [
-(CHAINID, my_chainid),
-(COUNT, my_count),
-(PASSWORD, my_password)
+(CHAINID, _1AC_CREATE_ACCOUNT_chainid),
+(COUNT, _1AC_CREATE_ACCOUNT_count),
+(PASSWORD, _1AC_CREATE_ACCOUNT_password)
 ]],
-[
+
+[    #2
 AC_CREATE_CONTRACT_ACCOUNT, [
-(CHAINID, my_chainid)
+(CHAINID, _2AC_CREATE_CONTRACT_ACCOUNT_chainid)
 ]],
+
 [
-AC_CREATE_MULTI_SIGN_ACCOUNT, [
-(CHAINID, my_chainid),
-(PUBKEYS, None),
-(MINSIGNS, None)
+AC_CREATE_MULTI_SIGN_ACCOUNT, [     #3
+(CHAINID, _3AC_CREATE_ACCOUNT_chainid),
+(PUBKEYS, _3AC_CREATE_ACCOUNT_pubkeys),
+(MINSIGNS, _3AC_CREATE_ACCOUNT_minsigns)
 ]],
+
 [
 AC_CREATE_MULTI_SIGN_TRANSFER, [
 (CHAINID, my_chainid),
 (INPUTS, None),
 (OUTPUTS, None),
-(REMARK, mynoremark),
+(REMARK, REMARK),
 (SIGNADDRESS, None),
 (SIGNPASSWORD, my_password)
 ]], 
@@ -111,8 +161,7 @@ AC_GET_ALIASBY_ADDRESS, [
 ]], 
 
 [
-AC_GET_ALL_ADDRESS_PREFIX, [
-]], 
+AC_GET_ALL_ADDRESS_PREFIX, []], 
 
 [
 AC_GET_ALL_PRIKEY, [
@@ -151,7 +200,7 @@ AC_IMPORT_ACCOUNT_BY_PRIKEY, [
 (CHAINID, my_chainid),
 (PASSWORD, my_password),
 (PRIKEY, None),
-(OVERWRITE, mytrue)
+(OVERWRITE, TRUE)
 ]], 
 
 [
@@ -201,7 +250,7 @@ AC_SET_MULTISIGN_ALIAS, [
 AC_SET_REMARK, [
 (CHAINID, my_chainid),
 (ADDRESS, my_address),
-(REMARK, mynoremark)
+(REMARK, REMARK)
 ]], 
 
 [
@@ -233,7 +282,7 @@ AC_TRANSFER, [
 (CHAINID, my_chainid),
 (INPUTS, None),
 (OUTPUTS, None),
-(REMARK, mynoremark)
+(REMARK, REMARK)
 ]], 
 
 [
@@ -279,8 +328,7 @@ BLOCK_VALIDATE, [
 ]], 
 
 [
-BLOCKHEIGHT, [
-]], 
+BLOCKHEIGHT, []], 
 
 [
 CANCEL_CROSSCHAIN, [
@@ -419,8 +467,7 @@ COMMIT_UNCONFIRMEDTX, [
 ]], 
 
 [
-CONNECT_READY, [
-]], 
+CONNECT_READY, []], 
 
 [
 CREATE_AGENT_VALID, [
@@ -433,7 +480,7 @@ CREATE_CROSSTX, [
 (CHAINID, my_chainid),
 (LISTFROM, None),
 (LISTTO, None),
-(REMARK, mynoremark)
+(REMARK, REMARK)
 ]], 
 
 [
@@ -866,8 +913,7 @@ GET_CIRCULAT, [
 ]], 
 
 [
-GET_CROSSCHAIN_INFOS, [
-]], 
+GET_CROSSCHAIN_INFOS, []], 
 
 [
 GET_CROSSTX_STATE, [
@@ -924,14 +970,13 @@ GET_OTHERCTX, [
 ]], 
 
 [
-GET_REGISTERED_CHAIN_INFO_LIST, [
-]], 
+GET_REGISTERED_CHAIN_INFO_LIST, []], 
 
 [
 GET_ROUND_BLOCKHEADERS, [
 (CHAINID, my_chainid),
-(HEIGHT, myzero),
-(ROUND, myzero)
+(HEIGHT, ZERO),
+(ROUND, ZERO)
 ]], 
 
 [
@@ -975,7 +1020,7 @@ LISTENER_DEPENDENCIES_READY, []
 
 MSG_PROCESS,[
 (CHAINID, my_chainid),
-( NODEID, myzero),
+( NODEID, ZERO),
 ( CMD, None),
 (MESSAGEBODY, None)
 ]], 
@@ -983,21 +1028,21 @@ MSG_PROCESS,[
 [
 NEW_BLOCK_HEIGHT, [
 (CHAINID, my_chainid),
-(HEIGHT, myzero)
+(HEIGHT, ZERO)
 ]], 
 
 [
 NW_ACTIVE_CROSS, [
 (CHAINID, my_chainid),
-( MAXOUT, myzero),
-( MAXIN, myzero),
+( MAXOUT, ZERO),
+( MAXIN, ZERO),
 ( SEEDIPS, None)
 ]], 
 
 [
 NW_ADD_NODES, [
 (CHAINID, my_chainid),
-( ISCROSS, myfalse),
+( ISCROSS, FALSE),
 ( NODES, None)
 ]], 
 
@@ -1005,20 +1050,20 @@ NW_ADD_NODES, [
 NW_BROADCAST, [
 ( CHAINID, my_chainid),
 ( EXCLUDENODES, None),
-( MESSAGEBODY, myshortmsg),
+(MESSAGEBODY, SHORT_MSG),
 ( COMMAND, None),
-( ISCROSS, myfalse),
-( PERCENT, myzero)
+( ISCROSS, FALSE),
+( PERCENT, ZERO)
 ]], 
 
 [
 NW_CREATE_NODEGROUP, [
 ( CHAINID, my_chainid),
-( MAGICNUMBER, myzero),
-( MAXOUT, myzero),
-( MAXIN, myzero),
-( MINAVAILABLECOUNT, myzero),
-    (ISCROSSGROUP, myfalse)
+( MAGICNUMBER, ZERO),
+( MAXOUT, ZERO),
+( MAXIN, ZERO),
+( MINAVAILABLECOUNT, ZERO),
+    (ISCROSSGROUP, FALSE)
 ]], 
 
 [
@@ -1030,7 +1075,7 @@ NW_DEL_NODES, [
 [
 NW_GET_CHAIN_CONNECT_AMOUNT, [
 ( CHAINID, my_chainid),
-( ISCROSS, myfalse)
+( ISCROSS, FALSE)
 ]], 
 
 [
@@ -1040,17 +1085,17 @@ NW_GET_GROUP_BY_CHAINID,[
     
 [
 NW_GET_GROUPS, [
-( STARTPAGE, myfalse),
-( PAGESIZE, myzero)
+( STARTPAGE, FALSE),
+( PAGESIZE, ZERO)
 ]],
 
 [
 NW_GET_NODES, [
 ( CHAINID, my_chainid),
 ( STATE, None),
-( ISCROSS, myfalse),
-( STARTPAGE, myzero),
-( PAGESIZE, myzero)
+( ISCROSS, FALSE),
+( STARTPAGE, zero),
+( PAGESIZE, ZERO)
 ]], 
 
 [
@@ -1082,7 +1127,7 @@ NW_RECONNECT, [
  NW_SEND_PEERS_MSG, [
 ( CHAINID, my_chainid),
    ( NODES, None),
-   ( MESSAGEBODY, myshortmsg),
+   (MESSAGEBODY, SHORT_MSG),
    ( COMMAND, None)
 ]],
 
@@ -1096,10 +1141,10 @@ NW_UPDATE_NODE_INFO, [
 
 [
 PARAM_TEST_CMD, [
-( INTCOUNT, myzero),
+( INTCOUNT, ZERO),
 ( BYTECOUNT, my_count),
-( SHORTCOUNT, myzero),
-( LONGCOUNT, myzero)
+( SHORTCOUNT, ZERO),
+( LONGCOUNT, ZERO)
 ]], 
 
 [
@@ -1118,49 +1163,49 @@ RECEIVE_PACKING_BLOCK, [
 RECV_CIRCULAT, [
 ( CHAINID, my_chainid),
 ( NODEID, None),
-( MESSAGEBODY, myshortmsg)
+(MESSAGEBODY, SHORT_MSG)
 ]], 
 
 [
 RECV_CTX, [
 ( CHAINID, my_chainid),
 ( NODEID, None),
-( MESSAGEBODY, myshortmsg)
+(MESSAGEBODY, SHORT_MSG)
 ]], 
 
 [
 RECV_CTX_HASH, [
 ( CHAINID, my_chainid),
 ( NODEID, None),
-( MESSAGEBODY, myshortmsg)
+(MESSAGEBODY, SHORT_MSG)
 ]], 
 
 [
 RECV_CTX_SIGN, [
 ( CHAINID, my_chainid),
 ( NODEID, None),
-( MESSAGEBODY, myshortmsg)
+(MESSAGEBODY, SHORT_MSG)
 ]], 
 
 [
 RECV_CTX_STATE, [
 ( CHAINID, my_chainid),
 ( NODEID, None),
-( MESSAGEBODY, myshortmsg)
+(MESSAGEBODY, SHORT_MSG)
 ]], 
 
 [
 RECV_OTHER_CTX, [
 ( CHAINID, my_chainid),
 ( NODEID, None),
-( MESSAGEBODY, myshortmsg)
+(MESSAGEBODY, SHORT_MSG)
 ]], 
 
 [
 RECV_REGCHAIN, [
 ( CHAINID, my_chainid),
 ( NODEID, None),
-( MESSAGEBODY, myshortmsg)
+(MESSAGEBODY, SHORT_MSG)
 ]], 
 
 [
@@ -1240,7 +1285,7 @@ SC_CALL, [
 ( METHODNAME, None),
 ( METHODDESC, None),
 ( ARGS, None),
-( REMARK, myshortmsg)
+(REMARK, SHORT_MSG)
 ]], 
 
 [
@@ -1291,11 +1336,11 @@ SC_CREATE, [
 ( SENDER, None),
 ( PASSWORD, None),
 ( ALIAS, None),
-( GASLIMIT, myzero),
+( GASLIMIT, ZERO),
 ( PRICE, None),
 ( CONTRACTCODE, None),
 ( ARGS, None),
-( REMARK, myshortmsg)
+(REMARK, SHORT_MSG)
 ]],
 
 [
@@ -1310,7 +1355,7 @@ SC_DELETE, [
 ( SENDER, None),
 ( PASSWORD, None),
 ( CONTRACTADDRESS, None),
-( REMARK, myshortmsg)
+(REMARK, SHORT_MSG)
 ]],
 
 [
@@ -1377,26 +1422,25 @@ SC_TOKEN_ASSETS_LIST, [
 [
 SC_TOKEN_BALANCE, [
 ( CHAINID, my_chainid),
-( CONTRACTADDRESS, myaddress),
-( ADDRESS, myaddress)
+( CONTRACTADDRESS, my_address),
+( ADDRESS, my_address)
 ]],
 
 [
 SC_TOKEN_TRANSFER, [
 ( CHAINID, my_chainid),
 ( ADDRESS, my_address),
-( TOADDRESS, myaddress),
-( CONTRACTADDRESS, myaddress),
+( TOADDRESS, my_address),
+( CONTRACTADDRESS, my_address),
 ( PASSWORD, None),
-( AMOUNT, myzero),
-( REMARK, myshortmsg)
+( AMOUNT, ZERO),
+(REMARK, SHORT_MSG)
 ]],
 
 [
 SC_TOKEN_TRANSFER_LIST, [
 ( CHAINID, my_chainid),
-( ADDRESS,
-my_address),
+( ADDRESS, my_address),
 ( PAGENUMBER, None),
 ( PAGESIZE, None)
 ]],
@@ -1408,7 +1452,7 @@ SC_TRANSFER, [
 ( TOADDRESS, None),
 ( PASSWORD, my_password),
 ( AMOUNT, None),
-( REMARK, myshortmsg)
+(REMARK, SHORT_MSG)
 ]],
 
 [
@@ -1625,20 +1669,16 @@ WITHDRAW_VALID, [
 ]],
 
 [
-FORWARD_MESSAGE, [
-]], 
+FORWARD_MESSAGE, []], 
 
 [
-GET_CONSOLIDATEDAPI, [
-]], 
+GET_CONSOLIDATEDAPI, []], 
 
 [
-CHECK_UPDATES, [
-]], 
+CHECK_UPDATES, []], 
 
 [
-SCAN_MANAGED_MODULES, [
-]], 
+SCAN_MANAGED_MODULES, []], 
 
 [
 SHUTDOWN_SYSTEM, [
@@ -1650,4 +1690,148 @@ STOP_ALL_MODULES, None
 
 
 
-# ---------------- Example -------------------------------------------------------------------
+
+
+
+
+# DEFAULTS
+# be carefull with these - don't delete them
+# the originally requested java types are in comments on each line
+# 
+# my_chainid: int = 1               # int
+# my_amount: int = 0     # java-type-BigInteger
+# my_initnumber: int = 0     # java-type-BigInteger
+# my_value: int = 0     # java-type-BigInteger
+# my_maxsignaturecount: int = 0     # java-type-Integer
+# my_signaturebftratio: int = 0     # java-type-Integer
+# my_assets: list = []             # java-type-List
+# my_cmdregisterlist: list = []             # java-type-List
+# my_contractlist: list = []             # java-type-List
+# my_dellist: list = []             # java-type-List
+# my_hashlist: list = []             # java-type-List
+# my_inputs: list = []             # java-type-List
+# my_list: list = []             # java-type-List
+# my_listfrom: list = []             # java-type-List
+# my_listto: list = []             # java-type-List
+# my_outputs: list = []             # java-type-List
+# my_prefixlist: list = []             # java-type-List
+# my_protocolcmds: list = []             # java-type-List
+# my_pubkeys: list = []             # java-type-List
+# my_txhashlist: list = []             # java-type-List
+# my_txlist: list = []             # java-type-List
+# my_verifierlist: list = []             #  java-type-List
+# my_assetinfolist: list = []             #  l java-type-List<assetinfo>
+# my_headerlist: list = []           #  java-type-List<string>
+# my_args: str = ''                # java-Object
+# my_lmodulename: str = ''           # java-type-String # Qstring
+# my_lmoduleversion: str= ''           # Qstring
+# my_address: str = ''           # java-type-String
+# my_addressprefix: str = 'NULS'           # java-type-String
+# my_agentaddress: str = ''           # java-type-String
+# my_agenthash: str = ''           # java-type-String
+# my_algorithm: str = 'zlib'           # java-type-String
+# my_alias: str = ''           # java-type-String
+# my_assetids: str = ''           # java-type-String
+# my_assetname: str = ''           # java-type-String
+# my_block: str = ''           # java-type-String
+# my_blockhash: str = ''           # java-type-String
+# my_blockheader: str = ''           # java-type-String
+# my_chainname: str = 'nuls'           # java-type-String
+# my_cmd: str = ''           # java-type-String
+# my_command: str = ''           # java-type-String
+# my_contractaddress: str = ''           # java-type-String
+# my_contractbalance: str = ''           # java-type-String
+# my_contractcode: str = ''           # java-type-String
+# my_contractNonce: str = ''           # java-type-String
+# my_contractsender: str = ''           # java-type-String
+# my_data: str = ''           # java-type-String
+# my_deposit: str = ''           # java-type-String
+# my_evidenceheader: str = ''           # java-type-String
+# my_excludenodes: str = ''           # java-type-String
+# my_extend: str = ''           # java-type-String
+# my_extendsdata: str = ''           # java-type-String
+# my_filepath: str = ''           # java-type-String
+# my_hash: str = ''           # java-type-String
+# my_jarfiledata: str = ''           # java-type-String
+# my_joinagenthash: str = ''           # java-type-String
+# my_keystore: str = ''           # java-type-String
+# my_keyword: str = ''           # java-type-String
+# my_maxout: str = ''           # java-type-String
+# my_messagebody: str = ''           # java-type-String
+# my_methoddesc: str = ''           # java-type-String
+# my_methodname: str = ''           # java-type-String
+# my_modulecode: str = ''           # java-type-String
+# my_newpassword: str = ''           # java-type-String
+# my_nodeid: str = ''           # java-type-String
+# my_nodes: str = ''           # java-type-String
+# my_packingaddress: str = ''           # java-type-String
+# my_password: str = ''           # java-type-String
+# my_prestateroot: str = ''           # java-type-String
+# my_prikey: str = ''           # java-type-String
+# my_pubkey: str = ''           # java-type-String
+# my_remark: str = ''           # java-type-String
+# my_rewardaddress: str = ''           # java-type-String
+# my_role: str = ''           # java-type-String
+# my_seedips: str = ''           # java-type-String
+# my_sender: str = ''           # java-type-String
+# my_sig: str = ''           # java-type-String
+# my_signaddress: str = ''           # java-type-String
+# my_signpassword: str = ''           # java-type-String
+# my_stateroot: str = ''           # java-type-String
+# my_symbol: str = ''           # java-type-String
+# my_toaddress: str = ''           # java-type-String
+# my_tx: str = ''           # java-type-String
+# my_txhash: str = ''           # java-type-String
+# my_frestartifrunning: bool = False
+# my_allhits: bool = False           #  java-type-Boolean
+# my_isconfirmed: bool = False           #   java-type-Boolean
+# my_iscrossgroup: bool = False           #   java-type-Boolean
+# my_overwrite: bool = False           #   java-type-Boolean
+# my_packaging: bool = False           #   java-type-Boolean
+# my_usable: bool = False           #   java-type-Boolean
+# my_bytecount: int = 0             #  java-type-Byte
+# my_addresstype: int = 0               # int
+# my_assetchainid: int = 1               # int
+# my_assetid: int = 1               # int
+# my_blocktype: int = 0               # int
+# my_circulatechainid: int = 0               # int
+# my_commissionrate: int = 0               # int
+# my_count: int = 0               # int
+# my_download: int = 0               # int
+# my_height: int = 0               # int
+# my_intcount: int = 0               # int
+# my_interval: int = 0               # int
+# my_iscross: int = 0               # int
+# my_lmaxcpus: int = 0               # int
+# my_maxin: int = 0               # int
+# my_maxtxdatasize: int = 0               # int
+# my_minavailablecount: int = 0               # int
+# my_minavailablenodenum: int = 0               # int
+# my_minsigns: int = 0               # int
+# my_pagenumber: int = 0               # int
+# my_pagesize: int = 0               # int
+# my_percent: int = 0               # int
+# my_round: int = 0               # int
+# my_size: int = 0               # int
+# my_startpage: int = 0               # int
+# my_state: int = 0               # int
+# my_status: int = 0               # int
+# my_type: int = 0               # int
+# my_begin: int = 0               # java-type-Long
+# my_blockheight: int = 0               # java-type-Long
+# my_blocktime: int = 0               # java-type-Long
+# my_end: int = 0               # java-type-Long
+# my_endheight: int = 0               # java-type-Long
+# my_endtimestamp: int = 0               # java-type-Long
+# my_gaslimit: int = 0               # java-type-Long
+# my_longcount: int = 0               # java-type-Long
+# my_magicnumber: int = 0               # java-type-Long
+# my_price: int = 0               # java-type-Long
+# my_registertime: int = 0               # java-type-Long
+# my_startheight: int = 0               # java-type-Long
+# my_decimalplaces: int = 0                    # java-type-Short
+# my_protocolversion: int = 0                   # java-type-Short
+# my_shortcount: int = 0                     # java-type-Short
+
+
+# ---------------- end -------------------------------------------------------------------
