@@ -17,31 +17,25 @@ from UserSettings.nulsws_CONSTANTS_PARAM_userwords import *
 
 # a list of  lists of tuples
 
-user_parameters = [
-
+user_calls_list = [
 [
-REGISTER_API, None
-]], 
-
+REGISTER_API, None],
 [
 AC_CREATE_ACCOUNT, [
 (CHAINID, my_chainid),
 (COUNT, my_count),
 (PASSWORD, my_password)
-]], 
-
+]],
 [
 AC_CREATE_CONTRACT_ACCOUNT, [
 (CHAINID, my_chainid)
-]], 
-
+]],
 [
 AC_CREATE_MULTI_SIGN_ACCOUNT, [
 (CHAINID, my_chainid),
 (PUBKEYS, None),
 (MINSIGNS, None)
-]], 
-
+]],
 [
 AC_CREATE_MULTI_SIGN_TRANSFER, [
 (CHAINID, my_chainid),
@@ -665,7 +659,7 @@ CS_RANDOM_RAW_SEEDS_HEIGHT, [
 CS_RANDOM_SEED_COUNT, [
 (CHAINID, my_chainid),
 (HEIGHT, None),
-(COUNT, 0)
+(COUNT, 0),
 (ALGORITHM, None)
 ]], 
 
@@ -1373,7 +1367,7 @@ SC_TOKEN_BALANCE, [
 ( CHAINID, my_chainid),
 ( CONTRACTADDRESS, None),
 ( ADDRESS, my_chainid)
-],
+]],
 
 [
 SC_TOKEN_TRANSFER, [
@@ -1637,10 +1631,9 @@ SCAN_MANAGED_MODULES, [
 
 [
 SHUTDOWN_SYSTEM, [
-]], 
-
+]],
 [
-STOP_ALL_MODULES, []
+STOP_ALL_MODULES, None
 ]
 ] #end big list
 

@@ -1,6 +1,6 @@
 #!/usr/bin/python3.7
 
-import Libraries.Constants.nulsws_CONSTANTS_API_names
+import Libraries.Constants.nulsws_CONSTANTS_API_LABELS
 import UserSettings.nulsws_USER_settings
 
 from UserSettings import *

@@ -4,6 +4,11 @@ from Libraries.nulsws_library import get_TOP_SECTION
 from UserSettings.nulsws_USER_static_settings import *
 from UserSettings.nulsws_USER_settings import *
 from Libraries.Constants.nulsws_CONSTANTS_otherlabels import *
+from Libraries.Constants.nulsws_CONSTANTS_API_LABELS import *
+from Libraries.Constants.nulsws_CONSTANTS_PARAM_LABELS import *
+from UserSettings.nulsws_USER_PARAMS import user_calls_list as uclist
+
+
 
 
 # -----------prep_NEGOTIATE_data_type1--------------------------------------#
@@ -36,35 +41,48 @@ def get_REQ_MIDDLE(bottom_part, mid_section_vals=None):   #return dict
     return REQ_MIDDLE   #dict
 
 # -----------prep_REQUEST_ONESIE (request) --------------------------------------#
-def prep_REQUEST_ONESIE_NO_params_or_just_ONE(msg_indx, api_name):  # requesttype 2 - return ack +
+def prep_REQUEST_ONESIE_NO_params_or_just_ONE(msg_indx, api_name_tup):  # requesttype 2 - return ack +
     # response
     # onesie either has a second element of a list, or not
-    from .Constants.nulsws_CONSTANTS_PARAM_LOOKUP import Required_Params
+    # user_params_list = uc.user_parameters
+    api_name = api_name_tup[0]
+    api_name_word = api_name_tup[1]
+    myvarslist = []
 
-    req_params = Required_Params.get(api_name)
+    for i in uclist:
+        if i[0] == api_name_word:
+            myvarslist = i[1]
+            for tup in myvarslist:
+                print(tup[0], tup[1])
+                break
 
-    MSG_TYPE = 3
-    params = get_my_parameter_vals(api_name)
-    plen = len(params)
-    if plen == 0:
+    msg_section_bottom = ''
+    params_len = len(myvarslist)
+    if params_len == 0:
         msg_section_bottom = {
             api_name:
                 {}  # later substitute, needs to be fixed for other vals
         }
-    if plen == 1:
+    if params_len == 1:
         msg_section_bottom = {
-                api_name :
-                    { CHAINID_LABEL : params[0] }   # later substitute, needs to be fixed for other vals
+            api_name :
+                { myvarslist[0][0] : myvarslist[0][1] }   # later substitute, needs to be fixed for
             }
 
-    if plen == 2:
+    if params_len == 2:
         msg_section_bottom = {
             api_name:
-                {CHAINID_LABEL: params[0]}  # later substitute, needs to be fixed for other vals
-           # {NextParamLabel: params[1]}  # later substitute, needs to be fixed for other vals
+                [ { myvarslist[0][0]: myvarslist[0][1] },  # later substitute, needs to be fixed for
+                { myvarslist[1][0]: myvarslist[1][1] }]  # later substitute, needs to be fixed for
 
         }
-
+    if params_len == 3:
+        msg_section_bottom = {
+            api_name:
+                [ { myvarslist[0][0]: myvarslist[0][1] },  # later substitute, needs to be fixed for
+                { myvarslist[1][0]: myvarslist[1][1] },  # later substitute, needs to be fixed for
+                { myvarslist[2][0]: myvarslist[2][1]}]  # later substitute, needs to be fixed for
+        }
     msg_section_MIDDLE = get_REQ_MIDDLE(msg_section_bottom)
     message_section_TOP = get_TOP_SECTION(MSG_TYPE, msg_indx)
     message_section_TOP.update(msg_section_MIDDLE)

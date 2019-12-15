@@ -6,7 +6,7 @@
 # for use in api calls
 # list of callable apis with their necessary parameters
 # has the _ rem from names for dict replacements in the real params file.
-from Libraries.Constants.nulsws_CONSTANTS_API_names import *
+from Libraries.Constants.nulsws_CONSTANTS_API_LABELS import *
 from .nulsws_CONSTANTS_PARAM_LABELS import *
 
 REQUIRED_PARAMETERS = {

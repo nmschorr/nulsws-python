@@ -83,7 +83,7 @@ class NulsWebsocket(object):
         myprint("------end Negotiate----------------------------------------")
         await self.REGULAR_req(connection, main_request)
 
-    async def negotiate_onesies(self, json_negotiate, m_indx, RUN_LIST):
+    async def negotiate_one(self, json_negotiate, m_indx, RUN_LIST):
         connection = await websocket_connect(websock_url)  # 1) CONNECT
         await a_sleep(self.s_time)
         while not connection:
@@ -98,15 +98,15 @@ class NulsWebsocket(object):
         json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
         myprint("------end Negotiate----------------------------------------")
 
-        for onesie in RUN_LIST:
-            main_request = mw.prep_REQUEST_ONESIE_NO_params_or_just_ONE(m_indx, onesie)
+        for run_item in RUN_LIST:
+            main_request = mw.prep_REQUEST_ONESIE_NO_params_or_just_ONE(m_indx, run_item)
             await self.REGULAR_req(connection, main_request)
 
     def commander(self, j_negotiate, main_request):
         asyncio_run(self.negotiate(j_negotiate, main_request))  # starts event
 
-    def commander_onesies(self, j_negotiate, m_indx, RUN_LIST):  #multipls
-        asyncio_run(self.negotiate_onesies(j_negotiate, m_indx, RUN_LIST)) # starts event
+    def commander_by_list(self, j_negotiate, m_indx, RUN_LIST):  #multipls
+        asyncio_run(self.negotiate_one(j_negotiate, m_indx, RUN_LIST)) # starts event
 
     def main(self, mtpe):
         # we always do type 1 just before anything
@@ -118,7 +118,7 @@ class NulsWebsocket(object):
             #main_request_d = mw.prep_REQUEST_ONESIE_NO_params(m_indx) #dict
             #self.commander(json_negotiate, main_request_d) #one at a time
             #self.commander_onesies(json_negotiate, m_indx, onesies)  #big list
-            self.commander_onesies(json_negotiate, m_indx, RUN_LIST)  #big list
+            self.commander_by_list(json_negotiate, m_indx, RUN_LIST)  #big list
 
             # json_main_type = mw.prep_data_REQUEST_type5()
             # json_main_type = mw.prep_data_REQUEST_type7()
