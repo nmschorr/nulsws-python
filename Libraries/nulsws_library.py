@@ -52,7 +52,7 @@ from time import time, timezone
 from json import dumps as json_dumps
 from Libraries.Constants.nulsws_CONSTANTS_otherlabels import msg_data_label, type_name_dict, tmzone_label, msg_id_label, \
     msg_type_label, negotiate_stat_label, negotiate_conn_resp_label, proto_label, tmstmp_label
-from UnusedSoFar.nulsws_USER_static_settings import proto_ver
+from UserSettings.nulsws_USER_PARAMS import proto_ver
 import inspect
 
 

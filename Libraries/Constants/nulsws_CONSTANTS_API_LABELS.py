@@ -1,7 +1,7 @@
 # "method name constants representing possible api calls to Nulstar.",
 # "Nancy Schorr, December, 2019
 
-AC_ADDRESS_PREFIX = "ac_addAddressPrefix"
+AC_ADD_ADDRESS_PREFIX = "ac_addAddressPrefix"
 AC_CREATE_ACCOUNT = "ac_createAccount"
 AC_CREATE_CONTRACT_ACCOUNT = "ac_createContractAccount"
 AC_CREATE_MULTI_SIGN_ACCOUNT = "ac_createMultiSignAccount"

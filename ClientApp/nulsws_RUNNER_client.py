@@ -37,9 +37,10 @@ from asyncio import run as asyncio_run
 from asyncio import sleep as a_sleep
 from tornado.websocket import websocket_connect, WebSocketClientConnection  # WebSocketClosedError
 from Libraries.nulsws_library import *
-from UnusedSoFar.nulsws_USER_static_settings import *
-from UnusedSoFar.nulsws_USER_settings import MSG_TYPE, RUN_LIST
 from Libraries import nulsws_REQUEST as mw
+from UserSettings.nulsws_USER_PARAMS import *
+
+
 
 
 class NulsWebsocket(object):
@@ -47,6 +48,8 @@ class NulsWebsocket(object):
         myprint("the url:  ", websock_url)
         self.mindex = 0
         self.s_time = 1
+        self.ORIG_RUNLIST = []
+        self.rundict = {}
 
     def nms_callback(self, x):
         myprint(x)
@@ -70,23 +73,24 @@ class NulsWebsocket(object):
         jd = json_dumps(json_negotiate)
         json_prt(json_negotiate, "* * * First message going out- NEGOTIATE: ")
         await connection.write_message(jd)  # 2) WRITE
-        await a_sleep(self.s_time)
+        #await a_sleep(self.s_time)
 
         negotiate_result = await connection.read_message()  # 3 READ
         await a_sleep(self.s_time)
         json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
         myprint("------end Negotiate----------------------------------------")
 
-        for run_item in runlist:
-            print("starting this item: ", run_item)
-            main_request = mw.prep_REQUEST(m_indx, run_item)
+        for run_tup in runlist:
+            print("starting this item: ", run_tup)
+            main_request = mw.prep_REQUEST(m_indx, run_tup)
             await self.REGULAR_req(connection, main_request)
 
     def commander_by_list(self, j_negotiate, m_indx, runlist):  #multiples
         asyncio_run(self.negotiate_list(j_negotiate, m_indx, runlist)) # starts event
 
-    def main(self, mtpe):
+    def main(self, mtpe, RUN_LIST):
         # we always do type 1 just before anything
+
         self.mindex += 1
         m_indx = self.mindex
         json_negotiate = mw.prep_NEGOTIATE_request(m_indx)  #dict
@@ -99,6 +103,54 @@ class NulsWebsocket(object):
 
 
 if __name__ == '__main__':
+    RUN_LIST = [
+    ("AC_ADD_ADDRESS_PREFIX", AC_ADD_ADDRESS_PREFIX),
+    ("AC_GET_ACCOUNT_LIST", AC_GET_ACCOUNT_LIST),
+    ("AC_GET_ACCOUNT_BYADDRESS", AC_GET_ACCOUNT_BYADDRESS),
+    ("AC_GET_ADDRESS_LIST", AC_GET_ADDRESS_LIST),
+    ("AC_GET_ADDRESS_PREFIX_BY_CHAINID", AC_GET_ADDRESS_PREFIX_BY_CHAINID),
+    ("AC_GET_ALIASBY_ADDRESS", AC_GET_ALIASBY_ADDRESS),
+    ("AC_GET_ALL_ADDRESS_PREFIX", AC_GET_ALL_ADDRESS_PREFIX),
+    ("AC_GET_ALL_PRIKEY", AC_GET_ALL_PRIKEY),
+    ("AC_GET_ENCRYPTED_ADDRESS_LIST", AC_GET_ENCRYPTED_ADDRESS_LIST),
+    ("AC_GET_MULTI_SIGN_ACCOUNT", AC_GET_MULTI_SIGN_ACCOUNT),
+    ("AC_GET_PRIKEY", AC_GET_PRIKEY),
+    ("AC_GET_PUBKEY", AC_GET_PUBKEY),
+    ("AC_IMPORT_ACCOUNT_BY_PRIKEY", AC_IMPORT_ACCOUNT_BY_PRIKEY),
+    ("AC_IMPORT_ACCOUNT_BY_KEYSTORE", AC_IMPORT_ACCOUNT_BY_KEYSTORE),
+    ("AC_IS_ALIAS_USABLE", AC_IS_ALIAS_USABLE),
+    ("AC_SET_ALIAS", AC_SET_ALIAS),
+    ("AC_SET_MULTISIGN_ALIAS", AC_SET_MULTISIGN_ALIAS),
+    ("AC_SET_REMARK", AC_SET_REMARK),
+    ("CONNECT_READY", CONNECT_READY),
+    ("GET_BALANCE", GET_BALANCE),
+    ("GET_BALANCE_NONCE", GET_BALANCE_NONCE),
+    ("GET_BLOCK_BY_HASH", GET_BLOCK_BY_HASH),
+    ("GET_BLOCK_BY_HEIGHT", GET_BLOCK_BY_HEIGHT),
+    ("GET_BLOCKHEADER_BY_HASH", GET_BLOCKHEADER_BY_HASH),
+    ("GET_BLOCKHEADER_BY_HEIGHT", GET_BLOCKHEADER_BY_HEIGHT),
+    ("GET_BLOCKHEADER_PO_BY_HASH", GET_BLOCKHEADER_PO_BY_HASH),
+    ("GET_BLOCKHEADER_POBY_HEIGHT", GET_BLOCKHEADER_POBY_HEIGHT),
+    ("GET_BLOCKHEADERS_BY_HEIGHT_RANGE", GET_BLOCKHEADERS_BY_HEIGHT_RANGE),
+    ("GET_BLOCKHEADERS_FOR_PROTOCOL", GET_BLOCKHEADERS_FOR_PROTOCOL),
+    ("GET_NETWORK_GROUP", GET_NETWORK_GROUP),
+    ("GET_NONCE", GET_NONCE),
+    ("GET_OTHERCTX", GET_OTHERCTX),
+    ("GET_REGISTERED_CHAIN_INFO_LIST", GET_REGISTERED_CHAIN_INFO_LIST),
+    ("GET_REGISTERED_CHAIN_MESSAGE", GET_REGISTERED_CHAIN_MESSAGE),
+    ("GET_ROUND_BLOCKHEADERS", GET_ROUND_BLOCKHEADERS),
+    ("GET_STATUS", GET_STATUS),
+    ("GET_VERSION", GET_VERSION),
+    ("INFO", INFO),
+    ("LATEST_BLOCKHEADER", LATEST_BLOCKHEADER),
+    ("LATEST_BLOCKHEADER_PO", LATEST_BLOCKHEADER_PO),
+    ("LATEST_BLOCK", LATEST_BLOCK),
+    ("LATEST__HEIGHT", LATEST__HEIGHT),
+
+    ]
+
+
+    MSG_TYPE = 3            # 3 is request
     n = NulsWebsocket()
-    n.main(MSG_TYPE)
+    n.main(MSG_TYPE, RUN_LIST)
 

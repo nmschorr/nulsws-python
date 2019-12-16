@@ -1,17 +1,23 @@
 #!/usr/bin/python3.7
 
 from Libraries.nulsws_library import get_TOP_SECTION
-from UnusedSoFar.nulsws_USER_static_settings import *
-from UnusedSoFar.nulsws_USER_settings import *
+
 from Libraries.Constants.nulsws_CONSTANTS_otherlabels import *
-from UserSettings.nulsws_USER_PARAMS import USER_CALLS_WITH_PARAMS as uclist
+from UserSettings.nulsws_USER_PARAMS import proto_ver
 
-
+# from UserSettings.nulsws_USER_PARAMS import _USER_PARAMS
+# from Libraries.Constants.nulsws_CONSTANTS_PARAM_LABELS import *
+from Libraries.Constants.nulsws_CONSTANTS_PARAM_LOOKUP import PARAM_LOOKUP
+# from Libraries.Constants.nulsws_CONSTANTS_API_LABELS import *
 
 
 # -----------prep_NEGOTIATE_data_type1--------------------------------------#
 def prep_NEGOTIATE_request(msg_indx):   #return dict
-        # this section has any number of items depending on the msg type
+    compress_rate_VALUE = 1
+    compress_type_VALUE = "zlib"
+
+
+    # this section has any number of items depending on the msg type
     top_sect = get_TOP_SECTION(1, msg_indx)
     data_part = { msg_data_label: {
                   proto_label: proto_ver,
@@ -43,12 +49,23 @@ def prep_REQUEST(msg_indx, api_name_tup):  # requesttype 2 - return ack +
     # response
     # onesie either has a second element of a list, or not
     # user_params_list = uc.user_parameters
+    MSG_TYPE = 3
+    openSQRB = "["
+    closeSQRB = "]"
+    OPENBRKT = "{ "
+    CLOSEBRKT = "}"
+    COMMA = ", "
+    COLON = ": "
+    COLON = ": "
+    beginn = " "
+    endd = " :{} }"
+
     api_name = api_name_tup[0]
     api_name_word = api_name_tup[1]
     myparams = []
     msg_section_bottom = ''
 
-    for i in uclist:
+    for i in PARAM_LOOKUP:
         if i[0] == api_name_word:
             myparams = i[1]
             for tup in myparams:
@@ -57,28 +74,34 @@ def prep_REQUEST(msg_indx, api_name_tup):  # requesttype 2 - return ack +
 
     params_len = len(myparams)
     print("params len: ", params_len)
+    # -------------------------------------Length One ---------------------------------
     if params_len == 0:
-        print("doing a 0 params", api_name_tup, ": ", myparams)
-        msg_section_bottom = {
-            api_name_word:
-                {}  # later substitute, needs to be fixed for other vals
-        }
+        print("doing a 0 params", api_name, ": ", myparams)
+        api_name_word = str(myparams)
+        midd: str = api_name_word + ":{}"
+        msg_section_bottom.join(f'{OPENBRKT}{midd}{CLOSEBRKT}{closeSQRB}')
+
     else:
-        msg_section_bottom = " { " + api_name_word + ": "
+        # msg_section_bottom: str = " [{ " + api_name_word + ": "
+        msg_section_bottom = openSQRB
+
         for x in range(params_len):
-            p1 = str(myparams[x][0])
-            p2 = str(myparams[x][1])
-            openq = "{ "
-            closeq = " } "
-            colm = ": "
-            ddline = f'{openq}{p1}{colm}{p2}{closeq}'
-            msg_section_bottom = msg_section_bottom + ddline
-            #print()
+            print("doing a 0 params", api_name, ": ", myparams)
+            p1 = str(myparams[0][0])
+            p2 = str(myparams[0][1])
+            midd: str = f"{api_name_word}" + ": "
+            msg_section_bottom = f'{openSQRB}{OPENBRKT}{midd}{CLOSEBRKT},'
+
+            ddline = f'{OPENBRKT}{p1}{COLON}{p2}{closeSQRB}'
+            msg_section_bottom += ddline
+            # print()
+        msg_section_bottom = msg_section_bottom + ']'
 
     msg_section_MIDDLE = get_REQ_MIDDLE(msg_section_bottom)
     message_section_TOP = get_TOP_SECTION(MSG_TYPE, msg_indx)
     message_section_TOP.update(msg_section_MIDDLE)
-    return message_section_TOP   # return dict
+    print(message_section_TOP)
+    return message_section_TOP  # return dict
 
 # ----------- end library file --------------------------------------#
 

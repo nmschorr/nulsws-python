@@ -3,13 +3,6 @@
 # the originally requested java types are in comments on each line
 # fill in your default params here
 
-proto_ver = "0.1"
-compatible_proto_versions = [proto_ver]
-host_req = "127.0.0.1"
-connect_method = "ws://"
-# connect_method =  "wss://"
-port_req = "7772"   # or 7771, 7773, etc.
-websock_url: str = ''.join([connect_method, host_req, ":", port_req])
 
 # be carefull with these - don't delete them
 
@@ -149,33 +142,28 @@ my_protocolversion: int = 0                   # java-type-Short
 my_shortcount: int = 0                     # java-type-Short
 
 
-
-
-__ALL1__ = [proto_ver, compatible_proto_versions, host_req, connect_method, port_req,
-           websock_url]
-
-
-__ALL__  = ['my_address', 'my_addressprefix', 'my_addresstype', 'my_agentaddress', 'my_agenthash',
-           'my_algorithm', 'my_alias', 'my_allhits', 'my_amount', 'my_args', 'my_assetchainid', 'my_assetid',
-           'my_assetids', 'my_assetinfolist', 'my_assetname', 'my_assets', 'my_begin', 'my_block',
-           'my_blockhash', 'my_blockheader', 'my_blockheight', 'my_blocktime', 'my_blocktype', 'my_bytecount',
-           'my_chainid', 'my_chainname', 'my_circulatechainid', 'my_cmd', 'my_cmdregisterlist', 'my_command',
-           'my_commissionrate', 'my_contractaddress', 'my_contractbalance', 'my_contractcode',
-           'my_contractlist', 'my_contractNonce', 'my_contractsender', 'my_count', 'my_data',
-           'my_decimalplaces', 'my_dellist', 'my_deposit', 'my_download', 'my_end', 'my_endheight',
-           'my_endtimestamp', 'my_evidenceheader', 'my_excludenodes', 'my_extend', 'my_extendsdata',
-           'my_frestartifrunning', 'my_filepath', 'my_gaslimit', 'my_hash', 'my_hashlist', 'my_headerlist',
-           'my_height', 'my_initnumber', 'my_inputs', 'my_intcount', 'my_interval', 'my_isconfirmed',
-           'my_iscross', 'my_iscrossgroup', 'my_jarfiledata', 'my_joinagenthash', 'my_keystore', 'my_keyword',
-           'my_lmaxcpus', 'my_lmodulename', 'my_lmoduleversion', 'my_list', 'my_listfrom', 'my_listto',
-           'my_longcount', 'my_magicnumber', 'my_maxin', 'my_maxout', 'my_maxsignaturecount',
-           'my_maxtxdatasize', 'my_messagebody', 'my_methoddesc', 'my_methodname', 'my_minavailablecount',
-           'my_minavailablenodenum', 'my_minsigns', 'my_modulecode', 'my_newpassword', 'my_nodeid',
-           'my_nodes', 'my_outputs', 'my_overwrite', 'my_packaging', 'my_packingaddress', 'my_pagenumber',
-           'my_pagesize', 'my_password', 'my_percent', 'my_prestateroot', 'my_prefixlist', 'my_prikey',
-           'my_price', 'my_protocolcmds', 'my_protocolversion', 'my_pubkey', 'my_pubkeys', 'my_registertime',
-           'my_remark', 'my_rewardaddress', 'my_role', 'my_round', 'my_seedips', 'my_sender', 'my_shortcount',
-           'my_sig', 'my_signaddress', 'my_signpassword', 'my_signaturebftratio', 'my_size', 'my_startheight',
-           'my_startpage', 'my_state', 'my_stateroot', 'my_status', 'my_symbol', 'my_toaddress', 'my_tx',
-           'my_txhash', 'my_txhashlist', 'my_txlist', 'my_type', 'my_usable', 'my_value',
-            'my_verifierlist'].append(__ALL1__)
+#
+# __ALL__  = ['my_address', 'my_addressprefix', 'my_addresstype', 'my_agentaddress', 'my_agenthash',
+#            'my_algorithm', 'my_alias', 'my_allhits', 'my_amount', 'my_args', 'my_assetchainid', 'my_assetid',
+#            'my_assetids', 'my_assetinfolist', 'my_assetname', 'my_assets', 'my_begin', 'my_block',
+#            'my_blockhash', 'my_blockheader', 'my_blockheight', 'my_blocktime', 'my_blocktype', 'my_bytecount',
+#            'my_chainid', 'my_chainname', 'my_circulatechainid', 'my_cmd', 'my_cmdregisterlist', 'my_command',
+#            'my_commissionrate', 'my_contractaddress', 'my_contractbalance', 'my_contractcode',
+#            'my_contractlist', 'my_contractNonce', 'my_contractsender', 'my_count', 'my_data',
+#            'my_decimalplaces', 'my_dellist', 'my_deposit', 'my_download', 'my_end', 'my_endheight',
+#            'my_endtimestamp', 'my_evidenceheader', 'my_excludenodes', 'my_extend', 'my_extendsdata',
+#            'my_frestartifrunning', 'my_filepath', 'my_gaslimit', 'my_hash', 'my_hashlist', 'my_headerlist',
+#            'my_height', 'my_initnumber', 'my_inputs', 'my_intcount', 'my_interval', 'my_isconfirmed',
+#            'my_iscross', 'my_iscrossgroup', 'my_jarfiledata', 'my_joinagenthash', 'my_keystore', 'my_keyword',
+#            'my_lmaxcpus', 'my_lmodulename', 'my_lmoduleversion', 'my_list', 'my_listfrom', 'my_listto',
+#            'my_longcount', 'my_magicnumber', 'my_maxin', 'my_maxout', 'my_maxsignaturecount',
+#            'my_maxtxdatasize', 'my_messagebody', 'my_methoddesc', 'my_methodname', 'my_minavailablecount',
+#            'my_minavailablenodenum', 'my_minsigns', 'my_modulecode', 'my_newpassword', 'my_nodeid',
+#            'my_nodes', 'my_outputs', 'my_overwrite', 'my_packaging', 'my_packingaddress', 'my_pagenumber',
+#            'my_pagesize', 'my_password', 'my_percent', 'my_prestateroot', 'my_prefixlist', 'my_prikey',
+#            'my_price', 'my_protocolcmds', 'my_protocolversion', 'my_pubkey', 'my_pubkeys', 'my_registertime',
+#            'my_remark', 'my_rewardaddress', 'my_role', 'my_round', 'my_seedips', 'my_sender', 'my_shortcount',
+#            'my_sig', 'my_signaddress', 'my_signpassword', 'my_signaturebftratio', 'my_size', 'my_startheight',
+#            'my_startpage', 'my_state', 'my_stateroot', 'my_status', 'my_symbol', 'my_toaddress', 'my_tx',
+#            'my_txhash', 'my_txhashlist', 'my_txlist', 'my_type', 'my_usable', 'my_value',
+#             'my_verifierlist'].append(__ALL1__)
