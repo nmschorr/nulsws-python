@@ -7,6 +7,7 @@ by Nancy Schorr for Nuls, None),
 """
 from Libraries.Constants.nulsws_CONSTANTS_API_LABELS import *
 from Libraries.Constants.nulsws_CONSTANTS_PARAM_LABELS import *
+
 from UserSettings.nulsws_SET import *
 
 # change settings to suit
@@ -14,21 +15,27 @@ from UserSettings.nulsws_SET import *
 # fill in your default params here
 
 # next step:
+# define:  my_minsigns, my_inputs, my_outputs, my_remark, my_signaddress, my_signpassword
 
+my_minsigns, my_inputs, my_outputs, my_remark, my_signaddress = [1,1,1,1,1]
 
 _1AC_CREATE_ACCOUNT_chainid = my_chainid
-_1AC_CREATE_ACCOUNT_count = my_count
+_1AC_CREATE_ACCOUNT_count = my_account
 _1AC_CREATE_ACCOUNT_password = my_password
 
 _2AC_CREATE_CONTRACT_ACCOUNT_chainid = my_chainid
 
 _3AC_CREATE_MULTI_SIGN_ACCOUNT_chainid = my_chainid
-_3AC_CREATE_MULTI_SIGN_ACCOUNT_pubkeys = None
-_3AC_CREATE_MULTI_SIGN_ACCOUNT_minsigns = None
+_3AC_CREATE_MULTI_SIGN_ACCOUNT_pubkeys = my_pubkeys
+_3AC_CREATE_MULTI_SIGN_ACCOUNT_minsigns = my_minsigns
 
 
-AC_CREATE_MULTI_SIGN_ACCOUNT_chainid = my_chainid
-AC_CREATE_MULTI_SIGN_ACCOUNT_password = my_password
+_4AC_CREATE_MULTI_SIGN_ACCOUNT_chainid = my_chainid
+_4AC_CREATE_MULTI_SIGN_ACCOUNT_inputs= my_inputs
+_4AC_CREATE_MULTI_SIGN_ACCOUNT_outputs= my_outputs
+_4AC_CREATE_MULTI_SIGN_ACCOUNT_remark= my_remark
+_4AC_CREATE_MULTI_SIGN_ACCOUNT_signaddress= my_signaddress
+_4AC_CREATE_MULTI_SIGN_ACCOUNT_signpassword= my_signpassword
 
 
 
@@ -59,12 +66,12 @@ AC_CREATE_MULTI_SIGN_ACCOUNT, [     #3
 
 [
 AC_CREATE_MULTI_SIGN_TRANSFER, [     #4
-(CHAINID, my_chainid),
-(INPUTS, None),
-(OUTPUTS, None),
-(REMARK, REMARK),
-(SIGNADDRESS, None),
-(SIGNPASSWORD, my_password)
+(CHAINID, _4AC_CREATE_MULTI_SIGN_ACCOUNT_chainid),
+(INPUTS, _4AC_CREATE_MULTI_SIGN_ACCOUNT_inputs),
+(OUTPUTS, _4AC_CREATE_MULTI_SIGN_ACCOUNT_outputs),
+(REMARK, _4AC_CREATE_MULTI_SIGN_ACCOUNT_remark),
+(SIGNADDRESS, _4AC_CREATE_MULTI_SIGN_ACCOUNT_signaddress),
+(SIGNPASSWORD, _4AC_CREATE_MULTI_SIGN_ACCOUNT_signpassword)
 ]], 
 
 [

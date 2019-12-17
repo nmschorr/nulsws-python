@@ -7,7 +7,7 @@
 by Nancy Schorr for Nuls, December 2, 2019
 """
 import json
-from Libraries.nulsws_library import get_TOP_SECTION
+from Libraries.nulsws_REQUEST import get_TOP_SECTION
 
 # this can be a list once other versions are supported
 
@@ -100,10 +100,9 @@ def make_nulsws_REGISTER_method(mindex):
             "SubscriptionPeriod": zero,
             "SubscriptionRange": sub_rng
         } }
-
     top_sec.update(nulsws_register_j)
-    nulsws_register = json.dumps(top_sec)
-
-    return nulsws_register
+    pretty_print = json.dumps(top_sec, indent=2)
+    print(pretty_print)
+    return top_sec
 
 

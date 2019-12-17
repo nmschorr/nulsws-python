@@ -65,21 +65,8 @@ def get_times(msg_index=1):
     t_stamp = int(time() * 100000)  # change float to int
     tzone = int(timezone / 3600)  # change float to int to str
     m_id = str(t_stamp) + "-" + str(msg_index)
-    return t_stamp, tzone, m_id
-
-
-def get_TOP_SECTION(msg_type: int, msg_indx):  # this section builds 5 items: #0
-    # 0  "ProtocolVersion": "0.1",
-    # 1 "MessageID": "1569897424187-1",  #2 "TimeZone": "-4",   #3 "Timestamp": "1569897424187"
-    # #4 "MessageType": "NegotiateConnection",
-    msg_type_name = type_name_dict.__getitem__(msg_type)
-    t_stamp, tzone, m_id = get_times(msg_indx)
-    top_part = {proto_label: proto_ver,
-                msg_id_label: m_id,
-                tmstmp_label: t_stamp,
-                tmzone_label: tzone,
-                msg_type_label: msg_type_name}
-    return top_part
+    t_stamp = str(t_stamp)
+    return t_stamp, str(tzone), m_id
 
 
 # -----------check_json_answer--------------------------------------#
