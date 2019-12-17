@@ -101,6 +101,12 @@ class NulsWebsocket(object):
         # json_main_type = mw.prep_data_REQUEST_type5()
         # json_main_type = mw.prep_data_REQUEST_type7()
 
+        if mtpe == 99:   # test dev only
+            for run_tup in RUN_LIST:
+                print("starting this item: ", run_tup)
+                main_request = mw.prep_REQUEST(m_indx, run_tup)
+            #await self.REGULAR_req(connection, main_request)
+
 
 if __name__ == '__main__':
     RUN_LIST = [
@@ -150,7 +156,7 @@ if __name__ == '__main__':
     ]
 
 
-    MSG_TYPE = 3            # 3 is request
+    MSG_TYPE = 99            # 3 is request
     n = NulsWebsocket()
     n.main(MSG_TYPE, RUN_LIST)
 
