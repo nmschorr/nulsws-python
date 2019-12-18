@@ -41,16 +41,11 @@ get_cpu_info = "GetCPUInfo"
 # -----------------------------------------------------------------------------------
 
 def make_nulsws_REGISTER_method(mindex):
-    top_sec = get_TOP_SECTION(3, mindex)
-    #
-    # jdd = {
-    #     "MessageData": {
-    #         "RequestAck": zero,
-    #         "RequestMethods": {
-    #             "RegisterAPI": {
-    #                 "GetBalance": 0}
-    #             }}}
 
+    # oldtop = {   "MessageData": {   "RequestAck": zero,   "RequestMethods": {   "RegisterAPI": {
+    # "GetBalance": 0}  }}}
+
+    top_sec = get_TOP_SECTION(3, mindex)
     nulsws_register_j = {
         "MessageData": {
             "RequestAck": zero,
@@ -101,8 +96,7 @@ def make_nulsws_REGISTER_method(mindex):
             "SubscriptionRange": sub_rng
         } }
     top_sec.update(nulsws_register_j)
-    pretty_print = json.dumps(top_sec, indent=2)
-    print(pretty_print)
+    print(json.dumps(top_sec, indent=2))
     return top_sec
 
 

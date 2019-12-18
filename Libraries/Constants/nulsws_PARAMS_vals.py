@@ -22,7 +22,7 @@ by Nancy Schorr for Nuls, None),
 
 from UserSettings.nulsws_USER_PARAMS import *
 from Libraries.Constants.nulsws_CONSTANTS_API_LABELS import *
-from Libraries.nulsws_CONSTANTS_PARAM_LABELS import param_name_dict as p
+from Libraries.Constants.Dictionaires.nulsws_CONSTANTS_PARAM_LABELS import param_name_dict as p
 
 # list of lists of tups
 USER_CALLS_DB = [
