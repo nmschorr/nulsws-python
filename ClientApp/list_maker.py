@@ -1,9 +1,7 @@
-import json
-
 from Libraries.Constants.nulsws_CONSTANTS_API_LABELS import *
 from Libraries.Constants.nulsws_CONSTANTS_PARAM_LABELS import *
 from UserSettings.nulsws_SET import *
-from Libraries.Constants.nulsws_NAME_PAIRS import NAME_PAIRS
+from Libraries.Constants.Dictionaires.nulsws_NAME_PAIRS import NAME_PAIRS
 
 from UserSettings.nulsws_USER_PARAMS import USER_CALLS_DB as mydb
 mylist = [

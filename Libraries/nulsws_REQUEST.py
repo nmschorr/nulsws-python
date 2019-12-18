@@ -2,7 +2,7 @@
 
 from Libraries.nulsws_library import get_times
 from Libraries.Constants.nulsws_CONSTANTS_otherlabels import *
-from Libraries.Constants.nulsws_NAME_PAIRS import NAME_PAIRS
+from Libraries.Constants.Dictionaires.nulsws_NAME_PAIRS import NAME_PAIRS
 from UserSettings.nulsws_SET import *
 from Libraries.Constants.nulsws_PARAMS_vals import USER_CALLS_DB
 import json
