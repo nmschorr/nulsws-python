@@ -39,7 +39,6 @@ from tornado.websocket import websocket_connect, WebSocketClientConnection  # We
 from Libraries.nulsws_library import *
 from Libraries import nulsws_REQUEST as mw
 from UserSettings.nulsws_USER_PARAMS import *
-from Libraries.nulsws_REGISTER_API import make_nulsws_REGISTER_method
 
 
 class NulsWebsocket(object):
@@ -49,152 +48,66 @@ class NulsWebsocket(object):
         self.s_time = 1
         self.ORIG_RUNLIST = []
         self.rundict = {}
-        self.msg_type = 0
-
-    def nms_callback(self, x):
-        myprint(x)
+        self.MSG_TYPE = 0
 
     async def REGULAR_req(self, websock_connct: WebSocketClientConnection, j_reg_dict):
         json_REG = json_dumps(j_reg_dict)
         await websock_connct.write_message(json_REG)      # 2 WRITE
         json_prt(json_REG, "\n* * * REGULAR message going out: \n")
-        await a_sleep(self.s_time)
+        #await a_sleep(self.s_time)
         read_REG= await websock_connct.read_message()  # 3 READ
         await a_sleep(self.s_time)
         if len(read_REG) > 0:
             json_prt(read_REG, "   -----------> ! ! ! REGULAR response received: ")
         myprint("--------------end previous / begin next request--------------------------------")
 
-    async def negotiate_list(self, json_negotiate, m_indx, runlist):
+    async def negotiate_list(self, json_negotiate, m_indx, runlist, mtpe=3):
         connection = await websocket_connect(websock_url)  # 1) CONNECT
-        await a_sleep(self.s_time)
+        #await a_sleep(self.s_time)
         while not connection:
             await a_sleep(self.s_time)
         jd = json_dumps(json_negotiate)
         json_prt(json_negotiate, "* * * First message going out- NEGOTIATE: \n")
         await connection.write_message(jd)  # 2) WRITE
-        await a_sleep(self.s_time)
+        #await a_sleep(self.s_time)
 
         negotiate_result = await connection.read_message()  # 3 READ
-        await a_sleep(self.s_time)
+        #await a_sleep(self.s_time)
         json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
         myprint("------end Negotiate----------------------------------------")
 
-        for run_tup in runlist:
+        for run_item in runlist:
             m_indx += 1
-            print("starting this item: ", run_tup)
-            # TEST ONLY SECTION -------------------------->
-            if self.msg_type == 77:    # this runs register api
-                await self.REGULAR_req(connection, run_tup)
-                #exit()
-            # END TEST ONLY SECTION ----------------------
-
-            main_request = mw.prep_REQUEST(m_indx, run_tup)   ##TEST ONLY PUT BACK WHEN DONE
-            await self.REGULAR_req(connection, main_request)
-
-    def commander_by_list(self, j_negotiate, m_indx, runlist):  #multiples
-        asyncio_run(self.negotiate_list(j_negotiate, m_indx, runlist)) # starts event
+            print("starting this item: ", run_item)
+                # TEST ONLY SECTION -------------------------->
+                # if self.msg_type == 77:    # this runs register api
+                #     await self.REGULAR_req(connection, run_item)
+                # END TEST ONLY SECTION ----------------------
+            if mtpe == 3:
+                main_request = mw.prep_REQUEST(m_indx, run_item)   ##TEST ONLY PUT BACK WHEN DONE
+                await self.REGULAR_req(connection, main_request)
 
     def main(self, mtpe, runlist):
-        # we always do type 1 just before anything
-
         self.mindex += 1
-        m_indx = self.mindex
-        json_negotiate = mw.prep_NEGOTIATE_request(m_indx)  #dict
-
         if mtpe == 3:
-            print()
-            self.commander_by_list(json_negotiate, m_indx, runlist)  #big list
-
-        # json_main_type = mw.prep_data_REQUEST_type5()
-        # json_main_type = mw.prep_data_REQUEST_type7()
-
-        if mtpe == 99:   # test dev only
-            for run_tup in runlist:
-                print("starting this item: ", run_tup)
-
-
-        if mtpe == 77:
-            self.msg_type = 77
-            j = make_nulsws_REGISTER_method(m_indx)
-            self.commander_by_list(json_negotiate, m_indx, [j])  #big list
+            j_negotiate = mw.prep_NEGOTIATE_request(self.mindex)  # must be done first
+            asyncio_run(self.negotiate_list(j_negotiate, self.mindex, runlist, mtpe)) # starts event
 
 
 if __name__ == '__main__':
-    RUN_LIST = [("AC_GET_ACCOUNT_BYADDRESS", AC_GET_ACCOUNT_BYADDRESS)]
-
-
-
-
-
-    # uncomment pairs below to run
-
-                  #("AC_GET_ALL_ADDRESS_PREFIX", AC_GET_ALL_ADDRESS_PREFIX)
-                  #("AC_GET_ACCOUNT_BYADDRESS", AC_GET_ACCOUNT_BYADDRESS)]
-
-    #runlist =  [ ("AC_GET_ADDRESS_PREFIX_BY_CHAINID", AC_GET_ADDRESS_PREFIX_BY_CHAINID),
-
-
-      #  ("AC_GET_ADDRESS_PREFIX_BY_CHAINID", AC_GET_ADDRESS_PREFIX_BY_CHAINID) ]
-    #ac_getAllAddressPrefix
-    # ("GET_STATUS", GET_STATUS),
-    # ("LATEST_BLOCKHEADER", LATEST_BLOCKHEADER),
-    # ("LATEST_BLOCKHEADER_PO", LATEST_BLOCKHEADER_PO),
-    # ("LATEST_BLOCK", LATEST_BLOCK),
-    # ("LATEST_HEIGHT", LATEST_HEIGHT),
-    # ("GET_REGISTERED_CHAIN_INFO_LIST", GET_REGISTERED_CHAIN_INFO_LIST),
-    # ("GET_REGISTERED_CHAIN_MESSAGE", GET_REGISTERED_CHAIN_MESSAGE),
-    # ("GET_ROUND_BLOCKHEADERS", GET_ROUND_BLOCKHEADERS),
-    # ("GET_STATUS", GET_STATUS),
-    # ("GET_VERSION", GET_VERSION),
-    # ("INFO", INFO) ]
-
-    # ("AC_ADD_ADDRESS_PREFIX", AC_ADD_ADDRESS_PREFIX),
-    # ("AC_GET_ACCOUNT_LIST", AC_GET_ACCOUNT_LIST),
-    # ("AC_GET_ACCOUNT_BYADDRESS", AC_GET_ACCOUNT_BYADDRESS),
-    # ("AC_GET_ADDRESS_LIST", AC_GET_ADDRESS_LIST),
-    # ("AC_GET_ALIASBY_ADDRESS", AC_GET_ALIASBY_ADDRESS),
-    # ("AC_GET_ALL_ADDRESS_PREFIX", AC_GET_ALL_ADDRESS_PREFIX),
-    # ("AC_GET_ALL_PRIKEY", AC_GET_ALL_PRIKEY),
-    # ("AC_GET_ENCRYPTED_ADDRESS_LIST", AC_GET_ENCRYPTED_ADDRESS_LIST),
-    # ("AC_GET_MULTI_SIGN_ACCOUNT", AC_GET_MULTI_SIGN_ACCOUNT),
-    # ("AC_GET_PRIKEY", AC_GET_PRIKEY),
-    # ("AC_GET_PUBKEY", AC_GET_PUBKEY),
-    # ("AC_IMPORT_ACCOUNT_BY_PRIKEY", AC_IMPORT_ACCOUNT_BY_PRIKEY),
-    # ("AC_IMPORT_ACCOUNT_BY_KEYSTORE", AC_IMPORT_ACCOUNT_BY_KEYSTORE),
-    # ("AC_IS_ALIAS_USABLE", AC_IS_ALIAS_USABLE),
-    # ("AC_SET_ALIAS", AC_SET_ALIAS),
-    # ("AC_SET_MULTISIGN_ALIAS", AC_SET_MULTISIGN_ALIAS),
-    # ("AC_SET_REMARK", AC_SET_REMARK),
-    # ("CONNECT_READY", CONNECT_READY),
-    # ("GET_BALANCE", GET_BALANCE),
-    # ("GET_BALANCE_NONCE", GET_BALANCE_NONCE),
-    # ("GET_BLOCK_BY_HASH", GET_BLOCK_BY_HASH),
-    # ("GET_BLOCK_BY_HEIGHT", GET_BLOCK_BY_HEIGHT),
-    # ("GET_BLOCKHEADER_BY_HASH", GET_BLOCKHEADER_BY_HASH),
-    # ("GET_BLOCKHEADER_BY_HEIGHT", GET_BLOCKHEADER_BY_HEIGHT),
-    # ("GET_BLOCKHEADER_PO_BY_HASH", GET_BLOCKHEADER_PO_BY_HASH),
-    # ("GET_BLOCKHEADER_POBY_HEIGHT", GET_BLOCKHEADER_POBY_HEIGHT),
-    # ("GET_BLOCKHEADERS_BY_HEIGHT_RANGE", GET_BLOCKHEADERS_BY_HEIGHT_RANGE),
-    # ("GET_BLOCKHEADERS_FOR_PROTOCOL", GET_BLOCKHEADERS_FOR_PROTOCOL),
-    # ("GET_NETWORK_GROUP", GET_NETWORK_GROUP),
-    # ("GET_NONCE", GET_NONCE),
-    # ("GET_OTHERCTX", GET_OTHERCTX),
-    # ("GET_REGISTERED_CHAIN_INFO_LIST", GET_REGISTERED_CHAIN_INFO_LIST),
-    # ("GET_REGISTERED_CHAIN_MESSAGE", GET_REGISTERED_CHAIN_MESSAGE),
-    # ("GET_ROUND_BLOCKHEADERS", GET_ROUND_BLOCKHEADERS),
-    # ("GET_STATUS", GET_STATUS),
-    # ("GET_VERSION", GET_VERSION),
-    # ("INFO", INFO),
-    # ("LATEST_BLOCKHEADER", LATEST_BLOCKHEADER),
-    # ("LATEST_BLOCKHEADER_PO", LATEST_BLOCKHEADER_PO),
-    # ("LATEST_BLOCK", LATEST_BLOCK),
-    # ("LATEST_HEIGHT", LATEST_HEIGHT),
-    #
-    # ]
-
-
+    RUN_LIST = [AC_GET_ACCOUNT_BYADDRESS, AC_GET_ALL_ADDRESS_PREFIX]
     MSG_TYPE = 3            # 3 is request, 99 is test, 77 is negotiate only
     n = NulsWebsocket()
     n.main(MSG_TYPE, RUN_LIST)
 
+
+
+# json_main_type = mw.prep_data_REQUEST_type5()
+# json_main_type = mw.prep_data_REQUEST_type7()
+# if mtpe == 99:   # test dev only
+#     for run_item in runlist:
+#         print("starting this item: ", run_item)
+# if mtpe == 77:  # test only
+#     self.msg_type = 77
+#     j = make_nulsws_REGISTER_method(m_indx)
+#     self.commander_by_list(json_negotiate, m_indx, [j])  #big list

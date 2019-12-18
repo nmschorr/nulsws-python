@@ -2,10 +2,10 @@
 
 from Libraries.nulsws_library import get_times
 from Libraries.Constants.nulsws_CONSTANTS_otherlabels import *
+from Libraries.Constants.nulsws_NAME_PAIRS import NAME_PAIRS
 from UserSettings.nulsws_SET import *
 from UserSettings.nulsws_USER_PARAMS import USER_CALLS_DB
 import json
-
 # -----------prep_NEGOTIATE_data_type1--------------------------------------#
 def prep_NEGOTIATE_request(msg_indx):   #return dict
     # this section has any number of items depending on the msg type
@@ -52,10 +52,11 @@ def get_REQ_MIDDLE(mid_section_vals=None):   #return dict
     return REQ_MIDDLE   #dict
 
 # -----------prep_REQUEST_ONESIE (request) --------------------------------------#
-def prep_REQUEST(msg_indx, api_name_tup):  # requesttype 2 - return ack +
+def prep_REQUEST(msg_indx, api_name):  # requesttype 2 - return ack +
     # response either has a second element of a list, or not
     msgtype = 3  # for request
     #do lookup here
+    api_name_tup = [i for i in NAME_PAIRS if i[1] == api_name][0]
 
     (api_name, api_text) = api_name_tup
     API_params_dict = {}

@@ -47,13 +47,13 @@ This file right now provides support for the the client only.
 
 """
 
-import json
-from time import time, timezone
-from json import dumps as json_dumps
-from Libraries.Constants.nulsws_CONSTANTS_otherlabels import msg_data_label, type_name_dict, tmzone_label, msg_id_label, \
-    msg_type_label, negotiate_stat_label, negotiate_conn_resp_label, proto_label, tmstmp_label
-from UserSettings.nulsws_USER_PARAMS import proto_ver
 import inspect
+import json
+from json import dumps as json_dumps
+from time import time, timezone
+
+from Libraries.Constants.nulsws_CONSTANTS_otherlabels import msg_data_label, msg_type_label, \
+    negotiate_stat_label, negotiate_conn_resp_label
 
 
 def retrieve_name(var):
@@ -67,7 +67,6 @@ def get_times(msg_index=1):
     m_id = str(t_stamp) + "-" + str(msg_index)
     t_stamp = str(t_stamp)
     return t_stamp, str(tzone), m_id
-
 
 # -----------check_json_answer--------------------------------------#
 
@@ -84,13 +83,11 @@ def check_json_answer(answer) -> bool:
         else:
             return False
 
-
 # -----------myprint--------------------------------------#
 
 def myprint(x, y=None, debug=True):
     if debug:
         print(x) if not y else print(str(x) + ' ' + str(y))
-
 
 # -----------json_prt--------------------------------------#
 
@@ -100,7 +97,6 @@ def json_prt(json_str, str_msg, debug=True):
     if debug:
         if str_msg:
             aname = ''.join(str_msg)
-            # print(aname)
             print(aname + str(json_dumps(json_str, indent=3)))
         else:
             myprint("nothing returned")
