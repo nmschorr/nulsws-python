@@ -55,36 +55,32 @@ def get_REQ_MIDDLE(bottom_part, mid_section_vals=None):   #return dict
 def prep_REQUEST(msg_indx, api_name_tup):  # requesttype 2 - return ack +
     # response either has a second element of a list, or not
     MSG_TYPE = 3  # for request
-    api_name = api_name_tup[0]
-    api_text = api_name_tup[1]
-    myparams = []
-
-    for uc in USER_CALLS_DB:
-        if uc[0] == api_text:
-            myparams = uc[1]   # part two is the params list
-            break  # found it
-
-    params_len = len(myparams)
-   # bottom_group = list()
+    (api_name, api_text) = api_name_tup
+    myparams = {}
     bottom_group = dict()
+    mp = dict()
 
-    pdict = dict([])
-    # -------------------------------------Length One ---------------------------------
+    try:
+        myparams = dict([value[1][0] for value in USER_CALLS_DB if value[0] == api_text])
+        #pdict =dict([{p[0]: p[1]} for p in myparams])
+    except:
+        pass
 
-    if params_len > 0:
-        for t_item in range(params_len):
-            print("doing multiple params", api_name, ": ", myparams, "paramslen: ", params_len)
-            p1 = str(myparams[t_item][0])
-            p2 = str(myparams[t_item][1])
-            pdict.update({p1: p2})
 
-    bottom_group.__setitem__(0, {api_text: pdict})    #this is the last item of six
+    # if myparams:
+    #     for p in myparams:
+    #         #print("doing multiple params", api_name, ": ", myparams, "paramslen: ", params_len)
+    #         pdict.update({p[0]: p[1]})
+
+    mp.update({api_text: myparams})
+
+    bottom_group.__setitem__('eeeee', mp)    #this is the last item of six
     # bottom_dict = dict({api_text : pdict })
     request_type = "2"  # 1 or 2 for message requests
-    subscrip_e_ct = ""   #subscrip_evnt_ct
-    subscrip_period = ""
-    subscrip_rng = ""
-    response_max_size = ""
+    subscrip_e_ct = "0"   #subscrip_evnt_ct
+    subscrip_period = "0"
+    subscrip_rng = "0"
+    response_max_size = "0"
 
     newlist = [request_type, subscrip_e_ct, subscrip_period, subscrip_rng, response_max_size]
 

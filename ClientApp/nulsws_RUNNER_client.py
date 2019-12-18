@@ -56,8 +56,8 @@ class NulsWebsocket(object):
 
     async def REGULAR_req(self, websock_connct: WebSocketClientConnection, j_reg_dict):
         json_REG = json_dumps(j_reg_dict)
-        print(json_REG, "\n* * * REGULAR message going out: \n")
         await websock_connct.write_message(json_REG)      # 2 WRITE
+        json_prt(json_REG, "\n* * * REGULAR message going out: \n")
         await a_sleep(self.s_time)
         read_REG= await websock_connct.read_message()  # 3 READ
         await a_sleep(self.s_time)
@@ -122,7 +122,8 @@ class NulsWebsocket(object):
 
 
 if __name__ == '__main__':
-    RUN_LIST =  [ ("AC_GET_ALL_ADDRESS_PREFIX", AC_GET_ALL_ADDRESS_PREFIX)]
+    RUN_LIST =  [ ("AC_GET_ADDRESS_PREFIX_BY_CHAINID", AC_GET_ADDRESS_PREFIX_BY_CHAINID),
+                  ("AC_GET_ALL_ADDRESS_PREFIX", AC_GET_ALL_ADDRESS_PREFIX)]
 
 
 
