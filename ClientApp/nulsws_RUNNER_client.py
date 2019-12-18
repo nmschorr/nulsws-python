@@ -57,7 +57,7 @@ class NulsWebsocket(object):
         json_prt(json_REG, "\n* * * REGULAR message going out: \n")
         #await a_sleep(self.s_time)
         read_REG = await websock_connct.read_message()  # 3 READ
-        #await a_sleep(self.s_time)
+        await a_sleep(self.s_time)
         if len(read_REG) > 0:
             json_prt(read_REG, "   -----------> ! ! ! REGULAR response received: ")
         myprint("--------------end previous / begin next request--------------------------------")
