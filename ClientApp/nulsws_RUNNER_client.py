@@ -41,22 +41,23 @@ from UserSettings.nulsws_SET import *
 from Libraries.Constants.nulsws_CONSTANTS_API_LABELS import *
 from Libraries import nulsws_REQUEST as mw
 
+
 class NulsWebsocket(object):
     def __init__(self):
         myprint("the url:  ", websock_url)
         self.mindex = 0
-        self.s_time = 1
+        self.s_time = .7
         self.ORIG_RUNLIST = []
         self.rundict = {}
         self.MSG_TYPE = 0
 
     async def REGULAR_req(self, websock_connct: WebSocketClientConnection, j_reg_dict):
         json_REG = json_dumps(j_reg_dict)
-        await websock_connct.write_message(json_REG)      # 2 WRITE
+        await websock_connct.write_message(json_REG)  # 2 WRITE
         json_prt(json_REG, "\n* * * REGULAR message going out: \n")
         #await a_sleep(self.s_time)
-        read_REG= await websock_connct.read_message()  # 3 READ
-        await a_sleep(self.s_time)
+        read_REG = await websock_connct.read_message()  # 3 READ
+        #await a_sleep(self.s_time)
         if len(read_REG) > 0:
             json_prt(read_REG, "   -----------> ! ! ! REGULAR response received: ")
         myprint("--------------end previous / begin next request--------------------------------")
@@ -72,36 +73,54 @@ class NulsWebsocket(object):
         #await a_sleep(self.s_time)
 
         negotiate_result = await connection.read_message()  # 3 READ
-        #await a_sleep(self.s_time)
+        await a_sleep(self.s_time)
         json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
         myprint("------end Negotiate----------------------------------------")
 
         for run_item in runlist:
             m_indx += 1
             print("starting this item: ", run_item)
-                # TEST ONLY SECTION -------------------------->
-                # if self.msg_type == 77:    # this runs register api
-                #     await self.REGULAR_req(connection, run_item)
-                # END TEST ONLY SECTION ----------------------
+            # TEST ONLY SECTION -------------------------->
+            # if self.msg_type == 77:    # this runs register api
+            #     await self.REGULAR_req(connection, run_item)
+            # END TEST ONLY SECTION ----------------------
             if mtpe == 3:
-                main_request = mw.prep_REQUEST(m_indx, run_item)   ##TEST ONLY PUT BACK WHEN DONE
+                main_request = mw.prep_REQUEST(m_indx, run_item)  ##TEST ONLY PUT BACK WHEN DONE
                 await self.REGULAR_req(connection, main_request)
 
     def main(self, mtpe, runlist):
         self.mindex += 1
         if mtpe == 3:
             j_negotiate = mw.prep_NEGOTIATE_request(self.mindex)  # must be done first
-            asyncio_run(self.negotiate_list(j_negotiate, self.mindex, runlist, mtpe)) # starts event
+            asyncio_run(self.negotiate_list(j_negotiate, self.mindex, runlist, mtpe))  # starts event
 
 
 if __name__ == '__main__':
-    #from Libraries.Constants.nulsws_CONSTANTS_API_LABELS import AC_GET_ACCOUNT_BYADDRESS
-    RUN_LIST = [AC_GET_ACCOUNT_BYADDRESS, AC_GET_ALL_ADDRESS_PREFIX]
-    MSG_TYPE = 3            # 3 is request, 99 is test, 77 is negotiate only
+    RUNLIST1 = [AC_GET_ACCOUNT_BYADDRESS, AC_GET_ALL_ADDRESS_PREFIX, AC_GET_ACCOUNT_LIST,
+                AC_GET_ADDRESS_LIST, AC_GET_ADDRESS_PREFIX_BY_CHAINID, AC_GET_ALL_ADDRESS_PREFIX,
+                AC_GET_ALL_PRIKEY,
+                AC_GET_ALIASBY_ADDRESS]
+
+    RUNLIST2 = [
+        AC_EXPORT_ACCOUNT_KEYSTORE, AC_EXPORT_KEYSTORE_JSON, AC_GET_ACCOUNT_BYADDRESS,
+        AC_GET_ACCOUNT_LIST, AC_GET_ADDRESS_LIST, AC_GET_ADDRESS_PREFIX_BY_CHAINID,
+        AC_GET_ALIASBY_ADDRESS, AC_GET_ALL_ADDRESS_PREFIX, AC_GET_ALL_PRIKEY,
+        AC_GET_ENCRYPTED_ADDRESS_LIST, AC_GET_MULTI_SIGN_ACCOUNT, AC_GET_PRIKEY, AC_GET_PUBKEY]
+
+    RUNLIST3 = [GET_LATEST_BLOCKHEADERS,
+                GET_LATEST_ROUND_BLOCKHEADERS, GET_NETWORK_GROUP, GET_NONCE, GET_OTHERCTX,
+                GET_REGISTERED_CHAIN_INFO_LIST, GET_REGISTERED_CHAIN_MESSAGE, GET_ROUND_BLOCKHEADERS,
+                GET_STATUS, GET_VERSION, INFO, LATEST_BLOCK, LATEST_BLOCKHEADER, LATEST_BLOCKHEADER_PO,
+                LATEST_HEIGHT]
+
+    #RUN_LIST = RUNLIST2
+    RUN_LIST = RUNLIST1 + RUNLIST2
+
+    MSG_TYPE = 3  # 3 is request, 99 is test, 77 is negotiate only
     n = NulsWebsocket()
     n.main(MSG_TYPE, RUN_LIST)
 
-
+    #from Libraries.Constants.nulsws_CONSTANTS_API_LABELS import AC_GET_ACCOUNT_BYADDRESS
 
 # json_main_type = mw.prep_data_REQUEST_type5()
 # json_main_type = mw.prep_data_REQUEST_type7()
