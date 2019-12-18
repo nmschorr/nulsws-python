@@ -37,10 +37,9 @@ from asyncio import run as asyncio_run
 from asyncio import sleep as a_sleep
 from tornado.websocket import websocket_connect, WebSocketClientConnection  # WebSocketClosedError
 from Libraries.nulsws_library import *
+from UserSettings.nulsws_SET import *
+from Libraries.Constants.nulsws_CONSTANTS_API_LABELS import *
 from Libraries import nulsws_REQUEST as mw
-from UserSettings.nulsws_USER_PARAMS import *
-
-
 
 class NulsWebsocket(object):
     def __init__(self):
@@ -96,6 +95,7 @@ class NulsWebsocket(object):
 
 
 if __name__ == '__main__':
+    #from Libraries.Constants.nulsws_CONSTANTS_API_LABELS import AC_GET_ACCOUNT_BYADDRESS
     RUN_LIST = [AC_GET_ACCOUNT_BYADDRESS, AC_GET_ALL_ADDRESS_PREFIX]
     MSG_TYPE = 3            # 3 is request, 99 is test, 77 is negotiate only
     n = NulsWebsocket()

@@ -5,17 +5,12 @@ by Nancy Schorr for Nuls, None),
 (2019
 
 """
-from Libraries.Constants.nulsws_CONSTANTS_API_LABELS import *
-from Libraries.Constants.nulsws_CONSTANTS_PARAM_LABELS import *
 
 from UserSettings.nulsws_SET import *
 
 # change settings to suit
 # for use in api calls
 # fill in your default params here
-
-# next step:
-# define:  my_minsigns, my_inputs, my_outputs, my_remark, my_signaddress, my_password
 
 my_minsigns, my_inputs, my_outputs, my_remark, my_signaddress = [1, 1, 1, 1, 1]
 
@@ -702,7 +697,8 @@ _227_VERIFY_COINDATA_BATCH_PACKAGED_txList = my_chainid
 _228_WITHDRAW_VALID_chainId = my_chainid
 _228_WITHDRAW_VALID_tx = my_chainid
 
-__ALL__ = ['_100_CS_UPDATE_AGENT_CONSENSUS_STATUS_chainId', '_101_CS_UPDATE_AGENT_STATUS_chainId',
+__all__ = ['FALSE', 'MSG_TYPE', 'REMARK', 'RequestType', 'SHORT_MSG', 'TRUE', 'ZERO', 'ZLIB',
+           '_100_CS_UPDATE_AGENT_CONSENSUS_STATUS_chainId', '_101_CS_UPDATE_AGENT_STATUS_chainId',
            '_101_CS_UPDATE_AGENT_STATUS_status', '_102_CS_VALIDBLOCK_block', '_102_CS_VALIDBLOCK_chainId',
            '_102_CS_VALIDBLOCK_download', '_103_CS_WITHDRAW_address', '_103_CS_WITHDRAW_chainId',
            '_103_CS_WITHDRAW_password', '_103_CS_WITHDRAW_txHash', '_104_DEPOSIT_VALID_chainId',
@@ -998,4 +994,36 @@ __ALL__ = ['_100_CS_UPDATE_AGENT_CONSENSUS_STATUS_chainId', '_101_CS_UPDATE_AGEN
            '_98_CS_STOP_MULTI_AGENT_chainId', '_98_CS_STOP_MULTI_AGENT_password',
            '_98_CS_STOP_MULTI_AGENT_signAddress', '_99_CS_TRIGGER_COINBASE_CONTRACT_blockHeader',
            '_99_CS_TRIGGER_COINBASE_CONTRACT_chainId', '_99_CS_TRIGGER_COINBASE_CONTRACT_stateRoot',
-           '_99_CS_TRIGGER_COINBASE_CONTRACT_tx', '_9_AC_GET_ACCOUNT_LIST_chainId']
+           '_99_CS_TRIGGER_COINBASE_CONTRACT_tx', '_9_AC_GET_ACCOUNT_LIST_chainId',
+           'compatible_proto_versions', 'compress_rate_VALUE', 'compress_type_VALUE', 'connect_method',
+           'host_req', 'my_account', 'my_address', 'my_addressprefix', 'my_addresstype', 'my_addressval',
+           'my_agentaddress', 'my_agenthash', 'my_algorithm', 'my_alias', 'my_allhits', 'my_amount',
+           'my_args', 'my_assetchainid', 'my_assetid', 'my_assetids', 'my_assetinfolist', 'my_assetname',
+           'my_assets', 'my_begin', 'my_block', 'my_blockhash', 'my_blockheader', 'my_blockheight',
+           'my_blocktime', 'my_blocktype', 'my_bytecount', 'my_chainid', 'my_chainname',
+           'my_circulatechainid', 'my_cmd', 'my_cmdregisterlistmy_command', 'my_commissionrate',
+           'my_contractaddress', 'my_contractbalance', 'my_contractcode', 'my_contractlist',
+           'my_contractnonce', 'my_contractsender', 'my_count', 'my_data', 'my_decimalplaces', 'my_dellist',
+           'my_deposit', 'my_download', 'my_end', 'my_endheight', 'my_endtimestamp', 'my_evidenceheader',
+           'my_excludenodes', 'my_extend', 'my_extendsdata', 'my_filepath', 'my_frestartifrunning',
+           'my_gaslimit', 'my_hash', 'my_hashlist', 'my_headerlist', 'my_height', 'my_initnumber',
+           'my_inputs', 'my_intcount', 'my_interval', 'my_isconfirmed', 'my_iscross', 'my_iscrossgroup',
+           'my_jarfiledata', 'my_joinagenthash', 'my_keystore', 'my_keyword', 'my_list', 'my_listfrom',
+           'my_listto', 'my_lmaxcpus', 'my_lmodulename', 'my_lmoduleversion', 'my_longcount',
+           'my_magicnumber', 'my_maxin', 'my_maxout', 'my_maxsignaturecount', 'my_maxtxdatasize',
+           'my_messagebody', 'my_methoddesc', 'my_methodname', 'my_minavailablecount',
+           'my_minavailablenodenum', 'my_minsigns', 'my_modulecode', 'my_newpassword', 'my_nodeid',
+           'my_nodes', 'my_outputs', 'my_overwrite', 'my_packaging', 'my_packingaddress', 'my_pagenumber',
+           'my_pagesize', 'my_password', 'my_percent', 'my_prefixlist', 'my_prestateroot', 'my_price',
+           'my_prikey', 'my_protocolcmds', 'my_protocolversion', 'my_pubkey', 'my_pubkeys', 'my_registertime',
+           'my_remark', 'my_rewardaddress', 'my_role', 'my_round', 'my_seedips', 'my_sender', 'my_shortcount',
+           'my_sig', 'my_signaddress', 'my_signaturebftratio', 'my_signpassword', 'my_size', 'my_startheight',
+           'my_startpage', 'my_state', 'my_stateroot', 'my_status', 'my_symbol', 'my_toaddress', 'my_tx',
+           'my_txhash', 'my_txhashlist', 'my_txlist', 'my_type', 'my_usable', 'my_value', 'my_verifierlist',
+           'port_req', 'proto_ver', 'request_int', 'res_max_size', 'sub_event_ct', 'sub_period_int',
+           'sub_range', 'subscriptionRange', 'websock_url']
+
+# to generate __all__:
+# import UserSettings.nulsws_USER_PARAMS as u
+# dir(u)
+# then remove globals from generated list

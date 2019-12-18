@@ -175,8 +175,6 @@ my_value = 1
 my_verifierlist = 1
 
 
-
-
 __ALL__ = ['FALSE', 'MSG_TYPE', 'REMARK', 'RequestType', 'SHORT_MSG', 'TRUE', 'ZERO', 'ZLIB',
 'compatible_proto_versions', 'compress_rate_VALUE', 'compress_type_VALUE',
  'connect_method', 'host_req', 'my_account', 'my_address', 'my_addressprefix', 'my_addresstype',
@@ -202,3 +200,8 @@ __ALL__ = ['FALSE', 'MSG_TYPE', 'REMARK', 'RequestType', 'SHORT_MSG', 'TRUE', 'Z
  'my_state', 'my_stateroot', 'my_status', 'my_symbol', 'my_toaddress', 'my_tx', 'my_txhash', 'my_txhashlist',
  'my_txlist', 'my_type', 'my_usable', 'my_value', 'my_verifierlist', 'port_req', 'proto_ver', 'request_int',
  'res_max_size', 'sub_event_ct', 'sub_period_int', 'sub_range', 'subscriptionRange', 'websock_url']
+
+# to generate __all__:
+# import UserSettings.nulsws_SET as u
+# dir(u)
+# then remove globals from generated list
