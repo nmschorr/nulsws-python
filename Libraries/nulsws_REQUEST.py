@@ -34,11 +34,11 @@ def get_TOP_SECTION(msg_type: int, msg_indx):  # this section builds 5 items: #0
 
 # -----------get_REQ_MIDDLE--------------------------------------#
 
-def get_REQ_MIDDLE(bottom_part, mid_section_vals=None):   #return dict
+def get_REQ_MIDDLE(mid_section_vals=None):   #return dict
     if not mid_section_vals:
         mid_section_vals = [1, ZERO, ZERO, ZERO, ZERO] #2 = ack+date
 
-    [RT, SEC, SP, SR, RMS] = [*mid_section_vals]
+    [RT, SEC, SP, SR, RMS, bottom_part] = [*mid_section_vals]
 
     REQ_MIDDLE = {
         msg_data_label: {
@@ -54,39 +54,31 @@ def get_REQ_MIDDLE(bottom_part, mid_section_vals=None):   #return dict
 # -----------prep_REQUEST_ONESIE (request) --------------------------------------#
 def prep_REQUEST(msg_indx, api_name_tup):  # requesttype 2 - return ack +
     # response either has a second element of a list, or not
-    MSG_TYPE = 3  # for request
-    (api_name, api_text) = api_name_tup
-    myparams = {}
-    bottom_group = dict()
-    mp = dict()
+    msgtype = 3  # for request
+    #do lookup here
 
+    (api_name, api_text) = api_name_tup
+    API_params_dict = {}
+    API_text_API_PARAMS_dict = dict()
     try:
-        myparams = dict([value[1][0] for value in USER_CALLS_DB if value[0] == api_text])
-        #pdict =dict([{p[0]: p[1]} for p in myparams])
+        API_params_LIST = [val[1] for val in USER_CALLS_DB if val[0] == api_text]
+
+        API_params_dict = dict(API_params_LIST[0])
     except:
         pass
 
+    API_text_API_PARAMS_dict.update({api_text: API_params_dict})
 
-    # if myparams:
-    #     for p in myparams:
-    #         #print("doing multiple params", api_name, ": ", myparams, "paramslen: ", params_len)
-    #         pdict.update({p[0]: p[1]})
-
-    mp.update({api_text: myparams})
-
-    bottom_group.__setitem__('eeeee', mp)    #this is the last item of six
-    # bottom_dict = dict({api_text : pdict })
     request_type = "2"  # 1 or 2 for message requests
-    subscrip_e_ct = "0"   #subscrip_evnt_ct
-    subscrip_period = "0"
-    subscrip_rng = "0"
-    response_max_size = "0"
+    subs_e_c = "0"     # subscription event_counter
+    subs_per = "0"      # subscription period
+    subs_rg = "0"      # subscription range
+    resp_max = "0"    # response max size range
 
-    newlist = [request_type, subscrip_e_ct, subscrip_period, subscrip_rng, response_max_size]
+    newlist = [request_type, subs_e_c, subs_per, subs_rg, resp_max, API_text_API_PARAMS_dict]
 
-    msg_section_MIDDLE = get_REQ_MIDDLE(bottom_group, newlist)
-
-    message_section_TOP = get_TOP_SECTION(MSG_TYPE, msg_indx)
+    msg_section_MIDDLE = get_REQ_MIDDLE(newlist)
+    message_section_TOP = get_TOP_SECTION(msgtype, msg_indx)
     message_section_TOP.update(msg_section_MIDDLE)
     print(json.dumps(message_section_TOP, indent=2))
     return message_section_TOP  # "'"return dict

@@ -55,20 +55,13 @@ my_interval: int = 0               # int
 my_address: str = "NULSd6Hggvrij3MPW9QTHJGBv7uiyMKw41i7t"             # java-type-String
 my_addressprefix: str = 'NULS'           # java-type-String
 my_addressval = my_address
-#my_minsigns, my_inputs, my_outputs, my_remark, my_signaddress, my_signpassword
-
 my_agentaddress= 1 
-my_agenthash= 1 
-
+my_agenthash= 1
 my_algorithm = 1 
 my_alias = 1 
 my_allhits = 1 
 my_amount = 1
- 
 my_args = 1
- 
-my_assetchainid = 1
- 
 my_assetids = 1 
 my_assetinfolist = 1 
 my_assetname = 1 

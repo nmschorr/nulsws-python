@@ -95,7 +95,7 @@ class NulsWebsocket(object):
     def commander_by_list(self, j_negotiate, m_indx, runlist):  #multiples
         asyncio_run(self.negotiate_list(j_negotiate, m_indx, runlist)) # starts event
 
-    def main(self, mtpe, RUN_LIST):
+    def main(self, mtpe, runlist):
         # we always do type 1 just before anything
 
         self.mindex += 1
@@ -104,16 +104,15 @@ class NulsWebsocket(object):
 
         if mtpe == 3:
             print()
-            self.commander_by_list(json_negotiate, m_indx, RUN_LIST)  #big list
+            self.commander_by_list(json_negotiate, m_indx, runlist)  #big list
 
         # json_main_type = mw.prep_data_REQUEST_type5()
         # json_main_type = mw.prep_data_REQUEST_type7()
 
         if mtpe == 99:   # test dev only
-            for run_tup in RUN_LIST:
+            for run_tup in runlist:
                 print("starting this item: ", run_tup)
-                # main_request = mw.prep_REQUEST(m_indx, run_tup)
-                 #await self.REGULAR_req(connection, main_request)
+
 
         if mtpe == 77:
             self.msg_type = 77
@@ -122,9 +121,18 @@ class NulsWebsocket(object):
 
 
 if __name__ == '__main__':
-    RUN_LIST =  [ ("AC_GET_ADDRESS_PREFIX_BY_CHAINID", AC_GET_ADDRESS_PREFIX_BY_CHAINID),
-                  ("AC_GET_ALL_ADDRESS_PREFIX", AC_GET_ALL_ADDRESS_PREFIX)]
+    RUN_LIST = [("AC_GET_ACCOUNT_BYADDRESS", AC_GET_ACCOUNT_BYADDRESS)]
 
+
+
+
+
+    # uncomment pairs below to run
+
+                  #("AC_GET_ALL_ADDRESS_PREFIX", AC_GET_ALL_ADDRESS_PREFIX)
+                  #("AC_GET_ACCOUNT_BYADDRESS", AC_GET_ACCOUNT_BYADDRESS)]
+
+    #runlist =  [ ("AC_GET_ADDRESS_PREFIX_BY_CHAINID", AC_GET_ADDRESS_PREFIX_BY_CHAINID),
 
 
       #  ("AC_GET_ADDRESS_PREFIX_BY_CHAINID", AC_GET_ADDRESS_PREFIX_BY_CHAINID) ]
