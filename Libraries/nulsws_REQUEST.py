@@ -4,16 +4,17 @@ from Libraries.nulsws_library import get_times
 from Libraries.Constants.nulsws_CONSTANTS_otherlabels import *
 from Libraries.Constants.nulsws_NAME_PAIRS import NAME_PAIRS
 from UserSettings.nulsws_SET import *
-from UserSettings.nulsws_USER_PARAMS import USER_CALLS_DB
+from Libraries.Constants.nulsws_PARAMS_vals import USER_CALLS_DB
 import json
+
+
 # -----------prep_NEGOTIATE_data_type1--------------------------------------#
 def prep_NEGOTIATE_request(msg_indx):   #return dict
-    # this section has any number of items depending on the msg type
-    top_sect = get_TOP_SECTION(1, msg_indx)
     data_part = { msg_data_label: {
                   proto_label: proto_ver,
                   compress_type_label: compress_type_VALUE,
                   compress_rate_label: compress_rate_VALUE}}
+    top_sect = get_TOP_SECTION(1, msg_indx)
     top_sect.update(data_part)
     return top_sect   # dict
 
@@ -37,7 +38,6 @@ def get_TOP_SECTION(msg_type: int, msg_indx):  # this section builds 5 items: #0
 def get_REQ_MIDDLE(mid_section_vals=None):   #return dict
     if not mid_section_vals:
         mid_section_vals = [1, ZERO, ZERO, ZERO, ZERO] #2 = ack+date
-
     [RT, SEC, SP, SR, RMS, bottom_part] = [*mid_section_vals]
 
     REQ_MIDDLE = {
@@ -54,11 +54,9 @@ def get_REQ_MIDDLE(mid_section_vals=None):   #return dict
 # -----------prep_REQUEST_ONESIE (request) --------------------------------------#
 def prep_REQUEST(msg_indx, api_name):  # requesttype 2 - return ack +
     # response either has a second element of a list, or not
-    msgtype = 3  # for request
-    #do lookup here
     api_name_tup = [i for i in NAME_PAIRS if i[1] == api_name][0]
 
-    (api_name, api_text) = api_name_tup
+    api_text = api_name_tup[1]
     API_params_dict = {}
     API_text_API_PARAMS_dict = dict()
     try:
@@ -79,7 +77,7 @@ def prep_REQUEST(msg_indx, api_name):  # requesttype 2 - return ack +
     newlist = [request_type, subs_e_c, subs_per, subs_rg, resp_max, API_text_API_PARAMS_dict]
 
     msg_section_MIDDLE = get_REQ_MIDDLE(newlist)
-    message_section_TOP = get_TOP_SECTION(msgtype, msg_indx)
+    message_section_TOP = get_TOP_SECTION(3, msg_indx)
     message_section_TOP.update(msg_section_MIDDLE)
     print(json.dumps(message_section_TOP, indent=2))
     return message_section_TOP  # "'"return dict
