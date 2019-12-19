@@ -40,10 +40,11 @@ from Libraries.nulsws_library import *
 from UserSettings.nulsws_SET import *
 from Libraries.Constants.nulsws_CONSTANTS_API_LABELS import *
 from Libraries import nulsws_REQUEST as mw
-
+import Libraries.Constants.CLASSES.nulsws_cls_api_labels
 
 class NulsWebsocket(object):
     def __init__(self):
+        self.myclass = Libraries.Constants.CLASSES.nulsws_cls_api_labels.N
         myprint("the url:  ", websock_url)
         self.mindex = 0
         self.s_time = .7

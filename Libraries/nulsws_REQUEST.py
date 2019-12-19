@@ -1,14 +1,16 @@
 #!/usr/bin/python3.7
 
-from Libraries.nulsws_library import get_times
-from Libraries.Constants.nulsws_CONSTANTS_otherlabels import *
-from Libraries.Constants.Dictionaires.nulsws_NAME_PAIRS import NAME_PAIRS
-from UserSettings.nulsws_SET import *
-from Libraries.Constants.nulsws_PARAMS_vals import USER_CALLS_DB
 import json
+
+from Libraries.nulsws_library import get_times
+from Libraries.Constants.Dictionaires.nulsws_NAME_PAIRS import NAME_PAIRS
+from Libraries.Constants.nulsws_CONSTANTS_otherlabels import *
+from UserSettings.nulsws_SET import *
 
 
 # -----------prep_NEGOTIATE_data_type1--------------------------------------#
+
+
 def prep_NEGOTIATE_request(msg_indx):   #return dict
     data_part = { msg_data_label: {
                   proto_label: proto_ver,
@@ -53,9 +55,13 @@ def get_REQ_MIDDLE(mid_section_vals=None):   #return dict
 
 # -----------prep_REQUEST_ONESIE (request) --------------------------------------#
 def prep_REQUEST(msg_indx, api_name):  # requesttype 2 - return ack +
+    import Libraries.Constants.CLASSES.nulsws_cls_PARAMS  # import class for USER_CALLS_DB
+
+    param_object = Libraries.Constants.CLASSES.nulsws_cls_PARAMS.nulsws_Cls_Prm()
+    USER_CALLS_DB = param_object.USER_CALLS_DB
+
     # response either has a second element of a list, or not
     api_name_tup = [i for i in NAME_PAIRS if i[1] == api_name][0]
-
     api_text = api_name_tup[1]
     API_params_dict = {}
     API_text_API_PARAMS_dict = dict()
@@ -83,6 +89,11 @@ def prep_REQUEST(msg_indx, api_name):  # requesttype 2 - return ack +
     return message_section_TOP  # "'"return dict
 
 # ----------- end library file --------------------------------------#
+
+
+
+
+
 
 
 
