@@ -6,6 +6,7 @@ from Libraries.nulsws_library import get_times
 from Libraries.Constants.Dictionaires.nulsws_NAME_PAIRS import NAME_PAIRS
 from Libraries.Constants.nulsws_CONSTANTS_otherlabels import *
 from UserSettings.nulsws_SET import *
+import Libraries.Constants.CLASSES.nulsws_cls_PARAMS  # import class for USER_CALLS_DB
 
 
 # -----------prep_NEGOTIATE_data_type1--------------------------------------#
@@ -55,7 +56,7 @@ def get_REQ_MIDDLE(mid_section_vals=None):   #return dict
 
 # -----------prep_REQUEST_ONESIE (request) --------------------------------------#
 def prep_REQUEST(msg_indx, api_name):  # requesttype 2 - return ack +
-    import Libraries.Constants.CLASSES.nulsws_cls_PARAMS  # import class for USER_CALLS_DB
+    # import Libraries.Constants.CLASSES.nulsws_cls_PARAMS  # import class for USER_CALLS_DB
 
     param_object = Libraries.Constants.CLASSES.nulsws_cls_PARAMS.nulsws_Cls_Prm()
     USER_CALLS_DB = param_object.USER_CALLS_DB
