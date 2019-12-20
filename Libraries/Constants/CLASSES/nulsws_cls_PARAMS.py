@@ -9,125 +9,126 @@ by Nancy Schorr for Nuls, Nulstar),
 
 from Libraries.Constants.Dictionaires.nulsws_CONSTANTS_PARAM_LABELS import param_name_dict as p
 from UserSettings.nulsws_USER_PARAMS import *
-import Libraries.Constants.CLASSES.nulsws_cls_api_labels as acl
+import Libraries.Constants.CLASSES.nulsws_c_labels as nulab
 
-class nulsws_Cls_Prm(object):
+class nulsws_Cls_Prm(nulab.nulsws_C_Labels):
+
     def __init__(self):
-        pass
+        nn = nulab.nulsws_C_Labels()
 
-    NEWLABELS = acl.nulsws_Cls_Api_Labels()
-    NEWLABELS.__init__()
+    n = nulab.nulsws_C_Labels()
     # list of lists of tups
+    ulab = nulab.nulsws_C_Labels.__init__(nulab.nulsws_C_Labels)
 
     USER_CALLS_DB = [
         [
-            NEWLABELS.AC_CREATE_OFFLINE_ACCOUNT, [
+            n.AC_CREATE_OFFLINE_ACCOUNT, [
             (p.get("CHAINID"), _5_AC_CREATE_OFFLINE_ACCOUNT_chainId),
             (p.get("COUNT"), _5_AC_CREATE_OFFLINE_ACCOUNT_count),
             (p.get("PASSWORD"), _5_AC_CREATE_OFFLINE_ACCOUNT_password)
         ]],
         [
-            NEWLABELS.AC_EXPORT_ACCOUNT_KEYSTORE, [
+            AC_EXPORT_ACCOUNT_KEYSTORE, [
             (p.get("CHAINID"), _6_AC_EXPORT_ACCOUNT_KEYSTORE_chainId),
             (p.get("ADDRESS"), _6_AC_EXPORT_ACCOUNT_KEYSTORE_address),
             (p.get("PASSWORD"), _6_AC_EXPORT_ACCOUNT_KEYSTORE_password),
             (p.get("FILEPATH"), _6_AC_EXPORT_ACCOUNT_KEYSTORE_filePath)
         ]],
         [
-            NEWLABELS.AC_EXPORT_KEYSTORE_JSON, [
+            AC_EXPORT_KEYSTORE_JSON, [
             (p.get("CHAINID"), _7_AC_EXPORT_KEYSTORE_JSON_chainId),
             (p.get("ADDRESS"), _7_AC_EXPORT_KEYSTORE_JSON_address),
             (p.get("PASSWORD"), _7_AC_EXPORT_KEYSTORE_JSON_password)
         ]],
         [
-            NEWLABELS.AC_GET_ACCOUNT_BYADDRESS, [
+            AC_GET_ACCOUNT_BYADDRESS, [
             (p.get("CHAINID"), _8_AC_GET_ACCOUNT_BYADDRESS_chainId),
             (p.get("ADDRESS"), _8_AC_GET_ACCOUNT_BYADDRESS_address)
         ]],
         [
-            NEWLABELS.AC_GET_ACCOUNT_LIST, [
+            AC_GET_ACCOUNT_LIST, [
             (p.get("CHAINID"), _9_AC_GET_ACCOUNT_LIST_chainId)
         ]],
         [
-            NEWLABELS.AC_GET_ADDRESS_LIST, [
+            AC_GET_ADDRESS_LIST, [
             (p.get("CHAINID"), _10_AC_GET_ADDRESS_LIST_chainId),
             (p.get("PAGENUMBER"), _10_AC_GET_ADDRESS_LIST_pageNumber),
             (p.get("PAGESIZE"), _10_AC_GET_ADDRESS_LIST_pageSize)
         ]],
         [
-            NEWLABELS.AC_GET_ADDRESS_PREFIX_BY_CHAINID, [
+            AC_GET_ADDRESS_PREFIX_BY_CHAINID, [
             (p.get("CHAINID"), _11_AC_GET_ADDRESS_PREFIX_BY_CHAINID_chainId)
         ]],
         [
-            NEWLABELS.AC_GET_ALIASBY_ADDRESS, [
+            AC_GET_ALIASBY_ADDRESS, [
             (p.get("CHAINID"), _12_AC_GET_ALIASBY_ADDRESS_chainId),
             (p.get("ADDRESS"), _12_AC_GET_ALIASBY_ADDRESS_address)
         ]],
         [
-            NEWLABELS.AC_GET_ALL_PRIKEY, [
+            AC_GET_ALL_PRIKEY, [
             (p.get("CHAINID"), _14_AC_GET_ALL_PRIKEY_chainId),
             (p.get("PASSWORD"), _14_AC_GET_ALL_PRIKEY_password)
         ]],
         [
-            NEWLABELS.AC_GET_ENCRYPTED_ADDRESS_LIST, [
+            AC_GET_ENCRYPTED_ADDRESS_LIST, [
             (p.get("CHAINID"), _15_AC_GET_ENCRYPTED_ADDRESS_LIST_chainId)
         ]],
         [
-            NEWLABELS.AC_GET_MULTI_SIGN_ACCOUNT, [
+            AC_GET_MULTI_SIGN_ACCOUNT, [
             (p.get("CHAINID"), _16_AC_GET_MULTI_SIGN_ACCOUNT_chainId),
             (p.get("ADDRESS"), _16_AC_GET_MULTI_SIGN_ACCOUNT_address)
         ]],
         [
-            NEWLABELS.AC_GET_PUBKEY, [
+            AC_GET_PUBKEY, [
             (p.get("CHAINID"), _17_AC_GET_PUBKEY_chainId),
             (p.get("ADDRESS"), _17_AC_GET_PUBKEY_address),
             (p.get("PASSWORD"), _17_AC_GET_PUBKEY_password)
         ]],
         [
-            NEWLABELS.AC_IMPORT_ACCOUNT_BY_KEYSTORE, [
+            AC_IMPORT_ACCOUNT_BY_KEYSTORE, [
             (p.get("CHAINID"), _18_AC_IMPORT_ACCOUNT_BY_KEYSTORE_chainId),
             (p.get("PASSWORD"), _18_AC_IMPORT_ACCOUNT_BY_KEYSTORE_password),
             (p.get("KEYSTORE"), _18_AC_IMPORT_ACCOUNT_BY_KEYSTORE_keyStore),
             (p.get("OVERWRITE"), _18_AC_IMPORT_ACCOUNT_BY_KEYSTORE_overwrite)
         ]],
         [
-            NEWLABELS.AC_IMPORT_ACCOUNT_BY_PRIKEY, [
+            AC_IMPORT_ACCOUNT_BY_PRIKEY, [
             (p.get("CHAINID"), _19_AC_IMPORT_ACCOUNT_BY_PRIKEY_chainId),
             (p.get("PASSWORD"), _19_AC_IMPORT_ACCOUNT_BY_PRIKEY_password),
             (p.get("PRIKEY"), _19_AC_IMPORT_ACCOUNT_BY_PRIKEY_priKey),
             (p.get("OVERWRITE"), _19_AC_IMPORT_ACCOUNT_BY_PRIKEY_overwrite)
         ]],
         [
-            NEWLABELS.AC_IS_ALIAS_USABLE, [
+            AC_IS_ALIAS_USABLE, [
             (p.get("CHAINID"), _20_AC_IS_ALIAS_USABLE_chainId),
             (p.get("ALIAS"), _20_AC_IS_ALIAS_USABLE_alias)
         ]],
         [
-            NEWLABELS.AC_IS_MULTISIGN_ACCOUNT_BUILDER, [
+            AC_IS_MULTISIGN_ACCOUNT_BUILDER, [
             (p.get("CHAINID"), _21_AC_IS_MULTISIGN_ACCOUNT_BUILDER_chainId),
             (p.get("ADDRESS"), _21_AC_IS_MULTISIGN_ACCOUNT_BUILDER_address),
             (p.get("PUBKEY"), _21_AC_IS_MULTISIGN_ACCOUNT_BUILDER_pubKey)
         ]],
         [
-            NEWLABELS.AC_REMOVE_ACCOUNT, [
+            AC_REMOVE_ACCOUNT, [
             (p.get("CHAINID"), _22_AC_REMOVE_ACCOUNT_chainId),
             (p.get("ADDRESS"), _22_AC_REMOVE_ACCOUNT_address),
             (p.get("PASSWORD"), _22_AC_REMOVE_ACCOUNT_password)
         ]],
         [
-            NEWLABELS.AC_REMOVE_MULTISIGN_ACCOUNT, [
+            AC_REMOVE_MULTISIGN_ACCOUNT, [
             (p.get("CHAINID"), _23_AC_REMOVE_MULTISIGN_ACCOUNT_chainId),
             (p.get("ADDRESS"), _23_AC_REMOVE_MULTISIGN_ACCOUNT_address)
         ]],
         [
-            NEWLABELS.AC_SET_ALIAS, [
+            AC_SET_ALIAS, [
             (p.get("CHAINID"), _24_AC_SET_ALIAS_chainId),
             (p.get("ADDRESS"), _24_AC_SET_ALIAS_address),
             (p.get("PASSWORD"), _24_AC_SET_ALIAS_password),
             (p.get("ALIAS"), _24_AC_SET_ALIAS_alias)
         ]],
         [
-            NEWLABELS.AC_SET_MULTISIGN_ALIAS, [
+            AC_SET_MULTISIGN_ALIAS, [
             (p.get("CHAINID"), _25_AC_SET_MULTISIGN_ALIAS_chainId),
             (p.get("ADDRESS"), _25_AC_SET_MULTISIGN_ALIAS_address),
             (p.get("ALIAS"), _25_AC_SET_MULTISIGN_ALIAS_alias),
@@ -135,41 +136,41 @@ class nulsws_Cls_Prm(object):
             (p.get("SIGNPASSWORD"), _25_AC_SET_MULTISIGN_ALIAS_signPassword)
         ]],
         [
-            NEWLABELS.AC_SET_REMARK, [
+            AC_SET_REMARK, [
             (p.get("CHAINID"), _26_AC_SET_REMARK_chainId),
             (p.get("ADDRESS"), _26_AC_SET_REMARK_address),
             (p.get("REMARK"), _26_AC_SET_REMARK_remark)
         ]],
         [
-            NEWLABELS.AC_SIGN_BLOCKDIGEST, [
+            AC_SIGN_BLOCKDIGEST, [
             (p.get("CHAINID"), _27_AC_SIGN_BLOCKDIGEST_chainId),
             (p.get("ADDRESS"), _27_AC_SIGN_BLOCKDIGEST_address),
             (p.get("PASSWORD"), _27_AC_SIGN_BLOCKDIGEST_password),
             (p.get("DATA"), _27_AC_SIGN_BLOCKDIGEST_data)
         ]],
         [
-            NEWLABELS.AC_SIGN_DIGEST, [
+            AC_SIGN_DIGEST, [
             (p.get("CHAINID"), _28_AC_SIGN_DIGEST_chainId),
             (p.get("ADDRESS"), _28_AC_SIGN_DIGEST_address),
             (p.get("PASSWORD"), _28_AC_SIGN_DIGEST_password),
             (p.get("DATA"), _28_AC_SIGN_DIGEST_data)
         ]],
         [
-            NEWLABELS.AC_SIGN_MULTISIGN_TRANSACTION, [
+            AC_SIGN_MULTISIGN_TRANSACTION, [
             (p.get("CHAINID"), _29_AC_SIGN_MULTISIGN_TRANSACTION_chainId),
             (p.get("TX"), _29_AC_SIGN_MULTISIGN_TRANSACTION_tx),
             (p.get("SIGNADDRESS"), _29_AC_SIGN_MULTISIGN_TRANSACTION_signAddress),
             (p.get("SIGNPASSWORD"), _29_AC_SIGN_MULTISIGN_TRANSACTION_signPassword)
         ]],
         [
-            NEWLABELS.AC_TRANSFER, [
+            AC_TRANSFER, [
             (p.get("CHAINID"), _30_AC_TRANSFER_chainId),
             (p.get("INPUTS"), _30_AC_TRANSFER_inputs),
             (p.get("OUTPUTS"), _30_AC_TRANSFER_outputs),
             (p.get("REMARK"), _30_AC_TRANSFER_remark)
         ]],
         [
-            NEWLABELS.AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD, [
+            AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD, [
             (p.get("CHAINID"), _31_AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD_chainId),
             (p.get("ADDRESS"), _31_AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD_address),
             (p.get("PASSWORD"), _31_AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD_password),
@@ -177,74 +178,74 @@ class nulsws_Cls_Prm(object):
             (p.get("PRIKEY"), _31_AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD_priKey)
         ]],
         [
-            NEWLABELS.AC_UPDATE_PASSWORD, [
+            AC_UPDATE_PASSWORD, [
             (p.get("CHAINID"), _32_AC_UPDATE_PASSWORD_chainId),
             (p.get("ADDRESS"), _32_AC_UPDATE_PASSWORD_address),
             (p.get("PASSWORD"), _32_AC_UPDATE_PASSWORD_password),
             (p.get("NEWPASSWORD"), _32_AC_UPDATE_PASSWORD_newPassword)
         ]],
         [
-            NEWLABELS.AC_VALIDATION_PASSWORD, [
+            AC_VALIDATION_PASSWORD, [
             (p.get("CHAINID"), _33_AC_VALIDATION_PASSWORD_chainId),
             (p.get("ADDRESS"), _33_AC_VALIDATION_PASSWORD_address),
             (p.get("PASSWORD"), _33_AC_VALIDATION_PASSWORD_password)
         ]],
         [
-            NEWLABELS.AC_VERIFY_SIGN_DATA, [
+            AC_VERIFY_SIGN_DATA, [
             (p.get("PUBKEY"), _34_AC_VERIFY_SIGN_DATA_pubKey),
             (p.get("SIG"), _34_AC_VERIFY_SIGN_DATA_sig),
             (p.get("DATA"), _34_AC_VERIFY_SIGN_DATA_data)
         ]],
         [
-            NEWLABELS.BATCH_VALIDATE_BEGIN, [
+            BATCH_VALIDATE_BEGIN, [
             (p.get("CHAINID"), _35_BATCH_VALIDATE_BEGIN_chainId)
         ]],
         [
-            NEWLABELS.BLOCK_VALIDATE, [
+            BLOCK_VALIDATE, [
             (p.get("CHAINID"), _36_BLOCK_VALIDATE_chainId),
             (p.get("TXLIST"), _36_BLOCK_VALIDATE_txList)
         ]],
         [
-            NEWLABELS.CANCEL_CROSSCHAIN, [
+            CANCEL_CROSSCHAIN, [
             (p.get("CHAINID"), _38_CANCEL_CROSSCHAIN_chainId),
             (p.get("ASSETID"), _38_CANCEL_CROSSCHAIN_assetId)
         ]],
         [
-            NEWLABELS.CHECK_BLOCK_VERSION, [
+            CHECK_BLOCK_VERSION, [
             (p.get("CHAINID"), _39_CHECK_BLOCK_VERSION_chainId),
             (p.get("EXTENDSDATA"), _39_CHECK_BLOCK_VERSION_extendsData)
         ]],
         [
-            NEWLABELS.CM_ASSET, [
+            CM_ASSET, [
             (p.get("CHAINID"), _40_CM_ASSET_chainId),
             (p.get("ASSETID"), _40_CM_ASSET_assetId)
         ]],
         [
-            NEWLABELS.CM_ASSET_CIRCULATE_COMMIT, [
+            CM_ASSET_CIRCULATE_COMMIT, [
             (p.get("CHAINID"), _41_CM_ASSET_CIRCULATE_COMMIT_chainId),
             (p.get("TXLIST"), _41_CM_ASSET_CIRCULATE_COMMIT_txList),
             (p.get("BLOCKHEADER"), _41_CM_ASSET_CIRCULATE_COMMIT_blockHeader)
         ]],
         [
-            NEWLABELS.CM_ASSET_CIRCULATE_ROLLBACK, [
+            CM_ASSET_CIRCULATE_ROLLBACK, [
             (p.get("CHAINID"), _42_CM_ASSET_CIRCULATE_ROLLBACK_chainId),
             (p.get("TXLIST"), _42_CM_ASSET_CIRCULATE_ROLLBACK_txList),
             (p.get("BLOCKHEADER"), _42_CM_ASSET_CIRCULATE_ROLLBACK_blockHeader)
         ]],
         [
-            NEWLABELS.CM_ASSET_CIRCULATE_VALIDATOR, [
+            CM_ASSET_CIRCULATE_VALIDATOR, [
             (p.get("CHAINID"), _43_CM_ASSET_CIRCULATE_VALIDATOR_chainId),
             (p.get("TX"), _43_CM_ASSET_CIRCULATE_VALIDATOR_tx)
         ]],
         [
-            NEWLABELS.CM_ASSET_DISABLE, [
+            CM_ASSET_DISABLE, [
             (p.get("CHAINID"), _44_CM_ASSET_DISABLE_chainId),
             (p.get("ASSETID"), _44_CM_ASSET_DISABLE_assetId),
             (p.get("ADDRESS"), _44_CM_ASSET_DISABLE_address),
             (p.get("PASSWORD"), _44_CM_ASSET_DISABLE_password)
         ]],
         [
-            NEWLABELS.CM_ASSET_REG, [
+            CM_ASSET_REG, [
             (p.get("CHAINID"), _45_CM_ASSET_REG_chainId),
             (p.get("ASSETID"), _45_CM_ASSET_REG_assetId),
             (p.get("SYMBOL"), _45_CM_ASSET_REG_symbol),
@@ -255,11 +256,11 @@ class nulsws_Cls_Prm(object):
             (p.get("PASSWORD"), _45_CM_ASSET_REG_password)
         ]],
         [
-            NEWLABELS.CM_CHAIN, [
+            CM_CHAIN, [
             (p.get("CHAINID"), _46_CM_CHAIN_chainId)
         ]],
         [
-            NEWLABELS.CM_CHAIN_ACTIVE, [
+            CM_CHAIN_ACTIVE, [
             (p.get("CHAINID"), _47_CM_CHAIN_ACTIVE_chainId),
             (p.get("CHAINNAME"), _47_CM_CHAIN_ACTIVE_chainName),
             (p.get("ADDRESSTYPE"), _47_CM_CHAIN_ACTIVE_addressType),
@@ -278,7 +279,7 @@ class nulsws_Cls_Prm(object):
             (p.get("MAXSIGNATURECOUNT"), _47_CM_CHAIN_ACTIVE_maxSignatureCount)
         ]],
         [
-            NEWLABELS.CM_CHAIN_REG, [
+            CM_CHAIN_REG, [
             (p.get("CHAINID"), _48_CM_CHAIN_REG_chainId),
             (p.get("CHAINNAME"), _48_CM_CHAIN_REG_chainName),
             (p.get("ADDRESSTYPE"), _48_CM_CHAIN_REG_addressType),
@@ -297,67 +298,67 @@ class nulsws_Cls_Prm(object):
             (p.get("MAXSIGNATURECOUNT"), _48_CM_CHAIN_REG_maxSignatureCount)
         ]],
         [
-            NEWLABELS.CM_GET_CHAIN_ASSET, [
+            CM_GET_CHAIN_ASSET, [
             (p.get("CHAINID"), _49_CM_GET_CHAIN_ASSET_chainId),
             (p.get("ASSETCHAINID"), _49_CM_GET_CHAIN_ASSET_assetChainId),
             (p.get("ASSETID"), _49_CM_GET_CHAIN_ASSET_assetId)
         ]],
         [
-            NEWLABELS.CM_GET_CIRCULATE_CHAIN_ASSET, [
+            CM_GET_CIRCULATE_CHAIN_ASSET, [
             (p.get("CIRCULATECHAINID"), _50_CM_GET_CIRCULATE_CHAIN_ASSET_circulateChainId),
             (p.get("ASSETCHAINID"), _50_CM_GET_CIRCULATE_CHAIN_ASSET_assetChainId),
             (p.get("ASSETID"), _50_CM_GET_CIRCULATE_CHAIN_ASSET_assetId)
         ]],
         [
-            NEWLABELS.COMMIT_BATCH_UNCONFIRMED_TXS, [
+            COMMIT_BATCH_UNCONFIRMED_TXS, [
             (p.get("CHAINID"), _51_COMMIT_BATCH_UNCONFIRMED_TXS_chainId),
             (p.get("TXLIST"), _51_COMMIT_BATCH_UNCONFIRMED_TXS_txList)
         ]],
         [
-            NEWLABELS.COMMIT_BLOCKTXS, [
+            COMMIT_BLOCKTXS, [
             (p.get("CHAINID"), _52_COMMIT_BLOCKTXS_chainId),
             (p.get("TXLIST"), _52_COMMIT_BLOCKTXS_txList),
             (p.get("BLOCKHEIGHT"), _52_COMMIT_BLOCKTXS_blockHeight)
         ]],
         [
-            NEWLABELS.COMMIT_UNCONFIRMEDTX, [
+            COMMIT_UNCONFIRMEDTX, [
             (p.get("CHAINID"), _53_COMMIT_UNCONFIRMEDTX_chainId),
             (p.get("TX"), _53_COMMIT_UNCONFIRMEDTX_tx)
         ]],
         [
-            NEWLABELS.CREATE_AGENT_VALID, [
+            CREATE_AGENT_VALID, [
             (p.get("CHAINID"), _55_CREATE_AGENT_VALID_chainId),
             (p.get("TX"), _55_CREATE_AGENT_VALID_tx)
         ]],
         [
-            NEWLABELS.CREATE_CROSSTX, [
+            CREATE_CROSSTX, [
             (p.get("CHAINID"), _56_CREATE_CROSSTX_chainId),
             (p.get("LISTFROM"), _56_CREATE_CROSSTX_listFrom),
             (p.get("LISTTO"), _56_CREATE_CROSSTX_listTo),
             (p.get("REMARK"), _56_CREATE_CROSSTX_remark)
         ]],
         [
-            NEWLABELS.CROSSCHAIN_REGISTER_CHANGE, [
+            CROSSCHAIN_REGISTER_CHANGE, [
             (p.get("CHAINID"), _57_CROSSCHAIN_REGISTER_CHANGE_chainId)
         ]],
         [
-            NEWLABELS.CS_ADD_BLOCK, [
+            CS_ADD_BLOCK, [
             (p.get("CHAINID"), _58_CS_ADD_BLOCK_chainId),
             (p.get("BLOCKHEADER"), _58_CS_ADD_BLOCK_blockHeader)
         ]],
         [
-            NEWLABELS.CS_ADD_EVIDENCE_RECORD, [
+            CS_ADD_EVIDENCE_RECORD, [
             (p.get("CHAINID"), _59_CS_ADD_EVIDENCE_RECORD_chainId),
             (p.get("BLOCKHEADER"), _59_CS_ADD_EVIDENCE_RECORD_blockHeader),
             (p.get("EVIDENCEHEADER"), _59_CS_ADD_EVIDENCE_RECORD_evidenceHeader)
         ]],
         [
-            NEWLABELS.CS_CHAIN_ROLLBACK, [
+            CS_CHAIN_ROLLBACK, [
             (p.get("CHAINID"), _60_CS_CHAIN_ROLLBACK_chainId),
             (p.get("HEIGHT"), _60_CS_CHAIN_ROLLBACK_height)
         ]],
         [
-            NEWLABELS.CS_CONTRACT_DEPOSIT, [
+            CS_CONTRACT_DEPOSIT, [
             (p.get("CHAINID"), _61_CS_CONTRACT_DEPOSIT_chainId),
             (p.get("AGENTHASH"), _61_CS_CONTRACT_DEPOSIT_agentHash),
             (p.get("DEPOSIT"), _61_CS_CONTRACT_DEPOSIT_deposit),
@@ -368,7 +369,7 @@ class nulsws_Cls_Prm(object):
             (p.get("BLOCKTIME"), _61_CS_CONTRACT_DEPOSIT_blockTime)
         ]],
         [
-            NEWLABELS.CS_CONTRACT_WITHDRAW, [
+            CS_CONTRACT_WITHDRAW, [
             (p.get("CHAINID"), _62_CS_CONTRACT_WITHDRAW_chainId),
             (p.get("JOINAGENTHASH"), _62_CS_CONTRACT_WITHDRAW_joinAgentHash),
             (p.get("CONTRACTADDRESS"), _62_CS_CONTRACT_WITHDRAW_contractAddress),
@@ -378,7 +379,7 @@ class nulsws_Cls_Prm(object):
             (p.get("BLOCKTIME"), _62_CS_CONTRACT_WITHDRAW_blockTime)
         ]],
         [
-            NEWLABELS.CS_CREATE_AGENT, [
+            CS_CREATE_AGENT, [
             (p.get("CHAINID"), _63_CS_CREATE_AGENT_chainId),
             (p.get("AGENTADDRESS"), _63_CS_CREATE_AGENT_agentAddress),
             (p.get("PACKINGADDRESS"), _63_CS_CREATE_AGENT_packingAddress),
@@ -388,7 +389,7 @@ class nulsws_Cls_Prm(object):
             (p.get("PASSWORD"), _63_CS_CREATE_AGENT_password)
         ]],
         [
-            NEWLABELS.CS_CREATE_CONTRACT_AGENT, [
+            CS_CREATE_CONTRACT_AGENT, [
             (p.get("CHAINID"), _64_CS_CREATE_CONTRACT_AGENT_chainId),
             (p.get("PACKINGADDRESS"), _64_CS_CREATE_CONTRACT_AGENT_packingAddress),
             (p.get("DEPOSIT"), _64_CS_CREATE_CONTRACT_AGENT_deposit),
@@ -400,7 +401,7 @@ class nulsws_Cls_Prm(object):
             (p.get("BLOCKTIME"), _64_CS_CREATE_CONTRACT_AGENT_blockTime)
         ]],
         [
-            NEWLABELS.CS_CREATE_MULTI_AGENT, [
+            CS_CREATE_MULTI_AGENT, [
             (p.get("CHAINID"), _65_CS_CREATE_MULTI_AGENT_chainId),
             (p.get("AGENTADDRESS"), _65_CS_CREATE_MULTI_AGENT_agentAddress),
             (p.get("PACKINGADDRESS"), _65_CS_CREATE_MULTI_AGENT_packingAddress),
@@ -411,7 +412,7 @@ class nulsws_Cls_Prm(object):
             (p.get("SIGNADDRESS"), _65_CS_CREATE_MULTI_AGENT_signAddress)
         ]],
         [
-            NEWLABELS.CS_DEPOSIT_TOAGENT, [
+            CS_DEPOSIT_TOAGENT, [
             (p.get("CHAINID"), _66_CS_DEPOSIT_TOAGENT_chainId),
             (p.get("ADDRESS"), _66_CS_DEPOSIT_TOAGENT_address),
             (p.get("AGENTHASH"), _66_CS_DEPOSIT_TOAGENT_agentHash),
@@ -419,56 +420,56 @@ class nulsws_Cls_Prm(object):
             (p.get("PASSWORD"), _66_CS_DEPOSIT_TOAGENT_password)
         ]],
         [
-            NEWLABELS.CS_DOUBLE_SPEND_RECORD, [
+            CS_DOUBLE_SPEND_RECORD, [
             (p.get("CHAINID"), _67_CS_DOUBLE_SPEND_RECORD_chainId),
             (p.get("BLOCK"), _67_CS_DOUBLE_SPEND_RECORD_block),
             (p.get("TX"), _67_CS_DOUBLE_SPEND_RECORD_tx)
         ]],
         [
-            NEWLABELS.CS_GET_AGENT_ADDRESS_LIST, [
+            CS_GET_AGENT_ADDRESS_LIST, [
             (p.get("CHAINID"), _68_CS_GET_AGENT_ADDRESS_LIST_chainId)
         ]],
         [
-            NEWLABELS.CS_GET_AGENT_CHANGE_INFO, [
+            CS_GET_AGENT_CHANGE_INFO, [
             (p.get("CHAINID"), _69_CS_GET_AGENT_CHANGE_INFO_chainId)
         ]],
         [
-            NEWLABELS.CS_GET_AGENT_INFO, [
+            CS_GET_AGENT_INFO, [
             (p.get("CHAINID"), _70_CS_GET_AGENT_INFO_chainId),
             (p.get("AGENTHASH"), _70_CS_GET_AGENT_INFO_agentHash)
         ]],
         [
-            NEWLABELS.CS_GET_AGENT_LIST, [
+            CS_GET_AGENT_LIST, [
             (p.get("CHAINID"), _71_CS_GET_AGENT_LIST_chainId),
             (p.get("PAGENUMBER"), _71_CS_GET_AGENT_LIST_pageNumber),
             (p.get("PAGESIZE"), _71_CS_GET_AGENT_LIST_pageSize),
             (p.get("KEYWORD"), _71_CS_GET_AGENT_LIST_keyWord)
         ]],
         [
-            NEWLABELS.CS_GET_AGENT_STATUS, [
+            CS_GET_AGENT_STATUS, [
             (p.get("CHAINID"), _72_CS_GET_AGENT_STATUS_chainId),
             (p.get("AGENTHASH"), _72_CS_GET_AGENT_STATUS_agentHash)
         ]],
         [
-            NEWLABELS.CS_GET_CONSENSUS_CONFIG, [
+            CS_GET_CONSENSUS_CONFIG, [
             (p.get("CHAINID"), _73_CS_GET_CONSENSUS_CONFIG_chainId)
         ]],
         [
-            NEWLABELS.CS_GET_CONTRACT_AGENT_INFO, [
+            CS_GET_CONTRACT_AGENT_INFO, [
             (p.get("CHAINID"), _74_CS_GET_CONTRACT_AGENT_INFO_chainId),
             (p.get("AGENTHASH"), _74_CS_GET_CONTRACT_AGENT_INFO_agentHash),
             (p.get("CONTRACTADDRESS"), _74_CS_GET_CONTRACT_AGENT_INFO_contractAddress),
             (p.get("CONTRACTSENDER"), _74_CS_GET_CONTRACT_AGENT_INFO_contractSender)
         ]],
         [
-            NEWLABELS.CS_GET_CONTRACT_DEPOSIT_INFO, [
+            CS_GET_CONTRACT_DEPOSIT_INFO, [
             (p.get("CHAINID"), _75_CS_GET_CONTRACT_DEPOSIT_INFO_chainId),
             (p.get("JOINAGENTHASH"), _75_CS_GET_CONTRACT_DEPOSIT_INFO_joinAgentHash),
             (p.get("CONTRACTADDRESS"), _75_CS_GET_CONTRACT_DEPOSIT_INFO_contractAddress),
             (p.get("CONTRACTSENDER"), _75_CS_GET_CONTRACT_DEPOSIT_INFO_contractSender)
         ]],
         [
-            NEWLABELS.CS_GET_DEPOSIT_LIST, [
+            CS_GET_DEPOSIT_LIST, [
             (p.get("CHAINID"), _76_CS_GET_DEPOSIT_LIST_chainId),
             (p.get("PAGENUMBER"), _76_CS_GET_DEPOSIT_LIST_pageNumber),
             (p.get("PAGESIZE"), _76_CS_GET_DEPOSIT_LIST_pageSize),
@@ -476,39 +477,39 @@ class nulsws_Cls_Prm(object):
             (p.get("AGENTHASH"), _76_CS_GET_DEPOSIT_LIST_agentHash)
         ]],
         [
-            NEWLABELS.CS_GET_INFO, [
+            CS_GET_INFO, [
             (p.get("CHAINID"), _77_CS_GET_INFO_chainId),
             (p.get("ADDRESS"), _77_CS_GET_INFO_address)
         ]],
         [
-            NEWLABELS.CS_GET_PACKER_INFO, [
+            CS_GET_PACKER_INFO, [
             (p.get("CHAINID"), _78_CS_GET_PACKER_INFO_chainId)
         ]],
         [
-            NEWLABELS.CS_GET_PUBLISH_LIST, [
+            CS_GET_PUBLISH_LIST, [
             (p.get("CHAINID"), _79_CS_GET_PUBLISH_LIST_chainId),
             (p.get("ADDRESS"), _79_CS_GET_PUBLISH_LIST_address),
             (p.get("TYPE"), _79_CS_GET_PUBLISH_LIST_type)
         ]],
         [
-            NEWLABELS.CS_GET_ROUND_INFO, [
+            CS_GET_ROUND_INFO, [
             (p.get("CHAINID"), _80_CS_GET_ROUND_INFO_chainId)
         ]],
         [
-            NEWLABELS.CS_GET_ROUND_MEMBER_LIST, [
+            CS_GET_ROUND_MEMBER_LIST, [
             (p.get("CHAINID"), _81_CS_GET_ROUND_MEMBER_LIST_chainId),
             (p.get("EXTEND"), _81_CS_GET_ROUND_MEMBER_LIST_extend)
         ]],
         [
-            NEWLABELS.CS_GET_SEED_NODE_INFO, [
+            CS_GET_SEED_NODE_INFO, [
             (p.get("CHAINID"), _82_CS_GET_SEED_NODE_INFO_chainId)
         ]],
         [
-            NEWLABELS.CS_GET_WHOLEINFO, [
+            CS_GET_WHOLEINFO, [
             (p.get("CHAINID"), _83_CS_GET_WHOLEINFO_chainId)
         ]],
         [
-            NEWLABELS.CS_MULTI_DEPOSIT, [
+            CS_MULTI_DEPOSIT, [
             (p.get("CHAINID"), _84_CS_MULTI_DEPOSIT_chainId),
             (p.get("ADDRESS"), _84_CS_MULTI_DEPOSIT_address),
             (p.get("AGENTHASH"), _84_CS_MULTI_DEPOSIT_agentHash),
@@ -517,7 +518,7 @@ class nulsws_Cls_Prm(object):
             (p.get("SIGNADDRESS"), _84_CS_MULTI_DEPOSIT_signAddress)
         ]],
         [
-            NEWLABELS.CS_MULTI_WITHDRAW, [
+            CS_MULTI_WITHDRAW, [
             (p.get("CHAINID"), _85_CS_MULTI_WITHDRAW_chainId),
             (p.get("ADDRESS"), _85_CS_MULTI_WITHDRAW_address),
             (p.get("TXHASH"), _85_CS_MULTI_WITHDRAW_txHash),
@@ -525,66 +526,66 @@ class nulsws_Cls_Prm(object):
             (p.get("SIGNADDRESS"), _85_CS_MULTI_WITHDRAW_signAddress)
         ]],
         [
-            NEWLABELS.CS_RANDOM_RAW_SEEDS_COUNT, [
+            CS_RANDOM_RAW_SEEDS_COUNT, [
             (p.get("CHAINID"), _86_CS_RANDOM_RAW_SEEDS_COUNT_chainId),
             (p.get("HEIGHT"), _86_CS_RANDOM_RAW_SEEDS_COUNT_height),
             (p.get("COUNT"), _86_CS_RANDOM_RAW_SEEDS_COUNT_count)
         ]],
         [
-            NEWLABELS.CS_RANDOM_RAW_SEEDS_HEIGHT, [
+            CS_RANDOM_RAW_SEEDS_HEIGHT, [
             (p.get("CHAINID"), _87_CS_RANDOM_RAW_SEEDS_HEIGHT_chainId),
             (p.get("STARTHEIGHT"), _87_CS_RANDOM_RAW_SEEDS_HEIGHT_startHeight),
             (p.get("ENDHEIGHT"), _87_CS_RANDOM_RAW_SEEDS_HEIGHT_endHeight)
         ]],
         [
-            NEWLABELS.CS_RANDOM_SEED_COUNT, [
+            CS_RANDOM_SEED_COUNT, [
             (p.get("CHAINID"), _88_CS_RANDOM_SEED_COUNT_chainId),
             (p.get("HEIGHT"), _88_CS_RANDOM_SEED_COUNT_height),
             (p.get("COUNT"), _88_CS_RANDOM_SEED_COUNT_count),
             (p.get("ALGORITHM"), _88_CS_RANDOM_SEED_COUNT_algorithm)
         ]],
         [
-            NEWLABELS.CS_RANDOM_SEED_HEIGHT, [
+            CS_RANDOM_SEED_HEIGHT, [
             (p.get("CHAINID"), _89_CS_RANDOM_SEED_HEIGHT_chainId),
             (p.get("STARTHEIGHT"), _89_CS_RANDOM_SEED_HEIGHT_startHeight),
             (p.get("ENDHEIGHT"), _89_CS_RANDOM_SEED_HEIGHT_endHeight),
             (p.get("ALGORITHM"), _89_CS_RANDOM_SEED_HEIGHT_algorithm)
         ]],
         [
-            NEWLABELS.CS_RECEIVE_HEADERLIST, [
+            CS_RECEIVE_HEADERLIST, [
             (p.get("CHAINID"), _90_CS_RECEIVE_HEADERLIST_chainId),
             (p.get("HEADERLIST"), _90_CS_RECEIVE_HEADERLIST_headerList)
         ]],
         [
-            NEWLABELS.CS_RUN_CHAIN, [
+            CS_RUN_CHAIN, [
             (p.get("CHAINID"), _91_CS_RUN_CHAIN_chainId)
         ]],
         [
-            NEWLABELS.CS_RUN_MAINCHAIN, [
+            CS_RUN_MAINCHAIN, [
             (p.get("CHAINID"), _92_CS_RUN_MAINCHAIN_chainId)
         ]],
         [
-            NEWLABELS.CS_STOPAGENT, [
+            CS_STOPAGENT, [
             (p.get("CHAINID"), _93_CS_STOPAGENT_chainId),
             (p.get("ADDRESS"), _93_CS_STOPAGENT_address),
             (p.get("PASSWORD"), _93_CS_STOPAGENT_password)
         ]],
         [
-            NEWLABELS.CS_STOP_AGENT, [
+            CS_STOP_AGENT, [
             (p.get("CHAINID"), _94_CS_STOP_AGENT_chainId),
             (p.get("ADDRESS"), _94_CS_STOP_AGENT_address),
             (p.get("PASSWORD"), _94_CS_STOP_AGENT_password)
         ]],
         [
-            NEWLABELS.CS_STOPCHAIN, [
+            CS_STOPCHAIN, [
             (p.get("CHAINID"), _95_CS_STOPCHAIN_chainId)
         ]],
         [
-            NEWLABELS.CS_STOP_CHAIN, [
+            CS_STOP_CHAIN, [
             (p.get("CHAINID"), _96_CS_STOP_CHAIN_chainId)
         ]],
         [
-            NEWLABELS.CS_STOP_CONTRACT_AGENT, [
+            CS_STOP_CONTRACT_AGENT, [
             (p.get("CHAINID"), _97_CS_STOP_CONTRACT_AGENT_chainId),
             (p.get("CONTRACTADDRESS"), _97_CS_STOP_CONTRACT_AGENT_contractAddress),
             (p.get("CONTRACTSENDER"), _97_CS_STOP_CONTRACT_AGENT_contractSender),
@@ -593,60 +594,60 @@ class nulsws_Cls_Prm(object):
             (p.get("BLOCKTIME"), _97_CS_STOP_CONTRACT_AGENT_blockTime)
         ]],
         [
-            NEWLABELS.CS_STOP_MULTI_AGENT, [
+            CS_STOP_MULTI_AGENT, [
             (p.get("CHAINID"), _98_CS_STOP_MULTI_AGENT_chainId),
             (p.get("ADDRESS"), _98_CS_STOP_MULTI_AGENT_address),
             (p.get("PASSWORD"), _98_CS_STOP_MULTI_AGENT_password),
             (p.get("SIGNADDRESS"), _98_CS_STOP_MULTI_AGENT_signAddress)
         ]],
         [
-            NEWLABELS.CS_TRIGGER_COINBASE_CONTRACT, [
+            CS_TRIGGER_COINBASE_CONTRACT, [
             (p.get("CHAINID"), _99_CS_TRIGGER_COINBASE_CONTRACT_chainId),
             (p.get("TX"), _99_CS_TRIGGER_COINBASE_CONTRACT_tx),
             (p.get("BLOCKHEADER"), _99_CS_TRIGGER_COINBASE_CONTRACT_blockHeader),
             (p.get("STATEROOT"), _99_CS_TRIGGER_COINBASE_CONTRACT_stateRoot)
         ]],
         [
-            NEWLABELS.CS_UPDATE_AGENT_CONSENSUS_STATUS, [
+            CS_UPDATE_AGENT_CONSENSUS_STATUS, [
             (p.get("CHAINID"), _100_CS_UPDATE_AGENT_CONSENSUS_STATUS_chainId)
         ]],
         [
-            NEWLABELS.CS_UPDATE_AGENT_STATUS, [
+            CS_UPDATE_AGENT_STATUS, [
             (p.get("CHAINID"), _101_CS_UPDATE_AGENT_STATUS_chainId),
             (p.get("STATUS"), _101_CS_UPDATE_AGENT_STATUS_status)
         ]],
         [
-            NEWLABELS.CS_VALIDBLOCK, [
+            CS_VALIDBLOCK, [
             (p.get("CHAINID"), _102_CS_VALIDBLOCK_chainId),
             (p.get("DOWNLOAD"), _102_CS_VALIDBLOCK_download),
             (p.get("BLOCK"), _102_CS_VALIDBLOCK_block)
         ]],
         [
-            NEWLABELS.CS_WITHDRAW, [
+            CS_WITHDRAW, [
             (p.get("CHAINID"), _103_CS_WITHDRAW_chainId),
             (p.get("ADDRESS"), _103_CS_WITHDRAW_address),
             (p.get("TXHASH"), _103_CS_WITHDRAW_txHash),
             (p.get("PASSWORD"), _103_CS_WITHDRAW_password)
         ]],
         [
-            NEWLABELS.DEPOSIT_VALID, [
+            DEPOSIT_VALID, [
             (p.get("CHAINID"), _104_DEPOSIT_VALID_chainId),
             (p.get("TX"), _104_DEPOSIT_VALID_tx)
         ]],
         [
-            NEWLABELS.GET_ASSETS_BY_ID, [
+            GET_ASSETS_BY_ID, [
             (p.get("CHAINID"), _105_GET_ASSETS_BY_ID_chainId),
             (p.get("ASSETIDS"), _105_GET_ASSETS_BY_ID_assetIds)
         ]],
         [
-            NEWLABELS.GET_BALANCE, [
+            GET_BALANCE, [
             (p.get("CHAINID"), _106_GET_BALANCE_chainId),
             (p.get("ASSETCHAINID"), _106_GET_BALANCE_assetChainId),
             (p.get("ASSETID"), _106_GET_BALANCE_assetId),
             (p.get("ADDRESS"), _106_GET_BALANCE_address)
         ]],
         [
-            NEWLABELS.GET_BALANCE_NONCE, [
+            GET_BALANCE_NONCE, [
             (p.get("CHAINID"), _107_GET_BALANCE_NONCE_chainId),
             (p.get("ASSETCHAINID"), _107_GET_BALANCE_NONCE_assetChainId),
             (p.get("ASSETID"), _107_GET_BALANCE_NONCE_assetId),
@@ -654,90 +655,90 @@ class nulsws_Cls_Prm(object):
             (p.get("ISCONFIRMED"), _107_GET_BALANCE_NONCE_isConfirmed)
         ]],
         [
-            NEWLABELS.GET_BLOCK_BY_HASH, [
+            GET_BLOCK_BY_HASH, [
             (p.get("CHAINID"), _108_GET_BLOCK_BY_HASH_chainId),
             (p.get("HASH"), _108_GET_BLOCK_BY_HASH_hash)
         ]],
         [
-            NEWLABELS.GET_BLOCK_BY_HEIGHT, [
+            GET_BLOCK_BY_HEIGHT, [
             (p.get("CHAINID"), _109_GET_BLOCK_BY_HEIGHT_chainId),
             (p.get("HEIGHT"), _109_GET_BLOCK_BY_HEIGHT_height)
         ]],
         [
-            NEWLABELS.GET_BLOCKHEADER_BY_HASH, [
+            GET_BLOCKHEADER_BY_HASH, [
             (p.get("CHAINID"), _110_GET_BLOCKHEADER_BY_HASH_chainId),
             (p.get("HASH"), _110_GET_BLOCKHEADER_BY_HASH_hash)
         ]],
         [
-            NEWLABELS.GET_BLOCKHEADER_BY_HEIGHT, [
+            GET_BLOCKHEADER_BY_HEIGHT, [
             (p.get("CHAINID"), _111_GET_BLOCKHEADER_BY_HEIGHT_chainId),
             (p.get("HEIGHT"), _111_GET_BLOCKHEADER_BY_HEIGHT_height)
         ]],
         [
-            NEWLABELS.GET_BLOCKHEADER_PO_BY_HASH, [
+            GET_BLOCKHEADER_PO_BY_HASH, [
             (p.get("CHAINID"), _112_GET_BLOCKHEADER_PO_BY_HASH_chainId),
             (p.get("HASH"), _112_GET_BLOCKHEADER_PO_BY_HASH_hash)
         ]],
         [
-            NEWLABELS.GET_BLOCKHEADER_POBY_HEIGHT, [
+            GET_BLOCKHEADER_POBY_HEIGHT, [
             (p.get("CHAINID"), _113_GET_BLOCKHEADER_POBY_HEIGHT_chainId),
             (p.get("HEIGHT"), _113_GET_BLOCKHEADER_POBY_HEIGHT_height)
         ]],
         [
-            NEWLABELS.GET_BLOCKHEADERS_BY_HEIGHT_RANGE, [
+            GET_BLOCKHEADERS_BY_HEIGHT_RANGE, [
             (p.get("CHAINID"), _114_GET_BLOCKHEADERS_BY_HEIGHT_RANGE_chainId),
             (p.get("BEGIN"), _114_GET_BLOCKHEADERS_BY_HEIGHT_RANGE_begin),
             (p.get("END"), _114_GET_BLOCKHEADERS_BY_HEIGHT_RANGE_end)
         ]],
         [
-            NEWLABELS.GET_BLOCKHEADERS_FOR_PROTOCOL, [
+            GET_BLOCKHEADERS_FOR_PROTOCOL, [
             (p.get("CHAINID"), _115_GET_BLOCKHEADERS_FOR_PROTOCOL_chainId),
             (p.get("INTERVAL"), _115_GET_BLOCKHEADERS_FOR_PROTOCOL_interval)
         ]],
         [
-            NEWLABELS.GET_BYZANTINE_COUNT, [
+            GET_BYZANTINE_COUNT, [
             (p.get("CHAINID"), _116_GET_BYZANTINE_COUNT_chainId)
         ]],
         [
-            NEWLABELS.GET_CIRCULAT, [
+            GET_CIRCULAT, [
             (p.get("CHAINID"), _117_GET_CIRCULAT_chainId),
             (p.get("NODEID"), _117_GET_CIRCULAT_nodeId),
             (p.get("MESSAGEBODY"), _117_GET_CIRCULAT_messageBody)
         ]],
         [
-            NEWLABELS.GET_CROSSTX_STATE, [
+            GET_CROSSTX_STATE, [
             (p.get("CHAINID"), _119_GET_CROSSTX_STATE_chainId),
             (p.get("TXHASH"), _119_GET_CROSSTX_STATE_txHash)
         ]],
         [
-            NEWLABELS.GET_CTX, [
+            GET_CTX, [
             (p.get("CHAINID"), _120_GET_CTX_chainId),
             (p.get("NODEID"), _120_GET_CTX_nodeId),
             (p.get("MESSAGEBODY"), _120_GET_CTX_messageBody)
         ]],
         [
-            NEWLABELS.GET_CTX_STATE, [
+            GET_CTX_STATE, [
             (p.get("CHAINID"), _121_GET_CTX_STATE_chainId),
             (p.get("NODEID"), _121_GET_CTX_STATE_nodeId),
             (p.get("MESSAGEBODY"), _121_GET_CTX_STATE_messageBody)
         ]],
         [
-            NEWLABELS.GET_FRIEND_CHAIN_CIRCULATE, [
+            GET_FRIEND_CHAIN_CIRCULATE, [
             (p.get("CHAINID"), _122_GET_FRIEND_CHAIN_CIRCULATE_chainId),
             (p.get("ASSETIDS"), _122_GET_FRIEND_CHAIN_CIRCULATE_assetIds)
         ]],
         [
-            NEWLABELS.GET_LATEST_BLOCKHEADERS, [
+            GET_LATEST_BLOCKHEADERS, [
             (p.get("CHAINID"), _123_GET_LATEST_BLOCKHEADERS_chainId),
             (p.get("SIZE"), _123_GET_LATEST_BLOCKHEADERS_size)
         ]],
         [
-            NEWLABELS.GET_LATEST_ROUND_BLOCKHEADERS, [
+            GET_LATEST_ROUND_BLOCKHEADERS, [
             (p.get("CHAINID"), _124_GET_LATEST_ROUND_BLOCKHEADERS_chainId),
             (p.get("ROUND"), _124_GET_LATEST_ROUND_BLOCKHEADERS_round)
         ]],
         [
-            NEWLABELS.GET_NONCE, [
+            GET_NONCE, [
             (p.get("CHAINID"), _125_GET_NONCE_chainId),
             (p.get("ASSETCHAINID"), _125_GET_NONCE_assetChainId),
             (p.get("ASSETID"), _125_GET_NONCE_assetId),
@@ -745,72 +746,72 @@ class nulsws_Cls_Prm(object):
             (p.get("ISCONFIRMED"), _125_GET_NONCE_isConfirmed)
         ]],
         [
-            NEWLABELS.GET_OTHERCTX, [
+            GET_OTHERCTX, [
             (p.get("CHAINID"), _126_GET_OTHERCTX_chainId),
             (p.get("NODEID"), _126_GET_OTHERCTX_nodeId),
             (p.get("MESSAGEBODY"), _126_GET_OTHERCTX_messageBody)
         ]],
         [
-            NEWLABELS.GET_ROUND_BLOCKHEADERS, [
+            GET_ROUND_BLOCKHEADERS, [
             (p.get("CHAINID"), _128_GET_ROUND_BLOCKHEADERS_chainId),
             (p.get("HEIGHT"), _128_GET_ROUND_BLOCKHEADERS_height),
             (p.get("ROUND"), _128_GET_ROUND_BLOCKHEADERS_round)
         ]],
         [
-            NEWLABELS.GET_STATUS, [
+            GET_STATUS, [
             (p.get("CHAINID"), _129_GET_STATUS_chainId)
         ]],
         [
-            NEWLABELS.GET_VERSION, [
+            GET_VERSION, [
             (p.get("CHAINID"), _130_GET_VERSION_chainId)
         ]],
         [
-            NEWLABELS.INFO, [
+            INFO, [
             (p.get("CHAINID"), _131_INFO_chainId)
         ]],
         [
-            NEWLABELS.LATEST_BLOCK, [
+            LATEST_BLOCK, [
             (p.get("CHAINID"), _132_LATEST_BLOCK_chainId)
         ]],
         [
-            NEWLABELS.LATEST_BLOCKHEADER, [
+            LATEST_BLOCKHEADER, [
             (p.get("CHAINID"), _133_LATEST_BLOCKHEADER_chainId)
         ]],
         [
-            NEWLABELS.LATEST_BLOCKHEADER_PO, [
+            LATEST_BLOCKHEADER_PO, [
             (p.get("CHAINID"), _134_LATEST_BLOCKHEADER_PO_chainId)
         ]],
         [
-            NEWLABELS.LATEST_HEIGHT, [
+            LATEST_HEIGHT, [
             (p.get("CHAINID"), _135_LATEST_HEIGHT_chainId)
         ]],
         [
-            NEWLABELS.MSG_PROCESS, [
+            MSG_PROCESS, [
             (p.get("CHAINID"), _137_MSG_PROCESS_chainId),
             (p.get("NODEID"), _137_MSG_PROCESS_nodeId),
             (p.get("CMD"), _137_MSG_PROCESS_cmd),
             (p.get("MESSAGEBODY"), _137_MSG_PROCESS_messageBody)
         ]],
         [
-            NEWLABELS.NEW_BLOCK_HEIGHT, [
+            NEW_BLOCK_HEIGHT, [
             (p.get("CHAINID"), _138_NEW_BLOCK_HEIGHT_chainId),
             (p.get("HEIGHT"), _138_NEW_BLOCK_HEIGHT_height)
         ]],
         [
-            NEWLABELS.NW_ACTIVE_CROSS, [
+            NW_ACTIVE_CROSS, [
             (p.get("CHAINID"), _139_NW_ACTIVE_CROSS_chainId),
             (p.get("MAXOUT"), _139_NW_ACTIVE_CROSS_maxOut),
             (p.get("MAXIN"), _139_NW_ACTIVE_CROSS_maxIn),
             (p.get("SEEDIPS"), _139_NW_ACTIVE_CROSS_seedIps)
         ]],
         [
-            NEWLABELS.NW_ADD_NODES, [
+            NW_ADD_NODES, [
             (p.get("CHAINID"), _140_NW_ADD_NODES_chainId),
             (p.get("ISCROSS"), _140_NW_ADD_NODES_isCross),
             (p.get("NODES"), _140_NW_ADD_NODES_nodes)
         ]],
         [
-            NEWLABELS.NW_BROADCAST, [
+            NW_BROADCAST, [
             (p.get("CHAINID"), _141_NW_BROADCAST_chainId),
             (p.get("EXCLUDENODES"), _141_NW_BROADCAST_excludeNodes),
             (p.get("MESSAGEBODY"), _141_NW_BROADCAST_messageBody),
@@ -819,7 +820,7 @@ class nulsws_Cls_Prm(object):
             (p.get("PERCENT"), _141_NW_BROADCAST_percent)
         ]],
         [
-            NEWLABELS.NW_CREATE_NODEGROUP, [
+            NW_CREATE_NODEGROUP, [
             (p.get("CHAINID"), _142_NW_CREATE_NODEGROUP_chainId),
             (p.get("MAGICNUMBER"), _142_NW_CREATE_NODEGROUP_magicNumber),
             (p.get("MAXOUT"), _142_NW_CREATE_NODEGROUP_maxOut),
@@ -828,26 +829,26 @@ class nulsws_Cls_Prm(object):
             (p.get("ISCROSSGROUP"), _142_NW_CREATE_NODEGROUP_isCrossGroup)
         ]],
         [
-            NEWLABELS.NW_DEL_NODES, [
+            NW_DEL_NODES, [
             (p.get("CHAINID"), _143_NW_DEL_NODES_chainId),
             (p.get("NODES"), _143_NW_DEL_NODES_nodes)
         ]],
         [
-            NEWLABELS.NW_GET_CHAIN_CONNECT_AMOUNT, [
+            NW_GET_CHAIN_CONNECT_AMOUNT, [
             (p.get("CHAINID"), _144_NW_GET_CHAIN_CONNECT_AMOUNT_chainId),
             (p.get("ISCROSS"), _144_NW_GET_CHAIN_CONNECT_AMOUNT_isCross)
         ]],
         [
-            NEWLABELS.NW_GET_GROUP_BY_CHAINID, [
+            NW_GET_GROUP_BY_CHAINID, [
             (p.get("CHAINID"), _145_NW_GET_GROUP_BY_CHAINID_chainId)
         ]],
         [
-            NEWLABELS.NW_GET_GROUPS, [
+            NW_GET_GROUPS, [
             (p.get("STARTPAGE"), _146_NW_GET_GROUPS_startPage),
             (p.get("PAGESIZE"), _146_NW_GET_GROUPS_pageSize)
         ]],
         [
-            NEWLABELS.NW_GET_NODES, [
+            NW_GET_NODES, [
             (p.get("CHAINID"), _147_NW_GET_NODES_chainId),
             (p.get("STATE"), _147_NW_GET_NODES_state),
             (p.get("ISCROSS"), _147_NW_GET_NODES_isCross),
@@ -855,135 +856,135 @@ class nulsws_Cls_Prm(object):
             (p.get("PAGESIZE"), _147_NW_GET_NODES_pageSize)
         ]],
         [
-            NEWLABELS.NW_INFO, [
+            NW_INFO, [
             (p.get("CHAINID"), _149_NW_INFO_chainId)
         ]],
         [
-            NEWLABELS.NW_NODES, [
+            NW_NODES, [
             (p.get("CHAINID"), _150_NW_NODES_chainId)
         ]],
         [
-            NEWLABELS.NW_PROTOCOL_REGISTER, [
+            NW_PROTOCOL_REGISTER, [
             (p.get("ROLE"), _151_NW_PROTOCOL_REGISTER_role),
             (p.get("PROTOCOLCMDS"), _151_NW_PROTOCOL_REGISTER_protocolCmds)
         ]],
         [
-            NEWLABELS.NW_RECONNECT, [
+            NW_RECONNECT, [
             (p.get("CHAINID"), _152_NW_RECONNECT_chainId)
         ]],
         [
-            NEWLABELS.NW_SEND_PEERS_MSG, [
+            NW_SEND_PEERS_MSG, [
             (p.get("CHAINID"), _153_NW_SEND_PEERS_MSG_chainId),
             (p.get("NODES"), _153_NW_SEND_PEERS_MSG_nodes),
             (p.get("MESSAGEBODY"), _153_NW_SEND_PEERS_MSG_messageBody),
             (p.get("COMMAND"), _153_NW_SEND_PEERS_MSG_command)
         ]],
         [
-            NEWLABELS.NW_UPDATE_NODE_INFO, [
+            NW_UPDATE_NODE_INFO, [
             (p.get("CHAINID"), _154_NW_UPDATE_NODE_INFO_chainId),
             (p.get("NODEID"), _154_NW_UPDATE_NODE_INFO_nodeId),
             (p.get("BLOCKHEIGHT"), _154_NW_UPDATE_NODE_INFO_blockHeight),
             (p.get("BLOCKHASH"), _154_NW_UPDATE_NODE_INFO_blockHash)
         ]],
         [
-            NEWLABELS.PARAM_TEST_CMD, [
+            PARAM_TEST_CMD, [
             (p.get("INTCOUNT"), _155_PARAM_TEST_CMD_intCount),
             (p.get("BYTECOUNT"), _155_PARAM_TEST_CMD_byteCount),
             (p.get("SHORTCOUNT"), _155_PARAM_TEST_CMD_shortCount),
             (p.get("LONGCOUNT"), _155_PARAM_TEST_CMD_longCount)
         ]],
         [
-            NEWLABELS.PROTOCOL_VERSION_CHANGE, [
+            PROTOCOL_VERSION_CHANGE, [
             (p.get("CHAINID"), _156_PROTOCOL_VERSION_CHANGE_chainId),
             (p.get("PROTOCOLVERSION"), _156_PROTOCOL_VERSION_CHANGE_protocolVersion)
         ]],
         [
-            NEWLABELS.RECEIVE_PACKING_BLOCK, [
+            RECEIVE_PACKING_BLOCK, [
             (p.get("CHAINID"), _157_RECEIVE_PACKING_BLOCK_chainId),
             (p.get("BLOCK"), _157_RECEIVE_PACKING_BLOCK_block)
         ]],
         [
-            NEWLABELS.RECV_CIRCULAT, [
+            RECV_CIRCULAT, [
             (p.get("CHAINID"), _158_RECV_CIRCULAT_chainId),
             (p.get("NODEID"), _158_RECV_CIRCULAT_nodeId),
             (p.get("MESSAGEBODY"), _158_RECV_CIRCULAT_messageBody)
         ]],
         [
-            NEWLABELS.RECV_CTX, [
+            RECV_CTX, [
             (p.get("CHAINID"), _159_RECV_CTX_chainId),
             (p.get("NODEID"), _159_RECV_CTX_nodeId),
             (p.get("MESSAGEBODY"), _159_RECV_CTX_messageBody)
         ]],
         [
-            NEWLABELS.RECV_CTX_HASH, [
+            RECV_CTX_HASH, [
             (p.get("CHAINID"), _160_RECV_CTX_HASH_chainId),
             (p.get("NODEID"), _160_RECV_CTX_HASH_nodeId),
             (p.get("MESSAGEBODY"), _160_RECV_CTX_HASH_messageBody)
         ]],
         [
-            NEWLABELS.RECV_CTX_SIGN, [
+            RECV_CTX_SIGN, [
             (p.get("CHAINID"), _161_RECV_CTX_SIGN_chainId),
             (p.get("NODEID"), _161_RECV_CTX_SIGN_nodeId),
             (p.get("MESSAGEBODY"), _161_RECV_CTX_SIGN_messageBody)
         ]],
         [
-            NEWLABELS.RECV_CTX_STATE, [
+            RECV_CTX_STATE, [
             (p.get("CHAINID"), _162_RECV_CTX_STATE_chainId),
             (p.get("NODEID"), _162_RECV_CTX_STATE_nodeId),
             (p.get("MESSAGEBODY"), _162_RECV_CTX_STATE_messageBody)
         ]],
         [
-            NEWLABELS.RECV_OTHER_CTX, [
+            RECV_OTHER_CTX, [
             (p.get("CHAINID"), _163_RECV_OTHER_CTX_chainId),
             (p.get("NODEID"), _163_RECV_OTHER_CTX_nodeId),
             (p.get("MESSAGEBODY"), _163_RECV_OTHER_CTX_messageBody)
         ]],
         [
-            NEWLABELS.RECV_REGCHAIN, [
+            RECV_REGCHAIN, [
             (p.get("CHAINID"), _164_RECV_REGCHAIN_chainId),
             (p.get("NODEID"), _164_RECV_REGCHAIN_nodeId),
             (p.get("MESSAGEBODY"), _164_RECV_REGCHAIN_messageBody)
         ]],
         [
-            NEWLABELS.REGISTER_PROTOCOL, [
+            REGISTER_PROTOCOL, [
             (p.get("CHAINID"), _166_REGISTER_PROTOCOL_chainId),
             (p.get("MODULECODE"), _166_REGISTER_PROTOCOL_moduleCode),
             (p.get("LIST"), _166_REGISTER_PROTOCOL_list)
         ]],
         [
-            NEWLABELS.ROLLBACK_BLOCK_TXS, [
+            ROLLBACK_BLOCK_TXS, [
             (p.get("CHAINID"), _167_ROLLBACK_BLOCK_TXS_chainId),
             (p.get("TXLIST"), _167_ROLLBACK_BLOCK_TXS_txList),
             (p.get("BLOCKHEIGHT"), _167_ROLLBACK_BLOCK_TXS_blockHeight)
         ]],
         [
-            NEWLABELS.ROLLBACK_UNCONFIRM_TX, [
+            ROLLBACK_UNCONFIRM_TX, [
             (p.get("CHAINID"), _168_ROLLBACK_UNCONFIRM_TX_chainId),
             (p.get("TX"), _168_ROLLBACK_UNCONFIRM_TX_tx)
         ]],
         [
-            NEWLABELS.ROLLBACK_BLOCK, [
+            ROLLBACK_BLOCK, [
             (p.get("CHAINID"), _169_ROLLBACK_BLOCK_chainId),
             (p.get("BLOCKHEADER"), _169_ROLLBACK_BLOCK_blockHeader)
         ]],
         [
-            NEWLABELS.ROLLBACK_TX_VALIDATE_STATUS, [
+            ROLLBACK_TX_VALIDATE_STATUS, [
             (p.get("CHAINID"), _170_ROLLBACK_TX_VALIDATE_STATUS_chainId),
             (p.get("TX"), _170_ROLLBACK_TX_VALIDATE_STATUS_tx)
         ]],
         [
-            NEWLABELS.SAVE_BLOCK, [
+            SAVE_BLOCK, [
             (p.get("CHAINID"), _171_SAVE_BLOCK_chainId),
             (p.get("BLOCKHEADER"), _171_SAVE_BLOCK_blockHeader)
         ]],
         [
-            NEWLABELS.SC_BATCH_BEFORE_END, [
+            SC_BATCH_BEFORE_END, [
             (p.get("CHAINID"), _172_SC_BATCH_BEFORE_END_chainId),
             (p.get("BLOCKTYPE"), _172_SC_BATCH_BEFORE_END_blockType),
             (p.get("BLOCKHEIGHT"), _172_SC_BATCH_BEFORE_END_blockHeight)
         ]],
         [
-            NEWLABELS.SC_BATCH_BEGIN, [
+            SC_BATCH_BEGIN, [
             (p.get("CHAINID"), _173_SC_BATCH_BEGIN_chainId),
             (p.get("BLOCKTYPE"), _173_SC_BATCH_BEGIN_blockType),
             (p.get("BLOCKHEIGHT"), _173_SC_BATCH_BEGIN_blockHeight),
@@ -992,12 +993,12 @@ class nulsws_Cls_Prm(object):
             (p.get("PRESTATEROOT"), _173_SC_BATCH_BEGIN_preStateRoot)
         ]],
         [
-            NEWLABELS.SC_BATCH_END, [
+            SC_BATCH_END, [
             (p.get("CHAINID"), _174_SC_BATCH_END_chainId),
             (p.get("BLOCKHEIGHT"), _174_SC_BATCH_END_blockHeight)
         ]],
         [
-            NEWLABELS.SC_CALL, [
+            SC_CALL, [
             (p.get("CHAINID"), _175_SC_CALL_chainId),
             (p.get("SENDER"), _175_SC_CALL_sender),
             (p.get("PASSWORD"), _175_SC_CALL_password),
@@ -1011,42 +1012,42 @@ class nulsws_Cls_Prm(object):
             (p.get("REMARK"), _175_SC_CALL_remark)
         ]],
         [
-            NEWLABELS.SC_CALL_VALIDATOR, [
+            SC_CALL_VALIDATOR, [
             (p.get("CHAINID"), _176_SC_CALL_VALIDATOR_chainId),
             (p.get("TX"), _176_SC_CALL_VALIDATOR_tx)
         ]],
         [
-            NEWLABELS.SC_CONSTRUCTOR, [
+            SC_CONSTRUCTOR, [
             (p.get("CHAINID"), _177_SC_CONSTRUCTOR_chainId),
             (p.get("CONTRACTCODE"), _177_SC_CONSTRUCTOR_contractCode)
         ]],
         [
-            NEWLABELS.SC_CONTRACT_INFO, [
+            SC_CONTRACT_INFO, [
             (p.get("CHAINID"), _178_SC_CONTRACT_INFO_chainId),
             (p.get("CONTRACTADDRESS"), _178_SC_CONTRACT_INFO_contractAddress)
         ]],
         [
-            NEWLABELS.SC_CONTRACT_OFFLINE_TX_HASH_LIST, [
+            SC_CONTRACT_OFFLINE_TX_HASH_LIST, [
             (p.get("CHAINID"), _179_SC_CONTRACT_OFFLINE_TX_HASH_LIST_chainId),
             (p.get("BLOCKHASH"), _179_SC_CONTRACT_OFFLINE_TX_HASH_LIST_blockHash)
         ]],
         [
-            NEWLABELS.SC_CONTRACT_RESULT, [
+            SC_CONTRACT_RESULT, [
             (p.get("CHAINID"), _180_SC_CONTRACT_RESULT_chainId),
             (p.get("HASH"), _180_SC_CONTRACT_RESULT_hash)
         ]],
         [
-            NEWLABELS.SC_CONTRACT_RESULT_LIST, [
+            SC_CONTRACT_RESULT_LIST, [
             (p.get("CHAINID"), _181_SC_CONTRACT_RESULT_LIST_chainId),
             (p.get("HASHLIST"), _181_SC_CONTRACT_RESULT_LIST_hashList)
         ]],
         [
-            NEWLABELS.SC_CONTRACT_TX, [
+            SC_CONTRACT_TX, [
             (p.get("CHAINID"), _182_SC_CONTRACT_TX_chainId),
             (p.get("HASH"), _182_SC_CONTRACT_TX_hash)
         ]],
         [
-            NEWLABELS.SC_CREATE, [
+            SC_CREATE, [
             (p.get("CHAINID"), _183_SC_CREATE_chainId),
             (p.get("SENDER"), _183_SC_CREATE_sender),
             (p.get("PASSWORD"), _183_SC_CREATE_password),
@@ -1058,12 +1059,12 @@ class nulsws_Cls_Prm(object):
             (p.get("REMARK"), _183_SC_CREATE_remark)
         ]],
         [
-            NEWLABELS.SC_CREATE_VALIDATOR, [
+            SC_CREATE_VALIDATOR, [
             (p.get("CHAINID"), _184_SC_CREATE_VALIDATOR_chainId),
             (p.get("TX"), _184_SC_CREATE_VALIDATOR_tx)
         ]],
         [
-            NEWLABELS.SC_DELETE, [
+            SC_DELETE, [
             (p.get("CHAINID"), _185_SC_DELETE_chainId),
             (p.get("SENDER"), _185_SC_DELETE_sender),
             (p.get("PASSWORD"), _185_SC_DELETE_password),
@@ -1071,12 +1072,12 @@ class nulsws_Cls_Prm(object):
             (p.get("REMARK"), _185_SC_DELETE_remark)
         ]],
         [
-            NEWLABELS.SC_DELETE_VALIDATOR, [
+            SC_DELETE_VALIDATOR, [
             (p.get("CHAINID"), _186_SC_DELETE_VALIDATOR_chainId),
             (p.get("TX"), _186_SC_DELETE_VALIDATOR_tx)
         ]],
         [
-            NEWLABELS.SC_IMPUTED_CALL_GAS, [
+            SC_IMPUTED_CALL_GAS, [
             (p.get("CHAINID"), _187_SC_IMPUTED_CALL_GAS_chainId),
             (p.get("SENDER"), _187_SC_IMPUTED_CALL_GAS_sender),
             (p.get("VALUE"), _187_SC_IMPUTED_CALL_GAS_value),
@@ -1086,25 +1087,25 @@ class nulsws_Cls_Prm(object):
             (p.get("ARGS"), _187_SC_IMPUTED_CALL_GAS_args)
         ]],
         [
-            NEWLABELS.SC_IMPUTED_CREATE_GAS, [
+            SC_IMPUTED_CREATE_GAS, [
             (p.get("CHAINID"), _188_SC_IMPUTED_CREATE_GAS_chainId),
             (p.get("SENDER"), _188_SC_IMPUTED_CREATE_GAS_sender),
             (p.get("CONTRACTCODE"), _188_SC_IMPUTED_CREATE_GAS_contractCode),
             (p.get("ARGS"), _188_SC_IMPUTED_CREATE_GAS_args)
         ]],
         [
-            NEWLABELS.SC_INITIAL_ACCOUNT_TOKEN, [
+            SC_INITIAL_ACCOUNT_TOKEN, [
             (p.get("CHAINID"), _189_SC_INITIAL_ACCOUNT_TOKEN_chainId),
             (p.get("ADDRESS"), _189_SC_INITIAL_ACCOUNT_TOKEN_address)
         ]],
         [
-            NEWLABELS.SC_INVOKE_CONTRACT, [
+            SC_INVOKE_CONTRACT, [
             (p.get("CHAINID"), _190_SC_INVOKE_CONTRACT_chainId),
             (p.get("BLOCKTYPE"), _190_SC_INVOKE_CONTRACT_blockType),
             (p.get("TX"), _190_SC_INVOKE_CONTRACT_tx)
         ]],
         [
-            NEWLABELS.SC_INVOKE_VIEW, [
+            SC_INVOKE_VIEW, [
             (p.get("CHAINID"), _191_SC_INVOKE_VIEW_chainId),
             (p.get("CONTRACTADDRESS"), _191_SC_INVOKE_VIEW_contractAddress),
             (p.get("METHODNAME"), _191_SC_INVOKE_VIEW_methodName),
@@ -1112,25 +1113,25 @@ class nulsws_Cls_Prm(object):
             (p.get("ARGS"), _191_SC_INVOKE_VIEW_args)
         ]],
         [
-            NEWLABELS.SC_PACKAGE_BATCH_END, [
+            SC_PACKAGE_BATCH_END, [
             (p.get("CHAINID"), _192_SC_PACKAGE_BATCH_END_chainId),
             (p.get("BLOCKHEIGHT"), _192_SC_PACKAGE_BATCH_END_blockHeight)
         ]],
         [
-            NEWLABELS.SC_TOKEN_ASSETS_LIST, [
+            SC_TOKEN_ASSETS_LIST, [
             (p.get("CHAINID"), _193_SC_TOKEN_ASSETS_LIST_chainId),
             (p.get("ADDRESS"), _193_SC_TOKEN_ASSETS_LIST_address),
             (p.get("PAGENUMBER"), _193_SC_TOKEN_ASSETS_LIST_pageNumber),
             (p.get("PAGESIZE"), _193_SC_TOKEN_ASSETS_LIST_pageSize)
         ]],
         [
-            NEWLABELS.SC_TOKEN_BALANCE, [
+            SC_TOKEN_BALANCE, [
             (p.get("CHAINID"), _194_SC_TOKEN_BALANCE_chainId),
             (p.get("CONTRACTADDRESS"), _194_SC_TOKEN_BALANCE_contractAddress),
             (p.get("ADDRESS"), _194_SC_TOKEN_BALANCE_address)
         ]],
         [
-            NEWLABELS.SC_TOKEN_TRANSFER, [
+            SC_TOKEN_TRANSFER, [
             (p.get("CHAINID"), _195_SC_TOKEN_TRANSFER_chainId),
             (p.get("ADDRESS"), _195_SC_TOKEN_TRANSFER_address),
             (p.get("TOADDRESS"), _195_SC_TOKEN_TRANSFER_toAddress),
@@ -1140,14 +1141,14 @@ class nulsws_Cls_Prm(object):
             (p.get("REMARK"), _195_SC_TOKEN_TRANSFER_remark)
         ]],
         [
-            NEWLABELS.SC_TOKEN_TRANSFER_LIST, [
+            SC_TOKEN_TRANSFER_LIST, [
             (p.get("CHAINID"), _196_SC_TOKEN_TRANSFER_LIST_chainId),
             (p.get("ADDRESS"), _196_SC_TOKEN_TRANSFER_LIST_address),
             (p.get("PAGENUMBER"), _196_SC_TOKEN_TRANSFER_LIST_pageNumber),
             (p.get("PAGESIZE"), _196_SC_TOKEN_TRANSFER_LIST_pageSize)
         ]],
         [
-            NEWLABELS.SC_TRANSFER, [
+            SC_TRANSFER, [
             (p.get("CHAINID"), _197_SC_TRANSFER_chainId),
             (p.get("ADDRESS"), _197_SC_TRANSFER_address),
             (p.get("TOADDRESS"), _197_SC_TRANSFER_toAddress),
@@ -1156,7 +1157,7 @@ class nulsws_Cls_Prm(object):
             (p.get("REMARK"), _197_SC_TRANSFER_remark)
         ]],
         [
-            NEWLABELS.SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT, [
+            SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT, [
             (p.get("CHAINID"), _198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_chainId),
             (p.get("STATEROOT"), _198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_stateRoot),
             (p.get("BLOCKHEIGHT"), _198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_blockHeight),
@@ -1164,12 +1165,12 @@ class nulsws_Cls_Prm(object):
             (p.get("TX"), _198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_tx)
         ]],
         [
-            NEWLABELS.SC_UPLOAD, [
+            SC_UPLOAD, [
             (p.get("CHAINID"), _199_SC_UPLOAD_chainId),
             (p.get("JARFILEDATA"), _199_SC_UPLOAD_jarFileData)
         ]],
         [
-            NEWLABELS.SC_VALIDATE_CALL, [
+            SC_VALIDATE_CALL, [
             (p.get("CHAINID"), _200_SC_VALIDATE_CALL_chainId),
             (p.get("SENDER"), _200_SC_VALIDATE_CALL_sender),
             (p.get("VALUE"), _200_SC_VALIDATE_CALL_value),
@@ -1181,7 +1182,7 @@ class nulsws_Cls_Prm(object):
             (p.get("ARGS"), _200_SC_VALIDATE_CALL_args)
         ]],
         [
-            NEWLABELS.SC_VALIDATE_CREATE, [
+            SC_VALIDATE_CREATE, [
             (p.get("CHAINID"), _201_SC_VALIDATE_CREATE_chainId),
             (p.get("SENDER"), _201_SC_VALIDATE_CREATE_sender),
             (p.get("GASLIMIT"), _201_SC_VALIDATE_CREATE_gasLimit),
@@ -1190,101 +1191,101 @@ class nulsws_Cls_Prm(object):
             (p.get("ARGS"), _201_SC_VALIDATE_CREATE_args)
         ]],
         [
-            NEWLABELS.SC_VALIDATE_DELETE, [
+            SC_VALIDATE_DELETE, [
             (p.get("CHAINID"), _202_SC_VALIDATE_DELETE_chainId),
             (p.get("CONTRACTADDRESS"), _202_SC_VALIDATE_DELETE_contractAddress)
         ]],
         [
-            NEWLABELS.STOP_AGENTVALID, [
+            STOP_AGENTVALID, [
             (p.get("CHAINID"), _203_STOP_AGENTVALID_chainId),
             (p.get("TX"), _203_STOP_AGENTVALID_tx)
         ]],
         [
-            NEWLABELS.TX_COMMIT, [
+            TX_COMMIT, [
             (p.get("CHAINID"), _204_TX_COMMIT_chainId),
             (p.get("TXLIST"), _204_TX_COMMIT_txList),
             (p.get("BLOCKHEADER"), _204_TX_COMMIT_blockHeader)
         ]],
         [
-            NEWLABELS.TX_VALIDATOR, [
+            TX_VALIDATOR, [
             (p.get("CHAINID"), _205_TX_VALIDATOR_chainId),
             (p.get("TXLIST"), _205_TX_VALIDATOR_txList),
             (p.get("BLOCKHEADER"), _205_TX_VALIDATOR_blockHeader)
         ]],
         [
-            NEWLABELS.TX_BACK_PACKABLE_TXS, [
+            TX_BACK_PACKABLE_TXS, [
             (p.get("CHAINID"), _206_TX_BACK_PACKABLE_TXS_chainId),
             (p.get("TXLIST"), _206_TX_BACK_PACKABLE_TXS_txList)
         ]],
         [
-            NEWLABELS.TX_BATCH_VERIFY, [
+            TX_BATCH_VERIFY, [
             (p.get("CHAINID"), _207_TX_BATCH_VERIFY_chainId),
             (p.get("TXLIST"), _207_TX_BATCH_VERIFY_txList),
             (p.get("BLOCKHEADER"), _207_TX_BATCH_VERIFY_blockHeader),
             (p.get("PRESTATEROOT"), _207_TX_BATCH_VERIFY_preStateRoot)
         ]],
         [
-            NEWLABELS.TX_BL_STATE, [
+            TX_BL_STATE, [
             (p.get("CHAINID"), _208_TX_BL_STATE_chainId),
             (p.get("STATUS"), _208_TX_BL_STATE_status)
         ]],
         [
-            NEWLABELS.TX_BLOCK_HEIGHT, [
+            TX_BLOCK_HEIGHT, [
             (p.get("CHAINID"), _209_TX_BLOCK_HEIGHT_chainId),
             (p.get("HEIGHT"), _209_TX_BLOCK_HEIGHT_height)
         ]],
         [
-            NEWLABELS.TX_CS_STATE, [
+            TX_CS_STATE, [
             (p.get("CHAINID"), _210_TX_CS_STATE_chainId),
             (p.get("PACKAGING"), _210_TX_CS_STATE_packaging)
         ]],
         [
-            NEWLABELS.TX_GET_BLOCKTXS, [
+            TX_GET_BLOCKTXS, [
             (p.get("CHAINID"), _211_TX_GET_BLOCKTXS_chainId),
             (p.get("TXHASHLIST"), _211_TX_GET_BLOCKTXS_txHashList)
         ]],
         [
-            NEWLABELS.TX_GET_BLOCKTXS_EXTEND, [
+            TX_GET_BLOCKTXS_EXTEND, [
             (p.get("CHAINID"), _212_TX_GET_BLOCKTXS_EXTEND_chainId),
             (p.get("TXHASHLIST"), _212_TX_GET_BLOCKTXS_EXTEND_txHashList),
             (p.get("ALLHITS"), _212_TX_GET_BLOCKTXS_EXTEND_allHits)
         ]],
         [
-            NEWLABELS.TX_GET_CONFIRMED_TX, [
+            TX_GET_CONFIRMED_TX, [
             (p.get("CHAINID"), _213_TX_GET_CONFIRMED_TX_chainId),
             (p.get("TXHASH"), _213_TX_GET_CONFIRMED_TX_txHash)
         ]],
         [
-            NEWLABELS.TX_GET_CONFIRMED_TX_CLIENT, [
+            TX_GET_CONFIRMED_TX_CLIENT, [
             (p.get("CHAINID"), _214_TX_GET_CONFIRMED_TX_CLIENT_chainId),
             (p.get("TXHASH"), _214_TX_GET_CONFIRMED_TX_CLIENT_txHash)
         ]],
         [
-            NEWLABELS.TX_GET_NONEXISTENT_UNCONFIRMED_HASHS, [
+            TX_GET_NONEXISTENT_UNCONFIRMED_HASHS, [
             (p.get("CHAINID"), _215_TX_GET_NONEXISTENT_UNCONFIRMED_HASHS_chainId),
             (p.get("TXHASHLIST"), _215_TX_GET_NONEXISTENT_UNCONFIRMED_HASHS_txHashList)
         ]],
         [
-            NEWLABELS.TX_GET_SYSTEMTYPES, [
+            TX_GET_SYSTEMTYPES, [
             (p.get("CHAINID"), _216_TX_GET_SYSTEMTYPES_chainId)
         ]],
         [
-            NEWLABELS.TX_GET_TX, [
+            TX_GET_TX, [
             (p.get("CHAINID"), _217_TX_GET_TX_chainId),
             (p.get("TXHASH"), _217_TX_GET_TX_txHash)
         ]],
         [
-            NEWLABELS.TX_GET_TX_CLIENT, [
+            TX_GET_TX_CLIENT, [
             (p.get("CHAINID"), _218_TX_GET_TX_CLIENT_chainId),
             (p.get("TXHASH"), _218_TX_GET_TX_CLIENT_txHash)
         ]],
         [
-            NEWLABELS.TX_NEWTX, [
+            TX_NEWTX, [
             (p.get("CHAINID"), _219_TX_NEWTX_chainId),
             (p.get("TX"), _219_TX_NEWTX_tx)
         ]],
         [
-            NEWLABELS.TX_PACKABLE_TXS, [
+            TX_PACKABLE_TXS, [
             (p.get("CHAINID"), _220_TX_PACKABLE_TXS_chainId),
             (p.get("ENDTIMESTAMP"), _220_TX_PACKABLE_TXS_endTimestamp),
             (p.get("MAXTXDATASIZE"), _220_TX_PACKABLE_TXS_maxTxDataSize),
@@ -1293,47 +1294,47 @@ class nulsws_Cls_Prm(object):
             (p.get("PRESTATEROOT"), _220_TX_PACKABLE_TXS_preStateRoot)
         ]],
         [
-            NEWLABELS.TX_REGISTER, [
+            TX_REGISTER, [
             (p.get("CHAINID"), _221_TX_REGISTER_chainId),
             (p.get("MODULECODE"), _221_TX_REGISTER_moduleCode),
             (p.get("LIST"), _221_TX_REGISTER_list),
             (p.get("DELLIST"), _221_TX_REGISTER_delList)
         ]],
         [
-            NEWLABELS.TX_ROLLBACK, [
+            TX_ROLLBACK, [
             (p.get("CHAINID"), _222_TX_ROLLBACK_chainId),
             (p.get("TXHASHLIST"), _222_TX_ROLLBACK_txHashList),
             (p.get("BLOCKHEADER"), _222_TX_ROLLBACK_blockHeader)
         ]],
         [
-            NEWLABELS.TX_SAVE, [
+            TX_SAVE, [
             (p.get("CHAINID"), _223_TX_SAVE_chainId),
             (p.get("TXLIST"), _223_TX_SAVE_txList),
             (p.get("CONTRACTLIST"), _223_TX_SAVE_contractList),
             (p.get("BLOCKHEADER"), _223_TX_SAVE_blockHeader)
         ]],
         [
-            NEWLABELS.TX_VERIFY_TX, [
+            TX_VERIFY_TX, [
             (p.get("CHAINID"), _224_TX_VERIFY_TX_chainId),
             (p.get("TX"), _224_TX_VERIFY_TX_tx)
         ]],
         [
-            NEWLABELS.UPDATE_CHAIN_ASSET, [
+            UPDATE_CHAIN_ASSET, [
             (p.get("CHAINID"), _225_UPDATE_CHAIN_ASSET_chainId),
             (p.get("ASSETS"), _225_UPDATE_CHAIN_ASSET_assets)
         ]],
         [
-            NEWLABELS.VERIFY_COINDATA, [
+            VERIFY_COINDATA, [
             (p.get("CHAINID"), _226_VERIFY_COINDATA_chainId),
             (p.get("TX"), _226_VERIFY_COINDATA_tx)
         ]],
         [
-            NEWLABELS.VERIFY_COINDATA_BATCH_PACKAGED, [
+            VERIFY_COINDATA_BATCH_PACKAGED, [
             (p.get("CHAINID"), _227_VERIFY_COINDATA_BATCH_PACKAGED_chainId),
             (p.get("TXLIST"), _227_VERIFY_COINDATA_BATCH_PACKAGED_txList)
         ]],
         [
-            NEWLABELS.WITHDRAW_VALID, [
+            WITHDRAW_VALID, [
             (p.get("CHAINID"), _228_WITHDRAW_VALID_chainId),
             (p.get("TX"), _228_WITHDRAW_VALID_tx)
         ]]

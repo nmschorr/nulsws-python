@@ -2,10 +2,10 @@
 # Nancy Schorr, 2019
 # "method name constants representing possible api calls to Nulstar.",
 
-class nulsws_Cls_Api_Labels:
+class nulsws_C_Labels:
 
-    def __init__(self):
-        pass
+    # def __init__(self):
+    #     pass
 
     AC_ADD_ADDRESS_PREFIX = "ac_addAddressPrefix"
     AC_CREATE_ACCOUNT = "ac_createAccount"

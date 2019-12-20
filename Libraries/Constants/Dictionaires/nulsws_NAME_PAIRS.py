@@ -1,9 +1,9 @@
 #!/usr/bin/python3.7
-from Libraries.Constants.CLASSES import nulsws_cls_api_labels
+from Libraries.Constants.CLASSES import nulsws_c_labels as nulab
 
 # use these 'CONSTANTS' to make a run list
 
-n = nulsws_cls_api_labels.nulsws_Cls_Api_Labels()
+n = nulab.nulsws_C_Labels
 
 NAME_PAIRS = [
     ("AC_CREATE_ACCOUNT", n.AC_CREATE_ACCOUNT),

@@ -30,52 +30,58 @@
 #     "CompressionRate": "3"
 # Note: Maybe don't use typing.Dict - it can cause json problems when converted
 
-
+import json
 from asyncio import run as asyncio_run
 from asyncio import sleep as a_sleep
 from tornado.websocket import websocket_connect, WebSocketClientConnection  # WebSocketClosedError
 
-from Libraries.nulsws_library import *
-from UserSettings.nulsws_SET import *
+from Libraries.Constants.CLASSES import nulsws_c_labels as nlab
 from Libraries import nulsws_REQUEST as mw
-from Libraries.Constants.CLASSES import nulsws_cls_api_labels
+from UserSettings.nulsws_SET import *
+import Libraries.nulsws_library as nulib
+from Libraries.nulsws_library import Nulsws_Library as nuLIB
 
-class NulsWebsocket:
+class NulsWebsocket(nuLIB):
 
     def __init__(self):
-        myprint("the url:  ", websock_url)
+        nw = nuLIB()
+        self.nw = nw
+        nw.myprint("the url:  ", websock_url)
         mindex = 0
         self.mindex = mindex
         self.s_time = .7
         self.ORIG_RUNLIST = []
         self.rundict = {}
         self.MSG_TYPE = 0
+        self.json_prt = nuLIB.json_prt()
+        self.json_dumps = nuLIB.json_dumps()
+        self.myprint = nuLIB.myprint()
 
     async def REGULAR_req(self, websock_connct: WebSocketClientConnection, j_reg_dict):
-        json_REG = json_dumps(j_reg_dict)
+        json_REG = json.dumps(j_reg_dict)
         await websock_connct.write_message(json_REG)  # 2 WRITE
-        json_prt(json_REG, "\n* * * REGULAR message going out: \n")
+        self.json_prt(json_REG, "\n* * * REGULAR message going out: \n")
         #await a_sleep(self.s_time)
         read_REG = await websock_connct.read_message()  # 3 READ
         await a_sleep(self.s_time)
         if len(read_REG) > 0:
-            json_prt(read_REG, "   -----------> ! ! ! REGULAR response received: ")
-        myprint("--------------end previous / begin next request--------------------------------")
+            self.json_prt(read_REG, "   -----------> ! ! ! REGULAR response received: ")
+        self.myprint("--------------end previous / begin next request--------------------------------")
 
     async def negotiate_list(self, top_plus_mid_dict, m_indx, runlist, mtpe=3):
         connection = await websocket_connect(websock_url)  # 1) CONNECT
         #await a_sleep(self.s_time)
         while not connection:
             await a_sleep(self.s_time)
-        jd = json_dumps(top_plus_mid_dict)
-        json_prt(top_plus_mid_dict, "* * * First message going out- NEGOTIATE: \n")
+        jd = self.json_dumps(top_plus_mid_dict)
+        self.nw.json_prt(top_plus_mid_dict, "* * * First message going out- NEGOTIATE: \n")
         await connection.write_message(jd)  # 2) WRITE
         #await a_sleep(self.s_time)
 
         negotiate_result = await connection.read_message()  # 3 READ
         await a_sleep(self.s_time)
-        json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
-        myprint("------end Negotiate----------------------------------------")
+        self.nw.json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
+        self.myprint("------end Negotiate----------------------------------------")
 
         for run_item in runlist:
             m_indx += 1
@@ -99,7 +105,7 @@ class NulsWebsocket:
 
 
 if __name__ == '__main__':
-    n = nulsws_cls_api_labels.nulsws_Cls_Api_Labels
+    n = nlab.nulsws_C_Labels
 
     RUNLIST1 = [n.AC_GET_ACCOUNT_BYADDRESS, n.AC_GET_ALL_ADDRESS_PREFIX, n.AC_GET_ACCOUNT_LIST,
                 n.AC_GET_ADDRESS_LIST, n.AC_GET_ADDRESS_PREFIX_BY_CHAINID, n.AC_GET_ALL_ADDRESS_PREFIX,
@@ -119,7 +125,7 @@ if __name__ == '__main__':
                 n.LATEST_HEIGHT]
 
     #RUN_LIST = RUNLIST2
-    RUN_LIST = RUNLIST1 + RUNLIST2
+    RUN_LIST = RUNLIST1
     message_type = 3  # 3 is request, 99 is test, 77 is negotiate only
 
     nws = NulsWebsocket()

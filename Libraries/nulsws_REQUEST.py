@@ -2,13 +2,11 @@
 
 import json
 
-from Libraries.nulsws_library import get_times
 from Libraries.Constants.Dictionaires.nulsws_NAME_PAIRS import NAME_PAIRS
 from Libraries.Constants.nulsws_CONSTANTS_otherlabels import *
 from UserSettings.nulsws_SET import *
 import Libraries.Constants.CLASSES.nulsws_cls_PARAMS  # import class for USER_CALLS_DB
-
-
+import Libraries.nulsws_library as nulib
 # -----------prep_NEGOTIATE_data_type1--------------------------------------#
 
 
@@ -28,7 +26,7 @@ def get_TOP_SECTION(msg_type: int, msg_indx):  # this section builds 5 items: #0
     # 1 "MessageID": "1569897424187-1",  #2 "TimeZone": "-4",   #3 "Timestamp": "1569897424187"
     # #4 "MessageType": "NegotiateConnection",
     msg_type_name = type_name_dict.__getitem__(msg_type)
-    t_stamp, tzone, m_id = get_times(msg_indx)
+    t_stamp, tzone, m_id = nulib.get_times(msg_indx)
     top_part = {proto_label: proto_ver,
                 msg_id_label: m_id,
                 tmstmp_label: t_stamp,

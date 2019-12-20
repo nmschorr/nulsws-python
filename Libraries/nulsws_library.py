@@ -55,51 +55,55 @@ from time import time, timezone
 from Libraries.Constants.nulsws_CONSTANTS_otherlabels import msg_data_label, msg_type_label, \
     negotiate_stat_label, negotiate_conn_resp_label
 
+class Nulsws_Library:
 
-def retrieve_name(var):
-    callers_local_vars = inspect.currentframe().f_back.f_locals.items()
-    return [var_name for var_name, var_val in callers_local_vars if var_val is var]
-# -----------get_times--------------------------------------#
+    def retrieve_name(self, var):
+        callers_local_vars = inspect.currentframe().f_back.f_locals.items()
+        return [var_name for var_name, var_val in callers_local_vars if var_val is var]
 
-def get_times(msg_index=1):
-    t_stamp = int(time() * 100000)  # change float to int
-    tzone = int(timezone / 3600)  # change float to int to str
-    m_id = str(t_stamp) + "-" + str(msg_index)
-    t_stamp = str(t_stamp)
-    return t_stamp, str(tzone), m_id
+    # -----------get_times--------------------------------------#
 
-# -----------check_json_answer--------------------------------------#
+    @staticmethod
+    def get_times(msg_index=1):
+        t_stamp = int(time() * 100000)  # change float to int
+        tzone = int(timezone / 3600)  # change float to int to str
+        m_id = str(t_stamp) + "-" + str(msg_index)
+        t_stamp = str(t_stamp)
+        return t_stamp, str(tzone), m_id
 
-def check_json_answer(answer) -> bool:
-    jload = json.loads(answer)
-    json_prt(jload, "check answer jds value= ")
-    msg_d_answer = jload.get(msg_data_label)
-    mt = jload.get(msg_type_label)
-    if mt == negotiate_conn_resp_label:
-        final_int = msg_d_answer.get(negotiate_stat_label)
-        if final_int == '1':
-            print("Negotiate Status was 1. All is good")
-            return True
-        else:
-            return False
+    # -----------check_json_answer--------------------------------------#
 
-# -----------myprint--------------------------------------#
+    def check_json_answer(self, answer) -> bool:
+        jload = json.loads(answer)
+        self.json_prt(jload, "check answer jds value= ")
+        msg_d_answer = jload.get(msg_data_label)
+        mt = jload.get(msg_type_label)
+        if mt == negotiate_conn_resp_label:
+            final_int = msg_d_answer.get(negotiate_stat_label)
+            if final_int == '1':
+                print("Negotiate Status was 1. All is good")
+                return True
+            else:
+                return False
 
-def myprint(x, y=None, debug=True):
-    if debug:
-        print(x) if not y else print(str(x) + ' ' + str(y))
+    # -----------myprint--------------------------------------#
 
-# -----------json_prt--------------------------------------#
+    @staticmethod
+    def myprint(x, y=None, debug=True):
+        if debug:
+            print(x) if not y else print(str(x) + ' ' + str(y))
 
-def json_prt(json_str, str_msg, debug=True):
-    if not isinstance(json_str, dict):
-        json_str = json.loads(json_str)
-    if debug:
-        if str_msg:
-            aname = ''.join(str_msg)
-            print(aname + str(json_dumps(json_str, indent=3)))
-        else:
-            myprint("nothing returned")
+    # -----------json_prt--------------------------------------#
+    @staticmethod
+    def json_prt(self, json_str, str_msg, debug=True):
+        if not isinstance(json_str, dict):
+            json_str = json.loads(json_str)
+        if debug:
+            if str_msg:
+                aname = ''.join(str_msg)
+                print(aname + str(json_dumps(json_str, indent=3)))
+            else:
+                Nulsws_Library.myprint("nothing returned")
 
 
 
