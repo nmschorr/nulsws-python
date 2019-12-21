@@ -203,34 +203,91 @@ my_address: str = "NULSd6Hggvrij3MPW9QTHJGBv7uiyMKw41i7t"             # java-typ
 my_addressprefix: str = 'NULS'           # java-type-String
 
 
-### Further project Goals:
+### Further project goals
 - Complete implementation of the python library as described in Berzeck's documents
 - Further document this framework
 - Properly package it according to Python standards so it can be easily installed, 
 accessed, and built-upon. See https://packaging.python.org/overview/ for details.
 
-### My personal goals
-- Get this done
-- My experience with Nuls is that it has a very strong and functioning Java and C basis.
+### Personal goals
+- Get this python framework done
+- Polish my Python skills
+- Learn more blockchain
+- Host a node or three
+
+#### Background
+ 
+ Code-wise - I've been a Java coder for some years. I was on the Swing and
+  AWT QA and tools teams at Sun starting in 1997. During those years, I also worked a 
+  lot with Oracle databases, and was certified as an Oracle DBA in 2013. I also 
+  programmed extensively in Perl, and before that in other languages. At Apple I worked
+  in performance cpu testing and developed low-level tracing tools in C. You can see 
+   my resume for further details. Born in New York, I graduated from UC Irvine and did 
+   some graduate work in Transpersonal Psychology at CIIS in San Francisco.
+   
+ ### Why Python? ###
+  I love the direct and simple philosophy and the wealth of methods 
+ that 
+ greatly simplify things that have been too complicated for too long. After years of C 
+ and Java - it's been a pure joy to immerse myself in the Python world.
+ 
+  ### Nuls and me
+My experience with Nuls is that it has a very strong and functioning Java and C basis.
 I've been very impressed with the code I've seen. Nuls provides an easy to use and 
 understand blockchain model. It's not just one of the many Ethereum knockoffs. I believe
  it has a future. I very much like the open community model that is expressed in it's 
- public documentation. 
- 
- Personally - code-wise - I've been a java coder for some years. I was on the Swing and
-  AWT QA and tools teams at Sun starting in 1997. During those years I also worked a 
-  lot with Oracle databases, and was certified as an Oracle DBA in 2013. I also 
-  programmed extensively in Perl, and before that in other languages. At Apple I worked
-   in performance cpu testing and developed low-level tracing tools in C. You can see 
-   my resume for further details.
-   
- Why Python? I love the direct and simple philosophy and the wealth of methods that 
- greatly simplify things that have been too complicated for too long. After years of C 
- and Java - it's been a pure joy to immerse myself in the Python world.
-   
+ public documentation. I'm very comfortable with all the tools in use including Git, 
+ Telegram, etc.
+  
+ ### Personal Details
  Berzeck asked me to include something personal like hobbies. My hobbies include light 
  trail hiking (up to maybe 5 miles in a day), camping, gardening, astronomy, friends and 
   family of course, and tending to our friend Cosmo the hummingbird we helped rescued 
   last winter and who lives now in our yard. I also occasionally babysit the 3 chickens 
-  next door.  
+  next door. I live in the south-part of the San Francisco Bay Area in Santa Clara with
+   my fiance Shawn who I've been with now for about 11 years.
+
+
+#### The following is from my experience with the Nuls Hackathon ####
+
+### My Experience Coding with Nuls
+Wow, amazing. It's hard to believe a loosely organized open-source, international group of people have this giant code-base not only working but available for everyone. The transactions, encryption, data flow etc are all functional. Clearly the expertise of the developers was very advanced to begin with. In this project you will find:
+
+- Abstract Classes, Interfaces
+- Collections â€“ List, Map, Set etc.
+- File IO, Serialization, RPC
+- Spring, Annotations and Optionals
+- Multithreading and Synchronization
+- Generics; Dependency Injection, Lambda's
+- Grizzly/Jersey Servers, Servlets, Sockets, 
+- Web Technologies - HTML, REST, CSS, Javascript, JQuery and Ajax
+- And don't forget Maven, Git, and Bash
+
+
+###Some Things I Changed from Chainbox
+
+Much of the code was difficult to read at first since it was both unfamiliar, and frankly - I had given up on Java and have been using Python more and more over the past few years. Going back to Java was a little bit painful. But I found I enjoyed the 'sturdy' feeling of something that won't tie itself together unless it's developers really "make it so". Also, much of the technology around Java - like profiling and debugging - are very advanced. 
+
+A lot of the Chainbox code had been condensed so that it was fast, lightweight, efficient - but difficult to step through with a debugger for learning purposes. So I undid a lot of the function calls within function calls, etc. I also moved functionality around a little bit so that the main working parts were more together. 
+
+Since my app doesn't send email - in the future I'd like to remove some of that and other extraneous code if posssible.
+
+
+##Debugging Nuls 
+
+When I moved onto the meat and potatoes of the app - I discovered that transferring nuls between accounts was easier said than done. In order to better understand the process, I usually use the debugger built into whatever IDE I'm using. However, in the case of Nuls - a giant, complex code base with numerous configuration files - this wasn't going to be possible. Also, you would want debugging run on the entire system because it would slow to a crawl.
+
+
+The Java JDK ships with it's own built in debugger - often accessed by the command line via the cli tool jdb. However, having little experience using that I did some research and found that Intellij Idea for Java would run with the JDK build in debugger.
+
+I enabled the debugger to run with just my module. Included in this package is a file in the "webextras" directory called "start.debugger.sh" that enables this. Rename the this file to "start.sh" and copy it over the start.sh in <project-directory>/NULS_WALLET/Modules/Nuls/nuls-blockparty/1.0.0/ . Type "start.sh nuls-blockparty" or just restart with "start-dev" and you're on your way. If you run 'tools' again it will be erased.
+
+The debugger runs on port 8000. Go into the Run / Edit Configurations and add a configuration for Remote from the run templates provided. Enter 8000 for the port. It should automatically fill in the settings which are:
+
+       -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=localhost:8000
+
+These are the same settings that go into the java run instruction for the module you want to debug.
+
+Addendum:  Resume
+
 
