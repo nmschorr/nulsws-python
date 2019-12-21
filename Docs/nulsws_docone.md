@@ -161,4 +161,76 @@ The first file, nulsws-USER_PARAMS.py, contains every one of the possible parame
 Once set in this file, it is fed into the library, and no further setup is needed to 
 access the as-is nuls blockchain via the Nulstar Connector module. 
 
-Here's a sample 
+__Here's a sample:__
+
+`1_AC_CREATE_ACCOUNT_chainId = my_chainid`
+`1_AC_CREATE_ACCOUNT_count = my_chainid`
+`1_AC_CREATE_ACCOUNT_password = my_password`
+`2_AC_CREATE_CONTRACT_ACCOUNT_chainId = my_chainid`
+`3_AC_CREATE_MULTI_SIGN_ACCOUNT_chainId = my_chainid`
+`3_AC_CREATE_MULTI_SIGN_ACCOUNT_pubKeys = my_pubkeys`
+`3_AC_CREATE_MULTI_SIGN_ACCOUNT_minSigns = my_minsigns`
+`4_AC_CREATE_MULTI_SIGN_TRANSFER_chainId = my_chainid`
+
+As you can see the parameters are numbered so we have some basis for sanity. Currently 
+every one of the 1000+ parameters is set to something, although in most cases it ends 
+up being 1 or 0.
+
+This file never changes on the left side of the "=" unless the user is developing and 
+changes the underlying structure.  And once the parameters on the right side are set up,
+then may rarely need to be changed.
+
+#### nulsws_SET.py
+Most editing will be done in the nulsws_SET.py file. Here's a sample:
+
+connect_method = "ws://"   # could be wss
+host_req = "127.0.0.1"
+port_req = "7772"    
+compress_type_VALUE = "zlib"
+compress_rate_VALUE = 0                      # 0-9
+my_pubkeys: 1
+my_chainid: int = 1               # int
+my_account: str = "NULSd6Hggvrij3MPW9QTHJGBv7uiyMKw41i7t"             # java-type-String
+my_password = 'nuls123456'   # str
+my_addresstype: int = 0               # int
+my_assetchainid: int = 1               # int
+my_assetid: int = 1               # int
+my_blocktype: int = 0               # int
+my_circulatechainid: int = 0               # int
+my_commissionrate: int = 0               # int
+my_height: int = 0               # int
+my_address: str = "NULSd6Hggvrij3MPW9QTHJGBv7uiyMKw41i7t"             # java-type-String
+my_addressprefix: str = 'NULS'           # java-type-String
+
+
+### Further project Goals:
+- Complete implementation of the python library as described in Berzeck's documents
+- Further document this framework
+- Properly package it according to Python standards so it can be easily installed, 
+accessed, and built-upon. See https://packaging.python.org/overview/ for details.
+
+### My personal goals
+- Get this done
+- My experience with Nuls is that it has a very strong and functioning Java and C basis.
+I've been very impressed with the code I've seen. Nuls provides an easy to use and 
+understand blockchain model. It's not just one of the many Ethereum knockoffs. I believe
+ it has a future. I very much like the open community model that is expressed in it's 
+ public documentation. 
+ 
+ Personally - code-wise - I've been a java coder for some years. I was on the Swing and
+  AWT QA and tools teams at Sun starting in 1997. During those years I also worked a 
+  lot with Oracle databases, and was certified as an Oracle DBA in 2013. I also 
+  programmed extensively in Perl, and before that in other languages. At Apple I worked
+   in performance cpu testing and developed low-level tracing tools in C. You can see 
+   my resume for further details.
+   
+ Why Python? I love the direct and simple philosophy and the wealth of methods that 
+ greatly simplify things that have been too complicated for too long. After years of C 
+ and Java - it's been a pure joy to immerse myself in the Python world.
+   
+ Berzeck asked me to include something personal like hobbies. My hobbies include light 
+ trail hiking (up to maybe 5 miles in a day), camping, gardening, astronomy, friends and 
+  family of course, and tending to our friend Cosmo the hummingbird we helped rescued 
+  last winter and who lives now in our yard. I also occasionally babysit the 3 chickens 
+  next door.  
+
