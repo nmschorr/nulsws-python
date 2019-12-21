@@ -55,6 +55,7 @@ from time import time, timezone
 from Libraries.Constants.nulsws_CONSTANTS_otherlabels import msg_data_label, msg_type_label, \
     negotiate_stat_label, negotiate_conn_resp_label
 
+
 class Nulsws_Library:
 
     def retrieve_name(self, var):
@@ -95,7 +96,7 @@ class Nulsws_Library:
 
     # -----------json_prt--------------------------------------#
     @staticmethod
-    def json_prt(self, json_str, str_msg, debug=True):
+    def json_prt(json_str, str_msg, debug=True):
         if not isinstance(json_str, dict):
             json_str = json.loads(json_str)
         if debug:
@@ -104,10 +105,6 @@ class Nulsws_Library:
                 print(aname + str(json_dumps(json_str, indent=3)))
             else:
                 Nulsws_Library.myprint("nothing returned")
-
-
-
-
 
 # ---------------- Example -------------------------------------------------------------------
 

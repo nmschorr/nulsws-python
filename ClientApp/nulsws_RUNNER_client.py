@@ -35,27 +35,25 @@ from asyncio import run as asyncio_run
 from asyncio import sleep as a_sleep
 from tornado.websocket import websocket_connect, WebSocketClientConnection  # WebSocketClosedError
 
-from Libraries.Constants.CLASSES import nulsws_c_labels as nlab
-from Libraries import nulsws_REQUEST as mw
-from UserSettings.nulsws_SET import *
-import Libraries.nulsws_library as nulib
-from Libraries.nulsws_library import Nulsws_Library as nuLIB
+import Libraries.Constants.CLASSES.nulsws_api_labels.nuls_Labels as b
+import Libraries.nulsws_library as lib
 
-class NulsWebsocket(nuLIB):
+from Libraries import nulsws_REQUEST as reqs
+from UserSettings.nulsws_SET import *
+
+class NulsWebsocket():
 
     def __init__(self):
-        nw = nuLIB()
-        self.nw = nw
-        nw.myprint("the url:  ", websock_url)
+        super().__init__()
+        lib.myprint("the url:  ", websock_url)
         mindex = 0
         self.mindex = mindex
         self.s_time = .7
         self.ORIG_RUNLIST = []
         self.rundict = {}
         self.MSG_TYPE = 0
-        self.json_prt = nuLIB.json_prt()
-        self.json_dumps = nuLIB.json_dumps()
-        self.myprint = nuLIB.myprint()
+        self.json_dumps = lib.json_dumps()
+        self.myprint = lib.myprint()
 
     async def REGULAR_req(self, websock_connct: WebSocketClientConnection, j_reg_dict):
         json_REG = json.dumps(j_reg_dict)
@@ -90,7 +88,7 @@ class NulsWebsocket(nuLIB):
                                 # if self.msg_type == 77: await self.REGULAR_req(connection, run_item)   # this runs register api
                                 # END TEST ONLY SECTION ----------------------
             if mtpe == 3:
-                main_request = mw.prep_REQUEST(m_indx, run_item)  ##TEST ONLY PUT BACK WHEN DONE
+                main_request = reqs.prep_REQUEST(m_indx, run_item)  ##TEST ONLY PUT BACK WHEN DONE
                 await self.REGULAR_req(connection, main_request)
 
     def main(self, runlist, msg_type=3):
@@ -98,31 +96,30 @@ class NulsWebsocket(nuLIB):
         self.mindex += 1
         myindx = self.mindex
         if mtpe == 3:  # if a regular request Nulstar type 3
-            top_pls_middle_dict = mw.prep_NEGOTIATE_request(myindx)  # must be done first
+            top_pls_middle_dict = reqs.prep_NEGOTIATE_request(myindx)  # must be done first
             asyncio_run(
                 self.negotiate_list(
                     top_pls_middle_dict, myindx, runlist, mtpe))  # starts event
 
 
 if __name__ == '__main__':
-    n = nlab.nulsws_C_Labels
 
-    RUNLIST1 = [n.AC_GET_ACCOUNT_BYADDRESS, n.AC_GET_ALL_ADDRESS_PREFIX, n.AC_GET_ACCOUNT_LIST,
-                n.AC_GET_ADDRESS_LIST, n.AC_GET_ADDRESS_PREFIX_BY_CHAINID, n.AC_GET_ALL_ADDRESS_PREFIX,
-                n.AC_GET_ALL_PRIKEY, n.AC_GET_ALIASBY_ADDRESS]
+    RUNLIST1 = [b.AC_GET_ACCOUNT_BYADDRESS, b.AC_GET_ALL_ADDRESS_PREFIX, b.AC_GET_ACCOUNT_LIST,
+                b.AC_GET_ADDRESS_LIST, b.AC_GET_ADDRESS_PREFIX_BY_CHAINID, b.AC_GET_ALL_ADDRESS_PREFIX,
+                b.AC_GET_ALL_PRIKEY, b.AC_GET_ALIASBY_ADDRESS]
 
     RUNLIST2 = [
-        n.AC_EXPORT_ACCOUNT_KEYSTORE, n.AC_EXPORT_KEYSTORE_JSON, n.AC_GET_ACCOUNT_BYADDRESS,
-        n.AC_GET_ACCOUNT_LIST, n.AC_GET_ADDRESS_LIST, n.AC_GET_ADDRESS_PREFIX_BY_CHAINID,
-        n.AC_GET_ALIASBY_ADDRESS, n.AC_GET_ALL_ADDRESS_PREFIX, n.AC_GET_ALL_PRIKEY,
-        n.AC_GET_ENCRYPTED_ADDRESS_LIST, n.AC_GET_MULTI_SIGN_ACCOUNT, n.AC_GET_PRIKEY, n.AC_GET_PUBKEY]
+        b.AC_EXPORT_ACCOUNT_KEYSTORE, b.AC_EXPORT_KEYSTORE_JSON, b.AC_GET_ACCOUNT_BYADDRESS,
+        b.AC_GET_ACCOUNT_LIST, b.AC_GET_ADDRESS_LIST, b.AC_GET_ADDRESS_PREFIX_BY_CHAINID,
+        b.AC_GET_ALIASBY_ADDRESS, b.AC_GET_ALL_ADDRESS_PREFIX, b.AC_GET_ALL_PRIKEY,
+        b.AC_GET_ENCRYPTED_ADDRESS_LIST, b.AC_GET_MULTI_SIGN_ACCOUNT, b.AC_GET_PRIKEY, b.AC_GET_PUBKEY]
 
-    RUNLIST3 = [n.GET_LATEST_BLOCKHEADERS,
-                n.GET_LATEST_ROUND_BLOCKHEADERS, n.GET_NETWORK_GROUP, n.GET_NONCE, n.GET_OTHERCTX,
-                n.GET_REGISTERED_CHAIN_INFO_LIST, n.GET_REGISTERED_CHAIN_MESSAGE, n.GET_ROUND_BLOCKHEADERS,
-                n.GET_STATUS, n.GET_VERSION, n.INFO, n.LATEST_BLOCK, n.LATEST_BLOCKHEADER,
-                n.LATEST_BLOCKHEADER_PO,
-                n.LATEST_HEIGHT]
+    RUNLIST3 = [b.GET_LATEST_BLOCKHEADERS,
+                b.GET_LATEST_ROUND_BLOCKHEADERS, b.GET_NETWORK_GROUP, b.GET_NONCE, b.GET_OTHERCTX,
+                b.GET_REGISTERED_CHAIN_INFO_LIST, b.GET_REGISTERED_CHAIN_MESSAGE, b.GET_ROUND_BLOCKHEADERS,
+                b.GET_STATUS, b.GET_VERSION, b.INFO, b.LATEST_BLOCK, b.LATEST_BLOCKHEADER,
+                b.LATEST_BLOCKHEADER_PO,
+                b.LATEST_HEIGHT]
 
     #RUN_LIST = RUNLIST2
     RUN_LIST = RUNLIST1
@@ -134,8 +131,8 @@ if __name__ == '__main__':
 
 
 # old code for testing:
-# json_main_type = mw.prep_data_REQUEST_type5()
-# json_main_type = mw.prep_data_REQUEST_type7()
+# json_main_type = reqs.prep_data_REQUEST_type5()
+# json_main_type = reqs.prep_data_REQUEST_type7()
 # if mtpe == 99:   # test dev only
 #     for run_item in runlist:
 #         print("starting this item: ", run_item)

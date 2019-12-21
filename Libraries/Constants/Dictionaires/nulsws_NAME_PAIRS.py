@@ -3,7 +3,7 @@ from Libraries.Constants.CLASSES import nulsws_c_labels as nulab
 
 # use these 'CONSTANTS' to make a run list
 
-n = nulab.nulsws_C_Labels
+n = nulab.nulsws_Labels
 
 NAME_PAIRS = [
     ("AC_CREATE_ACCOUNT", n.AC_CREATE_ACCOUNT),
