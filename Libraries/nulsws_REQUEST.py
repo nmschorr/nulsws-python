@@ -5,7 +5,7 @@ import json
 from Libraries.Constants.Dictionaires.nulsws_NAME_PAIRS import NAME_PAIRS
 from Libraries.Constants.nulsws_CONSTANTS_otherlabels import *
 from UserSettings.nulsws_SET import *
-import Libraries.Constants.CLASSES.nulsws_cls_PARAMS  # import class for USER_CALLS_DB
+import Libraries.Constants.CLASSES.nulsws_calls_DB  # import class for USER_CALLS_DB
 import Libraries.nulsws_library as nulib
 # -----------prep_NEGOTIATE_data_type1--------------------------------------#
 
@@ -56,7 +56,7 @@ def get_REQ_MIDDLE(mid_section_vals=None):   #return dict
 def prep_REQUEST(msg_indx, api_name):  # requesttype 2 - return ack +
     # import Libraries.Constants.CLASSES.nulsws_cls_PARAMS  # import class for USER_CALLS_DB
 
-    param_object = Libraries.Constants.CLASSES.nulsws_cls_PARAMS.nulsws_Cls_Prm()
+    param_object = Libraries.Constants.CLASSES.nulsws_calls_DB.nulsws_Cls_Prm()
     USER_CALLS_DB = param_object.USER_CALLS_DB
 
     # response either has a second element of a list, or not
