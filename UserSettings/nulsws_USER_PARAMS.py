@@ -696,7 +696,7 @@ z227_VERIFY_COINDATA_BATCH_PACKAGED_txList = my_chainid
 z228_WITHDRAW_VALID_chainId = my_chainid
 z228_WITHDRAW_VALID_tx = my_chainid
 
-all__ = ['FALSE', 'MSG_TYPE', 'REMARK', 'RequestType', 'SHORT_MSG', 'TRUE', 'ZERO', 'ZLIB', 'all__',
+__all__ = ['FALSE', 'MSG_TYPE', 'REMARK', 'RequestType', 'SHORT_MSG', 'TRUE', 'ZERO', 'ZLIB', 'all__',
          'compatible_proto_versions', 'compress_rate_VALUE', 'compress_type_VALUE', 'connect_method',
          'host_req', 'my_account', 'my_address', 'my_addressprefix', 'my_addresstype', 'my_addressval',
          'my_agentaddress', 'my_agenthash', 'my_algorithm', 'my_alias', 'my_allhits', 'my_amount', 'my_args',
@@ -1010,7 +1010,7 @@ all__ = ['FALSE', 'MSG_TYPE', 'REMARK', 'RequestType', 'SHORT_MSG', 'TRUE', 'ZER
          'z98_CS_STOP_MULTI_AGENT_signAddress', 'z99_CS_TRIGGER_COINBASE_CONTRACT_blockHeader',
          'z99_CS_TRIGGER_COINBASE_CONTRACT_chainId', 'z99_CS_TRIGGER_COINBASE_CONTRACT_stateRoot',
          'z99_CS_TRIGGER_COINBASE_CONTRACT_tx', 'z9_AC_GET_ACCOUNT_LIST_chainId']
-]
+
 
 # to generate __all__:
 # import UserSettings.nulsws_USER_PARAMS as u

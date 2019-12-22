@@ -1,21 +1,15 @@
 #!/usr/bin/python3.7
-# from Libraries.Constants.CLASSES import nulsws_api_labels as n
-import Libraries.Constants.CLASSES.nulsws_api_labels as apilab
+import Libraries.Constants.CLASSES.nulsws_api_labels as n
 
 # use these 'CONSTANTS' to make a run list
 
-class NamePairs(apilab.nulsws_Api_Labels):
-    super().__init__()
 
-    x = apilab.nulsws_Api_Labels()
-    z = x.AC_CREATE_ACCOUNT
-
-    x = . AC_GET_ALL_PRIKEY =
-
-
+class NamePairs(n):
+    def __init__(self):
+        pass
 
     NAME_PAIRS = [
-        ("AC_CREATE_ACCOUNT", AC_CREATE_ACCOUNT),
+        ("AC_CREATE_ACCOUNT", n.AC_CREATE_ACCOUNT),
         ("AC_CREATE_CONTRACT_ACCOUNT", n.AC_CREATE_CONTRACT_ACCOUNT),
         ("AC_CREATE_MULTI_SIGN_ACCOUNT", n.AC_CREATE_MULTI_SIGN_ACCOUNT),
         ("AC_CREATE_MULTI_SIGN_TRANSFER", n.AC_CREATE_MULTI_SIGN_TRANSFER),

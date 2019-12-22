@@ -2,7 +2,7 @@
 
 import json
 
-from Libraries.Constants.Dictionaires.nulsws_NAME_PAIRS import NAME_PAIRS
+from Libraries.Constants.CLASSES.nulsws_NAME_PAIRS import NAME_PAIRS
 from Libraries.Constants.nulsws_CONSTANTS_otherlabels import *
 from UserSettings.nulsws_SET import *
 import Libraries.Constants.CLASSES.nulsws_calls_DB  # import class for USER_CALLS_DB

@@ -35,11 +35,12 @@ from asyncio import run as asyncio_run
 from asyncio import sleep as a_sleep
 from tornado.websocket import websocket_connect, WebSocketClientConnection  # WebSocketClosedError
 
-import Libraries.Constants.CLASSES.nulsws_api_labels.nuls_Labels as b
+import Libraries.Constants.CLASSES.nulsws_api_labels as apilab
 import Libraries.nulsws_library as lib
-
 from Libraries import nulsws_REQUEST as reqs
+
 from UserSettings.nulsws_SET import *
+
 
 class NulsWebsocket():
 
@@ -103,6 +104,7 @@ class NulsWebsocket():
 
 
 if __name__ == '__main__':
+    b = apilab.nulsws_Api_Label()
 
     RUNLIST1 = [b.AC_GET_ACCOUNT_BYADDRESS, b.AC_GET_ALL_ADDRESS_PREFIX, b.AC_GET_ACCOUNT_LIST,
                 b.AC_GET_ADDRESS_LIST, b.AC_GET_ADDRESS_PREFIX_BY_CHAINID, b.AC_GET_ALL_ADDRESS_PREFIX,
@@ -140,3 +142,35 @@ if __name__ == '__main__':
 #     self.msg_type = 77
 #     j = make_nulsws_REGISTER_method(m_indx)
 #     self.commander_by_list(top_plus_mid_dict, m_indx, [j])  #big list
+
+    # FORWARD_MESSAGE = "ForwardMessage"
+    # GET_BALANCE = "getBalance"
+    # GET_BALANCE_NONCE = "getBalanceNonce"
+    # GET_BLOCK_BY_HASH = "getBlockByHash"
+    # GET_BLOCK_BY_HEIGHT = "getBlockByHeight"
+    # GET_BLOCKHEADER_BY_HASH = "getBlockHeaderByHash"
+    # GET_BLOCKHEADER_BY_HEIGHT = "getBlockHeaderByHeight"
+    # GET_BLOCKHEADER_PO_BY_HASH = "getBlockHeaderPoByHash"
+    # GET_BLOCKHEADER_POBY_HEIGHT = "getBlockHeaderPoByHeight"
+    # GET_BLOCKHEADERS_BY_HEIGHT_RANGE = "getBlockHeadersByHeightRange"
+    # GET_BLOCKHEADERS_FOR_PROTOCOL = "getBlockHeadersForProtocol"
+    # GET_BYZANTINE_COUNT = "getByzantineCount"
+    # GET_CIRCULAT = "getCirculat"
+    # GET_CONSOLIDATEDAPI = "GetConsolidatedAPI"
+    # GET_CROSSCHAIN_INFOS = "getCrossChainInfos"
+    # GET_CROSSTX_STATE = "getCrossTxState"
+    # GET_CTX = "getCtx"
+    # GET_CTX_STATE = "getCtxState"
+    # GET_FREEZEGET_FREEZELIST_LIST = "getFreezeList"
+    # GET_FRIEND_CHAIN_CIRCULATE = "getFriendChainCirculate"
+    # GET_LATEST_BLOCKHEADERS = "getLatestBlockHeaders"
+    # GET_LATEST_ROUND_BLOCKHEADERS = "getLatestRoundBlockHeaders"
+    # GET_NETWORK_GROUP = "getGroupByChainId"
+    # GET_NONCE = "getNonce"
+    # GET_OTHERCTX = "getOtherCtx"
+    # GET_REGISTERED_CHAIN_INFO_LIST = "getRegisteredChainInfoList"
+    # GET_REGISTERED_CHAIN_MESSAGE = "getChains"
+    # GET_ROUND_BLOCKHEADERS = "getRoundBlockHeaders"
+    # GET_STATUS = "getStatus"
+    # GET_VERSION = "getVersion"
+    # INFO = "info"
