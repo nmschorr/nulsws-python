@@ -56,7 +56,7 @@ from Libraries.Constants.nulsws_CONSTANTS_otherlabels import msg_data_label, msg
     negotiate_stat_label, negotiate_conn_resp_label
 
 
-class Nulsws_Library:
+class Nulsws_Library(object):
 
     def retrieve_name(self, var):
         callers_local_vars = inspect.currentframe().f_back.f_locals.items()
@@ -64,8 +64,7 @@ class Nulsws_Library:
 
     # -----------get_times--------------------------------------#
 
-    @staticmethod
-    def get_times(msg_index=1):
+    def get_times(msg_index: int):
         t_stamp = int(time() * 100000)  # change float to int
         tzone = int(timezone / 3600)  # change float to int to str
         m_id = str(t_stamp) + "-" + str(msg_index)
