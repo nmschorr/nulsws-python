@@ -1,12 +1,11 @@
 #!/usr/bin/python3.7
 import Libraries.Constants.CLASSES.nulsws_api_labels as n
+import Libraries.Constants.CLASSES.nulsws_api_labels as apilab
 
 # use these 'CONSTANTS' to make a run list
 
-
-class NamePairs(n):
-    def __init__(self):
-        pass
+class NamePairs(apilab.nulsws_Api_Label):
+    # super().__init__()
 
     NAME_PAIRS = [
         ("AC_CREATE_ACCOUNT", n.AC_CREATE_ACCOUNT),
