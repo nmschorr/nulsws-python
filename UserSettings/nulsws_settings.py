@@ -1,8 +1,7 @@
 #!/usr/bin/python3.7
 """
-by Nancy Schorr for Nuls, None),
-(December, None),
-(2019
+by Nancy Schorr for Nuls-io
+January 2020
 
 """
 

@@ -4,8 +4,8 @@
 import json
 
 # from Libraries.nulsws_REQUEST import AC_GET_ACCOUNT_LIST
-from Libraries.nulsws_REQUEST import get_TOP_SECTION
-from Libraries.Constants.nulsws_CONSTANTS_otherlabels import *
+from Libraries.nulsws_request import get_TOP_SECTION
+from Libraries.Constants.nulsws_otherlabels import *
 
 ## from user settings:
 

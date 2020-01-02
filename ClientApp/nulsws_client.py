@@ -35,11 +35,11 @@ from asyncio import run as asyncio_run
 from asyncio import sleep as a_sleep
 from tornado.websocket import websocket_connect, WebSocketClientConnection  # WebSocketClosedError
 
-import Libraries.Constants.CLASSES.nulsws_api_labels as apilab
+import Libraries.Constants.classes.nulsws_api_labels as apilab
 import Libraries.nulsws_library as lib
-from Libraries import nulsws_REQUEST as reqs
+from Libraries import nulsws_request as reqs
 
-from UserSettings.nulsws_SET import *
+from UserSettings.nulsws_settings import *
 
 
 class NulsWebsocket():

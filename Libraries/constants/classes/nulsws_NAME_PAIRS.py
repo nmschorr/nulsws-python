@@ -1,6 +1,6 @@
 #!/usr/bin/python3.7
-import Libraries.Constants.CLASSES.nulsws_api_labels as n
-import Libraries.Constants.CLASSES.nulsws_api_labels as apilab
+import Libraries.Constants.classes.nulsws_api_labels as n
+import Libraries.Constants.classes.nulsws_api_labels as apilab
 
 # use these 'CONSTANTS' to make a run list
 

@@ -44,6 +44,6 @@ __all__ = ['CHAINID_LABEL', 'ONE', 'ZERO', 'address_label', 'compress_rate_label
  'subscriptn_range_label', 'tmstmp_label', 'tmzone_label', 'type_name_dict']
 
 # to generate __all__:
-# import Libraries.Constants.nulsws_CONSTANTS_otherlabels as u
+# import Libraries.constants.nulsws_CONSTANTS_otherlabels as u
 # dir(u)
 # then remove globals

@@ -2,6 +2,8 @@
 # Nancy Schorr, 2019
 # "method name constants representing possible api calls to Nulstar.",
 
+# These don't need to change often if ever
+
 class nulsws_Api_Label(object):
     def __init__ (self):
         pass

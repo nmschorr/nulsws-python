@@ -7,7 +7,7 @@
 by Nancy Schorr for Nuls, December 2, 2019
 """
 import json
-from Libraries.nulsws_REQUEST import get_TOP_SECTION
+from Libraries.nulsws_request import get_TOP_SECTION
 
 # this can be a list once other versions are supported
 

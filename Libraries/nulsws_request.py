@@ -2,10 +2,10 @@
 
 import json
 
-from Libraries.Constants.CLASSES.nulsws_NAME_PAIRS import NAME_PAIRS
-from Libraries.Constants.nulsws_CONSTANTS_otherlabels import *
-from UserSettings.nulsws_SET import *
-import Libraries.Constants.CLASSES.nulsws_calls_DB  # import class for USER_CALLS_DB
+from Libraries.Constants.classes.nulsws_NAME_PAIRS import NAME_PAIRS
+from Libraries.Constants.nulsws_otherlabels import *
+from UserSettings.nulsws_settings import *
+import Libraries.Constants.classes.nulsws_calls_DB  # import class for USER_CALLS_DB
 import Libraries.nulsws_library as nulib
 # -----------prep_NEGOTIATE_data_type1--------------------------------------#
 
@@ -25,7 +25,9 @@ def get_TOP_SECTION(msg_type: int, msg_indx):  # this section builds 5 items: #0
     # 0  "ProtocolVersion": "0.1",
     # 1 "MessageID": "1569897424187-1",  #2 "TimeZone": "-4",   #3 "Timestamp": "1569897424187"
     # #4 "MessageType": "NegotiateConnection",
-    msg_type_name = type_name_dict.__getitem__(msg_type)
+    #msg_type_name = type_name_dict.__getitem__(msg_type)
+
+    msg_type_name = type_name_dict[msg_type]
     t_stamp, tzone, m_id = nulib.get_times(msg_indx)
     top_part = {proto_label: proto_ver,
                 msg_id_label: m_id,
@@ -54,9 +56,9 @@ def get_REQ_MIDDLE(mid_section_vals=None):   #return dict
 
 # -----------prep_REQUEST_ONESIE (request) --------------------------------------#
 def prep_REQUEST(msg_indx, api_name):  # requesttype 2 - return ack +
-    # import Libraries.Constants.CLASSES.nulsws_cls_PARAMS  # import class for USER_CALLS_DB
+    # import Libraries.constants.CLASSES.nulsws_cls_PARAMS  # import class for USER_CALLS_DB
 
-    param_object = Libraries.Constants.CLASSES.nulsws_calls_DB.nulsws_Cls_Prm()
+    param_object = Libraries.Constants.classes.nulsws_calls_DB.nulsws_Cls_Prm()
     USER_CALLS_DB = param_object.USER_CALLS_DB
 
     # response either has a second element of a list, or not
