@@ -35,33 +35,30 @@ from asyncio import run as asyncio_run
 from asyncio import sleep as a_sleep
 from tornado.websocket import websocket_connect, WebSocketClientConnection  # WebSocketClosedError
 
-import Libraries.Constants.classes.nulsws_api_labels as apilab
-import Libraries.nulsws_library as lib
-from Libraries import nulsws_request as reqs
+import libraries.constants.nulsws_api_labels as apilab
+import libraries.nulsws_library as lib
+from libraries import nulsws_request as reqs
+from user_settings.nulsws_settings import *
+import libraries.nulsws_library
 
-from UserSettings.nulsws_settings import *
-
-
-class NulsWebsocket():
-
+class NulsWebsocket(object):
     def __init__(self):
-        super().__init__()
-        lib.myprint("the url:  ", websock_url)
         mindex = 0
         self.mindex = mindex
         self.s_time = .7
         self.ORIG_RUNLIST = []
         self.rundict = {}
         self.MSG_TYPE = 0
-        self.json_dumps = lib.json_dumps()
-        self.myprint = lib.myprint()
+        self.json_dumps = lib.json_dumps
+        self.myprint = libraries.nulsws_library.NulswsLibrary.myprint
+        self.myprint("the url:  ", websock_url)
 
-    async def REGULAR_req(self, websock_connct: WebSocketClientConnection, j_reg_dict):
+    async def REGULAR_req(self, websock_cont: WebSocketClientConnection, j_reg_dict):
         json_REG = json.dumps(j_reg_dict)
-        await websock_connct.write_message(json_REG)  # 2 WRITE
+        await websock_cont.write_message(json_REG)  # 2 WRITE
         self.json_prt(json_REG, "\n* * * REGULAR message going out: \n")
         #await a_sleep(self.s_time)
-        read_REG = await websock_connct.read_message()  # 3 READ
+        read_REG = await websock_cont.read_message()  # 3 READ
         await a_sleep(self.s_time)
         if len(read_REG) > 0:
             self.json_prt(read_REG, "   -----------> ! ! ! REGULAR response received: ")
@@ -104,7 +101,7 @@ class NulsWebsocket():
 
 
 if __name__ == '__main__':
-    b = apilab.nulsws_Api_Label()
+    b = apilab.NulswsApiLabel()
 
     RUNLIST1 = [b.AC_GET_ACCOUNT_BYADDRESS, b.AC_GET_ALL_ADDRESS_PREFIX, b.AC_GET_ACCOUNT_LIST,
                 b.AC_GET_ADDRESS_LIST, b.AC_GET_ADDRESS_PREFIX_BY_CHAINID, b.AC_GET_ALL_ADDRESS_PREFIX,

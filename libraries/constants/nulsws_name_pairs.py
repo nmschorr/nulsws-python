@@ -1,18 +1,27 @@
 #!/usr/bin/python3.7
-import Libraries.Constants.classes.nulsws_api_labels as n
-import Libraries.Constants.classes.nulsws_api_labels as apilab
+
+"""
+by Nancy Schorr for Nuls-io
+January 2020
+
+"""
+
+# import libraries.constants.classes.nulsws_api_labels as labs
+from libraries.constants.nulsws_api_labels import NulswsApiLabel as n
+
 
 # use these 'CONSTANTS' to make a run list
 
-class NamePairs(apilab.nulsws_Api_Label):
-    # super().__init__()
-
-    NAME_PAIRS = [
+class NamePairs(n):
+    name_pairs_list = [
         ("AC_CREATE_ACCOUNT", n.AC_CREATE_ACCOUNT),
         ("AC_CREATE_CONTRACT_ACCOUNT", n.AC_CREATE_CONTRACT_ACCOUNT),
         ("AC_CREATE_MULTI_SIGN_ACCOUNT", n.AC_CREATE_MULTI_SIGN_ACCOUNT),
         ("AC_CREATE_MULTI_SIGN_TRANSFER", n.AC_CREATE_MULTI_SIGN_TRANSFER),
-        ("AC_CREATE_OFFLINE_ACCOUNT", n.AC_CREATE_OFFLINE_ACCOUNT),
+        #("AC_CREATE_OFFLINE_ACCOUNT", n.AC_CREATE_OFFLINE_ACCOUNT),
+
+        ("AC_CREATE_OFFLINE_ACCOUNT", 5),
+
         ("AC_EXPORT_ACCOUNT_KEYSTORE", n.AC_EXPORT_ACCOUNT_KEYSTORE),
         ("AC_EXPORT_KEYSTORE_JSON", n.AC_EXPORT_KEYSTORE_JSON),
         ("AC_GET_ACCOUNT_LIST", n.AC_GET_ACCOUNT_LIST),

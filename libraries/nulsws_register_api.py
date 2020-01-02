@@ -7,7 +7,7 @@
 by Nancy Schorr for Nuls, December 2, 2019
 """
 import json
-from Libraries.nulsws_request import get_TOP_SECTION
+from libraries.nulsws_request import get_top_section
 
 # this can be a list once other versions are supported
 
@@ -45,7 +45,7 @@ def make_nulsws_REGISTER_method(mindex):
     # oldtop = {   "MessageData": {   "RequestAck": zero,   "RequestMethods": {   "RegisterAPI": {
     # "GetBalance": 0}  }}}
 
-    top_sec = get_TOP_SECTION(3, mindex)
+    top_sec = get_top_section(3, mindex)
     nulsws_register_j = {
         "MessageData": {
             "RequestAck": zero,

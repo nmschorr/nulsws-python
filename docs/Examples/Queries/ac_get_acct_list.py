@@ -3,9 +3,9 @@
 
 import json
 
-# from Libraries.nulsws_REQUEST import AC_GET_ACCOUNT_LIST
-from Libraries.nulsws_request import get_TOP_SECTION
-from Libraries.Constants.nulsws_otherlabels import *
+# from libraries.nulsws_REQUEST import AC_GET_ACCOUNT_LIST
+from libraries.nulsws_request import get_top_section
+from libraries.Constants.nulsws_otherlabels import *
 
 ## from user settings:
 
@@ -13,7 +13,7 @@ CHAINID_VAL = 1
 
 
 def req_AC_GET_ACCOUNT_LIST(mind):  #
-    stat_msg_top = get_TOP_SECTION(3, mind)   # 3 is a Request
+    stat_msg_top = get_top_section(3, mind)   # 3 is a Request
 
     bottom = {
         msg_data_label: {

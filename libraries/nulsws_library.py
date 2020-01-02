@@ -52,17 +52,25 @@ import json
 from json import dumps as json_dumps
 from time import time, timezone
 
-from Libraries.Constants.nulsws_otherlabels import msg_data_label, msg_type_label, \
+from libraries.constants.nulsws_otherlabels import msg_data_label, msg_type_label, \
     negotiate_stat_label, negotiate_conn_resp_label
 
 
-class Nulsws_Library:
+class NulswsLibrary(object):
 
     def retrieve_name(self, var):
         callers_local_vars = inspect.currentframe().f_back.f_locals.items()
         return [var_name for var_name, var_val in callers_local_vars if var_val is var]
 
     # -----------get_times--------------------------------------#
+
+    @staticmethod
+    def getthetimes(msg_index=1):
+        t_stamp = int(time() * 100000)  # change float to int
+        tzone = int(timezone / 3600)  # change float to int to str
+        m_id = str(t_stamp) + "-" + str(msg_index)
+        t_stamp = str(t_stamp)
+        return t_stamp, str(tzone), m_id
 
     @staticmethod
     def get_times(msg_index=1):
@@ -94,6 +102,11 @@ class Nulsws_Library:
         if debug:
             print(x) if not y else print(str(x) + ' ' + str(y))
 
+    @staticmethod
+    def my_print(x, y=None, debug=True):
+        if debug:
+            print(x) if not y else print(str(x) + ' ' + str(y))
+
     # -----------json_prt--------------------------------------#
     @staticmethod
     def json_prt(json_str, str_msg, debug=True):
@@ -104,7 +117,7 @@ class Nulsws_Library:
                 aname = ''.join(str_msg)
                 print(aname + str(json_dumps(json_str, indent=3)))
             else:
-                Nulsws_Library.myprint("nothing returned")
+                NulswsLibrary.myprint("nothing returned")
 
 # ---------------- Example -------------------------------------------------------------------
 

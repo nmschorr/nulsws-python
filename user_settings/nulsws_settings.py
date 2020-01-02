@@ -8,6 +8,8 @@ January 2020
 # change settings to suit
 # for use in api calls
 # fill in your default params here
+# These are for settings that you might use more than once. Set it once here, and reuse the
+# setting in user_settings/nulsws_user_params.py
 
 connect_method = "ws://"   # could be wss
 host_req = "127.0.0.1"
@@ -201,6 +203,6 @@ __ALL__ = ['FALSE', 'MSG_TYPE', 'REMARK', 'RequestType', 'SHORT_MSG', 'TRUE', 'Z
  'res_max_size', 'sub_event_ct', 'sub_period_int', 'sub_range', 'subscriptionRange', 'websock_url']
 
 # to generate __all__:
-# import UserSettings.nulsws_SET as u
+# import user_settings.nulsws_SET as u
 # dir(u)
 # then remove globals from generated list

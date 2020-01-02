@@ -1,13 +1,17 @@
-#!/usr/bin/python3.6
-# Nancy Schorr, 2019
+#!/usr/bin/python3.7
+
+"""
+by Nancy Schorr for Nuls-io
+January 2020
+
+"""
+
+
 # "method name constants representing possible api calls to Nulstar.",
 
 # These don't need to change often if ever
 
-class nulsws_Api_Label(object):
-    def __init__ (self):
-        pass
-
+class NulswsApiLabel(object):
     AC_ADD_ADDRESS_PREFIX = "ac_addAddressPrefix"
     AC_CREATE_ACCOUNT = "ac_createAccount"
     AC_CREATE_CONTRACT_ACCOUNT = "ac_createContractAccount"

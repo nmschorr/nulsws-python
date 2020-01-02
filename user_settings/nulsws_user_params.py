@@ -6,7 +6,7 @@ by Nancy Schorr for Nuls, None),
 
 """
 
-from UserSettings.nulsws_settings import *
+from user_settings.nulsws_settings import *
 
 # change settings to suit
 # for use in api calls
@@ -696,7 +696,7 @@ z227_VERIFY_COINDATA_BATCH_PACKAGED_txList = my_chainid
 z228_WITHDRAW_VALID_chainId = my_chainid
 z228_WITHDRAW_VALID_tx = my_chainid
 
-__all__ = ['FALSE', 'MSG_TYPE', 'REMARK', 'RequestType', 'SHORT_MSG', 'TRUE', 'ZERO', 'ZLIB', 'all__',
+__all__ = ['FALSE', 'MSG_TYPE', 'REMARK', 'RequestType', 'SHORT_MSG', 'TRUE', 'ZERO', 'ZLIB',
          'compatible_proto_versions', 'compress_rate_VALUE', 'compress_type_VALUE', 'connect_method',
          'host_req', 'my_account', 'my_address', 'my_addressprefix', 'my_addresstype', 'my_addressval',
          'my_agentaddress', 'my_agenthash', 'my_algorithm', 'my_alias', 'my_allhits', 'my_amount', 'my_args',
@@ -1013,6 +1013,6 @@ __all__ = ['FALSE', 'MSG_TYPE', 'REMARK', 'RequestType', 'SHORT_MSG', 'TRUE', 'Z
 
 
 # to generate __all__:
-# import UserSettings.nulsws_USER_PARAMS as u
+# import user_settings.nulsws_USER_PARAMS as u
 # dir(u)
 # then remove globals from generated list

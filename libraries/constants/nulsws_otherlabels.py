@@ -1,4 +1,10 @@
 #!/usr/bin/python3.7
+"""
+by Nancy Schorr for Nuls-io
+January 2020
+
+"""
+
 
 type_name_dict: dict = {0: 'None', 1: 'NegotiateConnection',
                         2: 'NegotiateConnectionResponse',
@@ -44,6 +50,6 @@ __all__ = ['CHAINID_LABEL', 'ONE', 'ZERO', 'address_label', 'compress_rate_label
  'subscriptn_range_label', 'tmstmp_label', 'tmzone_label', 'type_name_dict']
 
 # to generate __all__:
-# import Libraries.constants.nulsws_CONSTANTS_otherlabels as u
+# import libraries.constants.nulsws_CONSTANTS_otherlabels as u
 # dir(u)
 # then remove globals
