@@ -13,7 +13,6 @@ from user_settings.nulsws_user_params import *
 
 
 class nulsws_params:
-
     calls_list = [
         [
             ap.AC_CREATE_OFFLINE_ACCOUNT, [

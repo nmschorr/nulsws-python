@@ -65,14 +65,6 @@ class NulswsLibrary(object):
     # -----------get_times--------------------------------------#
 
     @staticmethod
-    def getthetimes(msg_index=1):
-        t_stamp = int(time() * 100000)  # change float to int
-        tzone = int(timezone / 3600)  # change float to int to str
-        m_id = str(t_stamp) + "-" + str(msg_index)
-        t_stamp = str(t_stamp)
-        return t_stamp, str(tzone), m_id
-
-    @staticmethod
     def get_times(msg_index=1):
         t_stamp = int(time() * 100000)  # change float to int
         tzone = int(timezone / 3600)  # change float to int to str
@@ -99,11 +91,6 @@ class NulswsLibrary(object):
 
     @staticmethod
     def myprint(x, y=None, debug=True):
-        if debug:
-            print(x) if not y else print(str(x) + ' ' + str(y))
-
-    @staticmethod
-    def my_print(x, y=None, debug=True):
         if debug:
             print(x) if not y else print(str(x) + ' ' + str(y))
 

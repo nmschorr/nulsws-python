@@ -4,9 +4,12 @@ import json
 
 from libraries.constants.nulsws_name_pairs import NamePairs
 import libraries.constants.nulsws_calls_db  # import class for calls_list
-import libraries.nulsws_library as nlib
 from libraries.constants.nulsws_otherlabels import *
 from user_settings.nulsws_settings import *
+import libraries.nulsws_library
+from libraries.nulsws_library import NulswsLibrary as nulib
+
+
 
 # -----------prep_NEGOTIATE_data_type1--------------------------------------#
 
@@ -29,7 +32,7 @@ def get_top_section(msg_type: int, msg_indx):  # this section builds 5 items: #0
 
     msg_type_name = type_name_dict[msg_type]
 
-    t_stamp, tzone, m_id = nlib.getthetimes(None, msg_indx)
+    t_stamp, tzone, m_id = nulib.get_times(msg_indx)
     top_part = {proto_label: proto_ver,
                 msg_id_label: m_id,
                 tmstmp_label: t_stamp,
