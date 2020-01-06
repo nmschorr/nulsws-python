@@ -1,7 +1,0 @@
-{
-	"MessageType": "NegotiateConnection",
-	"MessageData": {
-		"CompressionAlgorithm": "zlib",
-		"CompressionRate": "3"
-	}
-}
