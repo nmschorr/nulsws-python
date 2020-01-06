@@ -1,0 +1,20 @@
+{
+  "MessageType": "Request",
+  "MessageData": {
+    "RequestType": "1",
+    "SubscriptionEventCounter": "0",
+    "SubscriptionPeriod": "1",
+    "SubscriptionRange": "[100]",
+    "ResponseMaxSize": "0",
+    "RequestMethods": [
+      {
+        "GetBalance": {
+          "Address": "tNULSeBaMnrs6JKrCy6TQdzYJZkMZJDng7QAsD"
+        }
+      },
+      {
+        "GetHeight": {}
+      }
+    ]
+  }
+}
