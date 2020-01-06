@@ -2,6 +2,7 @@
 
 import json
 
+<<<<<<< HEAD:libraries/nulsws_request.py
 from libraries.constants.nulsws_name_pairs import NamePairs
 import libraries.constants.nulsws_calls_db  # import class for calls_list
 from libraries.constants.nulsws_otherlabels import *
@@ -10,6 +11,14 @@ import libraries.nulsws_library
 from libraries.nulsws_library import NulswsLibrary as nulib
 
 
+=======
+from Libraries.Constants.Dictionaires.nulsws_NAME_PAIRS import NAME_PAIRS
+from Libraries.Constants.nulsws_CONSTANTS_otherlabels import *
+from UserSettings.nulsws_SET import *
+import Libraries.Constants.CLASSES.nulsws_cls_PARAMS  # import class for USER_CALLS_DB
+import Libraries.nulsws_library
+# -----------prep_NEGOTIATE_data_type1--------------------------------------#
+>>>>>>> master:Libraries/nulsws_REQUEST.py
 
 # -----------prep_NEGOTIATE_data_type1--------------------------------------#
 
@@ -27,12 +36,18 @@ def prep_NEGOTIATE_request(msg_indx):   #return dict
 def get_top_section(msg_type: int, msg_indx):  # this section builds 5 items: #0
     # 0  "ProtocolVersion": "0.1",
     # 1 "MessageID": "1569897424187-1",  #2 "TimeZone": "-4",   #3 "Timestamp": "1569897424187"
+<<<<<<< HEAD:libraries/nulsws_request.py
     # 4 "MessageType": "NegotiateConnection",
     # msg_type_name = type_name_dict.__getitem__(msg_type)
 
     msg_type_name = type_name_dict[msg_type]
 
     t_stamp, tzone, m_id = nulib.get_times(msg_indx)
+=======
+    # #4 "MessageType": "NegotiateConnection",
+    msg_type_name = type_name_dict.__getitem__(msg_type)
+    t_stamp, tzone, m_id = Libraries.nulsws_library.Nulsws_Library.get_times(msg_indx)
+>>>>>>> master:Libraries/nulsws_REQUEST.py
     top_part = {proto_label: proto_ver,
                 msg_id_label: m_id,
                 tmstmp_label: t_stamp,

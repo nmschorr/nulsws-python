@@ -35,6 +35,7 @@ from asyncio import run as asyncio_run
 from asyncio import sleep as a_sleep
 from tornado.websocket import websocket_connect, WebSocketClientConnection  # WebSocketClosedError
 
+<<<<<<< HEAD:client/nulsws_client.py
 import libraries.constants.nulsws_api_labels as apilab
 import libraries.nulsws_library as lib
 from libraries import nulsws_request as reqs
@@ -42,18 +43,39 @@ from user_settings.nulsws_settings import *
 
 class NulsWebsocket(object):
     def __init__(self):
+=======
+import Libraries.nulsws_library as lib2
+from Libraries.nulsws_library import Nulsws_Library as nw
+from Libraries.nulsws_library import Nulsws_Library as lib
+
+from Libraries import nulsws_REQUEST as reqs
+from UserSettings.nulsws_SET import *
+
+class NulsWebsocket():
+
+
+    def __init__(self):
+        super().__init__()
+>>>>>>> master:ClientApp/nulsws_RUNNER_client.py
         mindex = 0
         self.mindex = mindex
         self.s_time = .7
         self.ORIG_RUNLIST = []
         self.rundict = {}
         self.MSG_TYPE = 0
+<<<<<<< HEAD:client/nulsws_client.py
         self.json_dumps = lib.json_dumps
         self.myprint = lib.NulswsLibrary.myprint
         self.myprint("the url:  ", websock_url)
         self.json_prt = lib.NulswsLibrary.json_prt
 
     async def REGULAR_req(self, websock_cont: WebSocketClientConnection, j_reg_dict):
+=======
+        print("the url:  ", websock_url)
+        self.json_prt = lib.json_prt
+        
+    async def REGULAR_req(self, websock_connct: WebSocketClientConnection, j_reg_dict):
+>>>>>>> master:ClientApp/nulsws_RUNNER_client.py
         json_REG = json.dumps(j_reg_dict)
         await websock_cont.write_message(json_REG)  # 2 WRITE
         self.json_prt(json_REG, "\n* * * REGULAR message going out: \n")
@@ -62,22 +84,32 @@ class NulsWebsocket(object):
         await a_sleep(self.s_time)
         if len(read_REG) > 0:
             self.json_prt(read_REG, "   -----------> ! ! ! REGULAR response received: ")
-        self.myprint("--------------end previous / begin next request--------------------------------")
+        lib.myprint("--------------end previous / begin next request--------------------------------")
 
     async def negotiate_list(self, top_plus_mid_dict, m_indx, runlist, mtpe=3):
         connection = await websocket_connect(websock_url)  # 1) CONNECT
         #await a_sleep(self.s_time)
         while not connection:
             await a_sleep(self.s_time)
+<<<<<<< HEAD:client/nulsws_client.py
         jd = self.json_dumps(top_plus_mid_dict)
         self.json_prt(top_plus_mid_dict, "* * * First message going out- NEGOTIATE: \n")
+=======
+        jd = json.dumps(top_plus_mid_dict)
+        lib.json_prt(top_plus_mid_dict, "* * * First message going out- NEGOTIATE: \n")
+>>>>>>> master:ClientApp/nulsws_RUNNER_client.py
         await connection.write_message(jd)  # 2) WRITE
         #await a_sleep(self.s_time)
 
         negotiate_result = await connection.read_message()  # 3 READ
         await a_sleep(self.s_time)
+<<<<<<< HEAD:client/nulsws_client.py
         self.json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
         self.myprint("------end Negotiate----------------------------------------")
+=======
+        lib.json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
+        lib.myprint("------end Negotiate----------------------------------------")
+>>>>>>> master:ClientApp/nulsws_RUNNER_client.py
 
         for run_item in runlist:
             m_indx += 1
@@ -101,7 +133,12 @@ class NulsWebsocket(object):
 
 
 if __name__ == '__main__':
+<<<<<<< HEAD:client/nulsws_client.py
     b = apilab.NulswsApiLabel()
+=======
+    from Libraries.Constants.CLASSES import nulsws_api_labels
+    b = nulsws_api_labels.nulsws_Labels()
+>>>>>>> master:ClientApp/nulsws_RUNNER_client.py
 
     RUNLIST1 = [b.AC_GET_ACCOUNT_BYADDRESS, b.AC_GET_ALL_ADDRESS_PREFIX, b.AC_GET_ACCOUNT_LIST,
                 b.AC_GET_ADDRESS_LIST, b.AC_GET_ADDRESS_PREFIX_BY_CHAINID, b.AC_GET_ALL_ADDRESS_PREFIX,
