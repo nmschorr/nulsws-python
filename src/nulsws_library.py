@@ -52,15 +52,12 @@ import json
 from json import dumps as json_dumps
 from time import time, timezone
 
-from libraries.constants.nulsws_otherlabels import msg_data_label, msg_type_label, \
+from .constants.nulsws_otherlabels import msg_data_label, msg_type_label, \
     negotiate_stat_label, negotiate_conn_resp_label
 
 
-<<<<<<< HEAD:libraries/nulsws_library.py
 class NulswsLibrary(object):
-=======
-class Nulsws_Library(object):
->>>>>>> master:Libraries/nulsws_library.py
+
 
     def retrieve_name(self, var):
         callers_local_vars = inspect.currentframe().f_back.f_locals.items()

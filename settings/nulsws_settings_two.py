@@ -6,7 +6,7 @@ by Nancy Schorr for Nuls, None),
 
 """
 
-from user_settings.nulsws_settings import *
+from .nulsws_settings_one import *
 
 # change settings to suit
 # for use in api calls

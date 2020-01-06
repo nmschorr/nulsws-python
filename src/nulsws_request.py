@@ -2,23 +2,14 @@
 
 import json
 
-<<<<<<< HEAD:libraries/nulsws_request.py
-from libraries.constants.nulsws_name_pairs import NamePairs
-import libraries.constants.nulsws_calls_db  # import class for calls_list
-from libraries.constants.nulsws_otherlabels import *
-from user_settings.nulsws_settings import *
-import libraries.nulsws_library
-from libraries.nulsws_library import NulswsLibrary as nulib
+# from .constants.nulsws_calls_db import nulsws_params
+
+from .constants.nulsws_name_pairs import NamePairs
+from .constants.nulsws_otherlabels import *
+from settings.nulsws_settings_one import *
+from .nulsws_library import NulswsLibrary as nulib
 
 
-=======
-from Libraries.Constants.Dictionaires.nulsws_NAME_PAIRS import NAME_PAIRS
-from Libraries.Constants.nulsws_CONSTANTS_otherlabels import *
-from UserSettings.nulsws_SET import *
-import Libraries.Constants.CLASSES.nulsws_cls_PARAMS  # import class for USER_CALLS_DB
-import Libraries.nulsws_library
-# -----------prep_NEGOTIATE_data_type1--------------------------------------#
->>>>>>> master:Libraries/nulsws_REQUEST.py
 
 # -----------prep_NEGOTIATE_data_type1--------------------------------------#
 
@@ -76,7 +67,7 @@ def get_request_middle(mid_section_vals=None):   #return dict
 # -----------prep_REQUEST_ONESIE (request) --------------------------------------#
 def prep_REQUEST(msg_indx, api_name):  # requesttype 2 - return ack +
 
-    param = libraries.constants.nulsws_calls_db.nulsws_params
+    param = .constants.nulsws_calls_db.nulsws_params
     user_calls_db = param.calls_list
     name_list =  NamePairs.name_pairs_list
 

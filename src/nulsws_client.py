@@ -35,47 +35,28 @@ from asyncio import run as asyncio_run
 from asyncio import sleep as a_sleep
 from tornado.websocket import websocket_connect, WebSocketClientConnection  # WebSocketClosedError
 
-<<<<<<< HEAD:client/nulsws_client.py
-import libraries.constants.nulsws_api_labels as apilab
-import libraries.nulsws_library as lib
-from libraries import nulsws_request as reqs
-from user_settings.nulsws_settings import *
+
+
+# import .constants.nulsws_labels_cls as apilab
+#
+# import .nulsws_library as lib
+# from .nulsws_library import nulsws_request as reqs
+from settings.nulsws_settings import *
 
 class NulsWebsocket(object):
     def __init__(self):
-=======
-import Libraries.nulsws_library as lib2
-from Libraries.nulsws_library import Nulsws_Library as nw
-from Libraries.nulsws_library import Nulsws_Library as lib
-
-from Libraries import nulsws_REQUEST as reqs
-from UserSettings.nulsws_SET import *
-
-class NulsWebsocket():
-
-
-    def __init__(self):
-        super().__init__()
->>>>>>> master:ClientApp/nulsws_RUNNER_client.py
         mindex = 0
         self.mindex = mindex
         self.s_time = .7
         self.ORIG_RUNLIST = []
         self.rundict = {}
         self.MSG_TYPE = 0
-<<<<<<< HEAD:client/nulsws_client.py
         self.json_dumps = lib.json_dumps
         self.myprint = lib.NulswsLibrary.myprint
         self.myprint("the url:  ", websock_url)
         self.json_prt = lib.NulswsLibrary.json_prt
 
     async def REGULAR_req(self, websock_cont: WebSocketClientConnection, j_reg_dict):
-=======
-        print("the url:  ", websock_url)
-        self.json_prt = lib.json_prt
-        
-    async def REGULAR_req(self, websock_connct: WebSocketClientConnection, j_reg_dict):
->>>>>>> master:ClientApp/nulsws_RUNNER_client.py
         json_REG = json.dumps(j_reg_dict)
         await websock_cont.write_message(json_REG)  # 2 WRITE
         self.json_prt(json_REG, "\n* * * REGULAR message going out: \n")
@@ -91,25 +72,17 @@ class NulsWebsocket():
         #await a_sleep(self.s_time)
         while not connection:
             await a_sleep(self.s_time)
-<<<<<<< HEAD:client/nulsws_client.py
         jd = self.json_dumps(top_plus_mid_dict)
         self.json_prt(top_plus_mid_dict, "* * * First message going out- NEGOTIATE: \n")
-=======
-        jd = json.dumps(top_plus_mid_dict)
-        lib.json_prt(top_plus_mid_dict, "* * * First message going out- NEGOTIATE: \n")
->>>>>>> master:ClientApp/nulsws_RUNNER_client.py
+
         await connection.write_message(jd)  # 2) WRITE
         #await a_sleep(self.s_time)
 
         negotiate_result = await connection.read_message()  # 3 READ
         await a_sleep(self.s_time)
-<<<<<<< HEAD:client/nulsws_client.py
         self.json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
         self.myprint("------end Negotiate----------------------------------------")
-=======
-        lib.json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
-        lib.myprint("------end Negotiate----------------------------------------")
->>>>>>> master:ClientApp/nulsws_RUNNER_client.py
+
 
         for run_item in runlist:
             m_indx += 1
@@ -133,12 +106,7 @@ class NulsWebsocket():
 
 
 if __name__ == '__main__':
-<<<<<<< HEAD:client/nulsws_client.py
     b = apilab.NulswsApiLabel()
-=======
-    from Libraries.Constants.CLASSES import nulsws_api_labels
-    b = nulsws_api_labels.nulsws_Labels()
->>>>>>> master:ClientApp/nulsws_RUNNER_client.py
 
     RUNLIST1 = [b.AC_GET_ACCOUNT_BYADDRESS, b.AC_GET_ALL_ADDRESS_PREFIX, b.AC_GET_ACCOUNT_LIST,
                 b.AC_GET_ADDRESS_LIST, b.AC_GET_ADDRESS_PREFIX_BY_CHAINID, b.AC_GET_ALL_ADDRESS_PREFIX,
@@ -164,49 +132,3 @@ if __name__ == '__main__':
     nws = NulsWebsocket()
     nws.main(RUN_LIST, message_type)
 
-
-
-
-
-# old code for testing:
-# json_main_type = reqs.prep_data_REQUEST_type5()
-# json_main_type = reqs.prep_data_REQUEST_type7()
-# if mtpe == 99:   # test dev only
-#     for run_item in runlist:
-#         print("starting this item: ", run_item)
-# if mtpe == 77:  # test only
-#     self.msg_type = 77
-#     j = make_nulsws_REGISTER_method(m_indx)
-#     self.commander_by_list(top_plus_mid_dict, m_indx, [j])  #big list
-
-    # FORWARD_MESSAGE = "ForwardMessage"
-    # GET_BALANCE = "getBalance"
-    # GET_BALANCE_NONCE = "getBalanceNonce"
-    # GET_BLOCK_BY_HASH = "getBlockByHash"
-    # GET_BLOCK_BY_HEIGHT = "getBlockByHeight"
-    # GET_BLOCKHEADER_BY_HASH = "getBlockHeaderByHash"
-    # GET_BLOCKHEADER_BY_HEIGHT = "getBlockHeaderByHeight"
-    # GET_BLOCKHEADER_PO_BY_HASH = "getBlockHeaderPoByHash"
-    # GET_BLOCKHEADER_POBY_HEIGHT = "getBlockHeaderPoByHeight"
-    # GET_BLOCKHEADERS_BY_HEIGHT_RANGE = "getBlockHeadersByHeightRange"
-    # GET_BLOCKHEADERS_FOR_PROTOCOL = "getBlockHeadersForProtocol"
-    # GET_BYZANTINE_COUNT = "getByzantineCount"
-    # GET_CIRCULAT = "getCirculat"
-    # GET_CONSOLIDATEDAPI = "GetConsolidatedAPI"
-    # GET_CROSSCHAIN_INFOS = "getCrossChainInfos"
-    # GET_CROSSTX_STATE = "getCrossTxState"
-    # GET_CTX = "getCtx"
-    # GET_CTX_STATE = "getCtxState"
-    # GET_FREEZEGET_FREEZELIST_LIST = "getFreezeList"
-    # GET_FRIEND_CHAIN_CIRCULATE = "getFriendChainCirculate"
-    # GET_LATEST_BLOCKHEADERS = "getLatestBlockHeaders"
-    # GET_LATEST_ROUND_BLOCKHEADERS = "getLatestRoundBlockHeaders"
-    # GET_NETWORK_GROUP = "getGroupByChainId"
-    # GET_NONCE = "getNonce"
-    # GET_OTHERCTX = "getOtherCtx"
-    # GET_REGISTERED_CHAIN_INFO_LIST = "getRegisteredChainInfoList"
-    # GET_REGISTERED_CHAIN_MESSAGE = "getChains"
-    # GET_ROUND_BLOCKHEADERS = "getRoundBlockHeaders"
-    # GET_STATUS = "getStatus"
-    # GET_VERSION = "getVersion"
-    # INFO = "info"
