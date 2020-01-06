@@ -14,7 +14,7 @@ January 2020
 connect_method = "ws://"   # could be wss
 host_req = "127.0.0.1"
 port_req = "7772"    
-websock_url: str = ''.join([connect_method, host_req, ":", port_req])
+websock_url = ''.join([connect_method, host_req, ":", port_req])
 proto_ver = "0.1"
 compatible_proto_versions = [proto_ver]
 

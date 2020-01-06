@@ -32,8 +32,8 @@ res_max_size = 0
 zero = "0"
 
 msgtype= "Request"
-q1= "Query information about CPU"
-q2= "Query information about RAM memory"
+q1 = "Query information about CPU"
+q2 = "Query information about RAM memory"
 role_stats_mgr = "0.1"
 sub_rng = ""
 get_ram_info = "GetRAMInfo"

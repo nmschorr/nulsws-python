@@ -2,18 +2,17 @@
 
 import json
 
-# from .constants.nulsws_calls_db import nulsws_params
-
+from .nulsws_library import NulswsLibrary
 from .constants.nulsws_name_pairs import NamePairs
 from .constants.nulsws_otherlabels import *
 from settings.nulsws_settings_one import *
-from .nulsws_library import NulswsLibrary as nulib
-
+from .constants import nulsws_calls_db
 
 
 # -----------prep_NEGOTIATE_data_type1--------------------------------------#
 
-def prep_NEGOTIATE_request(msg_indx):   #return dict
+
+def prep_negotiate_request(msg_indx):   # return dict
     data_part = { msg_data_label: {
                   proto_label: proto_ver,
                   compress_type_label: compress_type_VALUE,
@@ -24,21 +23,16 @@ def prep_NEGOTIATE_request(msg_indx):   #return dict
 
 # -----------get_REQ_MIDDLE--------------------------------------#
 
+
 def get_top_section(msg_type: int, msg_indx):  # this section builds 5 items: #0
     # 0  "ProtocolVersion": "0.1",
-    # 1 "MessageID": "1569897424187-1",  #2 "TimeZone": "-4",   #3 "Timestamp": "1569897424187"
-<<<<<<< HEAD:libraries/nulsws_request.py
+    # 1 "MessageID": "1569897424187-1",  #2 "TimeZone": "-4",   # 3 "Timestamp": "1569897424187"
     # 4 "MessageType": "NegotiateConnection",
     # msg_type_name = type_name_dict.__getitem__(msg_type)
 
     msg_type_name = type_name_dict[msg_type]
 
-    t_stamp, tzone, m_id = nulib.get_times(msg_indx)
-=======
-    # #4 "MessageType": "NegotiateConnection",
-    msg_type_name = type_name_dict.__getitem__(msg_type)
-    t_stamp, tzone, m_id = Libraries.nulsws_library.Nulsws_Library.get_times(msg_indx)
->>>>>>> master:Libraries/nulsws_REQUEST.py
+    t_stamp, tzone, m_id = NulswsLibrary.get_times(msg_indx)
     top_part = {proto_label: proto_ver,
                 msg_id_label: m_id,
                 tmstmp_label: t_stamp,
@@ -48,26 +42,29 @@ def get_top_section(msg_type: int, msg_indx):  # this section builds 5 items: #0
 
 # -----------get_REQ_MIDDLE--------------------------------------#
 
-def get_request_middle(mid_section_vals=None):   #return dict
+
+def get_request_middle(mid_section_vals=None):   # return dict
     if not mid_section_vals:
-        mid_section_vals = [1, ZERO, ZERO, ZERO, ZERO] #2 = ack+date
-    [RT, SEC, SP, SR, RMS, bottom_part] = [*mid_section_vals]
+        mid_section_vals = [1, ZERO, ZERO, ZERO, ZERO]  # 2 = ack+date
+    [rtt, sec, sp, sr, rms, bottom_part] = [*mid_section_vals]
 
     req_middle = {
         msg_data_label: {
-            request_type_label: RT,
-            subscrip_evnt_ct_label : SEC,
-            subscrip_period_label: SP,
-            subscriptn_range_label: SR,
-            response_max_size_label: RMS,
+            request_type_label: rtt,
+            subscrip_evnt_ct_label : sec,
+            subscrip_period_label: sp,
+            subscriptn_range_label: sr,
+            response_max_size_label: rms,
             req_methods_label: bottom_part
         }}
-    return req_middle   #dict
+    return req_middle   # dict
 
 # -----------prep_REQUEST_ONESIE (request) --------------------------------------#
-def prep_REQUEST(msg_indx, api_name):  # requesttype 2 - return ack +
 
-    param = .constants.nulsws_calls_db.nulsws_params
+
+def prep_request(msg_indx, api_name):  # requesttype 2 - return ack +
+
+    param = nulsws_calls_db.NulswsParams
     user_calls_db = param.calls_list
     name_list =  NamePairs.name_pairs_list
 

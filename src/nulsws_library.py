@@ -58,14 +58,13 @@ from .constants.nulsws_otherlabels import msg_data_label, msg_type_label, \
 
 class NulswsLibrary(object):
 
-
     def retrieve_name(self, var):
         callers_local_vars = inspect.currentframe().f_back.f_locals.items()
         return [var_name for var_name, var_val in callers_local_vars if var_val is var]
 
     # -----------get_times--------------------------------------#
 
-    def get_times(msg_index: int):
+    def get_times(self, msg_index: int):
         t_stamp = int(time() * 100000)  # change float to int
         tzone = int(timezone / 3600)  # change float to int to str
         m_id = str(t_stamp) + "-" + str(msg_index)

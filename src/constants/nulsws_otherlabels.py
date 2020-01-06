@@ -6,7 +6,7 @@ January 2020
 """
 
 
-type_name_dict: dict = {0: 'None', 1: 'NegotiateConnection',
+type_name_dict = {0: 'None', 1: 'NegotiateConnection',
                         2: 'NegotiateConnectionResponse',
                         3: 'Request', 4: 'Unsubscribe', 5: 'Response', 6: 'Ack',
                         7: 'RegisterCompoundMethod', 8: 'UnregisterCompoundMethod'}

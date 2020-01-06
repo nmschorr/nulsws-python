@@ -1,26 +1,23 @@
 #!/usr/bin/python3.6
 # Nancy Schorr, 2019
 # "method name constants representing possible api calls to Nulstar.",
-from dataclasses import dataclass
+# from dataclasses import dataclass
 
 
 # @dataclass
-class nulsws_Labels():
-
+class NulswsLabels:
 
     def __init__(self):
-        AC_ADD_ADDRESS_PREFIX = "ac_addAddressPrefix"
-        AC_CREATE_ACCOUNT = "ac_createAccount"
-        AC_CREATE_CONTRACT_ACCOUNT = "ac_createContractAccount"
-        AC_CREATE_MULTI_SIGN_ACCOUNT = "ac_createMultiSignAccount"
-        AC_CREATE_MULTI_SIGN_TRANSFER = "ac_createMultiSignTransfer"
-        AC_CREATE_OFFLINE_ACCOUNT = "ac_createOfflineAccount"
-        AC_EXPORT_ACCOUNT_KEYSTORE = "ac_exportAccountKeyStore"
-        AC_EXPORT_KEYSTORE_JSON = "ac_exportKeyStoreJson"
-        AC_GET_ACCOUNT_LIST = "ac_getAccountList"
-        AC_GET_ACCOUNT_BYADDRESS = "ac_getAccountByAddress"
-
-
+        self.AC_ADD_ADDRESS_PREFIX = "ac_addAddressPrefix"
+        self.AC_CREATE_ACCOUNT = "ac_createAccount"
+        self.AC_CREATE_CONTRACT_ACCOUNT = "ac_createContractAccount"
+        self.AC_CREATE_MULTI_SIGN_ACCOUNT = "ac_createMultiSignAccount"
+        self.AC_CREATE_MULTI_SIGN_TRANSFER = "ac_createMultiSignTransfer"
+        self.AC_CREATE_OFFLINE_ACCOUNT = "ac_createOfflineAccount"
+        self.AC_EXPORT_ACCOUNT_KEYSTORE = "ac_exportAccountKeyStore"
+        self.AC_EXPORT_KEYSTORE_JSON = "ac_exportKeyStoreJson"
+        self.AC_GET_ACCOUNT_LIST = "ac_getAccountList"
+        self.AC_GET_ACCOUNT_BYADDRESS = "ac_getAccountByAddress"
         self.AC_GET_ADDRESS_LIST = "ac_getAddressList"
         self.AC_GET_ADDRESS_PREFIX_BY_CHAINID = "ac_getAddressPrefixByChainId"
         self.AC_GET_ALIASBY_ADDRESS = "ac_getAliasByAddress"
@@ -272,14 +269,3 @@ class nulsws_Labels():
         self.VERIFY_COINDATA_BATCH_PACKAGED = "verifyCoinDataBatchPackaged"
         self.VERIFY_COINDATA = "verifyCoinData"
         self.WITHDRAW_VALID = "withdrawValid"
-
-        self.AC_ADD_ADDRESS_PREFIX = AC_ADD_ADDRESS_PREFIX
-        self.AC_CREATE_ACCOUNT = AC_CREATE_ACCOUNT
-        self.AC_CREATE_CONTRACT_ACCOUNT = AC_ADD_ADDRESS_PREFIX
-        self.AC_CREATE_MULTI_SIGN_ACCOUNT = AC_CREATE_MULTI_SIGN_ACCOUNT
-        self.AC_CREATE_MULTI_SIGN_TRANSFER =    AC_CREATE_MULTI_SIGN_TRANSFER
-        self.AC_CREATE_OFFLINE_ACCOUNT = AC_CREATE_OFFLINE_ACCOUNT
-        self.AC_EXPORT_ACCOUNT_KEYSTORE = AC_EXPORT_ACCOUNT_KEYSTORE
-        self.AC_EXPORT_KEYSTORE_JSON = AC_EXPORT_KEYSTORE_JSON
-        self.AC_GET_ACCOUNT_LIST = AC_GET_ACCOUNT_LIST
-        self.AC_GET_ACCOUNT_BYADDRESS = AC_GET_ACCOUNT_BYADDRESS

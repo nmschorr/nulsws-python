@@ -1,9 +1,12 @@
 #!/usr/bin/python3.7
-from Libraries.Constants.CLASSES import nulsws_api_labels as nulab
-import Libraries.Constants.CLASSES.nulsws_api_labels as labs
+
+from .nulsws_labels_cls import NulswsLabels
+
+# from Libraries.Constants.CLASSES import nulsws_api_labels as nulab
+# import Libraries.Constants.CLASSES.nulsws_api_labels as labs
 # use these 'CONSTANTS' to make a run list
 
-n = labs.nulsws_Labels()
+n = NulswsLabels()
 
 
 NAME_PAIRS = [
