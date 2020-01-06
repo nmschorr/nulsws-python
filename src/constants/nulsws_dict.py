@@ -2,14 +2,12 @@
 
 from .nulsws_labels_cls import NulswsLabels
 
-# from Libraries.Constants.CLASSES import nulsws_api_labels as nulab
-# import Libraries.Constants.CLASSES.nulsws_api_labels as labs
 # use these 'CONSTANTS' to make a run list
 
 n = NulswsLabels()
 
 
-NAME_PAIRS = [
+name_pairs_dict = [
     ("AC_CREATE_ACCOUNT", n.AC_CREATE_ACCOUNT),
     ("AC_CREATE_CONTRACT_ACCOUNT", n.AC_CREATE_CONTRACT_ACCOUNT),
     ("AC_CREATE_MULTI_SIGN_ACCOUNT", n.AC_CREATE_MULTI_SIGN_ACCOUNT),

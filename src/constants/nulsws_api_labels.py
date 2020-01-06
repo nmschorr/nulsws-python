@@ -6,10 +6,10 @@ January 2020
 
 """
 
-
 # "method name constants representing possible api calls to Nulstar.",
 
 # These don't need to change often if ever
+
 
 class NulswsApiLabel(object):
     AC_ADD_ADDRESS_PREFIX = "ac_addAddressPrefix"

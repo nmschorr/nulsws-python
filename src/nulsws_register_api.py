@@ -31,7 +31,7 @@ sub_range = ""
 res_max_size = 0
 zero = "0"
 
-msgtype= "Request"
+msgtype = "Request"
 q1 = "Query information about CPU"
 q2 = "Query information about RAM memory"
 role_stats_mgr = "0.1"
@@ -40,12 +40,13 @@ get_ram_info = "GetRAMInfo"
 get_cpu_info = "GetCPUInfo"
 # -----------------------------------------------------------------------------------
 
-def make_nulsws_REGISTER_method(mindex):
+
+def make_nulsws_register_method(mm_index):
 
     # oldtop = {   "MessageData": {   "RequestAck": zero,   "RequestMethods": {   "RegisterAPI": {
     # "GetBalance": 0}  }}}
 
-    top_sec = get_top_section(3, mindex)
+    top_sec = get_top_section(3, mm_index)
     nulsws_register_j = {
         "MessageData": {
             "RequestAck": zero,
@@ -72,7 +73,7 @@ def make_nulsws_REGISTER_method(mindex):
                             ]
                         },
                         {
-                            "MethodDescription": q2,   #second method
+                            "MethodDescription": q2,   # second method
                             "MethodMinEvent": zero,
                             "MethodMinPeriod": zero,
                             "MethodName": get_ram_info,
@@ -94,7 +95,7 @@ def make_nulsws_REGISTER_method(mindex):
             "SubscriptionEventCounter": zero,
             "SubscriptionPeriod": zero,
             "SubscriptionRange": sub_rng
-        } }
+        }}
     top_sec.update(nulsws_register_j)
     print(json.dumps(top_sec, indent=2))
     return top_sec

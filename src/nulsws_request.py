@@ -5,21 +5,22 @@ import json
 from .nulsws_library import NulswsLibrary
 from .constants.nulsws_name_pairs import NamePairs
 from .constants.nulsws_otherlabels import *
-from settings.nulsws_settings_one import *
+from .settings.nulsws_settings_one import *
 from .constants import nulsws_calls_db
 
 
 # -----------prep_NEGOTIATE_data_type1--------------------------------------#
 
 
-def prep_negotiate_request(msg_indx):   # return dict
-    data_part = { msg_data_label: {
-                  proto_label: proto_ver,
-                  compress_type_label: compress_type_VALUE,
-                  compress_rate_label: compress_rate_VALUE}}
+def prep_negotiate_request(msg_indx):  # return dict
+    data_part = {msg_data_label: {
+        proto_label: proto_ver,
+        compress_type_label: compress_type_VALUE,
+        compress_rate_label: compress_rate_VALUE}}
     top_sect = get_top_section(1, msg_indx)
     top_sect.update(data_part)
-    return top_sect   # dict
+    return top_sect  # dict
+
 
 # -----------get_REQ_MIDDLE--------------------------------------#
 
@@ -31,7 +32,6 @@ def get_top_section(msg_type: int, msg_indx):  # this section builds 5 items: #0
     # msg_type_name = type_name_dict.__getitem__(msg_type)
 
     msg_type_name = type_name_dict[msg_type]
-
     t_stamp, tzone, m_id = NulswsLibrary.get_times(msg_indx)
     top_part = {proto_label: proto_ver,
                 msg_id_label: m_id,
@@ -40,10 +40,11 @@ def get_top_section(msg_type: int, msg_indx):  # this section builds 5 items: #0
                 msg_type_label: msg_type_name}
     return top_part
 
+
 # -----------get_REQ_MIDDLE--------------------------------------#
 
 
-def get_request_middle(mid_section_vals=None):   # return dict
+def get_request_middle(mid_section_vals=None):  # return dict
     if not mid_section_vals:
         mid_section_vals = [1, ZERO, ZERO, ZERO, ZERO]  # 2 = ack+date
     [rtt, sec, sp, sr, rms, bottom_part] = [*mid_section_vals]
@@ -51,13 +52,14 @@ def get_request_middle(mid_section_vals=None):   # return dict
     req_middle = {
         msg_data_label: {
             request_type_label: rtt,
-            subscrip_evnt_ct_label : sec,
+            subscrip_evnt_ct_label: sec,
             subscrip_period_label: sp,
             subscriptn_range_label: sr,
             response_max_size_label: rms,
             req_methods_label: bottom_part
         }}
-    return req_middle   # dict
+    return req_middle  # dict
+
 
 # -----------prep_REQUEST_ONESIE (request) --------------------------------------#
 
@@ -66,7 +68,7 @@ def prep_request(msg_indx, api_name):  # requesttype 2 - return ack +
 
     param = nulsws_calls_db.NulswsParams
     user_calls_db = param.calls_list
-    name_list =  NamePairs.name_pairs_list
+    name_list = NamePairs.name_pairs_list
 
     # response either has a second element of a list, or not
     api_name_tup = [i for i in name_list if i[1] == api_name][0]
@@ -77,16 +79,16 @@ def prep_request(msg_indx, api_name):  # requesttype 2 - return ack +
         api_params_list = [val[1] for val in user_calls_db if val[0] == api_text]
 
         api_params_dict = dict(api_params_list[0])
-    except:
+    except Exception:
         pass
 
     api_text_api_params_dict.update({api_text: api_params_dict})
 
     request_type = "2"  # 1 or 2 for message requests
-    subs_e_c = "0"     # subscription event_counter
-    subs_per = "0"      # subscription period
-    subs_rg = "0"      # subscription range
-    resp_max = "0"    # response max size range
+    subs_e_c = "0"  # subscription event_counter
+    subs_per = "0"  # subscription period
+    subs_rg = "0"  # subscription range
+    resp_max = "0"  # response max size range
 
     newlist = [request_type, subs_e_c, subs_per, subs_rg, resp_max, api_text_api_params_dict]
 
@@ -97,16 +99,7 @@ def prep_request(msg_indx, api_name):  # requesttype 2 - return ack +
     return message_section_top  # "'"return dict
 
 # ----------- end library file --------------------------------------#
-
-
-
-
-
-
-
-
 # ---------------- Example -------------------------------------------------------------------
-
 #
 # Example of type 3 message:
 # {

@@ -6,11 +6,13 @@ January 2020
 
 """
 
-from .nulsws_labels_cls import NulswsLabels as NLab
+from .nulsws_labels_cls import NulswsLabels as NLabb
 # use these 'CONSTANTS' to make a run list
 
 
-class NamePairs(NLab):
+class NamePairs(object):
+    NLab = NLabb()
+
     name_pairs_list = [
         ("AC_CREATE_ACCOUNT", NLab.AC_CREATE_ACCOUNT),
         ("AC_CREATE_CONTRACT_ACCOUNT", NLab.AC_CREATE_CONTRACT_ACCOUNT),
