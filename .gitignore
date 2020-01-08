@@ -11,3 +11,4 @@ ApiDataAnalysis/*
 ApiDataAnalysis
 
 .venv/
+must_source_.venv_Scripts_activate_with_dot

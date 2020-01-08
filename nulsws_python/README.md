@@ -1,12 +1,17 @@
-# nuls-python-connect
 
 
-This is the repository for the (as yet unfinished) Python 3.7 libs - enabling connections to the
- Nuls
+# nulsws_python
+
+This is the repository for the (as yet unfinished) Python 3.7 libs - enabling 
+connections to the Nuls
  blockchain modules and platform via Nulstar and Websockets.
 
 
-### JSON and WebSockets
+## Description
+
+
+
+### Nuls Messaging
 Every Nuls
 microservice is both a client and a server. Therefore a full-duplex, bi-directional
 communication protocol is needed. It needs to implement a special type
@@ -79,3 +84,11 @@ request)
 • UnregisterRegisterCompoundMethod: The module should be able to remove the specified virtual
 method, then an API Registration Request should be sent to the Manager module to add the virtual
 function (Check 3.1.10 for information about crafting such request).
+
+
+
+Note
+====
+
+This project has been set up using PyScaffold 3.2.3. For details and usage
+information on PyScaffold see https://pyscaffold.org/.
