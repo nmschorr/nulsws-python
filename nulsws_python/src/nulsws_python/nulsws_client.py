@@ -30,7 +30,6 @@
 #     "CompressionRate": "3"
 # Note: Maybe don't use typing.Dict - it can cause json problems when converted
 
-import nulsws_python.src.nulsws_python.nulsws_library
 import json
 from asyncio import run as asyncio_run
 from asyncio import sleep as a_sleep
