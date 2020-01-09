@@ -1,6 +1,6 @@
 #!/usr/bin/python3.7
 
-from .nulsws_labels_cls import NulswsLabels
+from nulsws_python.src.nulsws_python.constants.nulsws_labels_cls import NulswsLabels
 
 # use these 'CONSTANTS' to make a run list
 

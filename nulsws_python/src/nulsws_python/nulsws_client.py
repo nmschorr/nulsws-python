@@ -30,17 +30,15 @@
 #     "CompressionRate": "3"
 # Note: Maybe don't use typing.Dict - it can cause json problems when converted
 
+import nulsws_python.src.nulsws_python.nulsws_library
 import json
 from asyncio import run as asyncio_run
 from asyncio import sleep as a_sleep
 from tornado.websocket import websocket_connect, WebSocketClientConnection  # WebSocketClosedError
-
-from src.settings.nulsws_settings_two import *
-from src.nulsws_library import NulswsLibrary
-from src.nulsws_request import prep_request, prep_negotiate_request
-
-import src.constants.nulsws_api_labels as naps
-
+import nulsws_python.src.nulsws_python.nulsws_library as nlib
+from nulsws_python.src.nulsws_python.nulsws_request import prep_request, prep_negotiate_request
+from nulsws_python.src.nulsws_python.settings.nulsws_settings_two import *
+import nulsws_python.src.nulsws_python.constants.nulsws_api_labels as naps
 
 class NulsWebsocket(object):
 
@@ -51,9 +49,9 @@ class NulsWebsocket(object):
         self.ORIG_RUNLIST = []
         self.rundict = {}
         self.MSG_TYPE = 0
-        self.myprint = NulswsLibrary.myprint
+        self.myprint = nlib.NulswsLibrary.myprint
         self.myprint("the url:  ", websock_url)
-        self.json_prt = NulswsLibrary.json_prt
+        self.json_prt = nlib.NulswsLibrary.json_prt
 
     async def regular_request(self, websock_cont: WebSocketClientConnection, j_reg_dict):
         json_reg = json.dumps(j_reg_dict)
