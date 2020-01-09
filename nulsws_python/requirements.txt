@@ -8,10 +8,25 @@
 # (`Dependency Management` section).
 # =============================================================================
 #
-# Add your pinned requirements so that they can be easily installed with:
-# pip install -r requirements.txt
-# Remember to also add them in setup.cfg but unpinned.
-# Example:
-# numpy==1.13.3
-# scipy==1.0
+# attrs          19.3.0
+# Automat        0.8.0
+# constantly     15.1.0
+# entrypoints    0.3
+# flake8         3.7.9
+# hyperlink      19.0.0
+# idna           2.8
+# incremental    17.5.0
+# isort          4.3.21
+# mccabe         0.6.1
+# pip            19.0.3
+# pycodestyle    2.5.0
+# pyflakes       2.1.1
+# PyHamcrest     1.9.0
+# PyScaffold     3.2.3
+# setuptools     40.8.0
+# six            1.13.0
+# Twisted        19.10.0
+# typing         3.7.4.1
+# yapf           0.29.0
+# zope.interface 4.7.1
 #
