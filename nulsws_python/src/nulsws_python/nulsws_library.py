@@ -39,7 +39,7 @@ Example Negotiate Connection message - order of items doesn't matter when at the
 Compression Rate can be values 0 through 9.
 Compression Algorithm is normally "zlib"
 
- -- Enter your custom settings data via the library file 'nulsws_msgtype1.py'.
+ -- Enter your custom user_settings data via the library file 'nulsws_msgtype1.py'.
 
 Note: Don't use typing.Dict - it can cause json problems when converted.
 
@@ -51,16 +51,11 @@ import json
 from json import dumps as json_dumps
 from time import time, timezone
 
-from .constants.nulsws_otherlabels import msg_data_label, msg_type_label, \
+from .constants.nulsws_other_labels import msg_data_label, msg_type_label, \
     negotiate_stat_label, negotiate_conn_resp_label
 
 
 class NulswsLibrary(object):
-
-    # @staticmethod
-    # def retrieve_name(var):
-    #     callers_local_vars = inspect.currentframe().f_back.f_locals.items()
-    #     return [var_name for var_name, var_val in callers_local_vars if var_val is var]
 
     # -----------get_times--------------------------------------#
 

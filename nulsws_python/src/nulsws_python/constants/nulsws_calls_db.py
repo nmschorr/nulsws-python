@@ -10,7 +10,7 @@
 #
 #
 
-from ..settings.nulsws_settings_two import *
+from ..user_settings.nulsws_settings_two import *
 from .nulsws_api_labels import NulswsApiLabel as ap
 from .nulsws_param_labels import param_name_dict as nd
 

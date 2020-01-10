@@ -8,7 +8,7 @@ by Nancy Schorr for Nuls, None),
 
 from .nulsws_settings_one import *
 
-# change settings to suit
+# change user_settings to suit
 # for use in api calls
 # fill in your default params here
 

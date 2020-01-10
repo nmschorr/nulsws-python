@@ -36,7 +36,7 @@ from asyncio import sleep as a_sleep
 from tornado.websocket import websocket_connect, WebSocketClientConnection  # WebSocketClosedError
 import nulsws_python.src.nulsws_python.nulsws_library as nlib
 from nulsws_python.src.nulsws_python.nulsws_request import prep_request, prep_negotiate_request
-from nulsws_python.src.nulsws_python.settings.nulsws_settings_two import *
+from nulsws_python.src.nulsws_python.user_settings.nulsws_settings_two import *
 import nulsws_python.src.nulsws_python.constants.nulsws_api_labels as naps
 
 class NulsWebsocket(object):
@@ -61,25 +61,27 @@ class NulsWebsocket(object):
         await a_sleep(self.s_time)
         if len(read_reg) > 0:
             self.json_prt(read_reg, "   -----------> ! ! ! REGULAR response received: ")
-        NulswsLibrary.myprint("--------------end previous / begin next request--------------------------")
+        nlib.NulswsLibrary.myprint("--------------end previous / begin next "
+                                   "request--------------------------")
 
     async def negotiate_list(self, top_plus_mid_dict, m_indx, run_list, mtpe=3):
-        connection = await websocket_connect(websock_url)  # 1) CONNECT
+        # connection = await websocket_connect(websock_url)  # 1) CONNECT
+        # # await a_sleep(self.s_time)
+        # while not connection:
+        #     await a_sleep(self.s_time)
+        # jd = json.dumps(top_plus_mid_dict)
+        # self.json_prt(top_plus_mid_dict, "* * * First message going out- NEGOTIATE: \n")
+        #
+        # await connection.write_message(jd)  # 2) WRITE
+        # # await a_sleep(self.s_time)
+        #
+        # negotiate_result = await connection.read_message()  # 3 READ
         # await a_sleep(self.s_time)
-        while not connection:
-            await a_sleep(self.s_time)
-        jd = json.dumps(top_plus_mid_dict)
-        self.json_prt(top_plus_mid_dict, "* * * First message going out- NEGOTIATE: \n")
+        # self.json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
+        # self.myprint("------end Negotiate----------------------------------------")
 
-        await connection.write_message(jd)  # 2) WRITE
-        # await a_sleep(self.s_time)
-
-        negotiate_result = await connection.read_message()  # 3 READ
-        await a_sleep(self.s_time)
-        self.json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
-        self.myprint("------end Negotiate----------------------------------------")
-
-        for run_item in run_list:
+        for r in run_list:
+            run_item = r[0]
             m_indx += 1
             print("starting this item: ", run_item)
             # TEST ONLY SECTION -------------------------->
@@ -92,7 +94,7 @@ class NulsWebsocket(object):
 
     def main(self, rr_list, msg_type=3):
         mtpe = msg_type
-        self.mindex += 1
+        #self.mindex += 1
         myindx = self.mindex
         if mtpe == 3:  # if a regular request Nulstar type 3
             top_pls_middle_dict = prep_negotiate_request(myindx)  # must be done first
@@ -103,6 +105,11 @@ class NulsWebsocket(object):
 
 if __name__ == '__main__':
     b = naps.NulswsApiLabel()
+    from .constants import nulsws_calls_db
+    param = nulsws_calls_db.NulswsParams
+    user_calls_db = param.calls_list
+
+
 
     runlist_1 = [b.AC_GET_ACCOUNT_BYADDRESS, b.AC_GET_ALL_ADDRESS_PREFIX, b.AC_GET_ACCOUNT_LIST,
                  b.AC_GET_ADDRESS_LIST, b.AC_GET_ADDRESS_PREFIX_BY_CHAINID, b.AC_GET_ALL_ADDRESS_PREFIX,

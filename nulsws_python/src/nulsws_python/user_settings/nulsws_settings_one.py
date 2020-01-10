@@ -5,10 +5,10 @@ January 2020
 
 """
 
-# change settings to suit
+# change user_settings to suit
 # for use in api calls
 # fill in your default params here
-# These are for settings that you might use more than once. Set it once here, and reuse the
+# These are for user_settings that you might use more than once. Set it once here, and reuse the
 # setting in user_settings/nulsws_user_params.py
 
 connect_method = "ws://"  # could be wss

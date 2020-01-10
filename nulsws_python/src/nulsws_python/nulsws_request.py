@@ -3,11 +3,9 @@
 import json
 
 from .nulsws_library import NulswsLibrary
-from .constants.nulsws_name_pairs import NamePairs
-from .constants.nulsws_otherlabels import *
-from .settings.nulsws_settings_one import *
+from .constants.nulsws_other_labels import *
+from .user_settings.nulsws_settings_one import *
 from .constants import nulsws_calls_db
-
 
 # -----------prep_NEGOTIATE_data_type1--------------------------------------#
 
@@ -63,20 +61,26 @@ def get_request_middle(mid_section_vals=None):  # return dict
 
 # -----------prep_REQUEST_ONESIE (request) --------------------------------------#
 
+# class NulswsApiLabel(object):
+#     AC_ADD_ADDRESS_PREFIX = ("ac_addAddressPrefix", "AC_ADD_ADDRESS_PREFIX",)
+# name pairs:  ("AC_CREATE_ACCOUNT", NLab.AC_CREATE_ACCOUNT),
 
-def prep_request(msg_indx, api_name):  # requesttype 2 - return ack +
 
-    param = nulsws_calls_db.NulswsParams
-    user_calls_db = param.calls_list
-    name_list = NamePairs.name_pairs_list
+def prep_request(msg_indx, api_name_val):  # requesttype 2 - return ack +
+
+    calls_list = nulsws_calls_db.NulswsParams.calls_list
+    # name_list = NamePairs.name_pairs_list   ## try not to to use name_pairs_list
 
     # response either has a second element of a list, or not
-    api_name_tup = [i for i in name_list if i[1] == api_name][0]
-    api_text = api_name_tup[1]
+#    api_name_tup = [i for i in name_list if i[1] == api_name_val][0]
+    api_text_tp = [i[0] for i in calls_list if i[0][0] == api_name_val][0]
+    api_text = api_text_tp[0]
     api_params_dict = {}
     api_text_api_params_dict = dict()
     try:
-        api_params_list = [val[1] for val in user_calls_db if val[0] == api_text]
+        api_params_list = [val[1] for val in calls_list if val[0][0] == api_text]
+        for i in api_params_list:
+            print(i)
 
         api_params_dict = dict(api_params_list[0])
     except Exception:
