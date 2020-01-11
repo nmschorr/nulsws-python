@@ -1,9 +1,9 @@
 #!/usr/bin/python3.7
 
 """,
+
 by Nancy Schorr for Nuls-io
 January 2020
-
 """,
 # "method name constants representing possible api calls to Nulstar.",
 

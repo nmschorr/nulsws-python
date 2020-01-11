@@ -58,35 +58,30 @@ def get_request_middle(mid_section_vals=None):  # return dict
         }}
     return req_middle  # dict
 
-
 # -----------prep_REQUEST_ONESIE (request) --------------------------------------#
-
-# class NulswsApiLabel(object):
-#     AC_ADD_ADDRESS_PREFIX = ("ac_addAddressPrefix", "AC_ADD_ADDRESS_PREFIX",)
-# name pairs:  ("AC_CREATE_ACCOUNT", NLab.AC_CREATE_ACCOUNT),
 
 
 def prep_request(msg_indx, api_name_val):  # requesttype 2 - return ack +
 
-    calls_list = nulsws_calls_db.NulswsParams.calls_list
+    call_lookup = nulsws_calls_db.NulswsParams.calls_dict
     api_params_dict = {}
     api_text_api_params_dict = dict()
     try:
-        api_params_list = [val[1] for val in calls_list if val[0][0] == api_name_val]
+        api_params_list = call_lookup[api_name_val]
         for i in api_params_list:
             print(i)
 
-        api_params_dict = dict(api_params_list[0])
+        api_params_dict = dict(api_params_list)
     except Exception:
         pass
 
     api_text_api_params_dict.update({api_name_val: api_params_dict})
 
-    request_type = "2"  # 1 or 2 for message requests
-    subs_e_c = "0"  # subscription event_counter
-    subs_per = "0"  # subscription period
-    subs_rg = "0"  # subscription range
-    resp_max = "0"  # response max size range
+    request_type = 1  # 1 or 2 for message requests
+    subs_e_c = 0  # subscription event_counter
+    subs_per = 0  # subscription period
+    subs_rg = 0  # subscription range
+    resp_max = 0  # response max size range
 
     newlist = [request_type, subs_e_c, subs_per, subs_rg, resp_max, api_text_api_params_dict]
 
@@ -112,7 +107,7 @@ def prep_request(msg_indx, api_name_val):  # requesttype 2 - return ack +
 #         "SubscriptionPeriod": "1",
 #         "SubscriptionRange": "[100]",
 #         "ResponseMaxSize": "0",
-#         "RequestMethods": [
+#         "RequestMethods": {
 #           {
 #             "GetBalance": {
 #               "Address": "tNULSeBaMnrs6JKrCy6TQdzYJZkMZJDng7QAsD"
@@ -121,6 +116,11 @@ def prep_request(msg_indx, api_name_val):  # requesttype 2 - return ack +
 #           {
 #             "GetHeight": {}
 #           }
-#         ]
+#         }
 #        }
 #     }
+# “RequestType”: “1”,
+# “SubscriptionEventCounter”: “3”,
+# “SubscriptionPeriod”: “0”,
+# “SubscriptionRange”: “0”,
+# “ResponseMaxSize: “0”,
