@@ -89,11 +89,11 @@ class NulsWebsocket(object):
             # END TEST ONLY SECTION ----------------------
             if mtpe == 3:
                 main_request = prep_request(m_indx, run_item)  # TEST ONLY PUT BACK WHEN DONE
-                await self.regular_request(connection, main_request)
+                x = await self.regular_request(connection, main_request)
+            print(x)
 
     def main(self, rr_list, msg_type=3):
         mtpe = msg_type
-        #self.mindex += 1
         myindx = self.mindex
         if mtpe == 3:  # if a regular request Nulstar type 3
             top_pls_middle_dict = prep_negotiate_request(myindx)  # must be done first
@@ -126,7 +126,16 @@ if __name__ == "__main__":
 
     # RUN_LIST = runlist_2
     runlist = runlist_1 + runlist_2 + runlist_3
+    r4 = [b['GET_STATUS'], b['GET_VERSION'], b['INFO'],
+          b['LATEST_BLOCK'], b['LATEST_BLOCKHEADER'], b['LATEST_BLOCKHEADER_PO'], b['LATEST_HEIGHT']]
+
+
+    runlist = r4
+    #runlist = [b['GET_LATEST_BLOCKHEADER']]
     message_type = 3  # 3 is request, 99 is test, 77 is negotiate only
 
     nws = NulsWebsocket()
     nws.main(runlist, message_type)
+
+r4 = [ b['GET_STATUS'], b['GET_VERSION'], b['INFO'],
+b['LATEST_BLOCK'], b['LATEST_BLOCKHEADER'], b['LATEST_BLOCKHEADER_PO'], b['LATEST_HEIGHT']]

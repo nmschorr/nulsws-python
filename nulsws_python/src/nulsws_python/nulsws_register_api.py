@@ -7,7 +7,7 @@
 by Nancy Schorr for Nuls, December 2, 2019
 """
 import json
-from .nulsws_request import get_top_section
+from nulsws_python.src.nulsws_python.nulsws_request import get_top_section
 
 # this can be a list once other versions are supported
 
@@ -100,4 +100,5 @@ def make_nulsws_register_method(mm_index):
     print(json.dumps(top_sec, indent=2))
     return top_sec
 
-
+if __name__ == "__main__":
+    make_nulsws_register_method(1)
