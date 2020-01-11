@@ -42,12 +42,8 @@ from nulsws_python.src.nulsws_python.constants.nulsws_api_labels import NulswsAp
 class NulsWebsocket(object):
 
     def __init__(self):
-        mindex = 0
-        self.mindex = mindex
+        self.mindex = 0
         self.s_time = .7
-        self.ORIG_RUNLIST = []
-        self.rundict = {}
-        # self.MSG_TYPE = 0
         self.myprint = nlib.NulswsLibrary.myprint
         self.myprint("the url:  ", websock_url)
         self.json_prt = nlib.NulswsLibrary.json_prt
@@ -58,7 +54,6 @@ class NulsWebsocket(object):
         self.json_prt(json_reg, "\n* * * REGULAR message going out: \n")
         await a_sleep(self.s_time)
         read_reg = await websock_cont.read_message()  # 3 READ
-        print(read_reg)
         await a_sleep(self.s_time)
         if len(read_reg) > 0:
             self.json_prt(read_reg, "   -----------> ! ! ! REGULAR response received: ")
@@ -82,15 +77,12 @@ class NulsWebsocket(object):
 
         for run_item in run_list:
             m_indx += 1
-            print("starting this item: ", run_item)
-
             # TEST ONLY SECTION -------------------------->
             # if self.msg_type == 77: await self.regular_request(connection, run_item)
             # this runs register api # END TEST ONLY SECTION ----------------------
             if mtpe == 3:
                 main_request = prep_request(m_indx, run_item)  # TEST ONLY PUT BACK WHEN DONE
                 x = await self.regular_request(connection, main_request)
-            print(x)
 
     def main(self, rr_list, msg_type=3):
         mtpe = msg_type

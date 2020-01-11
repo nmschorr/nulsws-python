@@ -43,9 +43,13 @@ z10_AC_GET_ADDRESS_LIST_chainId = my_chainid
 z10_AC_GET_ADDRESS_LIST_pageNumber = my_chainid
 z10_AC_GET_ADDRESS_LIST_pageSize = my_chainid
 z11_AC_GET_ADDRESS_PREFIX_BY_CHAINID_chainId = my_chainid
+
 z12_AC_GET_ALIASBY_ADDRESS_chainId = my_chainid
 z12_AC_GET_ALIASBY_ADDRESS_address = my_address
+z13_AC_GET_ALL_ADDRESS_PREFIX_chainId = my_chainid
+
 z14_AC_GET_ALL_PRIKEY_chainId = my_chainid
+
 z14_AC_GET_ALL_PRIKEY_password = my_password
 z15_AC_GET_ENCRYPTED_ADDRESS_LIST_chainId = my_chainid
 z16_AC_GET_MULTI_SIGN_ACCOUNT_chainId = my_chainid
@@ -1009,7 +1013,8 @@ __all__ = ['FALSE', 'request_type_one_or_two', 'REMARK', 'RequestType', 'SHORT_M
            'z98_CS_STOP_MULTI_AGENT_chainId', 'z98_CS_STOP_MULTI_AGENT_password',
            'z98_CS_STOP_MULTI_AGENT_signAddress', 'z99_CS_TRIGGER_COINBASE_CONTRACT_blockHeader',
            'z99_CS_TRIGGER_COINBASE_CONTRACT_chainId', 'z99_CS_TRIGGER_COINBASE_CONTRACT_stateRoot',
-           'z99_CS_TRIGGER_COINBASE_CONTRACT_tx', 'z9_AC_GET_ACCOUNT_LIST_chainId']
+           'z99_CS_TRIGGER_COINBASE_CONTRACT_tx', 'z9_AC_GET_ACCOUNT_LIST_chainId',
+           'z13_AC_GET_ALL_ADDRESS_PREFIX_chainId']
 
 
 # to generate __all__:

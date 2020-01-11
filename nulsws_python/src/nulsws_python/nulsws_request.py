@@ -19,13 +19,12 @@ def prep_negotiate_request(msg_indx):  # return dict
     top_sect.update(data_part)
     return top_sect  # dict
 
-
 # -----------get_REQ_MIDDLE--------------------------------------#
 
 
 def get_top_section(msg_type: int, msg_indx):  # this section builds 5 items: #0
     # 0  "ProtocolVersion": "0.1",
-    # 1 "MessageID": "1569897424187-1",  #2 "TimeZone": "-4",   # 3 "Timestamp": "1569897424187"
+    # 1 "MessageID": "1569897424187-1",  #2 "TimeZone": "-4", # 3 "Timestamp": "1569897424187"
     # 4 "MessageType": "NegotiateConnection",
     # msg_type_name = type_name_dict.__getitem__(msg_type)
 
@@ -37,7 +36,6 @@ def get_top_section(msg_type: int, msg_indx):  # this section builds 5 items: #0
                 tmzone_label: tzone,
                 msg_type_label: msg_type_name}
     return top_part
-
 
 # -----------get_REQ_MIDDLE--------------------------------------#
 
@@ -67,28 +65,23 @@ def prep_request(msg_indx, api_name_val):  # requesttype 2 - return ack +
     api_params_dict = {}
     api_text_api_params_dict = dict()
     try:
-        api_params_list = call_lookup[api_name_val]
-        for i in api_params_list:
-            print(i)
-
-        api_params_dict = dict(api_params_list)
+        api_params_dict = dict(call_lookup[api_name_val])
     except Exception:
         pass
 
     api_text_api_params_dict.update({api_name_val: api_params_dict})
 
-    request_type = 1  # 1 or 2 for message requests
-    subs_e_c = 0  # subscription event_counter
-    subs_per = 0  # subscription period
-    subs_rg = 0  # subscription range
-    resp_max = 0  # response max size range
+    request_type = "1"  # 1 or 2 for message requests
+    subs_e_c = "0"  # subscription event_counter
+    subs_per = "0"  # subscription period
+    subs_rg = "0"  # subscription range
+    resp_max = "0"  # response max size range
 
     newlist = [request_type, subs_e_c, subs_per, subs_rg, resp_max, api_text_api_params_dict]
 
     msg_section_middle = get_request_middle(newlist)
     message_section_top = get_top_section(3, msg_indx)
     message_section_top.update(msg_section_middle)
-    print(json.dumps(message_section_top, indent=2))
     return message_section_top  # "'"return dict
 
 # ----------- end library file --------------------------------------#
