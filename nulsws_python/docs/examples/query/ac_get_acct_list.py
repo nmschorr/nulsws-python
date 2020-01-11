@@ -4,10 +4,10 @@
 
 
 import json
-from src.nulsws_request import get_top_section
-from src.constants.nulsws_otherlabels import *
-from src.settings.nulsws_settings_two import *
-from src.constants.nulsws_api_labels import NulswsApiLabel
+from nulsws_python.src.nulsws_python.nulsws_request import get_top_section
+from nulsws_python.src.nulsws_python.user_settings.nulsws_settings_two import *
+from nulsws_python.src.nulsws_python.constants.nulsws_api_labels import NulswsApiLabel
+from nulsws_python.src.nulsws_python.constants.nulsws_other_labels import *
 
 
 class AcGetAcctList(object):

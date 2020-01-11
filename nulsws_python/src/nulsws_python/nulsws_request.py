@@ -2,10 +2,10 @@
 
 import json
 
-from .nulsws_library import NulswsLibrary
-from .constants.nulsws_other_labels import *
-from .user_settings.nulsws_settings_one import *
-from .constants import nulsws_calls_db
+from nulsws_python.src.nulsws_python.nulsws_library import NulswsLibrary
+from nulsws_python.src.nulsws_python.constants.nulsws_other_labels import *
+from nulsws_python.src.nulsws_python.user_settings.nulsws_settings_one import *
+from nulsws_python.src.nulsws_python.constants import nulsws_calls_db
 
 # -----------prep_NEGOTIATE_data_type1--------------------------------------#
 
@@ -69,16 +69,10 @@ def get_request_middle(mid_section_vals=None):  # return dict
 def prep_request(msg_indx, api_name_val):  # requesttype 2 - return ack +
 
     calls_list = nulsws_calls_db.NulswsParams.calls_list
-    # name_list = NamePairs.name_pairs_list   ## try not to to use name_pairs_list
-
-    # response either has a second element of a list, or not
-#    api_name_tup = [i for i in name_list if i[1] == api_name_val][0]
-    api_text_tp = [i[0] for i in calls_list if i[0][0] == api_name_val][0]
-    api_text = api_text_tp[0]
     api_params_dict = {}
     api_text_api_params_dict = dict()
     try:
-        api_params_list = [val[1] for val in calls_list if val[0][0] == api_text]
+        api_params_list = [val[1] for val in calls_list if val[0][0] == api_name_val]
         for i in api_params_list:
             print(i)
 
@@ -86,7 +80,7 @@ def prep_request(msg_indx, api_name_val):  # requesttype 2 - return ack +
     except Exception:
         pass
 
-    api_text_api_params_dict.update({api_text: api_params_dict})
+    api_text_api_params_dict.update({api_name_val: api_params_dict})
 
     request_type = "2"  # 1 or 2 for message requests
     subs_e_c = "0"  # subscription event_counter

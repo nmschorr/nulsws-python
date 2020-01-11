@@ -6,6 +6,7 @@ January 2020
 
 """
 
+
 # "method name constants representing possible api calls to Nulstar.",
 
 # These don't need to change often if ever
@@ -44,7 +45,8 @@ class NulswsApiLabel(object):
     AC_SIGN_DIGEST = ("ac_signDigest", 'AC_SIGN_DIGEST',)
     AC_SIGN_MULTISIGN_TRANSACTION = ("ac_signMultiSignTransaction", 'AC_SIGN_MULTISIGN_TRANSACTION',)
     AC_TRANSFER = ("ac_transfer", 'AC_TRANSFER',)
-    AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD = ("ac_updateOfflineAccountPassword", 'AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD',)
+    AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD = (
+        "ac_updateOfflineAccountPassword", 'AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD',)
     AC_UPDATE_PASSWORD = ("ac_updatePassword", 'AC_UPDATE_PASSWORD',)
     AC_VALIDATION_PASSWORD = ("ac_validationPassword", 'AC_VALIDATION_PASSWORD',)
     AC_VERIFY_SIGN_DATA = ("ac_verifySignData", 'AC_VERIFY_SIGN_DATA',)
@@ -212,7 +214,7 @@ class NulswsApiLabel(object):
     SC_CONSTRUCTOR = ('sc_constructor', 'SC_CONSTRUCTOR',)
     SC_CONTRACT_INFO = ('sc_contract_info', 'SC_CONTRACT_INFO',)
     SC_CONTRACT_OFFLINE_TX_HASH_LIST = (
-    'sc_contract_offline_tx_hash_list', 'SC_CONTRACT_OFFLINE_TX_HASH_LIST',)
+        'sc_contract_offline_tx_hash_list', 'SC_CONTRACT_OFFLINE_TX_HASH_LIST',)
     SC_CONTRACT_RESULT_LIST = ('sc_contract_result_list', 'SC_CONTRACT_RESULT_LIST',)
     SC_CONTRACT_RESULT = ('sc_contract_result', 'SC_CONTRACT_RESULT',)
     SC_CONTRACT_TX = ('sc_contract_tx', 'SC_CONTRACT_TX',)
@@ -234,7 +236,7 @@ class NulswsApiLabel(object):
     SC_TRANSFER_FEE = ('sc_transfer_fee', 'SC_TRANSFER_FEE',)
     SC_TRANSFER = ('sc_transfer', 'SC_TRANSFER',)
     SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT = (
-    'sc_trigger_payable_for_consensus_contract', 'SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT',)
+        'sc_trigger_payable_for_consensus_contract', 'SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT',)
     SC_UPLOAD = ('sc_upload', 'SC_UPLOAD',)
     SC_VALIDATE_CALL = ('sc_validate_call', 'SC_VALIDATE_CALL',)
     SC_VALIDATE_CREATE = ('sc_validate_create', 'SC_VALIDATE_CREATE',)
@@ -257,7 +259,7 @@ class NulswsApiLabel(object):
     TX_GET_CONFIRMED_TX_CLIENT = ('tx_getConfirmedTxClient', 'TX_GET_CONFIRMED_TX_CLIENT',)
     TX_GET_CONFIRMED_TX = ('tx_getConfirmedTx', 'TX_GET_CONFIRMED_TX',)
     TX_GET_NONEXISTENT_UNCONFIRMED_HASHS = (
-    'tx_getNonexistentUnconfirmedHashs', 'TX_GET_NONEXISTENT_UNCONFIRMED_HASHS',)
+        'tx_getNonexistentUnconfirmedHashs', 'TX_GET_NONEXISTENT_UNCONFIRMED_HASHS',)
     TX_GET_SYSTEMTYPES = ('tx_getSystemTypes', 'TX_GET_SYSTEMTYPES',)
     TX_GET_TX_CLIENT = ('tx_getTxClient', 'TX_GET_TX_CLIENT',)
     TX_GET_TX = ('tx_getTx', 'TX_GET_TX',)
