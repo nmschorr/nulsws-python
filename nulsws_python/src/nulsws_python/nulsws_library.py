@@ -51,7 +51,7 @@ import json
 from json import dumps as json_dumps
 from time import time, timezone
 
-from .constants.nulsws_other_labels import msg_data_label, msg_type_label, \
+from nulsws_python.src.nulsws_python.constants.nulsws_other_labels import msg_data_label, msg_type_label, \
     negotiate_stat_label, negotiate_conn_resp_label
 
 

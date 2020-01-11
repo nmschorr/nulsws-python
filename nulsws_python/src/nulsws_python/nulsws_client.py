@@ -35,10 +35,8 @@ from asyncio import run as asyncio_run
 from asyncio import sleep as a_sleep
 from tornado.websocket import websocket_connect, WebSocketClientConnection  # WebSocketClosedError
 import nulsws_python.src.nulsws_python.nulsws_library as nlib
-from nulsws_python.src.nulsws_python.constants import nulsws_calls_db
-from nulsws_python.src.nulsws_python.nulsws_request import prep_request, prep_negotiate_request
 from nulsws_python.src.nulsws_python.user_settings.nulsws_settings_two import *
-import nulsws_python.src.nulsws_python.constants.nulsws_api_labels as naps
+from nulsws_python.src.nulsws_python.constants.nulsws_api_labels import NulswsApiLabel
 
 
 class NulsWebsocket(object):
@@ -82,8 +80,7 @@ class NulsWebsocket(object):
         self.json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
         self.myprint("------end Negotiate----------------------------------------")
 
-        for r in run_list:
-            run_item = r[0]
+        for run_item in run_list:
             m_indx += 1
             print("starting this item: ", run_item)
             # TEST ONLY SECTION -------------------------->
@@ -105,27 +102,27 @@ class NulsWebsocket(object):
                     top_pls_middle_dict, myindx, rr_list, mtpe))  # starts event
 
 
-if __name__ == '__main__':
-    b = naps.NulswsApiLabel()
-    param = nulsws_calls_db.NulswsParams
-    user_calls_db = param.calls_list
+if __name__ == "__main__":
+    from nulsws_python.src.nulsws_python.nulsws_request import prep_request, prep_negotiate_request
+    b = NulswsApiLabel().ApiLabelDict
 
-    runlist_1 = [b.AC_GET_ACCOUNT_BYADDRESS, b.AC_GET_ALL_ADDRESS_PREFIX, b.AC_GET_ACCOUNT_LIST,
-                 b.AC_GET_ADDRESS_LIST, b.AC_GET_ADDRESS_PREFIX_BY_CHAINID, b.AC_GET_ALL_ADDRESS_PREFIX,
-                 b.AC_GET_ALL_PRIKEY, b.AC_GET_ALIASBY_ADDRESS]
+
+    runlist_1 = [ b['AC_GET_ACCOUNT_BYADDRESS'], b['AC_GET_ALL_ADDRESS_PREFIX'], b['AC_GET_ACCOUNT_LIST'],
+                 b['AC_GET_ADDRESS_LIST'], b['AC_GET_ADDRESS_PREFIX_BY_CHAINID'], b['AC_GET_ALL_ADDRESS_PREFIX'],
+                 b['AC_GET_ALL_PRIKEY'], b['AC_GET_ALIASBY_ADDRESS'] ]
 
     runlist_2 = [
-        b.AC_EXPORT_ACCOUNT_KEYSTORE, b.AC_EXPORT_KEYSTORE_JSON, b.AC_GET_ACCOUNT_BYADDRESS,
-        b.AC_GET_ACCOUNT_LIST, b.AC_GET_ADDRESS_LIST, b.AC_GET_ADDRESS_PREFIX_BY_CHAINID,
-        b.AC_GET_ALIASBY_ADDRESS, b.AC_GET_ALL_ADDRESS_PREFIX, b.AC_GET_ALL_PRIKEY,
-        b.AC_GET_ENCRYPTED_ADDRESS_LIST, b.AC_GET_MULTI_SIGN_ACCOUNT, b.AC_GET_PRIKEY, b.AC_GET_PUBKEY]
+        b['AC_EXPORT_ACCOUNT_KEYSTORE'], b['AC_EXPORT_KEYSTORE_JSON'], b['AC_GET_ACCOUNT_BYADDRESS'],
+        b['AC_GET_ACCOUNT_LIST'], b['AC_GET_ADDRESS_LIST'], b['AC_GET_ADDRESS_PREFIX_BY_CHAINID'],
+        b['AC_GET_ALIASBY_ADDRESS'], b['AC_GET_ALL_ADDRESS_PREFIX'], b['AC_GET_ALL_PRIKEY'],
+        b['AC_GET_ENCRYPTED_ADDRESS_LIST'], b['AC_GET_MULTI_SIGN_ACCOUNT'], b['AC_GET_PRIKEY'], 
+        b['AC_GET_PUBKEY'] ]
 
-    runlist_3 = [b.GET_LATEST_BLOCKHEADERS,
-                 b.GET_LATEST_ROUND_BLOCKHEADERS, b.GET_NETWORK_GROUP, b.GET_NONCE, b.GET_OTHERCTX,
-                 b.GET_REGISTERED_CHAIN_INFO_LIST, b.GET_REGISTERED_CHAIN_MESSAGE, b.GET_ROUND_BLOCKHEADERS,
-                 b.GET_STATUS, b.GET_VERSION, b.INFO, b.LATEST_BLOCK, b.LATEST_BLOCKHEADER,
-                 b.LATEST_BLOCKHEADER_PO,
-                 b.LATEST_HEIGHT]
+    runlist_3 = [b['GET_LATEST_BLOCKHEADERS'],
+                 b['GET_LATEST_ROUND_BLOCKHEADERS'], b['GET_NETWORK_GROUP'], b['GET_NONCE'], b['GET_OTHERCTX'],
+                 b['GET_REGISTERED_CHAIN_INFO_LIST'], b['GET_REGISTERED_CHAIN_MESSAGE'], b['GET_ROUND_BLOCKHEADERS'],
+                 b['GET_STATUS'], b['GET_VERSION'], b['INFO'], b['LATEST_BLOCK'], b['LATEST_BLOCKHEADER'],
+                 b['LATEST_BLOCKHEADER_PO'], b['LATEST_HEIGHT'] ]
 
     # RUN_LIST = runlist_2
     runlist = runlist_1 + runlist_2 + runlist_3

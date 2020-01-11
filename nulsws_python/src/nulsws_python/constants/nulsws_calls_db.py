@@ -10,22 +10,24 @@
 #
 #
 
-from ..user_settings.nulsws_settings_two import *
-from .nulsws_api_labels import NulswsApiLabel as ap
-from .nulsws_param_labels import param_name_dict as nd
+from nulsws_python.src.nulsws_python.user_settings.nulsws_settings_two import *
+from nulsws_python.src.nulsws_python.constants.nulsws_api_labels import NulswsApiLabel
+from nulsws_python.src.nulsws_python.constants.nulsws_other_labels import param_name_dict as nd
 
 
 class NulswsParams(object):
+    ap = NulswsApiLabel().ApiLabelDict
+
     calls_list = [
         [
-            ap.AC_CREATE_OFFLINE_ACCOUNT, [
+            ap['AC_CREATE_OFFLINE_ACCOUNT'], [
                 (nd.get("CHAINID"), z5_AC_CREATE_OFFLINE_ACCOUNT_chainId),
                 (nd.get("COUNT"), z5_AC_CREATE_OFFLINE_ACCOUNT_count),
                 (nd.get("PASSWORD"), z5_AC_CREATE_OFFLINE_ACCOUNT_password)
             ]
         ],
         [
-            ap.AC_EXPORT_ACCOUNT_KEYSTORE, [
+            ap['AC_EXPORT_ACCOUNT_KEYSTORE'], [
                 (nd.get("CHAINID"), z6_AC_EXPORT_ACCOUNT_KEYSTORE_chainId),
                 (nd.get("ADDRESS"), z6_AC_EXPORT_ACCOUNT_KEYSTORE_address),
                 (nd.get("PASSWORD"), z6_AC_EXPORT_ACCOUNT_KEYSTORE_password),
@@ -33,67 +35,67 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.AC_EXPORT_KEYSTORE_JSON, [
+            ap['AC_EXPORT_KEYSTORE_JSON'], [
                 (nd.get("CHAINID"), z7_AC_EXPORT_KEYSTORE_JSON_chainId),
                 (nd.get("ADDRESS"), z7_AC_EXPORT_KEYSTORE_JSON_address),
                 (nd.get("PASSWORD"), z7_AC_EXPORT_KEYSTORE_JSON_password)
             ]
         ],
         [
-            ap.AC_GET_ACCOUNT_BYADDRESS, [
+            ap['AC_GET_ACCOUNT_BYADDRESS'], [
                 (nd.get("CHAINID"), z8_AC_GET_ACCOUNT_BYADDRESS_chainId),
                 (nd.get("ADDRESS"), z8_AC_GET_ACCOUNT_BYADDRESS_address)
             ]
         ],
         [
-            ap.AC_GET_ACCOUNT_LIST, [
+            ap['AC_GET_ACCOUNT_LIST'], [
                 (nd.get("CHAINID"), z9_AC_GET_ACCOUNT_LIST_chainId)
             ]
         ],
         [
-            ap.AC_GET_ADDRESS_LIST, [
+            ap['AC_GET_ADDRESS_LIST'], [
                 (nd.get("CHAINID"), z10_AC_GET_ADDRESS_LIST_chainId),
                 (nd.get("PAGENUMBER"), z10_AC_GET_ADDRESS_LIST_pageNumber),
                 (nd.get("PAGESIZE"), z10_AC_GET_ADDRESS_LIST_pageSize)
             ]
         ],
         [
-            ap.AC_GET_ADDRESS_PREFIX_BY_CHAINID, [
+            ap['AC_GET_ADDRESS_PREFIX_BY_CHAINID'], [
                 (nd.get("CHAINID"), z11_AC_GET_ADDRESS_PREFIX_BY_CHAINID_chainId)
             ]
         ],
         [
-            ap.AC_GET_ALIASBY_ADDRESS, [
+            ap['AC_GET_ALIASBY_ADDRESS'], [
                 (nd.get("CHAINID"), z12_AC_GET_ALIASBY_ADDRESS_chainId),
                 (nd.get("ADDRESS"), z12_AC_GET_ALIASBY_ADDRESS_address)
             ]
         ],
         [
-            ap.AC_GET_ALL_PRIKEY, [
+            ap['AC_GET_ALL_PRIKEY'], [
                 (nd.get("CHAINID"), z14_AC_GET_ALL_PRIKEY_chainId),
                 (nd.get("PASSWORD"), z14_AC_GET_ALL_PRIKEY_password)
             ]
         ],
         [
-            ap.AC_GET_ENCRYPTED_ADDRESS_LIST, [
+            ap['AC_GET_ENCRYPTED_ADDRESS_LIST'], [
                 (nd.get("CHAINID"), z15_AC_GET_ENCRYPTED_ADDRESS_LIST_chainId)
             ]
         ],
         [
-            ap.AC_GET_MULTI_SIGN_ACCOUNT, [
+            ap['AC_GET_MULTI_SIGN_ACCOUNT'], [
                 (nd.get("CHAINID"), z16_AC_GET_MULTI_SIGN_ACCOUNT_chainId),
                 (nd.get("ADDRESS"), z16_AC_GET_MULTI_SIGN_ACCOUNT_address)
             ]
         ],
         [
-            ap.AC_GET_PUBKEY, [
+            ap['AC_GET_PUBKEY'], [
                 (nd.get("CHAINID"), z17_AC_GET_PUBKEY_chainId),
                 (nd.get("ADDRESS"), z17_AC_GET_PUBKEY_address),
                 (nd.get("PASSWORD"), z17_AC_GET_PUBKEY_password)
             ]
         ],
         [
-            ap.AC_IMPORT_ACCOUNT_BY_KEYSTORE, [
+            ap['AC_IMPORT_ACCOUNT_BY_KEYSTORE'], [
                 (nd.get("CHAINID"), z18_AC_IMPORT_ACCOUNT_BY_KEYSTORE_chainId),
                 (nd.get("PASSWORD"), z18_AC_IMPORT_ACCOUNT_BY_KEYSTORE_password),
                 (nd.get("KEYSTORE"), z18_AC_IMPORT_ACCOUNT_BY_KEYSTORE_keyStore),
@@ -101,7 +103,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.AC_IMPORT_ACCOUNT_BY_PRIKEY, [
+            ap['AC_IMPORT_ACCOUNT_BY_PRIKEY'], [
                 (nd.get("CHAINID"), z19_AC_IMPORT_ACCOUNT_BY_PRIKEY_chainId),
                 (nd.get("PASSWORD"), z19_AC_IMPORT_ACCOUNT_BY_PRIKEY_password),
                 (nd.get("PRIKEY"), z19_AC_IMPORT_ACCOUNT_BY_PRIKEY_priKey),
@@ -109,33 +111,33 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.AC_IS_ALIAS_USABLE, [
+            ap['AC_IS_ALIAS_USABLE'], [
                 (nd.get("CHAINID"), z20_AC_IS_ALIAS_USABLE_chainId),
                 (nd.get("ALIAS"), z20_AC_IS_ALIAS_USABLE_alias)
             ]
         ],
         [
-            ap.AC_IS_MULTISIGN_ACCOUNT_BUILDER, [
+            ap['AC_IS_MULTISIGN_ACCOUNT_BUILDER'], [
                 (nd.get("CHAINID"), z21_AC_IS_MULTISIGN_ACCOUNT_BUILDER_chainId),
                 (nd.get("ADDRESS"), z21_AC_IS_MULTISIGN_ACCOUNT_BUILDER_address),
                 (nd.get("PUBKEY"), z21_AC_IS_MULTISIGN_ACCOUNT_BUILDER_pubKey)
             ]
         ],
         [
-            ap.AC_REMOVE_ACCOUNT, [
+            ap['AC_REMOVE_ACCOUNT'], [
                 (nd.get("CHAINID"), z22_AC_REMOVE_ACCOUNT_chainId),
                 (nd.get("ADDRESS"), z22_AC_REMOVE_ACCOUNT_address),
                 (nd.get("PASSWORD"), z22_AC_REMOVE_ACCOUNT_password)
             ]
         ],
         [
-            ap.AC_REMOVE_MULTISIGN_ACCOUNT, [
+            ap['AC_REMOVE_MULTISIGN_ACCOUNT'], [
                 (nd.get("CHAINID"), z23_AC_REMOVE_MULTISIGN_ACCOUNT_chainId),
                 (nd.get("ADDRESS"), z23_AC_REMOVE_MULTISIGN_ACCOUNT_address)
             ]
         ],
         [
-            ap.AC_SET_ALIAS, [
+            ap['AC_SET_ALIAS'], [
                 (nd.get("CHAINID"), z24_AC_SET_ALIAS_chainId),
                 (nd.get("ADDRESS"), z24_AC_SET_ALIAS_address),
                 (nd.get("PASSWORD"), z24_AC_SET_ALIAS_password),
@@ -143,7 +145,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.AC_SET_MULTISIGN_ALIAS, [
+            ap['AC_SET_MULTISIGN_ALIAS'], [
                 (nd.get("CHAINID"), z25_AC_SET_MULTISIGN_ALIAS_chainId),
                 (nd.get("ADDRESS"), z25_AC_SET_MULTISIGN_ALIAS_address),
                 (nd.get("ALIAS"), z25_AC_SET_MULTISIGN_ALIAS_alias),
@@ -152,14 +154,14 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.AC_SET_REMARK, [
+            ap['AC_SET_REMARK'], [
                 (nd.get("CHAINID"), z26_AC_SET_REMARK_chainId),
                 (nd.get("ADDRESS"), z26_AC_SET_REMARK_address),
                 (nd.get("REMARK"), z26_AC_SET_REMARK_remark)
             ]
         ],
         [
-            ap.AC_SIGN_BLOCKDIGEST, [
+            ap['AC_SIGN_BLOCKDIGEST'], [
                 (nd.get("CHAINID"), z27_AC_SIGN_BLOCKDIGEST_chainId),
                 (nd.get("ADDRESS"), z27_AC_SIGN_BLOCKDIGEST_address),
                 (nd.get("PASSWORD"), z27_AC_SIGN_BLOCKDIGEST_password),
@@ -167,7 +169,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.AC_SIGN_DIGEST, [
+            ap['AC_SIGN_DIGEST'], [
                 (nd.get("CHAINID"), z28_AC_SIGN_DIGEST_chainId),
                 (nd.get("ADDRESS"), z28_AC_SIGN_DIGEST_address),
                 (nd.get("PASSWORD"), z28_AC_SIGN_DIGEST_password),
@@ -175,7 +177,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.AC_SIGN_MULTISIGN_TRANSACTION, [
+            ap['AC_SIGN_MULTISIGN_TRANSACTION'], [
                 (nd.get("CHAINID"), z29_AC_SIGN_MULTISIGN_TRANSACTION_chainId),
                 (nd.get("TX"), z29_AC_SIGN_MULTISIGN_TRANSACTION_tx),
                 (nd.get("SIGNADDRESS"), z29_AC_SIGN_MULTISIGN_TRANSACTION_signAddress),
@@ -183,7 +185,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.AC_TRANSFER, [
+            ap['AC_TRANSFER'], [
                 (nd.get("CHAINID"), z30_AC_TRANSFER_chainId),
                 (nd.get("INPUTS"), z30_AC_TRANSFER_inputs),
                 (nd.get("OUTPUTS"), z30_AC_TRANSFER_outputs),
@@ -191,7 +193,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD, [
+            ap['AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD'], [
                 (nd.get("CHAINID"), z31_AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD_chainId),
                 (nd.get("ADDRESS"), z31_AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD_address),
                 (nd.get("PASSWORD"), z31_AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD_password),
@@ -200,7 +202,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.AC_UPDATE_PASSWORD, [
+            ap['AC_UPDATE_PASSWORD'], [
                 (nd.get("CHAINID"), z32_AC_UPDATE_PASSWORD_chainId),
                 (nd.get("ADDRESS"), z32_AC_UPDATE_PASSWORD_address),
                 (nd.get("PASSWORD"), z32_AC_UPDATE_PASSWORD_password),
@@ -208,70 +210,70 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.AC_VALIDATION_PASSWORD, [
+            ap['AC_VALIDATION_PASSWORD'], [
                 (nd.get("CHAINID"), z33_AC_VALIDATION_PASSWORD_chainId),
                 (nd.get("ADDRESS"), z33_AC_VALIDATION_PASSWORD_address),
                 (nd.get("PASSWORD"), z33_AC_VALIDATION_PASSWORD_password)
             ]
         ],
         [
-            ap.AC_VERIFY_SIGN_DATA, [
+            ap['AC_VERIFY_SIGN_DATA'], [
                 (nd.get("PUBKEY"), z34_AC_VERIFY_SIGN_DATA_pubKey),
                 (nd.get("SIG"), z34_AC_VERIFY_SIGN_DATA_sig),
                 (nd.get("DATA"), z34_AC_VERIFY_SIGN_DATA_data)
             ]
         ],
         [
-            ap.BATCH_VALIDATE_BEGIN, [
+            ap['BATCH_VALIDATE_BEGIN'], [
                 (nd.get("CHAINID"), z35_BATCH_VALIDATE_BEGIN_chainId)
             ]
         ],
         [
-            ap.BLOCK_VALIDATE, [
+            ap['BLOCK_VALIDATE'], [
                 (nd.get("CHAINID"), z36_BLOCK_VALIDATE_chainId),
                 (nd.get("TXLIST"), z36_BLOCK_VALIDATE_txList)
             ]
         ],
         [
-            ap.CANCEL_CROSSCHAIN, [
+            ap['CANCEL_CROSSCHAIN'], [
                 (nd.get("CHAINID"), z38_CANCEL_CROSSCHAIN_chainId),
                 (nd.get("ASSETID"), z38_CANCEL_CROSSCHAIN_assetId)
             ]
         ],
         [
-            ap.CHECK_BLOCK_VERSION, [
+            ap['CHECK_BLOCK_VERSION'], [
                 (nd.get("CHAINID"), z39_CHECK_BLOCK_VERSION_chainId),
                 (nd.get("EXTENDSDATA"), z39_CHECK_BLOCK_VERSION_extendsData)
             ]
         ],
         [
-            ap.CM_ASSET, [
+            ap['CM_ASSET'], [
                 (nd.get("CHAINID"), z40_CM_ASSET_chainId),
                 (nd.get("ASSETID"), z40_CM_ASSET_assetId)
             ]
         ],
         [
-            ap.CM_ASSET_CIRCULATE_COMMIT, [
+            ap['CM_ASSET_CIRCULATE_COMMIT'], [
                 (nd.get("CHAINID"), z41_CM_ASSET_CIRCULATE_COMMIT_chainId),
                 (nd.get("TXLIST"), z41_CM_ASSET_CIRCULATE_COMMIT_txList),
                 (nd.get("BLOCKHEADER"), z41_CM_ASSET_CIRCULATE_COMMIT_blockHeader)
             ]
         ],
         [
-            ap.CM_ASSET_CIRCULATE_ROLLBACK, [
+            ap['CM_ASSET_CIRCULATE_ROLLBACK'], [
                 (nd.get("CHAINID"), z42_CM_ASSET_CIRCULATE_ROLLBACK_chainId),
                 (nd.get("TXLIST"), z42_CM_ASSET_CIRCULATE_ROLLBACK_txList),
                 (nd.get("BLOCKHEADER"), z42_CM_ASSET_CIRCULATE_ROLLBACK_blockHeader)
             ]
         ],
         [
-            ap.CM_ASSET_CIRCULATE_VALIDATOR, [
+            ap['CM_ASSET_CIRCULATE_VALIDATOR'], [
                 (nd.get("CHAINID"), z43_CM_ASSET_CIRCULATE_VALIDATOR_chainId),
                 (nd.get("TX"), z43_CM_ASSET_CIRCULATE_VALIDATOR_tx)
             ]
         ],
         [
-            ap.CM_ASSET_DISABLE, [
+            ap['CM_ASSET_DISABLE'], [
                 (nd.get("CHAINID"), z44_CM_ASSET_DISABLE_chainId),
                 (nd.get("ASSETID"), z44_CM_ASSET_DISABLE_assetId),
                 (nd.get("ADDRESS"), z44_CM_ASSET_DISABLE_address),
@@ -279,7 +281,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.CM_ASSET_REG, [
+            ap['CM_ASSET_REG'], [
                 (nd.get("CHAINID"), z45_CM_ASSET_REG_chainId),
                 (nd.get("ASSETID"), z45_CM_ASSET_REG_assetId),
                 (nd.get("SYMBOL"), z45_CM_ASSET_REG_symbol),
@@ -291,12 +293,12 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.CM_CHAIN, [
+            ap['CM_CHAIN'], [
                 (nd.get("CHAINID"), z46_CM_CHAIN_chainId)
             ]
         ],
         [
-            ap.CM_CHAIN_ACTIVE, [
+            ap['CM_CHAIN_ACTIVE'], [
                 (nd.get("CHAINID"), z47_CM_CHAIN_ACTIVE_chainId),
                 (nd.get("CHAINNAME"), z47_CM_CHAIN_ACTIVE_chainName),
                 (nd.get("ADDRESSTYPE"), z47_CM_CHAIN_ACTIVE_addressType),
@@ -316,7 +318,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.CM_CHAIN_REG, [
+            ap['CM_CHAIN_REG'], [
                 (nd.get("CHAINID"), z48_CM_CHAIN_REG_chainId),
                 (nd.get("CHAINNAME"), z48_CM_CHAIN_REG_chainName),
                 (nd.get("ADDRESSTYPE"), z48_CM_CHAIN_REG_addressType),
@@ -336,46 +338,46 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.CM_GET_CHAIN_ASSET, [
+            ap['CM_GET_CHAIN_ASSET'], [
                 (nd.get("CHAINID"), z49_CM_GET_CHAIN_ASSET_chainId),
                 (nd.get("ASSETCHAINID"), z49_CM_GET_CHAIN_ASSET_assetChainId),
                 (nd.get("ASSETID"), z49_CM_GET_CHAIN_ASSET_assetId)
             ]
         ],
         [
-            ap.CM_GET_CIRCULATE_CHAIN_ASSET, [
+            ap['CM_GET_CIRCULATE_CHAIN_ASSET'], [
                 (nd.get("CIRCULATECHAINID"), z50_CM_GET_CIRCULATE_CHAIN_ASSET_circulateChainId),
                 (nd.get("ASSETCHAINID"), z50_CM_GET_CIRCULATE_CHAIN_ASSET_assetChainId),
                 (nd.get("ASSETID"), z50_CM_GET_CIRCULATE_CHAIN_ASSET_assetId)
             ]
         ],
         [
-            ap.COMMIT_BATCH_UNCONFIRMED_TXS, [
+            ap['COMMIT_BATCH_UNCONFIRMED_TXS'], [
                 (nd.get("CHAINID"), z51_COMMIT_BATCH_UNCONFIRMED_TXS_chainId),
                 (nd.get("TXLIST"), z51_COMMIT_BATCH_UNCONFIRMED_TXS_txList)
             ]
         ],
         [
-            ap.COMMIT_BLOCKTXS, [
+            ap['COMMIT_BLOCKTXS'], [
                 (nd.get("CHAINID"), z52_COMMIT_BLOCKTXS_chainId),
                 (nd.get("TXLIST"), z52_COMMIT_BLOCKTXS_txList),
                 (nd.get("BLOCKHEIGHT"), z52_COMMIT_BLOCKTXS_blockHeight)
             ]
         ],
         [
-            ap.COMMIT_UNCONFIRMEDTX, [
+            ap['COMMIT_UNCONFIRMEDTX'], [
                 (nd.get("CHAINID"), z53_COMMIT_UNCONFIRMEDTX_chainId),
                 (nd.get("TX"), z53_COMMIT_UNCONFIRMEDTX_tx)
             ]
         ],
         [
-            ap.CREATE_AGENT_VALID, [
+            ap['CREATE_AGENT_VALID'], [
                 (nd.get("CHAINID"), z55_CREATE_AGENT_VALID_chainId),
                 (nd.get("TX"), z55_CREATE_AGENT_VALID_tx)
             ]
         ],
         [
-            ap.CREATE_CROSSTX, [
+            ap['CREATE_CROSSTX'], [
                 (nd.get("CHAINID"), z56_CREATE_CROSSTX_chainId),
                 (nd.get("LISTFROM"), z56_CREATE_CROSSTX_listFrom),
                 (nd.get("LISTTO"), z56_CREATE_CROSSTX_listTo),
@@ -383,31 +385,31 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.CROSSCHAIN_REGISTER_CHANGE, [
+            ap['CROSSCHAIN_REGISTER_CHANGE'], [
                 (nd.get("CHAINID"), z57_CROSSCHAIN_REGISTER_CHANGE_chainId)
             ]
         ],
         [
-            ap.CS_ADD_BLOCK, [
+            ap['CS_ADD_BLOCK'], [
                 (nd.get("CHAINID"), z58_CS_ADD_BLOCK_chainId),
                 (nd.get("BLOCKHEADER"), z58_CS_ADD_BLOCK_blockHeader)
             ]
         ],
         [
-            ap.CS_ADD_EVIDENCE_RECORD, [
+            ap['CS_ADD_EVIDENCE_RECORD'], [
                 (nd.get("CHAINID"), z59_CS_ADD_EVIDENCE_RECORD_chainId),
                 (nd.get("BLOCKHEADER"), z59_CS_ADD_EVIDENCE_RECORD_blockHeader),
                 (nd.get("EVIDENCEHEADER"), z59_CS_ADD_EVIDENCE_RECORD_evidenceHeader)
             ]
         ],
         [
-            ap.CS_CHAIN_ROLLBACK, [
+            ap['CS_CHAIN_ROLLBACK'], [
                 (nd.get("CHAINID"), z60_CS_CHAIN_ROLLBACK_chainId),
                 (nd.get("HEIGHT"), z60_CS_CHAIN_ROLLBACK_height)
             ]
         ],
         [
-            ap.CS_CONTRACT_DEPOSIT, [
+            ap['CS_CONTRACT_DEPOSIT'], [
                 (nd.get("CHAINID"), z61_CS_CONTRACT_DEPOSIT_chainId),
                 (nd.get("AGENTHASH"), z61_CS_CONTRACT_DEPOSIT_agentHash),
                 (nd.get("DEPOSIT"), z61_CS_CONTRACT_DEPOSIT_deposit),
@@ -419,7 +421,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.CS_CONTRACT_WITHDRAW, [
+            ap['CS_CONTRACT_WITHDRAW'], [
                 (nd.get("CHAINID"), z62_CS_CONTRACT_WITHDRAW_chainId),
                 (nd.get("JOINAGENTHASH"), z62_CS_CONTRACT_WITHDRAW_joinAgentHash),
                 (nd.get("CONTRACTADDRESS"), z62_CS_CONTRACT_WITHDRAW_contractAddress),
@@ -430,7 +432,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.CS_CREATE_AGENT, [
+            ap['CS_CREATE_AGENT'], [
                 (nd.get("CHAINID"), z63_CS_CREATE_AGENT_chainId),
                 (nd.get("AGENTADDRESS"), z63_CS_CREATE_AGENT_agentAddress),
                 (nd.get("PACKINGADDRESS"), z63_CS_CREATE_AGENT_packingAddress),
@@ -441,7 +443,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.CS_CREATE_CONTRACT_AGENT, [
+            ap['CS_CREATE_CONTRACT_AGENT'], [
                 (nd.get("CHAINID"), z64_CS_CREATE_CONTRACT_AGENT_chainId),
                 (nd.get("PACKINGADDRESS"), z64_CS_CREATE_CONTRACT_AGENT_packingAddress),
                 (nd.get("DEPOSIT"), z64_CS_CREATE_CONTRACT_AGENT_deposit),
@@ -454,7 +456,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.CS_CREATE_MULTI_AGENT, [
+            ap['CS_CREATE_MULTI_AGENT'], [
                 (nd.get("CHAINID"), z65_CS_CREATE_MULTI_AGENT_chainId),
                 (nd.get("AGENTADDRESS"), z65_CS_CREATE_MULTI_AGENT_agentAddress),
                 (nd.get("PACKINGADDRESS"), z65_CS_CREATE_MULTI_AGENT_packingAddress),
@@ -466,7 +468,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.CS_DEPOSIT_TOAGENT, [
+            ap['CS_DEPOSIT_TOAGENT'], [
                 (nd.get("CHAINID"), z66_CS_DEPOSIT_TOAGENT_chainId),
                 (nd.get("ADDRESS"), z66_CS_DEPOSIT_TOAGENT_address),
                 (nd.get("AGENTHASH"), z66_CS_DEPOSIT_TOAGENT_agentHash),
@@ -475,30 +477,30 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.CS_DOUBLE_SPEND_RECORD, [
+            ap['CS_DOUBLE_SPEND_RECORD'], [
                 (nd.get("CHAINID"), z67_CS_DOUBLE_SPEND_RECORD_chainId),
                 (nd.get("BLOCK"), z67_CS_DOUBLE_SPEND_RECORD_block),
                 (nd.get("TX"), z67_CS_DOUBLE_SPEND_RECORD_tx)
             ]
         ],
         [
-            ap.CS_GET_AGENT_ADDRESS_LIST, [
+            ap['CS_GET_AGENT_ADDRESS_LIST'], [
                 (nd.get("CHAINID"), z68_CS_GET_AGENT_ADDRESS_LIST_chainId)
             ]
         ],
         [
-            ap.CS_GET_AGENT_CHANGE_INFO, [
+            ap['CS_GET_AGENT_CHANGE_INFO'], [
                 (nd.get("CHAINID"), z69_CS_GET_AGENT_CHANGE_INFO_chainId)
             ]
         ],
         [
-            ap.CS_GET_AGENT_INFO, [
+            ap['CS_GET_AGENT_INFO'], [
                 (nd.get("CHAINID"), z70_CS_GET_AGENT_INFO_chainId),
                 (nd.get("AGENTHASH"), z70_CS_GET_AGENT_INFO_agentHash)
             ]
         ],
         [
-            ap.CS_GET_AGENT_LIST, [
+            ap['CS_GET_AGENT_LIST'], [
                 (nd.get("CHAINID"), z71_CS_GET_AGENT_LIST_chainId),
                 (nd.get("PAGENUMBER"), z71_CS_GET_AGENT_LIST_pageNumber),
                 (nd.get("PAGESIZE"), z71_CS_GET_AGENT_LIST_pageSize),
@@ -506,18 +508,18 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.CS_GET_AGENT_STATUS, [
+            ap['CS_GET_AGENT_STATUS'], [
                 (nd.get("CHAINID"), z72_CS_GET_AGENT_STATUS_chainId),
                 (nd.get("AGENTHASH"), z72_CS_GET_AGENT_STATUS_agentHash)
             ]
         ],
         [
-            ap.CS_GET_CONSENSUS_CONFIG, [
+            ap['CS_GET_CONSENSUS_CONFIG'], [
                 (nd.get("CHAINID"), z73_CS_GET_CONSENSUS_CONFIG_chainId)
             ]
         ],
         [
-            ap.CS_GET_CONTRACT_AGENT_INFO, [
+            ap['CS_GET_CONTRACT_AGENT_INFO'], [
                 (nd.get("CHAINID"), z74_CS_GET_CONTRACT_AGENT_INFO_chainId),
                 (nd.get("AGENTHASH"), z74_CS_GET_CONTRACT_AGENT_INFO_agentHash),
                 (nd.get("CONTRACTADDRESS"), z74_CS_GET_CONTRACT_AGENT_INFO_contractAddress),
@@ -525,7 +527,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.CS_GET_CONTRACT_DEPOSIT_INFO, [
+            ap['CS_GET_CONTRACT_DEPOSIT_INFO'], [
                 (nd.get("CHAINID"), z75_CS_GET_CONTRACT_DEPOSIT_INFO_chainId),
                 (nd.get("JOINAGENTHASH"), z75_CS_GET_CONTRACT_DEPOSIT_INFO_joinAgentHash),
                 (nd.get("CONTRACTADDRESS"), z75_CS_GET_CONTRACT_DEPOSIT_INFO_contractAddress),
@@ -533,7 +535,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.CS_GET_DEPOSIT_LIST, [
+            ap['CS_GET_DEPOSIT_LIST'], [
                 (nd.get("CHAINID"), z76_CS_GET_DEPOSIT_LIST_chainId),
                 (nd.get("PAGENUMBER"), z76_CS_GET_DEPOSIT_LIST_pageNumber),
                 (nd.get("PAGESIZE"), z76_CS_GET_DEPOSIT_LIST_pageSize),
@@ -542,46 +544,46 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.CS_GET_INFO, [
+            ap['CS_GET_INFO'], [
                 (nd.get("CHAINID"), z77_CS_GET_INFO_chainId),
                 (nd.get("ADDRESS"), z77_CS_GET_INFO_address)
             ]
         ],
         [
-            ap.CS_GET_PACKER_INFO, [
+            ap['CS_GET_PACKER_INFO'], [
                 (nd.get("CHAINID"), z78_CS_GET_PACKER_INFO_chainId)
             ]
         ],
         [
-            ap.CS_GET_PUBLISH_LIST, [
+            ap['CS_GET_PUBLISH_LIST'], [
                 (nd.get("CHAINID"), z79_CS_GET_PUBLISH_LIST_chainId),
                 (nd.get("ADDRESS"), z79_CS_GET_PUBLISH_LIST_address),
                 (nd.get("TYPE"), z79_CS_GET_PUBLISH_LIST_type)
             ]
         ],
         [
-            ap.CS_GET_ROUND_INFO, [
+            ap['CS_GET_ROUND_INFO'], [
                 (nd.get("CHAINID"), z80_CS_GET_ROUND_INFO_chainId)
             ]
         ],
         [
-            ap.CS_GET_ROUND_MEMBER_LIST, [
+            ap['CS_GET_ROUND_MEMBER_LIST'], [
                 (nd.get("CHAINID"), z81_CS_GET_ROUND_MEMBER_LIST_chainId),
                 (nd.get("EXTEND"), z81_CS_GET_ROUND_MEMBER_LIST_extend)
             ]
         ],
         [
-            ap.CS_GET_SEED_NODE_INFO, [
+            ap['CS_GET_SEED_NODE_INFO'], [
                 (nd.get("CHAINID"), z82_CS_GET_SEED_NODE_INFO_chainId)
             ]
         ],
         [
-            ap.CS_GET_WHOLEINFO, [
+            ap['CS_GET_WHOLEINFO'], [
                 (nd.get("CHAINID"), z83_CS_GET_WHOLEINFO_chainId)
             ]
         ],
         [
-            ap.CS_MULTI_DEPOSIT, [
+            ap['CS_MULTI_DEPOSIT'], [
                 (nd.get("CHAINID"), z84_CS_MULTI_DEPOSIT_chainId),
                 (nd.get("ADDRESS"), z84_CS_MULTI_DEPOSIT_address),
                 (nd.get("AGENTHASH"), z84_CS_MULTI_DEPOSIT_agentHash),
@@ -591,7 +593,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.CS_MULTI_WITHDRAW, [
+            ap['CS_MULTI_WITHDRAW'], [
                 (nd.get("CHAINID"), z85_CS_MULTI_WITHDRAW_chainId),
                 (nd.get("ADDRESS"), z85_CS_MULTI_WITHDRAW_address),
                 (nd.get("TXHASH"), z85_CS_MULTI_WITHDRAW_txHash),
@@ -600,21 +602,21 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.CS_RANDOM_RAW_SEEDS_COUNT, [
+            ap['CS_RANDOM_RAW_SEEDS_COUNT'], [
                 (nd.get("CHAINID"), z86_CS_RANDOM_RAW_SEEDS_COUNT_chainId),
                 (nd.get("HEIGHT"), z86_CS_RANDOM_RAW_SEEDS_COUNT_height),
                 (nd.get("COUNT"), z86_CS_RANDOM_RAW_SEEDS_COUNT_count)
             ]
         ],
         [
-            ap.CS_RANDOM_RAW_SEEDS_HEIGHT, [
+            ap['CS_RANDOM_RAW_SEEDS_HEIGHT'], [
                 (nd.get("CHAINID"), z87_CS_RANDOM_RAW_SEEDS_HEIGHT_chainId),
                 (nd.get("STARTHEIGHT"), z87_CS_RANDOM_RAW_SEEDS_HEIGHT_startHeight),
                 (nd.get("ENDHEIGHT"), z87_CS_RANDOM_RAW_SEEDS_HEIGHT_endHeight)
             ]
         ],
         [
-            ap.CS_RANDOM_SEED_COUNT, [
+            ap['CS_RANDOM_SEED_COUNT'], [
                 (nd.get("CHAINID"), z88_CS_RANDOM_SEED_COUNT_chainId),
                 (nd.get("HEIGHT"), z88_CS_RANDOM_SEED_COUNT_height),
                 (nd.get("COUNT"), z88_CS_RANDOM_SEED_COUNT_count),
@@ -622,7 +624,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.CS_RANDOM_SEED_HEIGHT, [
+            ap['CS_RANDOM_SEED_HEIGHT'], [
                 (nd.get("CHAINID"), z89_CS_RANDOM_SEED_HEIGHT_chainId),
                 (nd.get("STARTHEIGHT"), z89_CS_RANDOM_SEED_HEIGHT_startHeight),
                 (nd.get("ENDHEIGHT"), z89_CS_RANDOM_SEED_HEIGHT_endHeight),
@@ -630,47 +632,47 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.CS_RECEIVE_HEADERLIST, [
+            ap['CS_RECEIVE_HEADERLIST'], [
                 (nd.get("CHAINID"), z90_CS_RECEIVE_HEADERLIST_chainId),
                 (nd.get("HEADERLIST"), z90_CS_RECEIVE_HEADERLIST_headerList)
             ]
         ],
         [
-            ap.CS_RUN_CHAIN, [
+            ap['CS_RUN_CHAIN'], [
                 (nd.get("CHAINID"), z91_CS_RUN_CHAIN_chainId)
             ]
         ],
         [
-            ap.CS_RUN_MAINCHAIN, [
+            ap['CS_RUN_MAINCHAIN'], [
                 (nd.get("CHAINID"), z92_CS_RUN_MAINCHAIN_chainId)
             ]
         ],
         [
-            ap.CS_STOPAGENT, [
+            ap['CS_STOPAGENT'], [
                 (nd.get("CHAINID"), z93_CS_STOPAGENT_chainId),
                 (nd.get("ADDRESS"), z93_CS_STOPAGENT_address),
                 (nd.get("PASSWORD"), z93_CS_STOPAGENT_password)
             ]
         ],
         [
-            ap.CS_STOP_AGENT, [
+            ap['CS_STOP_AGENT'], [
                 (nd.get("CHAINID"), z94_CS_STOP_AGENT_chainId),
                 (nd.get("ADDRESS"), z94_CS_STOP_AGENT_address),
                 (nd.get("PASSWORD"), z94_CS_STOP_AGENT_password)
             ]
         ],
         [
-            ap.CS_STOPCHAIN, [
+            ap['CS_STOPCHAIN'], [
                 (nd.get("CHAINID"), z95_CS_STOPCHAIN_chainId)
             ]
         ],
         [
-            ap.CS_STOP_CHAIN, [
+            ap['CS_STOP_CHAIN'], [
                 (nd.get("CHAINID"), z96_CS_STOP_CHAIN_chainId)
             ]
         ],
         [
-            ap.CS_STOP_CONTRACT_AGENT, [
+            ap['CS_STOP_CONTRACT_AGENT'], [
                 (nd.get("CHAINID"), z97_CS_STOP_CONTRACT_AGENT_chainId),
                 (nd.get("CONTRACTADDRESS"), z97_CS_STOP_CONTRACT_AGENT_contractAddress),
                 (nd.get("CONTRACTSENDER"), z97_CS_STOP_CONTRACT_AGENT_contractSender),
@@ -680,7 +682,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.CS_STOP_MULTI_AGENT, [
+            ap['CS_STOP_MULTI_AGENT'], [
                 (nd.get("CHAINID"), z98_CS_STOP_MULTI_AGENT_chainId),
                 (nd.get("ADDRESS"), z98_CS_STOP_MULTI_AGENT_address),
                 (nd.get("PASSWORD"), z98_CS_STOP_MULTI_AGENT_password),
@@ -688,7 +690,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.CS_TRIGGER_COINBASE_CONTRACT, [
+            ap['CS_TRIGGER_COINBASE_CONTRACT'], [
                 (nd.get("CHAINID"), z99_CS_TRIGGER_COINBASE_CONTRACT_chainId),
                 (nd.get("TX"), z99_CS_TRIGGER_COINBASE_CONTRACT_tx),
                 (nd.get("BLOCKHEADER"), z99_CS_TRIGGER_COINBASE_CONTRACT_blockHeader),
@@ -696,25 +698,25 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.CS_UPDATE_AGENT_CONSENSUS_STATUS, [
+            ap['CS_UPDATE_AGENT_CONSENSUS_STATUS'], [
                 (nd.get("CHAINID"), z100_CS_UPDATE_AGENT_CONSENSUS_STATUS_chainId)
             ]
         ],
         [
-            ap.CS_UPDATE_AGENT_STATUS, [
+            ap['CS_UPDATE_AGENT_STATUS'], [
                 (nd.get("CHAINID"), z101_CS_UPDATE_AGENT_STATUS_chainId),
                 (nd.get("STATUS"), z101_CS_UPDATE_AGENT_STATUS_status)
             ]
         ],
         [
-            ap.CS_VALIDBLOCK, [
+            ap['CS_VALIDBLOCK'], [
                 (nd.get("CHAINID"), z102_CS_VALIDBLOCK_chainId),
                 (nd.get("DOWNLOAD"), z102_CS_VALIDBLOCK_download),
                 (nd.get("BLOCK"), z102_CS_VALIDBLOCK_block)
             ]
         ],
         [
-            ap.CS_WITHDRAW, [
+            ap['CS_WITHDRAW'], [
                 (nd.get("CHAINID"), z103_CS_WITHDRAW_chainId),
                 (nd.get("ADDRESS"), z103_CS_WITHDRAW_address),
                 (nd.get("TXHASH"), z103_CS_WITHDRAW_txHash),
@@ -722,19 +724,19 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.DEPOSIT_VALID, [
+            ap['DEPOSIT_VALID'], [
                 (nd.get("CHAINID"), z104_DEPOSIT_VALID_chainId),
                 (nd.get("TX"), z104_DEPOSIT_VALID_tx)
             ]
         ],
         [
-            ap.GET_ASSETS_BY_ID, [
+            ap['GET_ASSETS_BY_ID'], [
                 (nd.get("CHAINID"), z105_GET_ASSETS_BY_ID_chainId),
                 (nd.get("ASSETIDS"), z105_GET_ASSETS_BY_ID_assetIds)
             ]
         ],
         [
-            ap.GET_BALANCE, [
+            ap['GET_BALANCE'], [
                 (nd.get("CHAINID"), z106_GET_BALANCE_chainId),
                 (nd.get("ASSETCHAINID"), z106_GET_BALANCE_assetChainId),
                 (nd.get("ASSETID"), z106_GET_BALANCE_assetId),
@@ -742,7 +744,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.GET_BALANCE_NONCE, [
+            ap['GET_BALANCE_NONCE'], [
                 (nd.get("CHAINID"), z107_GET_BALANCE_NONCE_chainId),
                 (nd.get("ASSETCHAINID"), z107_GET_BALANCE_NONCE_assetChainId),
                 (nd.get("ASSETID"), z107_GET_BALANCE_NONCE_assetId),
@@ -751,106 +753,106 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.GET_BLOCK_BY_HASH, [
+            ap['GET_BLOCK_BY_HASH'], [
                 (nd.get("CHAINID"), z108_GET_BLOCK_BY_HASH_chainId),
                 (nd.get("HASH"), z108_GET_BLOCK_BY_HASH_hash)
             ]
         ],
         [
-            ap.GET_BLOCK_BY_HEIGHT, [
+            ap['GET_BLOCK_BY_HEIGHT'], [
                 (nd.get("CHAINID"), z109_GET_BLOCK_BY_HEIGHT_chainId),
                 (nd.get("HEIGHT"), z109_GET_BLOCK_BY_HEIGHT_height)
             ]
         ],
         [
-            ap.GET_BLOCKHEADER_BY_HASH, [
+            ap['GET_BLOCKHEADER_BY_HASH'], [
                 (nd.get("CHAINID"), z110_GET_BLOCKHEADER_BY_HASH_chainId),
                 (nd.get("HASH"), z110_GET_BLOCKHEADER_BY_HASH_hash)
             ]
         ],
         [
-            ap.GET_BLOCKHEADER_BY_HEIGHT, [
+            ap['GET_BLOCKHEADER_BY_HEIGHT'], [
                 (nd.get("CHAINID"), z111_GET_BLOCKHEADER_BY_HEIGHT_chainId),
                 (nd.get("HEIGHT"), z111_GET_BLOCKHEADER_BY_HEIGHT_height)
             ]
         ],
         [
-            ap.GET_BLOCKHEADER_PO_BY_HASH, [
+            ap['GET_BLOCKHEADER_PO_BY_HASH'], [
                 (nd.get("CHAINID"), z112_GET_BLOCKHEADER_PO_BY_HASH_chainId),
                 (nd.get("HASH"), z112_GET_BLOCKHEADER_PO_BY_HASH_hash)
             ]
         ],
         [
-            ap.GET_BLOCKHEADER_POBY_HEIGHT, [
+            ap['GET_BLOCKHEADER_POBY_HEIGHT'], [
                 (nd.get("CHAINID"), z113_GET_BLOCKHEADER_POBY_HEIGHT_chainId),
                 (nd.get("HEIGHT"), z113_GET_BLOCKHEADER_POBY_HEIGHT_height)
             ]
         ],
         [
-            ap.GET_BLOCKHEADERS_BY_HEIGHT_RANGE, [
+            ap['GET_BLOCKHEADERS_BY_HEIGHT_RANGE'], [
                 (nd.get("CHAINID"), z114_GET_BLOCKHEADERS_BY_HEIGHT_RANGE_chainId),
                 (nd.get("BEGIN"), z114_GET_BLOCKHEADERS_BY_HEIGHT_RANGE_begin),
                 (nd.get("END"), z114_GET_BLOCKHEADERS_BY_HEIGHT_RANGE_end)
             ]
         ],
         [
-            ap.GET_BLOCKHEADERS_FOR_PROTOCOL, [
+            ap['GET_BLOCKHEADERS_FOR_PROTOCOL'], [
                 (nd.get("CHAINID"), z115_GET_BLOCKHEADERS_FOR_PROTOCOL_chainId),
                 (nd.get("INTERVAL"), z115_GET_BLOCKHEADERS_FOR_PROTOCOL_interval)
             ]
         ],
         [
-            ap.GET_BYZANTINE_COUNT, [
+            ap['GET_BYZANTINE_COUNT'], [
                 (nd.get("CHAINID"), z116_GET_BYZANTINE_COUNT_chainId)
             ]
         ],
         [
-            ap.GET_CIRCULAT, [
+            ap['GET_CIRCULAT'], [
                 (nd.get("CHAINID"), z117_GET_CIRCULAT_chainId),
                 (nd.get("NODEID"), z117_GET_CIRCULAT_nodeId),
                 (nd.get("MESSAGEBODY"), z117_GET_CIRCULAT_messageBody)
             ]
         ],
         [
-            ap.GET_CROSSTX_STATE, [
+            ap['GET_CROSSTX_STATE'], [
                 (nd.get("CHAINID"), z119_GET_CROSSTX_STATE_chainId),
                 (nd.get("TXHASH"), z119_GET_CROSSTX_STATE_txHash)
             ]
         ],
         [
-            ap.GET_CTX, [
+            ap['GET_CTX'], [
                 (nd.get("CHAINID"), z120_GET_CTX_chainId),
                 (nd.get("NODEID"), z120_GET_CTX_nodeId),
                 (nd.get("MESSAGEBODY"), z120_GET_CTX_messageBody)
             ]
         ],
         [
-            ap.GET_CTX_STATE, [
+            ap['GET_CTX_STATE'], [
                 (nd.get("CHAINID"), z121_GET_CTX_STATE_chainId),
                 (nd.get("NODEID"), z121_GET_CTX_STATE_nodeId),
                 (nd.get("MESSAGEBODY"), z121_GET_CTX_STATE_messageBody)
             ]
         ],
         [
-            ap.GET_FRIEND_CHAIN_CIRCULATE, [
+            ap['GET_FRIEND_CHAIN_CIRCULATE'], [
                 (nd.get("CHAINID"), z122_GET_FRIEND_CHAIN_CIRCULATE_chainId),
                 (nd.get("ASSETIDS"), z122_GET_FRIEND_CHAIN_CIRCULATE_assetIds)
             ]
         ],
         [
-            ap.GET_LATEST_BLOCKHEADERS, [
+            ap['GET_LATEST_BLOCKHEADERS'], [
                 (nd.get("CHAINID"), z123_GET_LATEST_BLOCKHEADERS_chainId),
                 (nd.get("SIZE"), z123_GET_LATEST_BLOCKHEADERS_size)
             ]
         ],
         [
-            ap.GET_LATEST_ROUND_BLOCKHEADERS, [
+            ap['GET_LATEST_ROUND_BLOCKHEADERS'], [
                 (nd.get("CHAINID"), z124_GET_LATEST_ROUND_BLOCKHEADERS_chainId),
                 (nd.get("ROUND"), z124_GET_LATEST_ROUND_BLOCKHEADERS_round)
             ]
         ],
         [
-            ap.GET_NONCE, [
+            ap['GET_NONCE'], [
                 (nd.get("CHAINID"), z125_GET_NONCE_chainId),
                 (nd.get("ASSETCHAINID"), z125_GET_NONCE_assetChainId),
                 (nd.get("ASSETID"), z125_GET_NONCE_assetId),
@@ -859,56 +861,56 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.GET_OTHERCTX, [
+            ap['GET_OTHERCTX'], [
                 (nd.get("CHAINID"), z126_GET_OTHERCTX_chainId),
                 (nd.get("NODEID"), z126_GET_OTHERCTX_nodeId),
                 (nd.get("MESSAGEBODY"), z126_GET_OTHERCTX_messageBody)
             ]
         ],
         [
-            ap.GET_ROUND_BLOCKHEADERS, [
+            ap['GET_ROUND_BLOCKHEADERS'], [
                 (nd.get("CHAINID"), z128_GET_ROUND_BLOCKHEADERS_chainId),
                 (nd.get("HEIGHT"), z128_GET_ROUND_BLOCKHEADERS_height),
                 (nd.get("ROUND"), z128_GET_ROUND_BLOCKHEADERS_round)
             ]
         ],
         [
-            ap.GET_STATUS, [
+            ap['GET_STATUS'], [
                 (nd.get("CHAINID"), z129_GET_STATUS_chainId)
             ]
         ],
         [
-            ap.GET_VERSION, [
+            ap['GET_VERSION'], [
                 (nd.get("CHAINID"), z130_GET_VERSION_chainId)
             ]
         ],
         [
-            ap.INFO, [
+            ap['INFO'], [
                 (nd.get("CHAINID"), z131_INFO_chainId)
             ]
         ],
         [
-            ap.LATEST_BLOCK, [
+            ap['LATEST_BLOCK'], [
                 (nd.get("CHAINID"), z132_LATEST_BLOCK_chainId)
             ]
         ],
         [
-            ap.LATEST_BLOCKHEADER, [
+            ap['LATEST_BLOCKHEADER'], [
                 (nd.get("CHAINID"), z133_LATEST_BLOCKHEADER_chainId)
             ]
         ],
         [
-            ap.LATEST_BLOCKHEADER_PO, [
+            ap['LATEST_BLOCKHEADER_PO'], [
                 (nd.get("CHAINID"), z134_LATEST_BLOCKHEADER_PO_chainId)
             ]
         ],
         [
-            ap.LATEST_HEIGHT, [
+            ap['LATEST_HEIGHT'], [
                 (nd.get("CHAINID"), z135_LATEST_HEIGHT_chainId)
             ]
         ],
         [
-            ap.MSG_PROCESS, [
+            ap['MSG_PROCESS'], [
                 (nd.get("CHAINID"), z137_MSG_PROCESS_chainId),
                 (nd.get("NODEID"), z137_MSG_PROCESS_nodeId),
                 (nd.get("CMD"), z137_MSG_PROCESS_cmd),
@@ -916,13 +918,13 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.NEW_BLOCK_HEIGHT, [
+            ap['NEW_BLOCK_HEIGHT'], [
                 (nd.get("CHAINID"), z138_NEW_BLOCK_HEIGHT_chainId),
                 (nd.get("HEIGHT"), z138_NEW_BLOCK_HEIGHT_height)
             ]
         ],
         [
-            ap.NW_ACTIVE_CROSS, [
+            ap['NW_ACTIVE_CROSS'], [
                 (nd.get("CHAINID"), z139_NW_ACTIVE_CROSS_chainId),
                 (nd.get("MAXOUT"), z139_NW_ACTIVE_CROSS_maxOut),
                 (nd.get("MAXIN"), z139_NW_ACTIVE_CROSS_maxIn),
@@ -930,14 +932,14 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.NW_ADD_NODES, [
+            ap['NW_ADD_NODES'], [
                 (nd.get("CHAINID"), z140_NW_ADD_NODES_chainId),
                 (nd.get("ISCROSS"), z140_NW_ADD_NODES_isCross),
                 (nd.get("NODES"), z140_NW_ADD_NODES_nodes)
             ]
         ],
         [
-            ap.NW_BROADCAST, [
+            ap['NW_BROADCAST'], [
                 (nd.get("CHAINID"), z141_NW_BROADCAST_chainId),
                 (nd.get("EXCLUDENODES"), z141_NW_BROADCAST_excludeNodes),
                 (nd.get("MESSAGEBODY"), z141_NW_BROADCAST_messageBody),
@@ -947,7 +949,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.NW_CREATE_NODEGROUP, [
+            ap['NW_CREATE_NODEGROUP'], [
                 (nd.get("CHAINID"), z142_NW_CREATE_NODEGROUP_chainId),
                 (nd.get("MAGICNUMBER"), z142_NW_CREATE_NODEGROUP_magicNumber),
                 (nd.get("MAXOUT"), z142_NW_CREATE_NODEGROUP_maxOut),
@@ -957,30 +959,30 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.NW_DEL_NODES, [
+            ap['NW_DEL_NODES'], [
                 (nd.get("CHAINID"), z143_NW_DEL_NODES_chainId),
                 (nd.get("NODES"), z143_NW_DEL_NODES_nodes)
             ]
         ],
         [
-            ap.NW_GET_CHAIN_CONNECT_AMOUNT, [
+            ap['NW_GET_CHAIN_CONNECT_AMOUNT'], [
                 (nd.get("CHAINID"), z144_NW_GET_CHAIN_CONNECT_AMOUNT_chainId),
                 (nd.get("ISCROSS"), z144_NW_GET_CHAIN_CONNECT_AMOUNT_isCross)
             ]
         ],
         [
-            ap.NW_GET_GROUP_BY_CHAINID, [
+            ap['NW_GET_GROUP_BY_CHAINID'], [
                 (nd.get("CHAINID"), z145_NW_GET_GROUP_BY_CHAINID_chainId)
             ]
         ],
         [
-            ap.NW_GET_GROUPS, [
+            ap['NW_GET_GROUPS'], [
                 (nd.get("STARTPAGE"), z146_NW_GET_GROUPS_startPage),
                 (nd.get("PAGESIZE"), z146_NW_GET_GROUPS_pageSize)
             ]
         ],
         [
-            ap.NW_GET_NODES, [
+            ap['NW_GET_NODES'], [
                 (nd.get("CHAINID"), z147_NW_GET_NODES_chainId),
                 (nd.get("STATE"), z147_NW_GET_NODES_state),
                 (nd.get("ISCROSS"), z147_NW_GET_NODES_isCross),
@@ -989,28 +991,28 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.NW_INFO, [
+            ap['NW_INFO'], [
                 (nd.get("CHAINID"), z149_NW_INFO_chainId)
             ]
         ],
         [
-            ap.NW_NODES, [
+            ap['NW_NODES'], [
                 (nd.get("CHAINID"), z150_NW_NODES_chainId)
             ]
         ],
         [
-            ap.NW_PROTOCOL_REGISTER, [
+            ap['NW_PROTOCOL_REGISTER'], [
                 (nd.get("ROLE"), z151_NW_PROTOCOL_REGISTER_role),
                 (nd.get("PROTOCOLCMDS"), z151_NW_PROTOCOL_REGISTER_protocolCmds)
             ]
         ],
         [
-            ap.NW_RECONNECT, [
+            ap['NW_RECONNECT'], [
                 (nd.get("CHAINID"), z152_NW_RECONNECT_chainId)
             ]
         ],
         [
-            ap.NW_SEND_PEERS_MSG, [
+            ap['NW_SEND_PEERS_MSG'], [
                 (nd.get("CHAINID"), z153_NW_SEND_PEERS_MSG_chainId),
                 (nd.get("NODES"), z153_NW_SEND_PEERS_MSG_nodes),
                 (nd.get("MESSAGEBODY"), z153_NW_SEND_PEERS_MSG_messageBody),
@@ -1018,7 +1020,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.NW_UPDATE_NODE_INFO, [
+            ap['NW_UPDATE_NODE_INFO'], [
                 (nd.get("CHAINID"), z154_NW_UPDATE_NODE_INFO_chainId),
                 (nd.get("NODEID"), z154_NW_UPDATE_NODE_INFO_nodeId),
                 (nd.get("BLOCKHEIGHT"), z154_NW_UPDATE_NODE_INFO_blockHeight),
@@ -1026,7 +1028,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.PARAM_TEST_CMD, [
+            ap['PARAM_TEST_CMD'], [
                 (nd.get("INTCOUNT"), z155_PARAM_TEST_CMD_intCount),
                 (nd.get("BYTECOUNT"), z155_PARAM_TEST_CMD_byteCount),
                 (nd.get("SHORTCOUNT"), z155_PARAM_TEST_CMD_shortCount),
@@ -1034,113 +1036,113 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.PROTOCOL_VERSION_CHANGE, [
+            ap['PROTOCOL_VERSION_CHANGE'], [
                 (nd.get("CHAINID"), z156_PROTOCOL_VERSION_CHANGE_chainId),
                 (nd.get("PROTOCOLVERSION"), z156_PROTOCOL_VERSION_CHANGE_protocolVersion)
             ]
         ],
         [
-            ap.RECEIVE_PACKING_BLOCK, [
+            ap['RECEIVE_PACKING_BLOCK'], [
                 (nd.get("CHAINID"), z157_RECEIVE_PACKING_BLOCK_chainId),
                 (nd.get("BLOCK"), z157_RECEIVE_PACKING_BLOCK_block)
             ]
         ],
         [
-            ap.RECV_CIRCULAT, [
+            ap['RECV_CIRCULAT'], [
                 (nd.get("CHAINID"), z158_RECV_CIRCULAT_chainId),
                 (nd.get("NODEID"), z158_RECV_CIRCULAT_nodeId),
                 (nd.get("MESSAGEBODY"), z158_RECV_CIRCULAT_messageBody)
             ]
         ],
         [
-            ap.RECV_CTX, [
+            ap['RECV_CTX'], [
                 (nd.get("CHAINID"), z159_RECV_CTX_chainId),
                 (nd.get("NODEID"), z159_RECV_CTX_nodeId),
                 (nd.get("MESSAGEBODY"), z159_RECV_CTX_messageBody)
             ]
         ],
         [
-            ap.RECV_CTX_HASH, [
+            ap['RECV_CTX_HASH'], [
                 (nd.get("CHAINID"), z160_RECV_CTX_HASH_chainId),
                 (nd.get("NODEID"), z160_RECV_CTX_HASH_nodeId),
                 (nd.get("MESSAGEBODY"), z160_RECV_CTX_HASH_messageBody)
             ]
         ],
         [
-            ap.RECV_CTX_SIGN, [
+            ap['RECV_CTX_SIGN'], [
                 (nd.get("CHAINID"), z161_RECV_CTX_SIGN_chainId),
                 (nd.get("NODEID"), z161_RECV_CTX_SIGN_nodeId),
                 (nd.get("MESSAGEBODY"), z161_RECV_CTX_SIGN_messageBody)
             ]
         ],
         [
-            ap.RECV_CTX_STATE, [
+            ap['RECV_CTX_STATE'], [
                 (nd.get("CHAINID"), z162_RECV_CTX_STATE_chainId),
                 (nd.get("NODEID"), z162_RECV_CTX_STATE_nodeId),
                 (nd.get("MESSAGEBODY"), z162_RECV_CTX_STATE_messageBody)
             ]
         ],
         [
-            ap.RECV_OTHER_CTX, [
+            ap['RECV_OTHER_CTX'], [
                 (nd.get("CHAINID"), z163_RECV_OTHER_CTX_chainId),
                 (nd.get("NODEID"), z163_RECV_OTHER_CTX_nodeId),
                 (nd.get("MESSAGEBODY"), z163_RECV_OTHER_CTX_messageBody)
             ]
         ],
         [
-            ap.RECV_REGCHAIN, [
+            ap['RECV_REGCHAIN'], [
                 (nd.get("CHAINID"), z164_RECV_REGCHAIN_chainId),
                 (nd.get("NODEID"), z164_RECV_REGCHAIN_nodeId),
                 (nd.get("MESSAGEBODY"), z164_RECV_REGCHAIN_messageBody)
             ]
         ],
         [
-            ap.REGISTER_PROTOCOL, [
+            ap['REGISTER_PROTOCOL'], [
                 (nd.get("CHAINID"), z166_REGISTER_PROTOCOL_chainId),
                 (nd.get("MODULECODE"), z166_REGISTER_PROTOCOL_moduleCode),
                 (nd.get("LIST"), z166_REGISTER_PROTOCOL_list)
             ]
         ],
         [
-            ap.ROLLBACK_BLOCK_TXS, [
+            ap['ROLLBACK_BLOCK_TXS'], [
                 (nd.get("CHAINID"), z167_ROLLBACK_BLOCK_TXS_chainId),
                 (nd.get("TXLIST"), z167_ROLLBACK_BLOCK_TXS_txList),
                 (nd.get("BLOCKHEIGHT"), z167_ROLLBACK_BLOCK_TXS_blockHeight)
             ]
         ],
         [
-            ap.ROLLBACK_UNCONFIRM_TX, [
+            ap['ROLLBACK_UNCONFIRM_TX'], [
                 (nd.get("CHAINID"), z168_ROLLBACK_UNCONFIRM_TX_chainId),
                 (nd.get("TX"), z168_ROLLBACK_UNCONFIRM_TX_tx)
             ]
         ],
         [
-            ap.ROLLBACK_BLOCK, [
+            ap['ROLLBACK_BLOCK'], [
                 (nd.get("CHAINID"), z169_ROLLBACK_BLOCK_chainId),
                 (nd.get("BLOCKHEADER"), z169_ROLLBACK_BLOCK_blockHeader)
             ]
         ],
         [
-            ap.ROLLBACK_TX_VALIDATE_STATUS, [
+            ap['ROLLBACK_TX_VALIDATE_STATUS'], [
                 (nd.get("CHAINID"), z170_ROLLBACK_TX_VALIDATE_STATUS_chainId),
                 (nd.get("TX"), z170_ROLLBACK_TX_VALIDATE_STATUS_tx)
             ]
         ],
         [
-            ap.SAVE_BLOCK, [
+            ap['SAVE_BLOCK'], [
                 (nd.get("CHAINID"), z171_SAVE_BLOCK_chainId),
                 (nd.get("BLOCKHEADER"), z171_SAVE_BLOCK_blockHeader)
             ]
         ],
         [
-            ap.SC_BATCH_BEFORE_END, [
+            ap['SC_BATCH_BEFORE_END'], [
                 (nd.get("CHAINID"), z172_SC_BATCH_BEFORE_END_chainId),
                 (nd.get("BLOCKTYPE"), z172_SC_BATCH_BEFORE_END_blockType),
                 (nd.get("BLOCKHEIGHT"), z172_SC_BATCH_BEFORE_END_blockHeight)
             ]
         ],
         [
-            ap.SC_BATCH_BEGIN, [
+            ap['SC_BATCH_BEGIN'], [
                 (nd.get("CHAINID"), z173_SC_BATCH_BEGIN_chainId),
                 (nd.get("BLOCKTYPE"), z173_SC_BATCH_BEGIN_blockType),
                 (nd.get("BLOCKHEIGHT"), z173_SC_BATCH_BEGIN_blockHeight),
@@ -1150,13 +1152,13 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.SC_BATCH_END, [
+            ap['SC_BATCH_END'], [
                 (nd.get("CHAINID"), z174_SC_BATCH_END_chainId),
                 (nd.get("BLOCKHEIGHT"), z174_SC_BATCH_END_blockHeight)
             ]
         ],
         [
-            ap.SC_CALL, [
+            ap['SC_CALL'], [
                 (nd.get("CHAINID"), z175_SC_CALL_chainId),
                 (nd.get("SENDER"), z175_SC_CALL_sender),
                 (nd.get("PASSWORD"), z175_SC_CALL_password),
@@ -1171,49 +1173,49 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.SC_CALL_VALIDATOR, [
+            ap['SC_CALL_VALIDATOR'], [
                 (nd.get("CHAINID"), z176_SC_CALL_VALIDATOR_chainId),
                 (nd.get("TX"), z176_SC_CALL_VALIDATOR_tx)
             ]
         ],
         [
-            ap.SC_CONSTRUCTOR, [
+            ap['SC_CONSTRUCTOR'], [
                 (nd.get("CHAINID"), z177_SC_CONSTRUCTOR_chainId),
                 (nd.get("CONTRACTCODE"), z177_SC_CONSTRUCTOR_contractCode)
             ]
         ],
         [
-            ap.SC_CONTRACT_INFO, [
+            ap['SC_CONTRACT_INFO'], [
                 (nd.get("CHAINID"), z178_SC_CONTRACT_INFO_chainId),
                 (nd.get("CONTRACTADDRESS"), z178_SC_CONTRACT_INFO_contractAddress)
             ]
         ],
         [
-            ap.SC_CONTRACT_OFFLINE_TX_HASH_LIST, [
+            ap['SC_CONTRACT_OFFLINE_TX_HASH_LIST'], [
                 (nd.get("CHAINID"), z179_SC_CONTRACT_OFFLINE_TX_HASH_LIST_chainId),
                 (nd.get("BLOCKHASH"), z179_SC_CONTRACT_OFFLINE_TX_HASH_LIST_blockHash)
             ]
         ],
         [
-            ap.SC_CONTRACT_RESULT, [
+            ap['SC_CONTRACT_RESULT'], [
                 (nd.get("CHAINID"), z180_SC_CONTRACT_RESULT_chainId),
                 (nd.get("HASH"), z180_SC_CONTRACT_RESULT_hash)
             ]
         ],
         [
-            ap.SC_CONTRACT_RESULT_LIST, [
+            ap['SC_CONTRACT_RESULT_LIST'], [
                 (nd.get("CHAINID"), z181_SC_CONTRACT_RESULT_LIST_chainId),
                 (nd.get("HASHLIST"), z181_SC_CONTRACT_RESULT_LIST_hashList)
             ]
         ],
         [
-            ap.SC_CONTRACT_TX, [
+            ap['SC_CONTRACT_TX'], [
                 (nd.get("CHAINID"), z182_SC_CONTRACT_TX_chainId),
                 (nd.get("HASH"), z182_SC_CONTRACT_TX_hash)
             ]
         ],
         [
-            ap.SC_CREATE, [
+            ap['SC_CREATE'], [
                 (nd.get("CHAINID"), z183_SC_CREATE_chainId),
                 (nd.get("SENDER"), z183_SC_CREATE_sender),
                 (nd.get("PASSWORD"), z183_SC_CREATE_password),
@@ -1226,13 +1228,13 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.SC_CREATE_VALIDATOR, [
+            ap['SC_CREATE_VALIDATOR'], [
                 (nd.get("CHAINID"), z184_SC_CREATE_VALIDATOR_chainId),
                 (nd.get("TX"), z184_SC_CREATE_VALIDATOR_tx)
             ]
         ],
         [
-            ap.SC_DELETE, [
+            ap['SC_DELETE'], [
                 (nd.get("CHAINID"), z185_SC_DELETE_chainId),
                 (nd.get("SENDER"), z185_SC_DELETE_sender),
                 (nd.get("PASSWORD"), z185_SC_DELETE_password),
@@ -1241,13 +1243,13 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.SC_DELETE_VALIDATOR, [
+            ap['SC_DELETE_VALIDATOR'], [
                 (nd.get("CHAINID"), z186_SC_DELETE_VALIDATOR_chainId),
                 (nd.get("TX"), z186_SC_DELETE_VALIDATOR_tx)
             ]
         ],
         [
-            ap.SC_IMPUTED_CALL_GAS, [
+            ap['SC_IMPUTED_CALL_GAS'], [
                 (nd.get("CHAINID"), z187_SC_IMPUTED_CALL_GAS_chainId),
                 (nd.get("SENDER"), z187_SC_IMPUTED_CALL_GAS_sender),
                 (nd.get("VALUE"), z187_SC_IMPUTED_CALL_GAS_value),
@@ -1258,7 +1260,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.SC_IMPUTED_CREATE_GAS, [
+            ap['SC_IMPUTED_CREATE_GAS'], [
                 (nd.get("CHAINID"), z188_SC_IMPUTED_CREATE_GAS_chainId),
                 (nd.get("SENDER"), z188_SC_IMPUTED_CREATE_GAS_sender),
                 (nd.get("CONTRACTCODE"), z188_SC_IMPUTED_CREATE_GAS_contractCode),
@@ -1266,20 +1268,20 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.SC_INITIAL_ACCOUNT_TOKEN, [
+            ap['SC_INITIAL_ACCOUNT_TOKEN'], [
                 (nd.get("CHAINID"), z189_SC_INITIAL_ACCOUNT_TOKEN_chainId),
                 (nd.get("ADDRESS"), z189_SC_INITIAL_ACCOUNT_TOKEN_address)
             ]
         ],
         [
-            ap.SC_INVOKE_CONTRACT, [
+            ap['SC_INVOKE_CONTRACT'], [
                 (nd.get("CHAINID"), z190_SC_INVOKE_CONTRACT_chainId),
                 (nd.get("BLOCKTYPE"), z190_SC_INVOKE_CONTRACT_blockType),
                 (nd.get("TX"), z190_SC_INVOKE_CONTRACT_tx)
             ]
         ],
         [
-            ap.SC_INVOKE_VIEW, [
+            ap['SC_INVOKE_VIEW'], [
                 (nd.get("CHAINID"), z191_SC_INVOKE_VIEW_chainId),
                 (nd.get("CONTRACTADDRESS"), z191_SC_INVOKE_VIEW_contractAddress),
                 (nd.get("METHODNAME"), z191_SC_INVOKE_VIEW_methodName),
@@ -1288,13 +1290,13 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.SC_PACKAGE_BATCH_END, [
+            ap['SC_PACKAGE_BATCH_END'], [
                 (nd.get("CHAINID"), z192_SC_PACKAGE_BATCH_END_chainId),
                 (nd.get("BLOCKHEIGHT"), z192_SC_PACKAGE_BATCH_END_blockHeight)
             ]
         ],
         [
-            ap.SC_TOKEN_ASSETS_LIST, [
+            ap['SC_TOKEN_ASSETS_LIST'], [
                 (nd.get("CHAINID"), z193_SC_TOKEN_ASSETS_LIST_chainId),
                 (nd.get("ADDRESS"), z193_SC_TOKEN_ASSETS_LIST_address),
                 (nd.get("PAGENUMBER"), z193_SC_TOKEN_ASSETS_LIST_pageNumber),
@@ -1302,14 +1304,14 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.SC_TOKEN_BALANCE, [
+            ap['SC_TOKEN_BALANCE'], [
                 (nd.get("CHAINID"), z194_SC_TOKEN_BALANCE_chainId),
                 (nd.get("CONTRACTADDRESS"), z194_SC_TOKEN_BALANCE_contractAddress),
                 (nd.get("ADDRESS"), z194_SC_TOKEN_BALANCE_address)
             ]
         ],
         [
-            ap.SC_TOKEN_TRANSFER, [
+            ap['SC_TOKEN_TRANSFER'], [
                 (nd.get("CHAINID"), z195_SC_TOKEN_TRANSFER_chainId),
                 (nd.get("ADDRESS"), z195_SC_TOKEN_TRANSFER_address),
                 (nd.get("TOADDRESS"), z195_SC_TOKEN_TRANSFER_toAddress),
@@ -1320,7 +1322,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.SC_TOKEN_TRANSFER_LIST, [
+            ap['SC_TOKEN_TRANSFER_LIST'], [
                 (nd.get("CHAINID"), z196_SC_TOKEN_TRANSFER_LIST_chainId),
                 (nd.get("ADDRESS"), z196_SC_TOKEN_TRANSFER_LIST_address),
                 (nd.get("PAGENUMBER"), z196_SC_TOKEN_TRANSFER_LIST_pageNumber),
@@ -1328,7 +1330,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.SC_TRANSFER, [
+            ap['SC_TRANSFER'], [
                 (nd.get("CHAINID"), z197_SC_TRANSFER_chainId),
                 (nd.get("ADDRESS"), z197_SC_TRANSFER_address),
                 (nd.get("TOADDRESS"), z197_SC_TRANSFER_toAddress),
@@ -1338,7 +1340,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT, [
+            ap['SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT'], [
                 (nd.get("CHAINID"), z198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_chainId),
                 (nd.get("STATEROOT"), z198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_stateRoot),
                 (nd.get("BLOCKHEIGHT"), z198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_blockHeight),
@@ -1347,13 +1349,13 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.SC_UPLOAD, [
+            ap['SC_UPLOAD'], [
                 (nd.get("CHAINID"), z199_SC_UPLOAD_chainId),
                 (nd.get("JARFILEDATA"), z199_SC_UPLOAD_jarFileData)
             ]
         ],
         [
-            ap.SC_VALIDATE_CALL, [
+            ap['SC_VALIDATE_CALL'], [
                 (nd.get("CHAINID"), z200_SC_VALIDATE_CALL_chainId),
                 (nd.get("SENDER"), z200_SC_VALIDATE_CALL_sender),
                 (nd.get("VALUE"), z200_SC_VALIDATE_CALL_value),
@@ -1366,7 +1368,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.SC_VALIDATE_CREATE, [
+            ap['SC_VALIDATE_CREATE'], [
                 (nd.get("CHAINID"), z201_SC_VALIDATE_CREATE_chainId),
                 (nd.get("SENDER"), z201_SC_VALIDATE_CREATE_sender),
                 (nd.get("GASLIMIT"), z201_SC_VALIDATE_CREATE_gasLimit),
@@ -1376,39 +1378,39 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.SC_VALIDATE_DELETE, [
+            ap['SC_VALIDATE_DELETE'], [
                 (nd.get("CHAINID"), z202_SC_VALIDATE_DELETE_chainId),
                 (nd.get("CONTRACTADDRESS"), z202_SC_VALIDATE_DELETE_contractAddress)
             ]
         ],
         [
-            ap.STOP_AGENTVALID, [
+            ap['STOP_AGENTVALID'], [
                 (nd.get("CHAINID"), z203_STOP_AGENTVALID_chainId),
                 (nd.get("TX"), z203_STOP_AGENTVALID_tx)
             ]
         ],
         [
-            ap.TX_COMMIT, [
+            ap['TX_COMMIT'], [
                 (nd.get("CHAINID"), z204_TX_COMMIT_chainId),
                 (nd.get("TXLIST"), z204_TX_COMMIT_txList),
                 (nd.get("BLOCKHEADER"), z204_TX_COMMIT_blockHeader)
             ]
         ],
         [
-            ap.TX_VALIDATOR, [
+            ap['TX_VALIDATOR'], [
                 (nd.get("CHAINID"), z205_TX_VALIDATOR_chainId),
                 (nd.get("TXLIST"), z205_TX_VALIDATOR_txList),
                 (nd.get("BLOCKHEADER"), z205_TX_VALIDATOR_blockHeader)
             ]
         ],
         [
-            ap.TX_BACK_PACKABLE_TXS, [
+            ap['TX_BACK_PACKABLE_TXS'], [
                 (nd.get("CHAINID"), z206_TX_BACK_PACKABLE_TXS_chainId),
                 (nd.get("TXLIST"), z206_TX_BACK_PACKABLE_TXS_txList)
             ]
         ],
         [
-            ap.TX_BATCH_VERIFY, [
+            ap['TX_BATCH_VERIFY'], [
                 (nd.get("CHAINID"), z207_TX_BATCH_VERIFY_chainId),
                 (nd.get("TXLIST"), z207_TX_BATCH_VERIFY_txList),
                 (nd.get("BLOCKHEADER"), z207_TX_BATCH_VERIFY_blockHeader),
@@ -1416,79 +1418,79 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.TX_BL_STATE, [
+            ap['TX_BL_STATE'], [
                 (nd.get("CHAINID"), z208_TX_BL_STATE_chainId),
                 (nd.get("STATUS"), z208_TX_BL_STATE_status)
             ]
         ],
         [
-            ap.TX_BLOCK_HEIGHT, [
+            ap['TX_BLOCK_HEIGHT'], [
                 (nd.get("CHAINID"), z209_TX_BLOCK_HEIGHT_chainId),
                 (nd.get("HEIGHT"), z209_TX_BLOCK_HEIGHT_height)
             ]
         ],
         [
-            ap.TX_CS_STATE, [
+            ap['TX_CS_STATE'], [
                 (nd.get("CHAINID"), z210_TX_CS_STATE_chainId),
                 (nd.get("PACKAGING"), z210_TX_CS_STATE_packaging)
             ]
         ],
         [
-            ap.TX_GET_BLOCKTXS, [
+            ap['TX_GET_BLOCKTXS'], [
                 (nd.get("CHAINID"), z211_TX_GET_BLOCKTXS_chainId),
                 (nd.get("TXHASHLIST"), z211_TX_GET_BLOCKTXS_txHashList)
             ]
         ],
         [
-            ap.TX_GET_BLOCKTXS_EXTEND, [
+            ap['TX_GET_BLOCKTXS_EXTEND'], [
                 (nd.get("CHAINID"), z212_TX_GET_BLOCKTXS_EXTEND_chainId),
                 (nd.get("TXHASHLIST"), z212_TX_GET_BLOCKTXS_EXTEND_txHashList),
                 (nd.get("ALLHITS"), z212_TX_GET_BLOCKTXS_EXTEND_allHits)
             ]
         ],
         [
-            ap.TX_GET_CONFIRMED_TX, [
+            ap['TX_GET_CONFIRMED_TX'], [
                 (nd.get("CHAINID"), z213_TX_GET_CONFIRMED_TX_chainId),
                 (nd.get("TXHASH"), z213_TX_GET_CONFIRMED_TX_txHash)
             ]
         ],
         [
-            ap.TX_GET_CONFIRMED_TX_CLIENT, [
+            ap['TX_GET_CONFIRMED_TX_CLIENT'], [
                 (nd.get("CHAINID"), z214_TX_GET_CONFIRMED_TX_CLIENT_chainId),
                 (nd.get("TXHASH"), z214_TX_GET_CONFIRMED_TX_CLIENT_txHash)
             ]
         ],
         [
-            ap.TX_GET_NONEXISTENT_UNCONFIRMED_HASHS, [
+            ap['TX_GET_NONEXISTENT_UNCONFIRMED_HASHS'], [
                 (nd.get("CHAINID"), z215_TX_GET_NONEXISTENT_UNCONFIRMED_HASHS_chainId),
                 (nd.get("TXHASHLIST"), z215_TX_GET_NONEXISTENT_UNCONFIRMED_HASHS_txHashList)
             ]
         ],
         [
-            ap.TX_GET_SYSTEMTYPES, [
+            ap['TX_GET_SYSTEMTYPES'], [
                 (nd.get("CHAINID"), z216_TX_GET_SYSTEMTYPES_chainId)
             ]
         ],
         [
-            ap.TX_GET_TX, [
+            ap['TX_GET_TX'], [
                 (nd.get("CHAINID"), z217_TX_GET_TX_chainId),
                 (nd.get("TXHASH"), z217_TX_GET_TX_txHash)
             ]
         ],
         [
-            ap.TX_GET_TX_CLIENT, [
+            ap['TX_GET_TX_CLIENT'], [
                 (nd.get("CHAINID"), z218_TX_GET_TX_CLIENT_chainId),
                 (nd.get("TXHASH"), z218_TX_GET_TX_CLIENT_txHash)
             ]
         ],
         [
-            ap.TX_NEWTX, [
+            ap['TX_NEWTX'], [
                 (nd.get("CHAINID"), z219_TX_NEWTX_chainId),
                 (nd.get("TX"), z219_TX_NEWTX_tx)
             ]
         ],
         [
-            ap.TX_PACKABLE_TXS, [
+            ap['TX_PACKABLE_TXS'], [
                 (nd.get("CHAINID"), z220_TX_PACKABLE_TXS_chainId),
                 (nd.get("ENDTIMESTAMP"), z220_TX_PACKABLE_TXS_endTimestamp),
                 (nd.get("MAXTXDATASIZE"), z220_TX_PACKABLE_TXS_maxTxDataSize),
@@ -1498,7 +1500,7 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.TX_REGISTER, [
+            ap['TX_REGISTER'], [
                 (nd.get("CHAINID"), z221_TX_REGISTER_chainId),
                 (nd.get("MODULECODE"), z221_TX_REGISTER_moduleCode),
                 (nd.get("LIST"), z221_TX_REGISTER_list),
@@ -1506,14 +1508,14 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.TX_ROLLBACK, [
+            ap['TX_ROLLBACK'], [
                 (nd.get("CHAINID"), z222_TX_ROLLBACK_chainId),
                 (nd.get("TXHASHLIST"), z222_TX_ROLLBACK_txHashList),
                 (nd.get("BLOCKHEADER"), z222_TX_ROLLBACK_blockHeader)
             ]
         ],
         [
-            ap.TX_SAVE, [
+            ap['TX_SAVE'], [
                 (nd.get("CHAINID"), z223_TX_SAVE_chainId),
                 (nd.get("TXLIST"), z223_TX_SAVE_txList),
                 (nd.get("CONTRACTLIST"), z223_TX_SAVE_contractList),
@@ -1521,31 +1523,31 @@ class NulswsParams(object):
             ]
         ],
         [
-            ap.TX_VERIFY_TX, [
+            ap['TX_VERIFY_TX'], [
                 (nd.get("CHAINID"), z224_TX_VERIFY_TX_chainId),
                 (nd.get("TX"), z224_TX_VERIFY_TX_tx)
             ]
         ],
         [
-            ap.UPDATE_CHAIN_ASSET, [
+            ap['UPDATE_CHAIN_ASSET'], [
                 (nd.get("CHAINID"), z225_UPDATE_CHAIN_ASSET_chainId),
                 (nd.get("ASSETS"), z225_UPDATE_CHAIN_ASSET_assets)
             ]
         ],
         [
-            ap.VERIFY_COINDATA, [
+            ap['VERIFY_COINDATA'], [
                 (nd.get("CHAINID"), z226_VERIFY_COINDATA_chainId),
                 (nd.get("TX"), z226_VERIFY_COINDATA_tx)
             ]
         ],
         [
-            ap.VERIFY_COINDATA_BATCH_PACKAGED, [
+            ap['VERIFY_COINDATA_BATCH_PACKAGED'], [
                 (nd.get("CHAINID"), z227_VERIFY_COINDATA_BATCH_PACKAGED_chainId),
                 (nd.get("TXLIST"), z227_VERIFY_COINDATA_BATCH_PACKAGED_txList)
             ]
         ],
         [
-            ap.WITHDRAW_VALID, [
+            ap['WITHDRAW_VALID'], [
                 (nd.get("CHAINID"), z228_WITHDRAW_VALID_chainId),
                 (nd.get("TX"), z228_WITHDRAW_VALID_tx)
             ]
