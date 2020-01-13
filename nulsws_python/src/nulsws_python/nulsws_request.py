@@ -1,11 +1,9 @@
 #!/usr/bin/python3.7
 
-import json
-
 from nulsws_python.src.nulsws_python.nulsws_library import NulsWsLib
-from nulsws_python.src.nulsws_python.constants.nulsws_other_labels import *
+from nulsws_python.src.nulsws_python.nulsws_other_labels import *
 from nulsws_python.src.nulsws_python.user_settings.nulsws_settings_one import *
-from nulsws_python.src.nulsws_python.constants import nulsws_calls_db
+# from nulsws_python.src.nulsws_python.constants import nulsws_calls_db
 
 
 # -----------prep_NEGOTIATE_data_type1--------------------------------------#
@@ -62,7 +60,8 @@ class NulsWsRequest(object):
     # -----------prep_REQUEST_ONESIE (request) --------------------------------------#
 
     def prep_request(self, msg_indx, api_name_val):  # requesttype 2 - return ack +
-        db = nulsws_calls_db.NulsWsCallsDB()
+        import nulsws_python.src.nulsws_python.nulsws_calls as ndb
+        db = ndb.NulsWsCalls()
         call_lookup = db.calls_dict
         api_params_dict = {}
         api_text_api_params_dict = dict()
