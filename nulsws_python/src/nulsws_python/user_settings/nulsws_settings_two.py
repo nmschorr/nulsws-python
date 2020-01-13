@@ -709,6 +709,7 @@ z1017_AC_GET_PRIKEY_BY_ADDRESS__chainId = my_chainid
 z1017_AC_GET_PRIKEY_BY_ADDRESS_address = my_address
 z1017_AC_GET_PRIKEY_BY_ADDRESS_password = my_password
 
+
 __all__ = ['FALSE', 'request_type_one_or_two', 'REMARK', 'RequestType', 'SHORT_MSG', 'TRUE', 'ZERO', 'ZLIB',
          'compatible_proto_versions', 'compress_rate_VALUE', 'compress_type_VALUE', 'connect_method',
          'host_req', 'my_account', 'my_address', 'my_addressprefix', 'my_addresstype', 'my_addressval',

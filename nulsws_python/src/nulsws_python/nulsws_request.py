@@ -1,7 +1,7 @@
 #!/usr/bin/python3.7
 
 from nulsws_python.src.nulsws_python.nulsws_library import NulsWsLib
-from nulsws_python.src.nulsws_python.nulsws_other_labels import *
+from nulsws_python.src.nulsws_python.nulsws_params import *
 from nulsws_python.src.nulsws_python.user_settings.nulsws_settings_one import *
 
 
