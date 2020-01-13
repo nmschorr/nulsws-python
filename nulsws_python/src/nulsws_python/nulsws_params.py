@@ -41,7 +41,8 @@ ZERO = "0"
 ONE = "1"
 CHAINID_LABEL = "chainId"
 
-# reason for labels: all uppers is easier for the user to use correctly because of mixed case in values
+# reason for labels: all uppers is easier for the user to use correctly because of mixed case
+# and underlines in values
 
 
 class NulsWsParams(object):
