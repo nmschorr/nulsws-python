@@ -35,22 +35,21 @@ from asyncio import run as asyncio_run
 from asyncio import sleep as a_sleep
 from tornado.websocket import websocket_connect, WebSocketClientConnection  # WebSocketClosedError
 import nulsws_python.src.nulsws_python.nulsws_library as nlib
-from nulsws_python.src.nulsws_python.user_settings.nulsws_settings_two import UserSettings
-from nulsws_python.src.nulsws_python.nulsws_request import NulsWsRequest
-from nulsws_python.src.nulsws_python.user_settings.nulsws_settings_one import websock_url
+from nulsws_python.src.nulsws_python.user_settings.nulsws_user_set import NulsWsUserSet
+from nulsws_python.src.nulsws_python.nulsws_request import NulsWsRequest as NReq
 
 
 class NulsWebsocket(object):
 
     def __init__(self):
-        un = UserSettings()
+        nus = NulsWsUserSet()
         self.un = un
         self.mindex = 0
         self.s_time = .7
-        self.NReq = NulsWsRequest()
+        self.NReq = NReq
         self.myprint = nlib.NulsWsLib.myprint
         self.json_prt = nlib.NulsWsLib.json_prt
-        self.myprint("the url:  ", websock_url)
+        self.d = nus
 
     async def regular_request(self, websock_cont: WebSocketClientConnection, j_reg_dict):
         json_reg = json.dumps(j_reg_dict)
@@ -66,7 +65,8 @@ class NulsWebsocket(object):
         nlib.NulsWsLib.myprint(0, "x")
 
     async def negotiate_list(self, top_plus_mid_dict, m_indx, run_list, mtpe=3):
-        connection = await websocket_connect(websock_url)  # 1) CONNECT
+        d = self.d
+        connection = await websocket_connect(d.websock_url)  # 1) CONNECT
         # await a_sleep(self.s_time)
         while not connection:
             await a_sleep(self.s_time)
@@ -80,17 +80,15 @@ class NulsWebsocket(object):
         self.json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
         self.myprint("------end Negotiate----------------------------------------")
 
-
         for run_item in run_list:
             m_indx += 1
             # TEST ONLY SECTION -------------------------->
             # if self.msg_type == 77: await self.regular_request(connection, run_item)
             # this runs register api # END TEST ONLY SECTION ----------------------
             if mtpe == 3:
-                main_request = self.NReq.prep_request(m_indx, run_item)  # TEST ONLY PUT BACK WHEN DONE
-                json_reg = json.dumps(main_request)
-
-                self.json_prt(json_reg, " ")
+                main_request = self.NReq.prep_request(m_indx, run_item, self.d)  # TEST ONLY PUT BACK WHEN DONE
+                #json_reg = json.dumps(main_request)
+                #self.json_prt(json_reg, " ")
 
                 await self.regular_request(connection, main_request)
 
@@ -98,13 +96,15 @@ class NulsWebsocket(object):
         mtpe = msg_type
         myindx = self.mindex
         if mtpe == 3:  # if a regular request Nulstar type 3
-            top_pls_middle_dict = self.NReq.prep_negotiate_request(myindx)  # must be done first
+            top_pls_middle_dict = self.NReq.prep_negotiate_request(myindx, self.d)  # must be done first
             asyncio_run(
                 self.negotiate_list(
                     top_pls_middle_dict, myindx, rr_list, mtpe))  # starts event
 
 
 if __name__ == "__main__":
+    nws = NulsWebsocket()
+    # websock_url = ''.join([connect_method, host_req, ":", port_req])
     r_1 = ['AC_GET_ACCOUNT_BYADDRESS', 'AC_GET_ALL_ADDRESS_PREFIX', 'AC_GET_ACCOUNT_LIST',
            'AC_GET_ADDRESS_LIST', 'AC_GET_ADDRESS_PREFIX_BY_CHAINID',
            'AC_GET_ALL_ADDRESS_PREFIX',
@@ -189,5 +189,4 @@ if __name__ == "__main__":
     runlist = r_5
     message_type = 3  # 3 is request, 99 is test, 77 is negotiate only
 
-    nws = NulsWebsocket()
-    nws.main(runlist, message_type)
+

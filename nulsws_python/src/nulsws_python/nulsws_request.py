@@ -1,31 +1,30 @@
 #!/usr/bin/python3.7
 
 from nulsws_python.src.nulsws_python.nulsws_library import NulsWsLib
-from nulsws_python.src.nulsws_python.nulsws_params import NulsWsParams
-from nulsws_python.src.nulsws_python.user_settings.nulsws_settings_one import *
-
-
-# -----------prep_NEGOTIATE_data_type1--------------------------------------#
+from nulsws_python.src.nulsws_python.nulsws_labels import NulsWsParams
+from nulsws_python.src.nulsws_python.user_settings.nulsws_user_set import NulsWsUserSet
 
 
 class NulsWsRequest(object):
+
+# -----------prep_NEGOTIATE_data_type1--------------------------------------#
+
     def __init__(self):
         self.get_times = NulsWsLib.get_times
-        self.n = NulsWsParams()
 
-    def prep_negotiate_request(self, msg_indx):  # return dict
+    def prep_negotiate_request(self, msg_indx, d):  # return dict
         n = self.n
         data_part = {n.msg_data_label: {
-            n.proto_label: proto_ver,
-            n.compress_type_label: compress_type_VALUE,
-            n.compress_rate_label: compress_rate_VALUE}}
+            n.proto_label: d.proto_ver,
+            n.compress_type_label: d.compress_type_VALUE,
+            n.compress_rate_label: d.compress_rate_VALUE}}
         top_sect = self.make_very_top(1, msg_indx)
         top_sect.update(data_part)
         return top_sect  # dict
 
     # -----------get_REQ_MIDDLE--------------------------------------#
 
-    def make_very_top(self, msg_type: int, msg_indx):  # this section builds 5 items: #0
+    def make_very_top(self, msg_type: int, msg_indx, d):  # this section builds 5 items: #0
         # 0  "ProtocolVersion": "0.1",
         # 1 "MessageID": "1569897424187-1",  #2 "TimeZone": "-4", # 3 "Timestamp": "1569897424187"
         # 4 "MessageType": "NegotiateConnection",
@@ -33,7 +32,7 @@ class NulsWsRequest(object):
         n = self.n
         msg_type_name = n.type_name_dict[msg_type]
         t_stamp, tzone, m_id = self.get_times(msg_indx)
-        very_top = {n.proto_label: proto_ver,
+        very_top = {n.proto_label: d.proto_ver,
                     n.msg_id_label: m_id,
                     n.tmstmp_label: t_stamp,
                     n.tmzone_label: tzone,
@@ -61,7 +60,7 @@ class NulsWsRequest(object):
 
     # -----------prep_REQUEST_ONESIE (request) --------------------------------------#
 
-    def prep_request(self, msg_indx, caps_name):  # requesttype 2 - return ack +
+    def prep_request(self, msg_indx, caps_name, d):  # requesttype 2 - return ack +
         import nulsws_python.src.nulsws_python.nulsws_calls as ndb
         callsdb = ndb.NulsWsCalls().calls_dict
         api_text_api_params_dict = dict()
@@ -80,7 +79,7 @@ class NulsWsRequest(object):
         newlist = [request_type, subs_e_c, subs_per, subs_rg, resp_max, api_text_api_params_dict]
 
         msg_section_middle = self.make_request_middle(newlist)
-        message_section_top = self.make_very_top(3, msg_indx)
+        message_section_top = self.make_very_top(3, msg_indx, d)
         message_section_top.update(msg_section_middle)
         return message_section_top  # "'"return dict
 

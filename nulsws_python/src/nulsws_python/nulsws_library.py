@@ -50,7 +50,7 @@ This file right now provides support for the the client only.
 import json
 from json import dumps as json_dumps
 from time import time, timezone
-from nulsws_python.src.nulsws_python.nulsws_params import NulsWsParams
+from nulsws_python.src.nulsws_python.nulsws_labels import NulsWsParams
 
 
 class NulsWsLib(object):
