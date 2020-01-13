@@ -36,7 +36,6 @@ from asyncio import sleep as a_sleep
 from tornado.websocket import websocket_connect, WebSocketClientConnection  # WebSocketClosedError
 import nulsws_python.src.nulsws_python.nulsws_library as nlib
 from nulsws_python.src.nulsws_python.user_settings.nulsws_settings_two import *
-from nulsws_python.src.nulsws_python.constants.nulsws_api_labels import NulsWsApiLabel
 from nulsws_python.src.nulsws_python.nulsws_request import NulsWsRequest
 
 
@@ -98,45 +97,37 @@ class NulsWebsocket(object):
 
 
 if __name__ == "__main__":
+    import nulsws_python.src.nulsws_python.nulsws_calls as nc
+    ncls = nc.NulsWsCalls()
+    b = ncls.calls_dict
 
-    # bcls = NulsWsApiLabel()
-    # b = NulsWsApiLabel().ApiLabelDict
-    #
-    # runlist_1 = [b['AC_GET_ACCOUNT_BYADDRESS'], b['AC_GET_ALL_ADDRESS_PREFIX'], b['AC_GET_ACCOUNT_LIST'],
-    #              b['AC_GET_ADDRESS_LIST'], b['AC_GET_ADDRESS_PREFIX_BY_CHAINID'],
-    #              b['AC_GET_ALL_ADDRESS_PREFIX'],
-    #              b['AC_GET_ALL_PRIKEY'], b['AC_GET_ALIASBY_ADDRESS']]
-    #
-    # runlist_2 = [
-    #     b['AC_EXPORT_ACCOUNT_KEYSTORE'], b['AC_EXPORT_KEYSTORE_JSON'], b['AC_GET_ACCOUNT_BYADDRESS'],
-    #     b['AC_GET_ACCOUNT_LIST'], b['AC_GET_ADDRESS_LIST'], b['AC_GET_ADDRESS_PREFIX_BY_CHAINID'],
-    #     b['AC_GET_ALIASBY_ADDRESS'], b['AC_GET_ALL_ADDRESS_PREFIX'], b['AC_GET_ALL_PRIKEY'],
-    #     b['AC_GET_ENCRYPTED_ADDRESS_LIST'], b['AC_GET_MULTI_SIGN_ACCOUNT'], b['AC_GET_PRIKEY'],
-    #     b['AC_GET_PUBKEY']]
-    #
-    # runlist_3 = [b['GET_LATEST_BLOCKHEADERS'],
-    #              b['GET_LATEST_ROUND_BLOCKHEADERS'], b['GET_NETWORK_GROUP'], b['GET_NONCE'],
-    #              b['GET_OTHERCTX'],
-    #              b['GET_REGISTERED_CHAIN_INFO_LIST'], b['GET_REGISTERED_CHAIN_MESSAGE'],
-    #              b['GET_ROUND_BLOCKHEADERS'],
-    #              b['GET_STATUS'], b['GET_VERSION'], b['INFO'], b['LATEST_BLOCK'], b['LATEST_BLOCKHEADER'],
-    #              b['LATEST_BLOCKHEADER_PO'], b['LATEST_HEIGHT']]
-    #
-    # # RUN_LIST = runlist_2
-    # runlist = runlist_1 + runlist_2 + runlist_3
-    # r4 = [b['GET_STATUS'], b['GET_VERSION'], b['INFO'],
-    #       b['LATEST_BLOCK'], b['LATEST_BLOCKHEADER'], b['LATEST_BLOCKHEADER_PO'], b['LATEST_HEIGHT']]
-    #
-    # runlist = r4
-    # message_type = 3  # 3 is request, 99 is test, 77 is negotiate only
-    #
-    # nws = NulsWebsocket()
-    # nws.main(runlist, message_type)
+    runlist_1 = [b['AC_GET_ACCOUNT_BYADDRESS'], b['AC_GET_ALL_ADDRESS_PREFIX'], b['AC_GET_ACCOUNT_LIST'],
+                 b['AC_GET_ADDRESS_LIST'], b['AC_GET_ADDRESS_PREFIX_BY_CHAINID'],
+                 b['AC_GET_ALL_ADDRESS_PREFIX'],
+                 b['AC_GET_ALL_PRIKEY'], b['AC_GET_ALIASBY_ADDRESS']]
 
-    from nulsws_python.src.nulsws_python.constants import nulsws_calls_db as db
+    runlist_2 = [
+        b['AC_EXPORT_ACCOUNT_KEYSTORE'], b['AC_EXPORT_KEYSTORE_JSON'], b['AC_GET_ACCOUNT_BYADDRESS'],
+        b['AC_GET_ACCOUNT_LIST'], b['AC_GET_ADDRESS_LIST'], b['AC_GET_ADDRESS_PREFIX_BY_CHAINID'],
+        b['AC_GET_ALIASBY_ADDRESS'], b['AC_GET_ALL_ADDRESS_PREFIX'], b['AC_GET_ALL_PRIKEY'],
+        b['AC_GET_ENCRYPTED_ADDRESS_LIST'], b['AC_GET_MULTI_SIGN_ACCOUNT'], b['AC_GET_PRIKEY'],
+        b['AC_GET_PUBKEY']]
 
-    lab_d = NulsWsApiLabel().ApiLabelDict
-    ccdd = db.NulsWsCallsDB()
-    call_d = ccdd.calls_dict
+    runlist_3 = [b['GET_LATEST_BLOCKHEADERS'],
+                 b['GET_LATEST_ROUND_BLOCKHEADERS'], b['GET_NETWORK_GROUP'], b['GET_NONCE'],
+                 b['GET_OTHERCTX'],
+                 b['GET_REGISTERED_CHAIN_INFO_LIST'], b['GET_REGISTERED_CHAIN_MESSAGE'],
+                 b['GET_ROUND_BLOCKHEADERS'],
+                 b['GET_STATUS'], b['GET_VERSION'], b['INFO'], b['LATEST_BLOCK'], b['LATEST_BLOCKHEADER'],
+                 b['LATEST_BLOCKHEADER_PO'], b['LATEST_HEIGHT']]
 
+    # RUN_LIST = runlist_2
+    runlist = runlist_1 + runlist_2 + runlist_3
+    r4 = [b['GET_STATUS'][1], b['GET_VERSION'][1], b['INFO'][1],
+          b['LATEST_BLOCK'][1], b['LATEST_BLOCKHEADER'][1], b['LATEST_BLOCKHEADER_PO'][1], b['LATEST_HEIGHT'][1]]
 
+    runlist = r4
+    message_type = 3  # 3 is request, 99 is test, 77 is negotiate only
+
+    nws = NulsWebsocket()
+    nws.main(runlist, message_type)
