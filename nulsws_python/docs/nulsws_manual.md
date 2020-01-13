@@ -154,7 +154,7 @@ many as eight or so. With the average being maybe 3-4 - that gives us a total of
 1,000 possible specific parameters for this nuls-python-connect library.
 
 The user/developer initially only needs to set parameter for those functions he/she is 
-interested in. The settings go into two user parameter files in the UserSettings 
+interested in. The settings go into two user parameter files in the NulsWsRequest 
 directory. 
 
 The first file, nulsws-USER_PARAMS.py, contains every one of the possible parameters. 
