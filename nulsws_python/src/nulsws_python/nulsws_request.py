@@ -64,7 +64,6 @@ class NulsWsRequest(object):
     def prep_request(self, msg_indx, caps_name):  # requesttype 2 - return ack +
         import nulsws_python.src.nulsws_python.nulsws_calls as ndb
         callsdb = ndb.NulsWsCalls().calls_dict
-        api_params_dict = {}
         api_text_api_params_dict = dict()
         itm = callsdb[caps_name]
         lowercasename = itm[0]

@@ -35,13 +35,16 @@ from asyncio import run as asyncio_run
 from asyncio import sleep as a_sleep
 from tornado.websocket import websocket_connect, WebSocketClientConnection  # WebSocketClosedError
 import nulsws_python.src.nulsws_python.nulsws_library as nlib
-from nulsws_python.src.nulsws_python.user_settings.nulsws_settings_two import *
+from nulsws_python.src.nulsws_python.user_settings.nulsws_settings_two import UserSettings
 from nulsws_python.src.nulsws_python.nulsws_request import NulsWsRequest
+from nulsws_python.src.nulsws_python.user_settings.nulsws_settings_one import websock_url
 
 
 class NulsWebsocket(object):
 
     def __init__(self):
+        un = UserSettings()
+        self.un = un
         self.mindex = 0
         self.s_time = .7
         self.NReq = NulsWsRequest()
@@ -63,22 +66,20 @@ class NulsWebsocket(object):
         nlib.NulsWsLib.myprint(0, "x")
 
     async def negotiate_list(self, top_plus_mid_dict, m_indx, run_list, mtpe=3):
-        async def do_connect():
-            connection = await websocket_connect(websock_url)  # 1) CONNECT
-            # await a_sleep(self.s_time)
-            while not connection:
-                await a_sleep(self.s_time)
-            jd = json.dumps(top_plus_mid_dict)
-            self.json_prt(top_plus_mid_dict, "* * * First message going out- NEGOTIATE: \n")
-
-            await connection.write_message(jd)  # 2) WRITE
-            # await a_sleep(self.s_time)
-            negotiate_result = await connection.read_message()  # 3 READ
+        connection = await websocket_connect(websock_url)  # 1) CONNECT
+        # await a_sleep(self.s_time)
+        while not connection:
             await a_sleep(self.s_time)
-            self.json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
-            self.myprint("------end Negotiate----------------------------------------")
+        jd = json.dumps(top_plus_mid_dict)
+        self.json_prt(top_plus_mid_dict, "* * * First message going out- NEGOTIATE: \n")
 
-        # do_connect()
+        await connection.write_message(jd)  # 2) WRITE
+        # await a_sleep(self.s_time)
+        negotiate_result = await connection.read_message()  # 3 READ
+        await a_sleep(self.s_time)
+        self.json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
+        self.myprint("------end Negotiate----------------------------------------")
+
 
         for run_item in run_list:
             m_indx += 1
@@ -91,7 +92,7 @@ class NulsWebsocket(object):
 
                 self.json_prt(json_reg, " ")
 
-                #await self.regular_request(connection, main_request)
+                await self.regular_request(connection, main_request)
 
     def main(self, rr_list, msg_type=3):
         mtpe = msg_type

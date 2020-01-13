@@ -6,16 +6,17 @@ by Nancy Schorr for Nuls, None),
 
 """
 
-from .nulsws_settings_one import *
+from nulsws_python.src.nulsws_python.user_settings.nulsws_settings_one import *
 
 # change user_settings to suit
 # for use in api calls
 # fill in your default params here
 
+
 class UserSettings(object):
     my_minsigns, my_inputs, my_outputs, my_remark, my_signaddress = [1, 1, 1, 1, 1]
 
-    z0_ADD_ADDRESS_PREFIX_prefix = 'Nuls'
+    z0_ADD_ADDRESS_PREFIX_prefix = my_addressprefix
     z1_AC_CREATE_ACCOUNT_chainId = my_chainid
     z1_AC_CREATE_ACCOUNT_count = my_chainid
     z1_AC_CREATE_ACCOUNT_password = my_password
