@@ -179,7 +179,8 @@ class NulsWsParams(object):
         "TYPE": "type",
         "USABLE": "usable",
         "VALUE": "value",
-        "VERIFIERLIST": "verifierList"
+        "VERIFIERLIST": "verifierList",
+        "PREFIXLIST": "prefixList"
     }
 
 

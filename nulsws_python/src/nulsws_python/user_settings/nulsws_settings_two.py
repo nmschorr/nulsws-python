@@ -13,6 +13,8 @@ from .nulsws_settings_one import *
 # fill in your default params here
 
 my_minsigns, my_inputs, my_outputs, my_remark, my_signaddress = [1, 1, 1, 1, 1]
+DUMMY_VAL = 1
+z0_ADD_ADDRESS_PREFIX_prefix = DUMMY_VAL
 z1_AC_CREATE_ACCOUNT_chainId = my_chainid
 z1_AC_CREATE_ACCOUNT_count = my_chainid
 z1_AC_CREATE_ACCOUNT_password = my_password
@@ -700,6 +702,13 @@ z227_VERIFY_COINDATA_BATCH_PACKAGED_txList = my_chainid
 z228_WITHDRAW_VALID_chainId = my_chainid
 z228_WITHDRAW_VALID_tx = my_chainid
 
+# the following were added after the above numbers were created. The consist of 1000 + the
+# number that it should have been approximately
+
+z1017_AC_GET_PRIKEY_BY_ADDRESS__chainId = my_chainid
+z1017_AC_GET_PRIKEY_BY_ADDRESS_address = my_address
+z1017_AC_GET_PRIKEY_BY_ADDRESS_password = my_password
+
 __all__ = ['FALSE', 'request_type_one_or_two', 'REMARK', 'RequestType', 'SHORT_MSG', 'TRUE', 'ZERO', 'ZLIB',
          'compatible_proto_versions', 'compress_rate_VALUE', 'compress_type_VALUE', 'connect_method',
          'host_req', 'my_account', 'my_address', 'my_addressprefix', 'my_addresstype', 'my_addressval',
@@ -1014,7 +1023,12 @@ __all__ = ['FALSE', 'request_type_one_or_two', 'REMARK', 'RequestType', 'SHORT_M
            'z98_CS_STOP_MULTI_AGENT_signAddress', 'z99_CS_TRIGGER_COINBASE_CONTRACT_blockHeader',
            'z99_CS_TRIGGER_COINBASE_CONTRACT_chainId', 'z99_CS_TRIGGER_COINBASE_CONTRACT_stateRoot',
            'z99_CS_TRIGGER_COINBASE_CONTRACT_tx', 'z9_AC_GET_ACCOUNT_LIST_chainId',
-           'z13_AC_GET_ALL_ADDRESS_PREFIX_chainId']
+           'z13_AC_GET_ALL_ADDRESS_PREFIX_chainId', 'z0_ADD_ADDRESS_PREFIX_prefix',
+           'z1017_AC_GET_PRIKEY_BY_ADDRESS__chainId',
+           'z1017_AC_GET_PRIKEY_BY_ADDRESS_address',
+           'z1017_AC_GET_PRIKEY_BY_ADDRESS_password'
+
+           ]
 
 
 # to generate __all__:

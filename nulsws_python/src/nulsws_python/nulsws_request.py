@@ -3,7 +3,6 @@
 from nulsws_python.src.nulsws_python.nulsws_library import NulsWsLib
 from nulsws_python.src.nulsws_python.nulsws_other_labels import *
 from nulsws_python.src.nulsws_python.user_settings.nulsws_settings_one import *
-# from nulsws_python.src.nulsws_python.constants import nulsws_calls_db
 
 
 # -----------prep_NEGOTIATE_data_type1--------------------------------------#
@@ -59,18 +58,16 @@ class NulsWsRequest(object):
 
     # -----------prep_REQUEST_ONESIE (request) --------------------------------------#
 
-    def prep_request(self, msg_indx, api_name_val):  # requesttype 2 - return ack +
+    def prep_request(self, msg_indx, caps_name):  # requesttype 2 - return ack +
         import nulsws_python.src.nulsws_python.nulsws_calls as ndb
-        db = ndb.NulsWsCalls()
-        call_lookup = db.calls_dict
+        callsdb = ndb.NulsWsCalls().calls_dict
         api_params_dict = {}
         api_text_api_params_dict = dict()
-        try:
-            api_params_dict = dict(call_lookup[api_name_val])
-        except KeyError:
-            pass
+        itm = callsdb[caps_name]
+        lowercasename = itm[0]
+        api_params_dict = dict(itm[1])
 
-        api_text_api_params_dict.update({api_name_val: api_params_dict})
+        api_text_api_params_dict.update({lowercasename: api_params_dict})
 
         request_type = "1"  # 1 or 2 for message requests
         subs_e_c = "0"  # subscription event_counter

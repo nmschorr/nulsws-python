@@ -90,8 +90,8 @@ class NulsWsLib(object):
             print(x) if not y else print(str(x) + ' ' + str(y))
 
     # -----------json_prt--------------------------------------#
-    @staticmethod
-    def json_prt(json_str, str_msg, debug=True):
+    @classmethod
+    def json_prt(cls, json_str, str_msg="", debug=True):
         if not isinstance(json_str, dict):
             json_str = json.loads(json_str)
         if debug:
