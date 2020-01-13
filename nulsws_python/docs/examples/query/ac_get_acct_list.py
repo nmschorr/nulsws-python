@@ -6,7 +6,7 @@
 import json
 from nulsws_python.src.nulsws_python.nulsws_request import get_top_section
 from nulsws_python.src.nulsws_python.user_settings.nulsws_settings_two import *
-from nulsws_python.src.nulsws_python.constants.nulsws_api_labels import NulswsApiLabel
+from nulsws_python.src.nulsws_python.constants.nulsws_api_labels import NulsWsApiLabel
 from nulsws_python.src.nulsws_python.constants.nulsws_other_labels import *
 
 
@@ -14,7 +14,7 @@ class AcGetAcctList(object):
 
     def __init__(self):
         self.chainid_val = 1
-        self.n = NulswsApiLabel()
+        self.n = NulsWsApiLabel()
 
     def req_ac_get_account_list(self, m_index):  #
         stat_msg_top = get_top_section(3, m_index)   # 3 is a Request

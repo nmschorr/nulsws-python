@@ -10,7 +10,8 @@ January 2020
 # These don't need to change often if ever
 # only used twice - once in client, once in nulsws_call_db
 
-class NulswsApiLabel(object):
+
+class NulsWsApiLabel(object):
     ApiLabelDict = {
         'AC_ADD_ADDRESS_PREFIX': "ac_addAddressPrefix",
         'AC_CREATE_ACCOUNT': "ac_createAccount",

@@ -36,7 +36,8 @@ from asyncio import sleep as a_sleep
 from tornado.websocket import websocket_connect, WebSocketClientConnection  # WebSocketClosedError
 import nulsws_python.src.nulsws_python.nulsws_library as nlib
 from nulsws_python.src.nulsws_python.user_settings.nulsws_settings_two import *
-from nulsws_python.src.nulsws_python.constants.nulsws_api_labels import NulswsApiLabel
+from nulsws_python.src.nulsws_python.constants.nulsws_api_labels import NulsWsApiLabel
+from nulsws_python.src.nulsws_python.nulsws_request import NulsWsRequest
 
 
 class NulsWebsocket(object):
@@ -44,9 +45,10 @@ class NulsWebsocket(object):
     def __init__(self):
         self.mindex = 0
         self.s_time = .7
-        self.myprint = nlib.NulswsLibrary.myprint
+        self.NReq = NulsWsRequest()
+        self.myprint = nlib.NulsWsLib.myprint
+        self.json_prt = nlib.NulsWsLib.json_prt
         self.myprint("the url:  ", websock_url)
-        self.json_prt = nlib.NulswsLibrary.json_prt
 
     async def regular_request(self, websock_cont: WebSocketClientConnection, j_reg_dict):
         json_reg = json.dumps(j_reg_dict)
@@ -57,8 +59,9 @@ class NulsWebsocket(object):
         await a_sleep(self.s_time)
         if len(read_reg) > 0:
             self.json_prt(read_reg, "   -----------> ! ! ! REGULAR response received: ")
-        nlib.NulswsLibrary.myprint("--------------end previous / begin next "
+        nlib.NulsWsLib.myprint("--------------end previous / begin next "
                                    "request--------------------------")
+        nlib.NulsWsLib.myprint(0, "x")
 
     async def negotiate_list(self, top_plus_mid_dict, m_indx, run_list, mtpe=3):
         connection = await websocket_connect(websock_url)  # 1) CONNECT
@@ -81,53 +84,59 @@ class NulsWebsocket(object):
             # if self.msg_type == 77: await self.regular_request(connection, run_item)
             # this runs register api # END TEST ONLY SECTION ----------------------
             if mtpe == 3:
-                main_request = prep_request(m_indx, run_item)  # TEST ONLY PUT BACK WHEN DONE
-                x = await self.regular_request(connection, main_request)
+                main_request = self.NReq.prep_request(m_indx, run_item)  # TEST ONLY PUT BACK WHEN DONE
+                await self.regular_request(connection, main_request)
 
     def main(self, rr_list, msg_type=3):
         mtpe = msg_type
         myindx = self.mindex
         if mtpe == 3:  # if a regular request Nulstar type 3
-            top_pls_middle_dict = prep_negotiate_request(myindx)  # must be done first
+            top_pls_middle_dict = self.NReq.prep_negotiate_request(myindx)  # must be done first
             asyncio_run(
                 self.negotiate_list(
                     top_pls_middle_dict, myindx, rr_list, mtpe))  # starts event
 
 
 if __name__ == "__main__":
-    from nulsws_python.src.nulsws_python.nulsws_request import prep_request, prep_negotiate_request
-    bcls = NulswsApiLabel()
 
-    b = bcls.ApiLabelDict
+    # bcls = NulsWsApiLabel()
+    # b = NulsWsApiLabel().ApiLabelDict
+    #
+    # runlist_1 = [b['AC_GET_ACCOUNT_BYADDRESS'], b['AC_GET_ALL_ADDRESS_PREFIX'], b['AC_GET_ACCOUNT_LIST'],
+    #              b['AC_GET_ADDRESS_LIST'], b['AC_GET_ADDRESS_PREFIX_BY_CHAINID'],
+    #              b['AC_GET_ALL_ADDRESS_PREFIX'],
+    #              b['AC_GET_ALL_PRIKEY'], b['AC_GET_ALIASBY_ADDRESS']]
+    #
+    # runlist_2 = [
+    #     b['AC_EXPORT_ACCOUNT_KEYSTORE'], b['AC_EXPORT_KEYSTORE_JSON'], b['AC_GET_ACCOUNT_BYADDRESS'],
+    #     b['AC_GET_ACCOUNT_LIST'], b['AC_GET_ADDRESS_LIST'], b['AC_GET_ADDRESS_PREFIX_BY_CHAINID'],
+    #     b['AC_GET_ALIASBY_ADDRESS'], b['AC_GET_ALL_ADDRESS_PREFIX'], b['AC_GET_ALL_PRIKEY'],
+    #     b['AC_GET_ENCRYPTED_ADDRESS_LIST'], b['AC_GET_MULTI_SIGN_ACCOUNT'], b['AC_GET_PRIKEY'],
+    #     b['AC_GET_PUBKEY']]
+    #
+    # runlist_3 = [b['GET_LATEST_BLOCKHEADERS'],
+    #              b['GET_LATEST_ROUND_BLOCKHEADERS'], b['GET_NETWORK_GROUP'], b['GET_NONCE'],
+    #              b['GET_OTHERCTX'],
+    #              b['GET_REGISTERED_CHAIN_INFO_LIST'], b['GET_REGISTERED_CHAIN_MESSAGE'],
+    #              b['GET_ROUND_BLOCKHEADERS'],
+    #              b['GET_STATUS'], b['GET_VERSION'], b['INFO'], b['LATEST_BLOCK'], b['LATEST_BLOCKHEADER'],
+    #              b['LATEST_BLOCKHEADER_PO'], b['LATEST_HEIGHT']]
+    #
+    # # RUN_LIST = runlist_2
+    # runlist = runlist_1 + runlist_2 + runlist_3
+    # r4 = [b['GET_STATUS'], b['GET_VERSION'], b['INFO'],
+    #       b['LATEST_BLOCK'], b['LATEST_BLOCKHEADER'], b['LATEST_BLOCKHEADER_PO'], b['LATEST_HEIGHT']]
+    #
+    # runlist = r4
+    # message_type = 3  # 3 is request, 99 is test, 77 is negotiate only
+    #
+    # nws = NulsWebsocket()
+    # nws.main(runlist, message_type)
 
-    runlist_1 = [b['AC_GET_ACCOUNT_BYADDRESS'], b['AC_GET_ALL_ADDRESS_PREFIX'], b['AC_GET_ACCOUNT_LIST'],
-                 b['AC_GET_ADDRESS_LIST'], b['AC_GET_ADDRESS_PREFIX_BY_CHAINID'],
-                 b['AC_GET_ALL_ADDRESS_PREFIX'],
-                 b['AC_GET_ALL_PRIKEY'], b['AC_GET_ALIASBY_ADDRESS']]
+    from nulsws_python.src.nulsws_python.constants import nulsws_calls_db as db
 
-    runlist_2 = [
-        b['AC_EXPORT_ACCOUNT_KEYSTORE'], b['AC_EXPORT_KEYSTORE_JSON'], b['AC_GET_ACCOUNT_BYADDRESS'],
-        b['AC_GET_ACCOUNT_LIST'], b['AC_GET_ADDRESS_LIST'], b['AC_GET_ADDRESS_PREFIX_BY_CHAINID'],
-        b['AC_GET_ALIASBY_ADDRESS'], b['AC_GET_ALL_ADDRESS_PREFIX'], b['AC_GET_ALL_PRIKEY'],
-        b['AC_GET_ENCRYPTED_ADDRESS_LIST'], b['AC_GET_MULTI_SIGN_ACCOUNT'], b['AC_GET_PRIKEY'],
-        b['AC_GET_PUBKEY']]
+    lab_d = NulsWsApiLabel().ApiLabelDict
+    ccdd = db.NulsWsCallsDB()
+    call_d = ccdd.calls_dict
 
-    runlist_3 = [b['GET_LATEST_BLOCKHEADERS'],
-                 b['GET_LATEST_ROUND_BLOCKHEADERS'], b['GET_NETWORK_GROUP'], b['GET_NONCE'],
-                 b['GET_OTHERCTX'],
-                 b['GET_REGISTERED_CHAIN_INFO_LIST'], b['GET_REGISTERED_CHAIN_MESSAGE'],
-                 b['GET_ROUND_BLOCKHEADERS'],
-                 b['GET_STATUS'], b['GET_VERSION'], b['INFO'], b['LATEST_BLOCK'], b['LATEST_BLOCKHEADER'],
-                 b['LATEST_BLOCKHEADER_PO'], b['LATEST_HEIGHT']]
-
-    # RUN_LIST = runlist_2
-    runlist = runlist_1 + runlist_2 + runlist_3
-    r4 = [b['GET_STATUS'], b['GET_VERSION'], b['INFO'],
-          b['LATEST_BLOCK'], b['LATEST_BLOCKHEADER'], b['LATEST_BLOCKHEADER_PO'], b['LATEST_HEIGHT']]
-
-    runlist = r4
-    message_type = 3  # 3 is request, 99 is test, 77 is negotiate only
-
-    nws = NulsWebsocket()
-    nws.main(runlist, message_type)
 

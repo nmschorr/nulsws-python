@@ -55,12 +55,12 @@ from nulsws_python.src.nulsws_python.constants.nulsws_other_labels import msg_da
     negotiate_stat_label, negotiate_conn_resp_label
 
 
-class NulswsLibrary(object):
+class NulsWsLib(object):
 
     # -----------get_times--------------------------------------#
 
-    @staticmethod
-    def get_times(msg_index: int):
+    @classmethod
+    def get_times(cls, msg_index: int):
         t_stamp = int(time() * 100000)  # change float to int
         tzone = int(timezone / 3600)  # change float to int to str
         m_id = str(t_stamp) + "-" + str(msg_index)
@@ -84,8 +84,8 @@ class NulswsLibrary(object):
 
     # -----------myprint--------------------------------------#
 
-    @staticmethod
-    def myprint(x, y=None, debug=True):
+    @classmethod
+    def myprint(cls, x, y=None, debug=True):
         if debug:
             print(x) if not y else print(str(x) + ' ' + str(y))
 
@@ -99,7 +99,7 @@ class NulswsLibrary(object):
                 aname = ''.join(str_msg)
                 print(aname + str(json_dumps(json_str, indent=3)))
             else:
-                NulswsLibrary.myprint("nothing returned")
+                NulsWsLib.myprint(0, "nothing returned")
 
 # ---------------- Example -------------------------------------------------------------------
 

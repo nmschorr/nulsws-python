@@ -8,12 +8,18 @@
 # for adding or changing methods
 
 from nulsws_python.src.nulsws_python.user_settings.nulsws_settings_two import *
-from nulsws_python.src.nulsws_python.constants.nulsws_api_labels import NulswsApiLabel
-from nulsws_python.src.nulsws_python.constants.nulsws_other_labels import param_name_dict as param
+from nulsws_python.src.nulsws_python.constants.nulsws_api_labels import NulsWsApiLabel
+import nulsws_python.src.nulsws_python.constants.nulsws_other_labels as n_lab
 
 
-class NulswsParams(object):
-    ap = NulswsApiLabel().ApiLabelDict
+class NulsWsCallsDB(object):
+    def __init__(self):
+        pass
+
+    param_obj = n_lab.NulsWsParams()
+    
+    ap = NulsWsApiLabel().ApiLabelDict
+    param = param_obj.param_name_dict
 
     calls_dict = {
         ap['AC_CREATE_OFFLINE_ACCOUNT']: [
@@ -744,7 +750,7 @@ class NulswsParams(object):
             (param.get("BLOCKHEIGHT"), z154_NW_UPDATE_NODE_INFO_blockHeight),
             (param.get("BLOCKHASH"), z154_NW_UPDATE_NODE_INFO_blockHash)],
 
-        ap['PARAM_TEST_CMD']: [
+        ap['param_TEST_CMD']: [
             (param.get("INTCOUNT"), z155_PARAM_TEST_CMD_intCount),
             (param.get("BYTECOUNT"), z155_PARAM_TEST_CMD_byteCount),
             (param.get("SHORTCOUNT"), z155_PARAM_TEST_CMD_shortCount),
