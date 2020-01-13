@@ -50,12 +50,12 @@ This file right now provides support for the the client only.
 import json
 from json import dumps as json_dumps
 from time import time, timezone
-
-from nulsws_python.src.nulsws_python.nulsws_params import msg_data_label, msg_type_label, \
-    negotiate_stat_label, negotiate_conn_resp_label
+from nulsws_python.src.nulsws_python.nulsws_params import NulsWsParams
 
 
 class NulsWsLib(object):
+    def __init__(self):
+        self.n = NulsWsParams()
 
     # -----------get_times--------------------------------------#
 
@@ -70,12 +70,13 @@ class NulsWsLib(object):
     # -----------check_json_answer--------------------------------------#
 
     def check_json_answer(self, answer) -> bool:
+        n = self.n
         jload = json.loads(answer)
         self.json_prt(jload, "check answer jds value= ")
-        msg_d_answer = jload.get(msg_data_label)
-        mt = jload.get(msg_type_label)
-        if mt == negotiate_conn_resp_label:
-            final_int = msg_d_answer.get(negotiate_stat_label)
+        msg_d_answer = jload.get(n.msg_data_label)
+        mt = jload.get(n.msg_type_label)
+        if mt == n.negotiate_conn_resp_label:
+            final_int = msg_d_answer.get(n.negotiate_stat_label)
             if final_int == '1':
                 print("Negotiate Status was 1. All is good")
                 return True

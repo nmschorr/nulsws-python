@@ -1,7 +1,7 @@
 #!/usr/bin/python3.7
 
 from nulsws_python.src.nulsws_python.nulsws_library import NulsWsLib
-from nulsws_python.src.nulsws_python.nulsws_params import *
+from nulsws_python.src.nulsws_python.nulsws_params import NulsWsParams
 from nulsws_python.src.nulsws_python.user_settings.nulsws_settings_one import *
 
 
@@ -11,12 +11,14 @@ from nulsws_python.src.nulsws_python.user_settings.nulsws_settings_one import *
 class NulsWsRequest(object):
     def __init__(self):
         self.get_times = NulsWsLib.get_times
+        self.n = NulsWsParams()
 
     def prep_negotiate_request(self, msg_indx):  # return dict
-        data_part = {msg_data_label: {
-            proto_label: proto_ver,
-            compress_type_label: compress_type_VALUE,
-            compress_rate_label: compress_rate_VALUE}}
+        n = self.n
+        data_part = {n.msg_data_label: {
+            n.proto_label: proto_ver,
+            n.compress_type_label: compress_type_VALUE,
+            n.compress_rate_label: compress_rate_VALUE}}
         top_sect = self.make_very_top(1, msg_indx)
         top_sect.update(data_part)
         return top_sect  # dict
@@ -28,31 +30,32 @@ class NulsWsRequest(object):
         # 1 "MessageID": "1569897424187-1",  #2 "TimeZone": "-4", # 3 "Timestamp": "1569897424187"
         # 4 "MessageType": "NegotiateConnection",
         # msg_type_name = type_name_dict.__getitem__(msg_type)
-
-        msg_type_name = type_name_dict[msg_type]
+        n = self.n
+        msg_type_name = n.type_name_dict[msg_type]
         t_stamp, tzone, m_id = self.get_times(msg_indx)
-        very_top = {proto_label: proto_ver,
-                    msg_id_label: m_id,
-                    tmstmp_label: t_stamp,
-                    tmzone_label: tzone,
-                    msg_type_label: msg_type_name}
+        very_top = {n.proto_label: proto_ver,
+                    n.msg_id_label: m_id,
+                    n.tmstmp_label: t_stamp,
+                    n.tmzone_label: tzone,
+                    n.msg_type_label: msg_type_name}
         return very_top
 
     # -----------get_REQ_MIDDLE--------------------------------------#
 
     def make_request_middle(self, mid_section_vals=None):  # return dict
+        n = self.n
         if not mid_section_vals:
-            mid_section_vals = [1, ZERO, ZERO, ZERO, ZERO]  # 2 = ack+date
+            mid_section_vals = [1, n.ZERO, n.ZERO, n.ZERO, n.ZERO]  # 2 = ack+date
         [rtt, sec, sp, sr, rms, bottom_part] = [*mid_section_vals]
 
         req_middle = {
-            msg_data_label: {
-                request_type_label: rtt,
-                subscrip_evnt_ct_label: sec,
-                subscrip_period_label: sp,
-                subscriptn_range_label: sr,
-                response_max_size_label: rms,
-                req_methods_label: bottom_part
+            n.msg_data_label: {
+                n.request_type_label: rtt,
+                n.subscrip_evnt_ct_label: sec,
+                n.subscrip_period_label: sp,
+                n.subscriptn_range_label: sr,
+                n.response_max_size_label: rms,
+                n.req_methods_label: bottom_part
             }}
         return req_middle  # dict
 
