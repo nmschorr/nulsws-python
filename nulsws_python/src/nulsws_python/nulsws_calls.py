@@ -8,212 +8,209 @@
 # for adding or changing methods
 
 from nulsws_python.src.nulsws_python.user_settings.nulsws_settings_two import *
-from nulsws_python.src.nulsws_python.constants.nulsws_api_labels import NulsWsApiLabel
-import nulsws_python.src.nulsws_python.constants.nulsws_other_labels as n_lab
+import nulsws_python.src.nulsws_python.nulsws_other_labels as ocls
 
 
-class NulsWsCallsDB(object):
+class NulsWsCalls(object):
     def __init__(self):
         pass
 
-    param_obj = n_lab.NulsWsParams()
-    
-    ap = NulsWsApiLabel().ApiLabelDict
-    param = param_obj.param_name_dict
+    pj = ocls.NulsWsParams()
+    param = pj.param_dict
 
     calls_dict = {
-        ap['AC_CREATE_OFFLINE_ACCOUNT']: [
+        'AC_CREATE_OFFLINE_ACCOUNT': ["ac_createOfflineAccount", [
             (param.get("CHAINID"), z5_AC_CREATE_OFFLINE_ACCOUNT_chainId),
             (param.get("COUNT"), z5_AC_CREATE_OFFLINE_ACCOUNT_count),
-            (param.get("PASSWORD"), z5_AC_CREATE_OFFLINE_ACCOUNT_password)],
+            (param.get("PASSWORD"), z5_AC_CREATE_OFFLINE_ACCOUNT_password)]],
 
-        ap['AC_EXPORT_ACCOUNT_KEYSTORE']: [
+        'AC_EXPORT_ACCOUNT_KEYSTORE': ['ac_exportAccountKeyStore', [
             (param.get("CHAINID"), z6_AC_EXPORT_ACCOUNT_KEYSTORE_chainId),
             (param.get("ADDRESS"), z6_AC_EXPORT_ACCOUNT_KEYSTORE_address),
             (param.get("PASSWORD"), z6_AC_EXPORT_ACCOUNT_KEYSTORE_password),
-            (param.get("FILEPATH"), z6_AC_EXPORT_ACCOUNT_KEYSTORE_filePath)],
+            (param.get("FILEPATH"), z6_AC_EXPORT_ACCOUNT_KEYSTORE_filePath)]],
 
-        ap['AC_EXPORT_KEYSTORE_JSON']: [
+        'AC_EXPORT_KEYSTORE_JSON': ['ac_exportKeyStoreJson', [
             (param.get("CHAINID"), z7_AC_EXPORT_KEYSTORE_JSON_chainId),
             (param.get("ADDRESS"), z7_AC_EXPORT_KEYSTORE_JSON_address),
-            (param.get("PASSWORD"), z7_AC_EXPORT_KEYSTORE_JSON_password)],
+            (param.get("PASSWORD"), z7_AC_EXPORT_KEYSTORE_JSON_password)]],
 
-        ap['AC_GET_ACCOUNT_BYADDRESS']: [
+        'AC_GET_ACCOUNT_BYADDRESS': ['ac_getAccountByAddress', [
             (param.get("CHAINID"), z8_AC_GET_ACCOUNT_BYADDRESS_chainId),
-            (param.get("ADDRESS"), z8_AC_GET_ACCOUNT_BYADDRESS_address)],
+            (param.get("ADDRESS"), z8_AC_GET_ACCOUNT_BYADDRESS_address)]],
 
-        ap['AC_GET_ACCOUNT_LIST']: [
-            (param.get("CHAINID"), z9_AC_GET_ACCOUNT_LIST_chainId)],
+        'AC_GET_ACCOUNT_LIST': ['ac_getAccountList', [
+            (param.get("CHAINID"), z9_AC_GET_ACCOUNT_LIST_chainId)]],
 
-        ap['AC_GET_ADDRESS_LIST']: [
+        'AC_GET_ADDRESS_LIST': ['ac_getAddressList', [
             (param.get("CHAINID"), z10_AC_GET_ADDRESS_LIST_chainId),
             (param.get("PAGENUMBER"), z10_AC_GET_ADDRESS_LIST_pageNumber),
-            (param.get("PAGESIZE"), z10_AC_GET_ADDRESS_LIST_pageSize)],
+            (param.get("PAGESIZE"), z10_AC_GET_ADDRESS_LIST_pageSize)]],
 
-        ap['AC_GET_ADDRESS_PREFIX_BY_CHAINID']: [
-            (param.get("CHAINID"), z11_AC_GET_ADDRESS_PREFIX_BY_CHAINID_chainId)],
+        'AC_GET_ADDRESS_PREFIX_BY_CHAINID': ['ac_getAddressPrefixByChainId', [
+            (param.get("CHAINID"), z11_AC_GET_ADDRESS_PREFIX_BY_CHAINID_chainId)]],
 
-        ap['AC_GET_ALL_ADDRESS_PREFIX']: [  #AC_GET_ALL_ADDRESS_PREFIX
-            (param.get("CHAINID"), z13_AC_GET_ALL_ADDRESS_PREFIX_chainId)],
+        'AC_GET_ALL_ADDRESS_PREFIX': ['ac_getAllAddressPrefix', [
+            (param.get("CHAINID"), z13_AC_GET_ALL_ADDRESS_PREFIX_chainId)]],
 
-        ap['AC_GET_ADDRESS_PREFIX_BY_CHAINID']: [
-            (param.get("CHAINID"), z11_AC_GET_ADDRESS_PREFIX_BY_CHAINID_chainId)],
+        'AC_GET_ADDRESS_PREFIX_BY_CHAINID': ['ac_getAddressPrefixByChainId', [
+            (param.get("CHAINID"), z11_AC_GET_ADDRESS_PREFIX_BY_CHAINID_chainId)]],
 
-        ap['AC_GET_ALIASBY_ADDRESS']: [
+        'AC_GET_ALIASBY_ADDRESS': ['ac_getAliasByAddress', [
             (param.get("CHAINID"), z12_AC_GET_ALIASBY_ADDRESS_chainId),
-            (param.get("ADDRESS"), z12_AC_GET_ALIASBY_ADDRESS_address)],
+            (param.get("ADDRESS"), z12_AC_GET_ALIASBY_ADDRESS_address)]],
 
-        ap['AC_GET_ALL_PRIKEY']: [
+        'AC_GET_ALL_PRIKEY': ['ac_getAllPriKey', [
             (param.get("CHAINID"), z14_AC_GET_ALL_PRIKEY_chainId),
-            (param.get("PASSWORD"), z14_AC_GET_ALL_PRIKEY_password)],
+            (param.get("PASSWORD"), z14_AC_GET_ALL_PRIKEY_password)]],
 
-        ap['AC_GET_ENCRYPTED_ADDRESS_LIST']: [
-            (param.get("CHAINID"), z15_AC_GET_ENCRYPTED_ADDRESS_LIST_chainId)],
+        'AC_GET_ENCRYPTED_ADDRESS_LIST': ['ac_getEncryptedAddressList', [
+            (param.get("CHAINID"), z15_AC_GET_ENCRYPTED_ADDRESS_LIST_chainId)]],
 
-        ap['AC_GET_MULTI_SIGN_ACCOUNT']: [
+        'AC_GET_MULTI_SIGN_ACCOUNT': ['ac_getMultiSignAccount', [
             (param.get("CHAINID"), z16_AC_GET_MULTI_SIGN_ACCOUNT_chainId),
-            (param.get("ADDRESS"), z16_AC_GET_MULTI_SIGN_ACCOUNT_address)],
+            (param.get("ADDRESS"), z16_AC_GET_MULTI_SIGN_ACCOUNT_address)]],
 
-        ap['AC_GET_PUBKEY']: [
+        'AC_GET_PUBKEY': ['ac_getPubKey', [
             (param.get("CHAINID"), z17_AC_GET_PUBKEY_chainId),
             (param.get("ADDRESS"), z17_AC_GET_PUBKEY_address),
-            (param.get("PASSWORD"), z17_AC_GET_PUBKEY_password)],
+            (param.get("PASSWORD"), z17_AC_GET_PUBKEY_password)]],
 
-        ap['AC_IMPORT_ACCOUNT_BY_KEYSTORE']: [
+        'AC_IMPORT_ACCOUNT_BY_KEYSTORE': ['ac_importAccountByKeystore', [
             (param.get("CHAINID"), z18_AC_IMPORT_ACCOUNT_BY_KEYSTORE_chainId),
             (param.get("PASSWORD"), z18_AC_IMPORT_ACCOUNT_BY_KEYSTORE_password),
             (param.get("KEYSTORE"), z18_AC_IMPORT_ACCOUNT_BY_KEYSTORE_keyStore),
-            (param.get("OVERWRITE"), z18_AC_IMPORT_ACCOUNT_BY_KEYSTORE_overwrite)],
+            (param.get("OVERWRITE"), z18_AC_IMPORT_ACCOUNT_BY_KEYSTORE_overwrite)]],
 
-        ap['AC_IMPORT_ACCOUNT_BY_PRIKEY']: [
+        'AC_IMPORT_ACCOUNT_BY_PRIKEY': ['ac_importAccountByPriKey', [
             (param.get("CHAINID"), z19_AC_IMPORT_ACCOUNT_BY_PRIKEY_chainId),
             (param.get("PASSWORD"), z19_AC_IMPORT_ACCOUNT_BY_PRIKEY_password),
             (param.get("PRIKEY"), z19_AC_IMPORT_ACCOUNT_BY_PRIKEY_priKey),
-            (param.get("OVERWRITE"), z19_AC_IMPORT_ACCOUNT_BY_PRIKEY_overwrite)],
+            (param.get("OVERWRITE"), z19_AC_IMPORT_ACCOUNT_BY_PRIKEY_overwrite)]],
 
-        ap['AC_IS_ALIAS_USABLE']: [
+        'AC_IS_ALIAS_USABLE': ['ac_isAliasUsable', [
             (param.get("CHAINID"), z20_AC_IS_ALIAS_USABLE_chainId),
-            (param.get("ALIAS"), z20_AC_IS_ALIAS_USABLE_alias)],
+            (param.get("ALIAS"), z20_AC_IS_ALIAS_USABLE_alias)]],
 
-        ap['AC_IS_MULTISIGN_ACCOUNT_BUILDER']: [
+        'AC_IS_MULTISIGN_ACCOUNT_BUILDER': ['ac_isMultiSignAccountBuilder', [
             (param.get("CHAINID"), z21_AC_IS_MULTISIGN_ACCOUNT_BUILDER_chainId),
             (param.get("ADDRESS"), z21_AC_IS_MULTISIGN_ACCOUNT_BUILDER_address),
-            (param.get("PUBKEY"), z21_AC_IS_MULTISIGN_ACCOUNT_BUILDER_pubKey)],
+            (param.get("PUBKEY"), z21_AC_IS_MULTISIGN_ACCOUNT_BUILDER_pubKey)]],
 
-        ap['AC_REMOVE_ACCOUNT']: [
+        'AC_REMOVE_ACCOUNT': ['ac_removeAccount', [
             (param.get("CHAINID"), z22_AC_REMOVE_ACCOUNT_chainId),
             (param.get("ADDRESS"), z22_AC_REMOVE_ACCOUNT_address),
-            (param.get("PASSWORD"), z22_AC_REMOVE_ACCOUNT_password)],
+            (param.get("PASSWORD"), z22_AC_REMOVE_ACCOUNT_password)]],
 
-        ap['AC_REMOVE_MULTISIGN_ACCOUNT']: [
+        'AC_REMOVE_MULTISIGN_ACCOUNT': ['ac_removeMultiSignAccount', [
             (param.get("CHAINID"), z23_AC_REMOVE_MULTISIGN_ACCOUNT_chainId),
-            (param.get("ADDRESS"), z23_AC_REMOVE_MULTISIGN_ACCOUNT_address)],
+            (param.get("ADDRESS"), z23_AC_REMOVE_MULTISIGN_ACCOUNT_address)]],
 
-        ap['AC_SET_ALIAS']: [
+        'AC_SET_ALIAS': ['ac_setAlias', [
             (param.get("CHAINID"), z24_AC_SET_ALIAS_chainId),
             (param.get("ADDRESS"), z24_AC_SET_ALIAS_address),
             (param.get("PASSWORD"), z24_AC_SET_ALIAS_password),
-            (param.get("ALIAS"), z24_AC_SET_ALIAS_alias)],
+            (param.get("ALIAS"), z24_AC_SET_ALIAS_alias)]],
 
-        ap['AC_SET_MULTISIGN_ALIAS']: [
+        'AC_SET_MULTISIGN_ALIAS': ['ac_setMultiSignAlias', [
             (param.get("CHAINID"), z25_AC_SET_MULTISIGN_ALIAS_chainId),
             (param.get("ADDRESS"), z25_AC_SET_MULTISIGN_ALIAS_address),
             (param.get("ALIAS"), z25_AC_SET_MULTISIGN_ALIAS_alias),
             (param.get("SIGNADDRESS"), z25_AC_SET_MULTISIGN_ALIAS_signAddress),
-            (param.get("SIGNPASSWORD"), z25_AC_SET_MULTISIGN_ALIAS_signPassword)],
+            (param.get("SIGNPASSWORD"), z25_AC_SET_MULTISIGN_ALIAS_signPassword)]],
 
-        ap['AC_SET_REMARK']: [
+        'AC_SET_REMARK': ['ac_setRemark', [
             (param.get("CHAINID"), z26_AC_SET_REMARK_chainId),
             (param.get("ADDRESS"), z26_AC_SET_REMARK_address),
-            (param.get("REMARK"), z26_AC_SET_REMARK_remark)],
+            (param.get("REMARK"), z26_AC_SET_REMARK_remark)]],
 
-        ap['AC_SIGN_BLOCKDIGEST']: [
+        'AC_SIGN_BLOCKDIGEST': ['ac_signBlockDigest', [
             (param.get("CHAINID"), z27_AC_SIGN_BLOCKDIGEST_chainId),
             (param.get("ADDRESS"), z27_AC_SIGN_BLOCKDIGEST_address),
             (param.get("PASSWORD"), z27_AC_SIGN_BLOCKDIGEST_password),
-            (param.get("DATA"), z27_AC_SIGN_BLOCKDIGEST_data)],
+            (param.get("DATA"), z27_AC_SIGN_BLOCKDIGEST_data)]],
 
-        ap['AC_SIGN_DIGEST']: [
+        'AC_SIGN_DIGEST': ['ac_signDigest', [
             (param.get("CHAINID"), z28_AC_SIGN_DIGEST_chainId),
             (param.get("ADDRESS"), z28_AC_SIGN_DIGEST_address),
             (param.get("PASSWORD"), z28_AC_SIGN_DIGEST_password),
-            (param.get("DATA"), z28_AC_SIGN_DIGEST_data)],
+            (param.get("DATA"), z28_AC_SIGN_DIGEST_data)]],
 
-        ap['AC_SIGN_MULTISIGN_TRANSACTION']: [
+        'AC_SIGN_MULTISIGN_TRANSACTION': ['ac_signMultiSignTransaction', [
             (param.get("CHAINID"), z29_AC_SIGN_MULTISIGN_TRANSACTION_chainId),
             (param.get("TX"), z29_AC_SIGN_MULTISIGN_TRANSACTION_tx),
             (param.get("SIGNADDRESS"), z29_AC_SIGN_MULTISIGN_TRANSACTION_signAddress),
-            (param.get("SIGNPASSWORD"), z29_AC_SIGN_MULTISIGN_TRANSACTION_signPassword)],
+            (param.get("SIGNPASSWORD"), z29_AC_SIGN_MULTISIGN_TRANSACTION_signPassword)]],
 
-        ap['AC_TRANSFER']: [
+        'AC_TRANSFER': ['ac_transfer', [
             (param.get("CHAINID"), z30_AC_TRANSFER_chainId),
             (param.get("INPUTS"), z30_AC_TRANSFER_inputs),
             (param.get("OUTPUTS"), z30_AC_TRANSFER_outputs),
-            (param.get("REMARK"), z30_AC_TRANSFER_remark)],
+            (param.get("REMARK"), z30_AC_TRANSFER_remark)]],
 
-        ap['AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD']: [
+        'AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD': ['ac_updateOfflineAccountPassword', [
             (param.get("CHAINID"), z31_AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD_chainId),
             (param.get("ADDRESS"), z31_AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD_address),
             (param.get("PASSWORD"), z31_AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD_password),
             (param.get("NEWPASSWORD"), z31_AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD_newPassword),
-            (param.get("PRIKEY"), z31_AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD_priKey)],
+            (param.get("PRIKEY"), z31_AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD_priKey)]],
 
-        ap['AC_UPDATE_PASSWORD']: [
+        'AC_UPDATE_PASSWORD': ['ac_updatePassword', [
             (param.get("CHAINID"), z32_AC_UPDATE_PASSWORD_chainId),
             (param.get("ADDRESS"), z32_AC_UPDATE_PASSWORD_address),
             (param.get("PASSWORD"), z32_AC_UPDATE_PASSWORD_password),
-            (param.get("NEWPASSWORD"), z32_AC_UPDATE_PASSWORD_newPassword)],
+            (param.get("NEWPASSWORD"), z32_AC_UPDATE_PASSWORD_newPassword)]],
 
-        ap['AC_VALIDATION_PASSWORD']: [
+        'AC_VALIDATION_PASSWORD': ['ac_validationPassword', [
             (param.get("CHAINID"), z33_AC_VALIDATION_PASSWORD_chainId),
             (param.get("ADDRESS"), z33_AC_VALIDATION_PASSWORD_address),
-            (param.get("PASSWORD"), z33_AC_VALIDATION_PASSWORD_password)],
+            (param.get("PASSWORD"), z33_AC_VALIDATION_PASSWORD_password)]],
 
-        ap['AC_VERIFY_SIGN_DATA']: [
+        'AC_VERIFY_SIGN_DATA': ['ac_verifySignData', [
             (param.get("PUBKEY"), z34_AC_VERIFY_SIGN_DATA_pubKey),
             (param.get("SIG"), z34_AC_VERIFY_SIGN_DATA_sig),
-            (param.get("DATA"), z34_AC_VERIFY_SIGN_DATA_data)],
+            (param.get("DATA"), z34_AC_VERIFY_SIGN_DATA_data)]],
 
-        ap['BATCH_VALIDATE_BEGIN']: [
-            (param.get("CHAINID"), z35_BATCH_VALIDATE_BEGIN_chainId)],
+        'BATCH_VALIDATE_BEGIN': ['batchValidateBegin', [
+            (param.get("CHAINID"), z35_BATCH_VALIDATE_BEGIN_chainId)]],
 
-        ap['BLOCK_VALIDATE']: [
+        'BLOCK_VALIDATE': ['blockValidate', [
             (param.get("CHAINID"), z36_BLOCK_VALIDATE_chainId),
-            (param.get("TXLIST"), z36_BLOCK_VALIDATE_txList)],
+            (param.get("TXLIST"), z36_BLOCK_VALIDATE_txList)]],
 
-        ap['CANCEL_CROSSCHAIN']: [
+        'CANCEL_CROSSCHAIN': ['cancelCrossChain', [
             (param.get("CHAINID"), z38_CANCEL_CROSSCHAIN_chainId),
-            (param.get("ASSETID"), z38_CANCEL_CROSSCHAIN_assetId)],
+            (param.get("ASSETID"), z38_CANCEL_CROSSCHAIN_assetId)]],
 
-        ap['CHECK_BLOCK_VERSION']: [
+        'CHECK_BLOCK_VERSION': ['checkBlockVersion', [
             (param.get("CHAINID"), z39_CHECK_BLOCK_VERSION_chainId),
-            (param.get("EXTENDSDATA"), z39_CHECK_BLOCK_VERSION_extendsData)],
+            (param.get("EXTENDSDATA"), z39_CHECK_BLOCK_VERSION_extendsData)]],
 
-        ap['CM_ASSET']: [
+        'CM_ASSET': ['cm_asset', [
             (param.get("CHAINID"), z40_CM_ASSET_chainId),
-            (param.get("ASSETID"), z40_CM_ASSET_assetId)],
+            (param.get("ASSETID"), z40_CM_ASSET_assetId)]],
 
-        ap['CM_ASSET_CIRCULATE_COMMIT']: [
+        'CM_ASSET_CIRCULATE_COMMIT': ['cm_assetCirculateCommit', [
             (param.get("CHAINID"), z41_CM_ASSET_CIRCULATE_COMMIT_chainId),
             (param.get("TXLIST"), z41_CM_ASSET_CIRCULATE_COMMIT_txList),
-            (param.get("BLOCKHEADER"), z41_CM_ASSET_CIRCULATE_COMMIT_blockHeader)],
+            (param.get("BLOCKHEADER"), z41_CM_ASSET_CIRCULATE_COMMIT_blockHeader)]],
 
-        ap['CM_ASSET_CIRCULATE_ROLLBACK']: [
+        'CM_ASSET_CIRCULATE_ROLLBACK': ['cm_assetCirculateRollBack', [
             (param.get("CHAINID"), z42_CM_ASSET_CIRCULATE_ROLLBACK_chainId),
             (param.get("TXLIST"), z42_CM_ASSET_CIRCULATE_ROLLBACK_txList),
-            (param.get("BLOCKHEADER"), z42_CM_ASSET_CIRCULATE_ROLLBACK_blockHeader)],
+            (param.get("BLOCKHEADER"), z42_CM_ASSET_CIRCULATE_ROLLBACK_blockHeader)]],
 
-        ap['CM_ASSET_CIRCULATE_VALIDATOR']: [
+        'CM_ASSET_CIRCULATE_VALIDATOR': ['cm_assetCirculateValidator', [
             (param.get("CHAINID"), z43_CM_ASSET_CIRCULATE_VALIDATOR_chainId),
-            (param.get("TX"), z43_CM_ASSET_CIRCULATE_VALIDATOR_tx)],
+            (param.get("TX"), z43_CM_ASSET_CIRCULATE_VALIDATOR_tx)]],
 
-        ap['CM_ASSET_DISABLE']: [
+        'CM_ASSET_DISABLE': ['cm_assetDisable', [
             (param.get("CHAINID"), z44_CM_ASSET_DISABLE_chainId),
             (param.get("ASSETID"), z44_CM_ASSET_DISABLE_assetId),
             (param.get("ADDRESS"), z44_CM_ASSET_DISABLE_address),
-            (param.get("PASSWORD"), z44_CM_ASSET_DISABLE_password)],
+            (param.get("PASSWORD"), z44_CM_ASSET_DISABLE_password)]],
 
-        ap['CM_ASSET_REG']: [
+        'CM_ASSET_REG': ['cm_assetReg', [
             (param.get("CHAINID"), z45_CM_ASSET_REG_chainId),
             (param.get("ASSETID"), z45_CM_ASSET_REG_assetId),
             (param.get("SYMBOL"), z45_CM_ASSET_REG_symbol),
@@ -221,12 +218,12 @@ class NulsWsCallsDB(object):
             (param.get("INITNUMBER"), z45_CM_ASSET_REG_initNumber),
             (param.get("DECIMALPLACES"), z45_CM_ASSET_REG_decimalPlaces),
             (param.get("ADDRESS"), z45_CM_ASSET_REG_address),
-            (param.get("PASSWORD"), z45_CM_ASSET_REG_password)],
+            (param.get("PASSWORD"), z45_CM_ASSET_REG_password)]],
 
-        ap['CM_CHAIN']: [
-            (param.get("CHAINID"), z46_CM_CHAIN_chainId)],
+        'CM_CHAIN': ['cm_chain', [
+            (param.get("CHAINID"), z46_CM_CHAIN_chainId)]],
 
-        ap['CM_CHAIN_ACTIVE']: [
+        'CM_CHAIN_ACTIVE': ['cm_chainActive', [
             (param.get("CHAINID"), z47_CM_CHAIN_ACTIVE_chainId),
             (param.get("CHAINNAME"), z47_CM_CHAIN_ACTIVE_chainName),
             (param.get("ADDRESSTYPE"), z47_CM_CHAIN_ACTIVE_addressType),
@@ -242,9 +239,9 @@ class NulsWsCallsDB(object):
             (param.get("PASSWORD"), z47_CM_CHAIN_ACTIVE_password),
             (param.get("VERIFIERLIST"), z47_CM_CHAIN_ACTIVE_verifierList),
             (param.get("SIGNATUREBFTRATIO"), z47_CM_CHAIN_ACTIVE_signatureBFTRatio),
-            (param.get("MAXSIGNATURECOUNT"), z47_CM_CHAIN_ACTIVE_maxSignatureCount)],
+            (param.get("MAXSIGNATURECOUNT"), z47_CM_CHAIN_ACTIVE_maxSignatureCount)]],
 
-        ap['CM_CHAIN_REG']: [
+        'CM_CHAIN_REG': ['cm_chainReg', [
             (param.get("CHAINID"), z48_CM_CHAIN_REG_chainId),
             (param.get("CHAINNAME"), z48_CM_CHAIN_REG_chainName),
             (param.get("ADDRESSTYPE"), z48_CM_CHAIN_REG_addressType),
@@ -260,58 +257,58 @@ class NulsWsCallsDB(object):
             (param.get("PASSWORD"), z48_CM_CHAIN_REG_password),
             (param.get("VERIFIERLIST"), z48_CM_CHAIN_REG_verifierList),
             (param.get("SIGNATUREBFTRATIO"), z48_CM_CHAIN_REG_signatureBFTRatio),
-            (param.get("MAXSIGNATURECOUNT"), z48_CM_CHAIN_REG_maxSignatureCount)],
+            (param.get("MAXSIGNATURECOUNT"), z48_CM_CHAIN_REG_maxSignatureCount)]],
 
-        ap['CM_GET_CHAIN_ASSET']: [
+        'CM_GET_CHAIN_ASSET': ['cm_getChainAsset', [
             (param.get("CHAINID"), z49_CM_GET_CHAIN_ASSET_chainId),
             (param.get("ASSETCHAINID"), z49_CM_GET_CHAIN_ASSET_assetChainId),
-            (param.get("ASSETID"), z49_CM_GET_CHAIN_ASSET_assetId)],
+            (param.get("ASSETID"), z49_CM_GET_CHAIN_ASSET_assetId)]],
 
-        ap['CM_GET_CIRCULATE_CHAIN_ASSET']: [
+        'CM_GET_CIRCULATE_CHAIN_ASSET': ['cm_getCirculateChainAsset', [
             (param.get("CIRCULATECHAINID"), z50_CM_GET_CIRCULATE_CHAIN_ASSET_circulateChainId),
             (param.get("ASSETCHAINID"), z50_CM_GET_CIRCULATE_CHAIN_ASSET_assetChainId),
-            (param.get("ASSETID"), z50_CM_GET_CIRCULATE_CHAIN_ASSET_assetId)],
+            (param.get("ASSETID"), z50_CM_GET_CIRCULATE_CHAIN_ASSET_assetId)]],
 
-        ap['COMMIT_BATCH_UNCONFIRMED_TXS']: [
+        'COMMIT_BATCH_UNCONFIRMED_TXS': ['commitBatchUnconfirmedTxs', [
             (param.get("CHAINID"), z51_COMMIT_BATCH_UNCONFIRMED_TXS_chainId),
-            (param.get("TXLIST"), z51_COMMIT_BATCH_UNCONFIRMED_TXS_txList)],
+            (param.get("TXLIST"), z51_COMMIT_BATCH_UNCONFIRMED_TXS_txList)]],
 
-        ap['COMMIT_BLOCKTXS']: [
+        'COMMIT_BLOCKTXS': ['commitBlockTxs', [
             (param.get("CHAINID"), z52_COMMIT_BLOCKTXS_chainId),
             (param.get("TXLIST"), z52_COMMIT_BLOCKTXS_txList),
-            (param.get("BLOCKHEIGHT"), z52_COMMIT_BLOCKTXS_blockHeight)],
+            (param.get("BLOCKHEIGHT"), z52_COMMIT_BLOCKTXS_blockHeight)]],
 
-        ap['COMMIT_UNCONFIRMEDTX']: [
+        'COMMIT_UNCONFIRMEDTX': ['commitUnconfirmedTx', [
             (param.get("CHAINID"), z53_COMMIT_UNCONFIRMEDTX_chainId),
-            (param.get("TX"), z53_COMMIT_UNCONFIRMEDTX_tx)],
+            (param.get("TX"), z53_COMMIT_UNCONFIRMEDTX_tx)]],
 
-        ap['CREATE_AGENT_VALID']: [
+        'CREATE_AGENT_VALID': ['createAgentValid', [
             (param.get("CHAINID"), z55_CREATE_AGENT_VALID_chainId),
-            (param.get("TX"), z55_CREATE_AGENT_VALID_tx)],
+            (param.get("TX"), z55_CREATE_AGENT_VALID_tx)]],
 
-        ap['CREATE_CROSSTX']: [
+        'CREATE_CROSSTX': ['createCrossTx', [
             (param.get("CHAINID"), z56_CREATE_CROSSTX_chainId),
             (param.get("LISTFROM"), z56_CREATE_CROSSTX_listFrom),
             (param.get("LISTTO"), z56_CREATE_CROSSTX_listTo),
-            (param.get("REMARK"), z56_CREATE_CROSSTX_remark)],
+            (param.get("REMARK"), z56_CREATE_CROSSTX_remark)]],
 
-        ap['CROSSCHAIN_REGISTER_CHANGE']: [
-            (param.get("CHAINID"), z57_CROSSCHAIN_REGISTER_CHANGE_chainId)],
+        'CROSSCHAIN_REGISTER_CHANGE': ['crossChainRegisterChange', [
+            (param.get("CHAINID"), z57_CROSSCHAIN_REGISTER_CHANGE_chainId)]],
 
-        ap['CS_ADD_BLOCK']: [
+        'CS_ADD_BLOCK': ['cs_addBlock', [
             (param.get("CHAINID"), z58_CS_ADD_BLOCK_chainId),
-            (param.get("BLOCKHEADER"), z58_CS_ADD_BLOCK_blockHeader)],
+            (param.get("BLOCKHEADER"), z58_CS_ADD_BLOCK_blockHeader)]],
 
-        ap['CS_ADD_EVIDENCE_RECORD']: [
+        'CS_ADD_EVIDENCE_RECORD': ['cs_addEvidenceRecord', [
             (param.get("CHAINID"), z59_CS_ADD_EVIDENCE_RECORD_chainId),
             (param.get("BLOCKHEADER"), z59_CS_ADD_EVIDENCE_RECORD_blockHeader),
-            (param.get("EVIDENCEHEADER"), z59_CS_ADD_EVIDENCE_RECORD_evidenceHeader)],
+            (param.get("EVIDENCEHEADER"), z59_CS_ADD_EVIDENCE_RECORD_evidenceHeader)]],
 
-        ap['CS_CHAIN_ROLLBACK']: [
+        'CS_CHAIN_ROLLBACK': ['cs_chainRollBack', [
             (param.get("CHAINID"), z60_CS_CHAIN_ROLLBACK_chainId),
-            (param.get("HEIGHT"), z60_CS_CHAIN_ROLLBACK_height)],
+            (param.get("HEIGHT"), z60_CS_CHAIN_ROLLBACK_height)]],
 
-        ap['CS_CONTRACT_DEPOSIT']: [
+        'CS_CONTRACT_DEPOSIT': ['cs_contractDeposit', [
             (param.get("CHAINID"), z61_CS_CONTRACT_DEPOSIT_chainId),
             (param.get("AGENTHASH"), z61_CS_CONTRACT_DEPOSIT_agentHash),
             (param.get("DEPOSIT"), z61_CS_CONTRACT_DEPOSIT_deposit),
@@ -319,27 +316,27 @@ class NulsWsCallsDB(object):
             (param.get("CONTRACTSENDER"), z61_CS_CONTRACT_DEPOSIT_contractSender),
             (param.get("CONTRACTBALANCE"), z61_CS_CONTRACT_DEPOSIT_contractBalance),
             (param.get("CONTRACTNONCE"), z61_CS_CONTRACT_DEPOSIT_contractNonce),
-            (param.get("BLOCKTIME"), z61_CS_CONTRACT_DEPOSIT_blockTime)],
+            (param.get("BLOCKTIME"), z61_CS_CONTRACT_DEPOSIT_blockTime)]],
 
-        ap['CS_CONTRACT_WITHDRAW']: [
+        'CS_CONTRACT_WITHDRAW': ['cs_contractWithdraw', [
             (param.get("CHAINID"), z62_CS_CONTRACT_WITHDRAW_chainId),
             (param.get("JOINAGENTHASH"), z62_CS_CONTRACT_WITHDRAW_joinAgentHash),
             (param.get("CONTRACTADDRESS"), z62_CS_CONTRACT_WITHDRAW_contractAddress),
             (param.get("CONTRACTSENDER"), z62_CS_CONTRACT_WITHDRAW_contractSender),
             (param.get("CONTRACTBALANCE"), z62_CS_CONTRACT_WITHDRAW_contractBalance),
             (param.get("CONTRACTNONCE"), z62_CS_CONTRACT_WITHDRAW_contractNonce),
-            (param.get("BLOCKTIME"), z62_CS_CONTRACT_WITHDRAW_blockTime)],
+            (param.get("BLOCKTIME"), z62_CS_CONTRACT_WITHDRAW_blockTime)]],
 
-        ap['CS_CREATE_AGENT']: [
+        'CS_CREATE_AGENT': ['cs_createAgent', [
             (param.get("CHAINID"), z63_CS_CREATE_AGENT_chainId),
             (param.get("AGENTADDRESS"), z63_CS_CREATE_AGENT_agentAddress),
             (param.get("PACKINGADDRESS"), z63_CS_CREATE_AGENT_packingAddress),
             (param.get("REWARDADDRESS"), z63_CS_CREATE_AGENT_rewardAddress),
             (param.get("COMMISSIONRATE"), z63_CS_CREATE_AGENT_commissionRate),
             (param.get("DEPOSIT"), z63_CS_CREATE_AGENT_deposit),
-            (param.get("PASSWORD"), z63_CS_CREATE_AGENT_password)],
+            (param.get("PASSWORD"), z63_CS_CREATE_AGENT_password)]],
 
-        ap['CS_CREATE_CONTRACT_AGENT']: [
+        'CS_CREATE_CONTRACT_AGENT': ['cs_createContractAgent', [
             (param.get("CHAINID"), z64_CS_CREATE_CONTRACT_AGENT_chainId),
             (param.get("PACKINGADDRESS"), z64_CS_CREATE_CONTRACT_AGENT_packingAddress),
             (param.get("DEPOSIT"), z64_CS_CREATE_CONTRACT_AGENT_deposit),
@@ -348,9 +345,9 @@ class NulsWsCallsDB(object):
             (param.get("CONTRACTSENDER"), z64_CS_CREATE_CONTRACT_AGENT_contractSender),
             (param.get("CONTRACTBALANCE"), z64_CS_CREATE_CONTRACT_AGENT_contractBalance),
             (param.get("CONTRACTNONCE"), z64_CS_CREATE_CONTRACT_AGENT_contractNonce),
-            (param.get("BLOCKTIME"), z64_CS_CREATE_CONTRACT_AGENT_blockTime)],
+            (param.get("BLOCKTIME"), z64_CS_CREATE_CONTRACT_AGENT_blockTime)]],
 
-        ap['CS_CREATE_MULTI_AGENT']: [
+        'CS_CREATE_MULTI_AGENT': ['cs_createMultiAgent', [
             (param.get("CHAINID"), z65_CS_CREATE_MULTI_AGENT_chainId),
             (param.get("AGENTADDRESS"), z65_CS_CREATE_MULTI_AGENT_agentAddress),
             (param.get("PACKINGADDRESS"), z65_CS_CREATE_MULTI_AGENT_packingAddress),
@@ -358,491 +355,491 @@ class NulsWsCallsDB(object):
             (param.get("COMMISSIONRATE"), z65_CS_CREATE_MULTI_AGENT_commissionRate),
             (param.get("DEPOSIT"), z65_CS_CREATE_MULTI_AGENT_deposit),
             (param.get("PASSWORD"), z65_CS_CREATE_MULTI_AGENT_password),
-            (param.get("SIGNADDRESS"), z65_CS_CREATE_MULTI_AGENT_signAddress)],
+            (param.get("SIGNADDRESS"), z65_CS_CREATE_MULTI_AGENT_signAddress)]],
 
-        ap['CS_DEPOSIT_TOAGENT']: [
+        'CS_DEPOSIT_TOAGENT': ['cs_depositToAgent', [
             (param.get("CHAINID"), z66_CS_DEPOSIT_TOAGENT_chainId),
             (param.get("ADDRESS"), z66_CS_DEPOSIT_TOAGENT_address),
             (param.get("AGENTHASH"), z66_CS_DEPOSIT_TOAGENT_agentHash),
             (param.get("DEPOSIT"), z66_CS_DEPOSIT_TOAGENT_deposit),
-            (param.get("PASSWORD"), z66_CS_DEPOSIT_TOAGENT_password)],
+            (param.get("PASSWORD"), z66_CS_DEPOSIT_TOAGENT_password)]],
 
-        ap['CS_DOUBLE_SPEND_RECORD']: [
+        'CS_DOUBLE_SPEND_RECORD': ['cs_doubleSpendRecord', [
             (param.get("CHAINID"), z67_CS_DOUBLE_SPEND_RECORD_chainId),
             (param.get("BLOCK"), z67_CS_DOUBLE_SPEND_RECORD_block),
-            (param.get("TX"), z67_CS_DOUBLE_SPEND_RECORD_tx)],
+            (param.get("TX"), z67_CS_DOUBLE_SPEND_RECORD_tx)]],
 
-        ap['CS_GET_AGENT_ADDRESS_LIST']: [
-            (param.get("CHAINID"), z68_CS_GET_AGENT_ADDRESS_LIST_chainId)],
+        'CS_GET_AGENT_ADDRESS_LIST': ['cs_get_AgentAddressList', [
+            (param.get("CHAINID"), z68_CS_GET_AGENT_ADDRESS_LIST_chainId)]],
 
-        ap['CS_GET_AGENT_CHANGE_INFO']: [
-            (param.get("CHAINID"), z69_CS_GET_AGENT_CHANGE_INFO_chainId)],
+        'CS_GET_AGENT_CHANGE_INFO': ['cs_getAgentChangeInfo', [
+            (param.get("CHAINID"), z69_CS_GET_AGENT_CHANGE_INFO_chainId)]],
 
-        ap['CS_GET_AGENT_INFO']: [
+        'CS_GET_AGENT_INFO': ['cs_getAgentInfo', [
             (param.get("CHAINID"), z70_CS_GET_AGENT_INFO_chainId),
-            (param.get("AGENTHASH"), z70_CS_GET_AGENT_INFO_agentHash)],
+            (param.get("AGENTHASH"), z70_CS_GET_AGENT_INFO_agentHash)]],
 
-        ap['CS_GET_AGENT_LIST']: [
+        'CS_GET_AGENT_LIST': ['cs_getAgentList', [
             (param.get("CHAINID"), z71_CS_GET_AGENT_LIST_chainId),
             (param.get("PAGENUMBER"), z71_CS_GET_AGENT_LIST_pageNumber),
             (param.get("PAGESIZE"), z71_CS_GET_AGENT_LIST_pageSize),
-            (param.get("KEYWORD"), z71_CS_GET_AGENT_LIST_keyWord)],
+            (param.get("KEYWORD"), z71_CS_GET_AGENT_LIST_keyWord)]],
 
-        ap['CS_GET_AGENT_STATUS']: [
+        'CS_GET_AGENT_STATUS': ['cs_getAgentStatus', [
             (param.get("CHAINID"), z72_CS_GET_AGENT_STATUS_chainId),
-            (param.get("AGENTHASH"), z72_CS_GET_AGENT_STATUS_agentHash)],
+            (param.get("AGENTHASH"), z72_CS_GET_AGENT_STATUS_agentHash)]],
 
-        ap['CS_GET_CONSENSUS_CONFIG']: [
-            (param.get("CHAINID"), z73_CS_GET_CONSENSUS_CONFIG_chainId)],
+        'CS_GET_CONSENSUS_CONFIG': ['cs_getConsensusConfig', [
+            (param.get("CHAINID"), z73_CS_GET_CONSENSUS_CONFIG_chainId)]],
 
-        ap['CS_GET_CONTRACT_AGENT_INFO']: [
+        'CS_GET_CONTRACT_AGENT_INFO': ['cs_getContractAgentInfo', [
             (param.get("CHAINID"), z74_CS_GET_CONTRACT_AGENT_INFO_chainId),
             (param.get("AGENTHASH"), z74_CS_GET_CONTRACT_AGENT_INFO_agentHash),
             (param.get("CONTRACTADDRESS"), z74_CS_GET_CONTRACT_AGENT_INFO_contractAddress),
-            (param.get("CONTRACTSENDER"), z74_CS_GET_CONTRACT_AGENT_INFO_contractSender)],
+            (param.get("CONTRACTSENDER"), z74_CS_GET_CONTRACT_AGENT_INFO_contractSender)]],
 
-        ap['CS_GET_CONTRACT_DEPOSIT_INFO']: [
+        'CS_GET_CONTRACT_DEPOSIT_INFO': ['cs_getContractDepositInfo', [
             (param.get("CHAINID"), z75_CS_GET_CONTRACT_DEPOSIT_INFO_chainId),
             (param.get("JOINAGENTHASH"), z75_CS_GET_CONTRACT_DEPOSIT_INFO_joinAgentHash),
             (param.get("CONTRACTADDRESS"), z75_CS_GET_CONTRACT_DEPOSIT_INFO_contractAddress),
-            (param.get("CONTRACTSENDER"), z75_CS_GET_CONTRACT_DEPOSIT_INFO_contractSender)],
+            (param.get("CONTRACTSENDER"), z75_CS_GET_CONTRACT_DEPOSIT_INFO_contractSender)]],
 
-        ap['CS_GET_DEPOSIT_LIST']: [
+        'CS_GET_DEPOSIT_LIST': ['cs_getDepositList', [
             (param.get("CHAINID"), z76_CS_GET_DEPOSIT_LIST_chainId),
             (param.get("PAGENUMBER"), z76_CS_GET_DEPOSIT_LIST_pageNumber),
             (param.get("PAGESIZE"), z76_CS_GET_DEPOSIT_LIST_pageSize),
             (param.get("ADDRESS"), z76_CS_GET_DEPOSIT_LIST_address),
-            (param.get("AGENTHASH"), z76_CS_GET_DEPOSIT_LIST_agentHash)],
+            (param.get("AGENTHASH"), z76_CS_GET_DEPOSIT_LIST_agentHash)]],
 
-        ap['CS_GET_INFO']: [
+        'CS_GET_INFO': ['cs_getInfo', [
             (param.get("CHAINID"), z77_CS_GET_INFO_chainId),
-            (param.get("ADDRESS"), z77_CS_GET_INFO_address)],
+            (param.get("ADDRESS"), z77_CS_GET_INFO_address)]],
 
-        ap['CS_GET_PACKER_INFO']: [
-            (param.get("CHAINID"), z78_CS_GET_PACKER_INFO_chainId)],
+        'CS_GET_PACKER_INFO': ['cs_getPackerInfo', [
+            (param.get("CHAINID"), z78_CS_GET_PACKER_INFO_chainId)]],
 
-        ap['CS_GET_PUBLISH_LIST']: [
+        'CS_GET_PUBLISH_LIST': ['cs_getPublishList', [
             (param.get("CHAINID"), z79_CS_GET_PUBLISH_LIST_chainId),
             (param.get("ADDRESS"), z79_CS_GET_PUBLISH_LIST_address),
-            (param.get("TYPE"), z79_CS_GET_PUBLISH_LIST_type)],
+            (param.get("TYPE"), z79_CS_GET_PUBLISH_LIST_type)]],
 
-        ap['CS_GET_ROUND_INFO']: [
-            (param.get("CHAINID"), z80_CS_GET_ROUND_INFO_chainId)],
+        'CS_GET_ROUND_INFO': ['cs_getRoundInfo', [
+            (param.get("CHAINID"), z80_CS_GET_ROUND_INFO_chainId)]],
 
-        ap['CS_GET_ROUND_MEMBER_LIST']: [
+        'CS_GET_ROUND_MEMBER_LIST': ['cs_getRoundMemberList', [
             (param.get("CHAINID"), z81_CS_GET_ROUND_MEMBER_LIST_chainId),
-            (param.get("EXTEND"), z81_CS_GET_ROUND_MEMBER_LIST_extend)],
+            (param.get("EXTEND"), z81_CS_GET_ROUND_MEMBER_LIST_extend)]],
 
-        ap['CS_GET_SEED_NODE_INFO']: [
-            (param.get("CHAINID"), z82_CS_GET_SEED_NODE_INFO_chainId)],
+        'CS_GET_SEED_NODE_INFO': ['cs_getSeedNodeInfo', [
+            (param.get("CHAINID"), z82_CS_GET_SEED_NODE_INFO_chainId)]],
 
-        ap['CS_GET_WHOLEINFO']: [
-            (param.get("CHAINID"), z83_CS_GET_WHOLEINFO_chainId)],
+        'CS_GET_WHOLEINFO': ['cs_getwholeinfo', [
+            (param.get("CHAINID"), z83_CS_GET_WHOLEINFO_chainId)]],
 
-        ap['CS_MULTI_DEPOSIT']: [
+        'CS_MULTI_DEPOSIT': ['cs_multiDeposit', [
             (param.get("CHAINID"), z84_CS_MULTI_DEPOSIT_chainId),
             (param.get("ADDRESS"), z84_CS_MULTI_DEPOSIT_address),
             (param.get("AGENTHASH"), z84_CS_MULTI_DEPOSIT_agentHash),
             (param.get("DEPOSIT"), z84_CS_MULTI_DEPOSIT_deposit),
             (param.get("PASSWORD"), z84_CS_MULTI_DEPOSIT_password),
-            (param.get("SIGNADDRESS"), z84_CS_MULTI_DEPOSIT_signAddress)],
+            (param.get("SIGNADDRESS"), z84_CS_MULTI_DEPOSIT_signAddress)]],
 
-        ap['CS_MULTI_WITHDRAW']: [
+        'CS_MULTI_WITHDRAW': ['cs_multiWithdraw', [
             (param.get("CHAINID"), z85_CS_MULTI_WITHDRAW_chainId),
             (param.get("ADDRESS"), z85_CS_MULTI_WITHDRAW_address),
             (param.get("TXHASH"), z85_CS_MULTI_WITHDRAW_txHash),
             (param.get("PASSWORD"), z85_CS_MULTI_WITHDRAW_password),
-            (param.get("SIGNADDRESS"), z85_CS_MULTI_WITHDRAW_signAddress)],
+            (param.get("SIGNADDRESS"), z85_CS_MULTI_WITHDRAW_signAddress)]],
 
-        ap['CS_RANDOM_RAW_SEEDS_COUNT']: [
+        'CS_RANDOM_RAW_SEEDS_COUNT': ['cs_random_raw_seeds_count', [
             (param.get("CHAINID"), z86_CS_RANDOM_RAW_SEEDS_COUNT_chainId),
             (param.get("HEIGHT"), z86_CS_RANDOM_RAW_SEEDS_COUNT_height),
-            (param.get("COUNT"), z86_CS_RANDOM_RAW_SEEDS_COUNT_count)],
+            (param.get("COUNT"), z86_CS_RANDOM_RAW_SEEDS_COUNT_count)]],
 
-        ap['CS_RANDOM_RAW_SEEDS_HEIGHT']: [
+        'CS_RANDOM_RAW_SEEDS_HEIGHT': ['cs_random_raw_seeds_height', [
             (param.get("CHAINID"), z87_CS_RANDOM_RAW_SEEDS_HEIGHT_chainId),
             (param.get("STARTHEIGHT"), z87_CS_RANDOM_RAW_SEEDS_HEIGHT_startHeight),
-            (param.get("ENDHEIGHT"), z87_CS_RANDOM_RAW_SEEDS_HEIGHT_endHeight)],
+            (param.get("ENDHEIGHT"), z87_CS_RANDOM_RAW_SEEDS_HEIGHT_endHeight)]],
 
-        ap['CS_RANDOM_SEED_COUNT']: [
+        'CS_RANDOM_SEED_COUNT': ['cs_random_seed_count', [
             (param.get("CHAINID"), z88_CS_RANDOM_SEED_COUNT_chainId),
             (param.get("HEIGHT"), z88_CS_RANDOM_SEED_COUNT_height),
             (param.get("COUNT"), z88_CS_RANDOM_SEED_COUNT_count),
-            (param.get("ALGORITHM"), z88_CS_RANDOM_SEED_COUNT_algorithm)],
+            (param.get("ALGORITHM"), z88_CS_RANDOM_SEED_COUNT_algorithm)]],
 
-        ap['CS_RANDOM_SEED_HEIGHT']: [
+        'CS_RANDOM_SEED_HEIGHT': ['cs_random_seed_height', [
             (param.get("CHAINID"), z89_CS_RANDOM_SEED_HEIGHT_chainId),
             (param.get("STARTHEIGHT"), z89_CS_RANDOM_SEED_HEIGHT_startHeight),
             (param.get("ENDHEIGHT"), z89_CS_RANDOM_SEED_HEIGHT_endHeight),
-            (param.get("ALGORITHM"), z89_CS_RANDOM_SEED_HEIGHT_algorithm)],
+            (param.get("ALGORITHM"), z89_CS_RANDOM_SEED_HEIGHT_algorithm)]],
 
-        ap['CS_RECEIVE_HEADERLIST']: [
+        'CS_RECEIVE_HEADERLIST': ['cs_receiveHeaderList', [
             (param.get("CHAINID"), z90_CS_RECEIVE_HEADERLIST_chainId),
-            (param.get("HEADERLIST"), z90_CS_RECEIVE_HEADERLIST_headerList)],
+            (param.get("HEADERLIST"), z90_CS_RECEIVE_HEADERLIST_headerList)]],
 
-        ap['CS_RUN_CHAIN']: [
-            (param.get("CHAINID"), z91_CS_RUN_CHAIN_chainId)],
+        'CS_RUN_CHAIN': ['cs_runChain', [
+            (param.get("CHAINID"), z91_CS_RUN_CHAIN_chainId)]],
 
-        ap['CS_RUN_MAINCHAIN']: [
-            (param.get("CHAINID"), z92_CS_RUN_MAINCHAIN_chainId)],
+        'CS_RUN_MAINCHAIN': ['cs_runMainChain', [
+            (param.get("CHAINID"), z92_CS_RUN_MAINCHAIN_chainId)]],
 
-        ap['CS_STOPAGENT']: [
+        'CS_STOPAGENT': ['cs_stopAgent', [
             (param.get("CHAINID"), z93_CS_STOPAGENT_chainId),
             (param.get("ADDRESS"), z93_CS_STOPAGENT_address),
-            (param.get("PASSWORD"), z93_CS_STOPAGENT_password)],
+            (param.get("PASSWORD"), z93_CS_STOPAGENT_password)]],
 
-        ap['CS_STOP_AGENT']: [
+        'CS_STOP_AGENT': ['cs_stopagent', [
             (param.get("CHAINID"), z94_CS_STOP_AGENT_chainId),
             (param.get("ADDRESS"), z94_CS_STOP_AGENT_address),
-            (param.get("PASSWORD"), z94_CS_STOP_AGENT_password)],
+            (param.get("PASSWORD"), z94_CS_STOP_AGENT_password)]],
 
-        ap['CS_STOPCHAIN']: [
-            (param.get("CHAINID"), z95_CS_STOPCHAIN_chainId)],
+        'CS_STOPCHAIN': ['cs_stopChain', [
+            (param.get("CHAINID"), z95_CS_STOPCHAIN_chainId)]],
 
-        ap['CS_STOP_CHAIN']: [
-            (param.get("CHAINID"), z96_CS_STOP_CHAIN_chainId)],
+        'CS_STOP_CHAIN': ['cs_stopchain', [
+            (param.get("CHAINID"), z96_CS_STOP_CHAIN_chainId)]],
 
-        ap['CS_STOP_CONTRACT_AGENT']: [
+        'CS_STOP_CONTRACT_AGENT': ['cs_stopContractAgent', [
             (param.get("CHAINID"), z97_CS_STOP_CONTRACT_AGENT_chainId),
             (param.get("CONTRACTADDRESS"), z97_CS_STOP_CONTRACT_AGENT_contractAddress),
             (param.get("CONTRACTSENDER"), z97_CS_STOP_CONTRACT_AGENT_contractSender),
             (param.get("CONTRACTBALANCE"), z97_CS_STOP_CONTRACT_AGENT_contractBalance),
             (param.get("CONTRACTNONCE"), z97_CS_STOP_CONTRACT_AGENT_contractNonce),
-            (param.get("BLOCKTIME"), z97_CS_STOP_CONTRACT_AGENT_blockTime)],
+            (param.get("BLOCKTIME"), z97_CS_STOP_CONTRACT_AGENT_blockTime)]],
 
-        ap['CS_STOP_MULTI_AGENT']: [
+        'CS_STOP_MULTI_AGENT': ['cs_stopMultiAgent', [
             (param.get("CHAINID"), z98_CS_STOP_MULTI_AGENT_chainId),
             (param.get("ADDRESS"), z98_CS_STOP_MULTI_AGENT_address),
             (param.get("PASSWORD"), z98_CS_STOP_MULTI_AGENT_password),
-            (param.get("SIGNADDRESS"), z98_CS_STOP_MULTI_AGENT_signAddress)],
+            (param.get("SIGNADDRESS"), z98_CS_STOP_MULTI_AGENT_signAddress)]],
 
-        ap['CS_TRIGGER_COINBASE_CONTRACT']: [
+        'CS_TRIGGER_COINBASE_CONTRACT': ['cs_triggerCoinBaseContract', [
             (param.get("CHAINID"), z99_CS_TRIGGER_COINBASE_CONTRACT_chainId),
             (param.get("TX"), z99_CS_TRIGGER_COINBASE_CONTRACT_tx),
             (param.get("BLOCKHEADER"), z99_CS_TRIGGER_COINBASE_CONTRACT_blockHeader),
-            (param.get("STATEROOT"), z99_CS_TRIGGER_COINBASE_CONTRACT_stateRoot)],
+            (param.get("STATEROOT"), z99_CS_TRIGGER_COINBASE_CONTRACT_stateRoot)]],
 
-        ap['CS_UPDATE_AGENT_CONSENSUS_STATUS']: [
-            (param.get("CHAINID"), z100_CS_UPDATE_AGENT_CONSENSUS_STATUS_chainId)],
+        'CS_UPDATE_AGENT_CONSENSUS_STATUS': ['cs_updateAgentConsensusStatus', [
+            (param.get("CHAINID"), z100_CS_UPDATE_AGENT_CONSENSUS_STATUS_chainId)]],
 
-        ap['CS_UPDATE_AGENT_STATUS']: [
+        'CS_UPDATE_AGENT_STATUS': ['cs_updateAgentStatus', [
             (param.get("CHAINID"), z101_CS_UPDATE_AGENT_STATUS_chainId),
-            (param.get("STATUS"), z101_CS_UPDATE_AGENT_STATUS_status)],
+            (param.get("STATUS"), z101_CS_UPDATE_AGENT_STATUS_status)]],
 
-        ap['CS_VALIDBLOCK']: [
+        'CS_VALIDBLOCK': ['cs_validBlock', [
             (param.get("CHAINID"), z102_CS_VALIDBLOCK_chainId),
             (param.get("DOWNLOAD"), z102_CS_VALIDBLOCK_download),
-            (param.get("BLOCK"), z102_CS_VALIDBLOCK_block)],
+            (param.get("BLOCK"), z102_CS_VALIDBLOCK_block)]],
 
-        ap['CS_WITHDRAW']: [
+        'CS_WITHDRAW': ['cs_withdraw', [
             (param.get("CHAINID"), z103_CS_WITHDRAW_chainId),
             (param.get("ADDRESS"), z103_CS_WITHDRAW_address),
             (param.get("TXHASH"), z103_CS_WITHDRAW_txHash),
-            (param.get("PASSWORD"), z103_CS_WITHDRAW_password)],
+            (param.get("PASSWORD"), z103_CS_WITHDRAW_password)]],
 
-        ap['DEPOSIT_VALID']: [
+        'DEPOSIT_VALID': ['depositValid', [
             (param.get("CHAINID"), z104_DEPOSIT_VALID_chainId),
-            (param.get("TX"), z104_DEPOSIT_VALID_tx)],
+            (param.get("TX"), z104_DEPOSIT_VALID_tx)]],
 
-        ap['GET_ASSETS_BY_ID']: [
+        'GET_ASSETS_BY_ID': ['getAssetsById', [
             (param.get("CHAINID"), z105_GET_ASSETS_BY_ID_chainId),
-            (param.get("ASSETIDS"), z105_GET_ASSETS_BY_ID_assetIds)],
+            (param.get("ASSETIDS"), z105_GET_ASSETS_BY_ID_assetIds)]],
 
-        ap['GET_BALANCE']: [
+        'GET_BALANCE': ['getBalance', [
             (param.get("CHAINID"), z106_GET_BALANCE_chainId),
             (param.get("ASSETCHAINID"), z106_GET_BALANCE_assetChainId),
             (param.get("ASSETID"), z106_GET_BALANCE_assetId),
-            (param.get("ADDRESS"), z106_GET_BALANCE_address)],
+            (param.get("ADDRESS"), z106_GET_BALANCE_address)]],
 
-        ap['GET_BALANCE_NONCE']: [
+        'GET_BALANCE_NONCE': ['getBalanceNonce', [
             (param.get("CHAINID"), z107_GET_BALANCE_NONCE_chainId),
             (param.get("ASSETCHAINID"), z107_GET_BALANCE_NONCE_assetChainId),
             (param.get("ASSETID"), z107_GET_BALANCE_NONCE_assetId),
             (param.get("ADDRESS"), z107_GET_BALANCE_NONCE_address),
-            (param.get("ISCONFIRMED"), z107_GET_BALANCE_NONCE_isConfirmed)],
+            (param.get("ISCONFIRMED"), z107_GET_BALANCE_NONCE_isConfirmed)]],
 
-        ap['GET_BLOCK_BY_HASH']: [
+        'GET_BLOCK_BY_HASH': ['getBlockByHash', [
             (param.get("CHAINID"), z108_GET_BLOCK_BY_HASH_chainId),
-            (param.get("HASH"), z108_GET_BLOCK_BY_HASH_hash)],
+            (param.get("HASH"), z108_GET_BLOCK_BY_HASH_hash)]],
 
-        ap['GET_BLOCK_BY_HEIGHT']: [
+        'GET_BLOCK_BY_HEIGHT': ['getBlockByHeight', [
             (param.get("CHAINID"), z109_GET_BLOCK_BY_HEIGHT_chainId),
-            (param.get("HEIGHT"), z109_GET_BLOCK_BY_HEIGHT_height)],
+            (param.get("HEIGHT"), z109_GET_BLOCK_BY_HEIGHT_height)]],
 
-        ap['GET_BLOCKHEADER_BY_HASH']: [
+        'GET_BLOCKHEADER_BY_HASH': ['getBlockHeaderByHash', [
             (param.get("CHAINID"), z110_GET_BLOCKHEADER_BY_HASH_chainId),
-            (param.get("HASH"), z110_GET_BLOCKHEADER_BY_HASH_hash)],
+            (param.get("HASH"), z110_GET_BLOCKHEADER_BY_HASH_hash)]],
 
-        ap['GET_BLOCKHEADER_BY_HEIGHT']: [
+        'GET_BLOCKHEADER_BY_HEIGHT': ['getBlockHeaderByHeight', [
             (param.get("CHAINID"), z111_GET_BLOCKHEADER_BY_HEIGHT_chainId),
-            (param.get("HEIGHT"), z111_GET_BLOCKHEADER_BY_HEIGHT_height)],
+            (param.get("HEIGHT"), z111_GET_BLOCKHEADER_BY_HEIGHT_height)]],
 
-        ap['GET_BLOCKHEADER_PO_BY_HASH']: [
+        'GET_BLOCKHEADER_PO_BY_HASH': ['getBlockHeaderPoByHash', [
             (param.get("CHAINID"), z112_GET_BLOCKHEADER_PO_BY_HASH_chainId),
-            (param.get("HASH"), z112_GET_BLOCKHEADER_PO_BY_HASH_hash)],
+            (param.get("HASH"), z112_GET_BLOCKHEADER_PO_BY_HASH_hash)]],
 
-        ap['GET_BLOCKHEADER_POBY_HEIGHT']: [
+        'GET_BLOCKHEADER_POBY_HEIGHT': ['getBlockHeaderPoByHeight', [
             (param.get("CHAINID"), z113_GET_BLOCKHEADER_POBY_HEIGHT_chainId),
-            (param.get("HEIGHT"), z113_GET_BLOCKHEADER_POBY_HEIGHT_height)],
+            (param.get("HEIGHT"), z113_GET_BLOCKHEADER_POBY_HEIGHT_height)]],
 
-        ap['GET_BLOCKHEADERS_BY_HEIGHT_RANGE']: [
+        'GET_BLOCKHEADERS_BY_HEIGHT_RANGE': ['getBlockHeadersByHeightRange', [
             (param.get("CHAINID"), z114_GET_BLOCKHEADERS_BY_HEIGHT_RANGE_chainId),
             (param.get("BEGIN"), z114_GET_BLOCKHEADERS_BY_HEIGHT_RANGE_begin),
-            (param.get("END"), z114_GET_BLOCKHEADERS_BY_HEIGHT_RANGE_end)],
+            (param.get("END"), z114_GET_BLOCKHEADERS_BY_HEIGHT_RANGE_end)]],
 
-        ap['GET_BLOCKHEADERS_FOR_PROTOCOL']: [
+        'GET_BLOCKHEADERS_FOR_PROTOCOL': ['getBlockHeadersForProtocol', [
             (param.get("CHAINID"), z115_GET_BLOCKHEADERS_FOR_PROTOCOL_chainId),
-            (param.get("INTERVAL"), z115_GET_BLOCKHEADERS_FOR_PROTOCOL_interval)],
+            (param.get("INTERVAL"), z115_GET_BLOCKHEADERS_FOR_PROTOCOL_interval)]],
 
-        ap['GET_BYZANTINE_COUNT']: [
-            (param.get("CHAINID"), z116_GET_BYZANTINE_COUNT_chainId)],
+        'GET_BYZANTINE_COUNT': ['getByzantineCount', [
+            (param.get("CHAINID"), z116_GET_BYZANTINE_COUNT_chainId)]],
 
-        ap['GET_CIRCULAT']: [
+        'GET_CIRCULAT': ['getCirculat', [
             (param.get("CHAINID"), z117_GET_CIRCULAT_chainId),
             (param.get("NODEID"), z117_GET_CIRCULAT_nodeId),
-            (param.get("MESSAGEBODY"), z117_GET_CIRCULAT_messageBody)],
+            (param.get("MESSAGEBODY"), z117_GET_CIRCULAT_messageBody)]],
 
-        ap['GET_CROSSTX_STATE']: [
+        'GET_CROSSTX_STATE': ['getCrossTxState', [
             (param.get("CHAINID"), z119_GET_CROSSTX_STATE_chainId),
-            (param.get("TXHASH"), z119_GET_CROSSTX_STATE_txHash)],
+            (param.get("TXHASH"), z119_GET_CROSSTX_STATE_txHash)]],
 
-        ap['GET_CTX']: [
+        'GET_CTX': ['getCtx', [
             (param.get("CHAINID"), z120_GET_CTX_chainId),
             (param.get("NODEID"), z120_GET_CTX_nodeId),
-            (param.get("MESSAGEBODY"), z120_GET_CTX_messageBody)],
+            (param.get("MESSAGEBODY"), z120_GET_CTX_messageBody)]],
 
-        ap['GET_CTX_STATE']: [
+        'GET_CTX_STATE': ['getCtxState', [
             (param.get("CHAINID"), z121_GET_CTX_STATE_chainId),
             (param.get("NODEID"), z121_GET_CTX_STATE_nodeId),
-            (param.get("MESSAGEBODY"), z121_GET_CTX_STATE_messageBody)],
+            (param.get("MESSAGEBODY"), z121_GET_CTX_STATE_messageBody)]],
 
-        ap['GET_FRIEND_CHAIN_CIRCULATE']: [
+        'GET_FRIEND_CHAIN_CIRCULATE': ['getFriendChainCirculate', [
             (param.get("CHAINID"), z122_GET_FRIEND_CHAIN_CIRCULATE_chainId),
-            (param.get("ASSETIDS"), z122_GET_FRIEND_CHAIN_CIRCULATE_assetIds)],
+            (param.get("ASSETIDS"), z122_GET_FRIEND_CHAIN_CIRCULATE_assetIds)]],
 
-        ap['GET_LATEST_BLOCKHEADERS']: [
+        'GET_LATEST_BLOCKHEADERS': ['getLatestBlockHeaders', [
             (param.get("CHAINID"), z123_GET_LATEST_BLOCKHEADERS_chainId),
-            (param.get("SIZE"), z123_GET_LATEST_BLOCKHEADERS_size)],
+            (param.get("SIZE"), z123_GET_LATEST_BLOCKHEADERS_size)]],
 
-        ap['GET_LATEST_ROUND_BLOCKHEADERS']: [
+        'GET_LATEST_ROUND_BLOCKHEADERS': ['getLatestRoundBlockHeaders', [
             (param.get("CHAINID"), z124_GET_LATEST_ROUND_BLOCKHEADERS_chainId),
-            (param.get("ROUND"), z124_GET_LATEST_ROUND_BLOCKHEADERS_round)],
+            (param.get("ROUND"), z124_GET_LATEST_ROUND_BLOCKHEADERS_round)]],
 
-        ap['GET_NONCE']: [
+        'GET_NONCE': ['getNonce', [
             (param.get("CHAINID"), z125_GET_NONCE_chainId),
             (param.get("ASSETCHAINID"), z125_GET_NONCE_assetChainId),
             (param.get("ASSETID"), z125_GET_NONCE_assetId),
             (param.get("ADDRESS"), z125_GET_NONCE_address),
-            (param.get("ISCONFIRMED"), z125_GET_NONCE_isConfirmed)],
+            (param.get("ISCONFIRMED"), z125_GET_NONCE_isConfirmed)]],
 
-        ap['GET_OTHERCTX']: [
+        'GET_OTHERCTX': ['getOtherCtx', [
             (param.get("CHAINID"), z126_GET_OTHERCTX_chainId),
             (param.get("NODEID"), z126_GET_OTHERCTX_nodeId),
-            (param.get("MESSAGEBODY"), z126_GET_OTHERCTX_messageBody)],
+            (param.get("MESSAGEBODY"), z126_GET_OTHERCTX_messageBody)]],
 
-        ap['GET_ROUND_BLOCKHEADERS']: [
+        'GET_ROUND_BLOCKHEADERS': ['getRoundBlockHeaders', [
             (param.get("CHAINID"), z128_GET_ROUND_BLOCKHEADERS_chainId),
             (param.get("HEIGHT"), z128_GET_ROUND_BLOCKHEADERS_height),
-            (param.get("ROUND"), z128_GET_ROUND_BLOCKHEADERS_round)],
+            (param.get("ROUND"), z128_GET_ROUND_BLOCKHEADERS_round)]],
 
-        ap['GET_STATUS']: [
-            (param.get("CHAINID"), z129_GET_STATUS_chainId)],
+        'GET_STATUS': ['getStatus', [
+            (param.get("CHAINID"), z129_GET_STATUS_chainId)]],
 
-        ap['GET_VERSION']: [
-            (param.get("CHAINID"), z130_GET_VERSION_chainId)],
+        'GET_VERSION': ['getVersion', [
+            (param.get("CHAINID"), z130_GET_VERSION_chainId)]],
 
-        ap['INFO']: [
-            (param.get("CHAINID"), z131_INFO_chainId)],
+        'INFO': ['info', [
+            (param.get("CHAINID"), z131_INFO_chainId)]],
 
-        ap['LATEST_BLOCK']: [
-            (param.get("CHAINID"), z132_LATEST_BLOCK_chainId)],
+        'LATEST_BLOCK': ['latestBlock', [
+            (param.get("CHAINID"), z132_LATEST_BLOCK_chainId)]],
 
-        ap['LATEST_BLOCKHEADER']: [
-            (param.get("CHAINID"), z133_LATEST_BLOCKHEADER_chainId)],
+        'LATEST_BLOCKHEADER': ['latestBlockHeader', [
+            (param.get("CHAINID"), z133_LATEST_BLOCKHEADER_chainId)]],
 
-        ap['LATEST_BLOCKHEADER_PO']: [
-            (param.get("CHAINID"), z134_LATEST_BLOCKHEADER_PO_chainId)],
+        'LATEST_BLOCKHEADER_PO': ['latestBlockHeaderPo', [
+            (param.get("CHAINID"), z134_LATEST_BLOCKHEADER_PO_chainId)]],
 
-        ap['LATEST_HEIGHT']: [
-            (param.get("CHAINID"), z135_LATEST_HEIGHT_chainId)],
+        'LATEST_HEIGHT': ['latestHeight', [
+            (param.get("CHAINID"), z135_LATEST_HEIGHT_chainId)]],
 
-        ap['MSG_PROCESS']: [
+        'MSG_PROCESS': ['msgProcess', [
             (param.get("CHAINID"), z137_MSG_PROCESS_chainId),
             (param.get("NODEID"), z137_MSG_PROCESS_nodeId),
             (param.get("CMD"), z137_MSG_PROCESS_cmd),
-            (param.get("MESSAGEBODY"), z137_MSG_PROCESS_messageBody)],
+            (param.get("MESSAGEBODY"), z137_MSG_PROCESS_messageBody)]],
 
-        ap['NEW_BLOCK_HEIGHT']: [
+        'NEW_BLOCK_HEIGHT': ['newBlockHeight', [
             (param.get("CHAINID"), z138_NEW_BLOCK_HEIGHT_chainId),
-            (param.get("HEIGHT"), z138_NEW_BLOCK_HEIGHT_height)],
+            (param.get("HEIGHT"), z138_NEW_BLOCK_HEIGHT_height)]],
 
-        ap['NW_ACTIVE_CROSS']: [
+        'NW_ACTIVE_CROSS': ['nw_activeCross', [
             (param.get("CHAINID"), z139_NW_ACTIVE_CROSS_chainId),
             (param.get("MAXOUT"), z139_NW_ACTIVE_CROSS_maxOut),
             (param.get("MAXIN"), z139_NW_ACTIVE_CROSS_maxIn),
-            (param.get("SEEDIPS"), z139_NW_ACTIVE_CROSS_seedIps)],
+            (param.get("SEEDIPS"), z139_NW_ACTIVE_CROSS_seedIps)]],
 
-        ap['NW_ADD_NODES']: [
+        'NW_ADD_NODES': ['nw_addNodes', [
             (param.get("CHAINID"), z140_NW_ADD_NODES_chainId),
             (param.get("ISCROSS"), z140_NW_ADD_NODES_isCross),
-            (param.get("NODES"), z140_NW_ADD_NODES_nodes)],
+            (param.get("NODES"), z140_NW_ADD_NODES_nodes)]],
 
-        ap['NW_BROADCAST']: [
+        'NW_BROADCAST': ['nw_broadcast', [
             (param.get("CHAINID"), z141_NW_BROADCAST_chainId),
             (param.get("EXCLUDENODES"), z141_NW_BROADCAST_excludeNodes),
             (param.get("MESSAGEBODY"), z141_NW_BROADCAST_messageBody),
             (param.get("COMMAND"), z141_NW_BROADCAST_command),
             (param.get("ISCROSS"), z141_NW_BROADCAST_isCross),
-            (param.get("PERCENT"), z141_NW_BROADCAST_percent)],
+            (param.get("PERCENT"), z141_NW_BROADCAST_percent)]],
 
-        ap['NW_CREATE_NODEGROUP']: [
+        'NW_CREATE_NODEGROUP': ['nw_createNodeGroup', [
             (param.get("CHAINID"), z142_NW_CREATE_NODEGROUP_chainId),
             (param.get("MAGICNUMBER"), z142_NW_CREATE_NODEGROUP_magicNumber),
             (param.get("MAXOUT"), z142_NW_CREATE_NODEGROUP_maxOut),
             (param.get("MAXIN"), z142_NW_CREATE_NODEGROUP_maxIn),
             (param.get("MINAVAILABLECOUNT"), z142_NW_CREATE_NODEGROUP_minAvailableCount),
-            (param.get("ISCROSSGROUP"), z142_NW_CREATE_NODEGROUP_isCrossGroup)],
+            (param.get("ISCROSSGROUP"), z142_NW_CREATE_NODEGROUP_isCrossGroup)]],
 
-        ap['NW_DEL_NODES']: [
+        'NW_DEL_NODES': ['nw_delNodes', [
             (param.get("CHAINID"), z143_NW_DEL_NODES_chainId),
-            (param.get("NODES"), z143_NW_DEL_NODES_nodes)],
+            (param.get("NODES"), z143_NW_DEL_NODES_nodes)]],
 
-        ap['NW_GET_CHAIN_CONNECT_AMOUNT']: [
+        'NW_GET_CHAIN_CONNECT_AMOUNT': ['nw_getChainConnectAmount', [
             (param.get("CHAINID"), z144_NW_GET_CHAIN_CONNECT_AMOUNT_chainId),
-            (param.get("ISCROSS"), z144_NW_GET_CHAIN_CONNECT_AMOUNT_isCross)],
+            (param.get("ISCROSS"), z144_NW_GET_CHAIN_CONNECT_AMOUNT_isCross)]],
 
-        ap['NW_GET_GROUP_BY_CHAINID']: [
-            (param.get("CHAINID"), z145_NW_GET_GROUP_BY_CHAINID_chainId)],
+        'NW_GET_GROUP_BY_CHAINID': ['nw_getGroupByChainId', [
+            (param.get("CHAINID"), z145_NW_GET_GROUP_BY_CHAINID_chainId)]],
 
-        ap['NW_GET_GROUPS']: [
+        'NW_GET_GROUPS': ['nw_getGroups', [
             (param.get("STARTPAGE"), z146_NW_GET_GROUPS_startPage),
-            (param.get("PAGESIZE"), z146_NW_GET_GROUPS_pageSize)],
+            (param.get("PAGESIZE"), z146_NW_GET_GROUPS_pageSize)]],
 
-        ap['NW_GET_NODES']: [
+        'NW_GET_NODES': ['nw_getNodes', [
             (param.get("CHAINID"), z147_NW_GET_NODES_chainId),
             (param.get("STATE"), z147_NW_GET_NODES_state),
             (param.get("ISCROSS"), z147_NW_GET_NODES_isCross),
             (param.get("STARTPAGE"), z147_NW_GET_NODES_startPage),
-            (param.get("PAGESIZE"), z147_NW_GET_NODES_pageSize)],
+            (param.get("PAGESIZE"), z147_NW_GET_NODES_pageSize)]],
 
-        ap['NW_INFO']: [
-            (param.get("CHAINID"), z149_NW_INFO_chainId)],
+        'NW_INFO': ['nw_info', [
+            (param.get("CHAINID"), z149_NW_INFO_chainId)]],
 
-        ap['NW_NODES']: [
-            (param.get("CHAINID"), z150_NW_NODES_chainId)],
+        'NW_NODES': ['nw_nodes', [
+            (param.get("CHAINID"), z150_NW_NODES_chainId)]],
 
-        ap['NW_PROTOCOL_REGISTER']: [
+        'NW_PROTOCOL_REGISTER': ['nw_protocolRegister', [
             (param.get("ROLE"), z151_NW_PROTOCOL_REGISTER_role),
-            (param.get("PROTOCOLCMDS"), z151_NW_PROTOCOL_REGISTER_protocolCmds)],
+            (param.get("PROTOCOLCMDS"), z151_NW_PROTOCOL_REGISTER_protocolCmds)]],
 
-        ap['NW_RECONNECT']: [
-            (param.get("CHAINID"), z152_NW_RECONNECT_chainId)],
+        'NW_RECONNECT': ['nw_reconnect', [
+            (param.get("CHAINID"), z152_NW_RECONNECT_chainId)]],
 
-        ap['NW_SEND_PEERS_MSG']: [
+        'NW_SEND_PEERS_MSG': ['nw_sendPeersMsg', [
             (param.get("CHAINID"), z153_NW_SEND_PEERS_MSG_chainId),
             (param.get("NODES"), z153_NW_SEND_PEERS_MSG_nodes),
             (param.get("MESSAGEBODY"), z153_NW_SEND_PEERS_MSG_messageBody),
-            (param.get("COMMAND"), z153_NW_SEND_PEERS_MSG_command)],
+            (param.get("COMMAND"), z153_NW_SEND_PEERS_MSG_command)]],
 
-        ap['NW_UPDATE_NODE_INFO']: [
+        'NW_UPDATE_NODE_INFO': ['nw_updateNodeInfo', [
             (param.get("CHAINID"), z154_NW_UPDATE_NODE_INFO_chainId),
             (param.get("NODEID"), z154_NW_UPDATE_NODE_INFO_nodeId),
             (param.get("BLOCKHEIGHT"), z154_NW_UPDATE_NODE_INFO_blockHeight),
-            (param.get("BLOCKHASH"), z154_NW_UPDATE_NODE_INFO_blockHash)],
+            (param.get("BLOCKHASH"), z154_NW_UPDATE_NODE_INFO_blockHash)]],
 
-        ap['param_TEST_CMD']: [
+        'PARAM_TEST_CMD': ['paramTestCmd', [
             (param.get("INTCOUNT"), z155_PARAM_TEST_CMD_intCount),
             (param.get("BYTECOUNT"), z155_PARAM_TEST_CMD_byteCount),
             (param.get("SHORTCOUNT"), z155_PARAM_TEST_CMD_shortCount),
-            (param.get("LONGCOUNT"), z155_PARAM_TEST_CMD_longCount)],
+            (param.get("LONGCOUNT"), z155_PARAM_TEST_CMD_longCount)]],
 
-        ap['PROTOCOL_VERSION_CHANGE']: [
+        'PROTOCOL_VERSION_CHANGE': ['protocolVersionChange', [
             (param.get("CHAINID"), z156_PROTOCOL_VERSION_CHANGE_chainId),
-            (param.get("PROTOCOLVERSION"), z156_PROTOCOL_VERSION_CHANGE_protocolVersion)],
+            (param.get("PROTOCOLVERSION"), z156_PROTOCOL_VERSION_CHANGE_protocolVersion)]],
 
-        ap['RECEIVE_PACKING_BLOCK']: [
+        'RECEIVE_PACKING_BLOCK': ['receivePackingBlock', [
             (param.get("CHAINID"), z157_RECEIVE_PACKING_BLOCK_chainId),
-            (param.get("BLOCK"), z157_RECEIVE_PACKING_BLOCK_block)],
+            (param.get("BLOCK"), z157_RECEIVE_PACKING_BLOCK_block)]],
 
-        ap['RECV_CIRCULAT']: [
+        'RECV_CIRCULAT': ['recvCirculat', [
             (param.get("CHAINID"), z158_RECV_CIRCULAT_chainId),
             (param.get("NODEID"), z158_RECV_CIRCULAT_nodeId),
-            (param.get("MESSAGEBODY"), z158_RECV_CIRCULAT_messageBody)],
+            (param.get("MESSAGEBODY"), z158_RECV_CIRCULAT_messageBody)]],
 
-        ap['RECV_CTX']: [
+        'RECV_CTX': ['recvCtx', [
             (param.get("CHAINID"), z159_RECV_CTX_chainId),
             (param.get("NODEID"), z159_RECV_CTX_nodeId),
-            (param.get("MESSAGEBODY"), z159_RECV_CTX_messageBody)],
+            (param.get("MESSAGEBODY"), z159_RECV_CTX_messageBody)]],
 
-        ap['RECV_CTX_HASH']: [
+        'RECV_CTX_HASH': ['recvCtxHash', [
             (param.get("CHAINID"), z160_RECV_CTX_HASH_chainId),
             (param.get("NODEID"), z160_RECV_CTX_HASH_nodeId),
-            (param.get("MESSAGEBODY"), z160_RECV_CTX_HASH_messageBody)],
+            (param.get("MESSAGEBODY"), z160_RECV_CTX_HASH_messageBody)]],
 
-        ap['RECV_CTX_SIGN']: [
+        'RECV_CTX_SIGN': ['recvCtxSign', [
             (param.get("CHAINID"), z161_RECV_CTX_SIGN_chainId),
             (param.get("NODEID"), z161_RECV_CTX_SIGN_nodeId),
-            (param.get("MESSAGEBODY"), z161_RECV_CTX_SIGN_messageBody)],
+            (param.get("MESSAGEBODY"), z161_RECV_CTX_SIGN_messageBody)]],
 
-        ap['RECV_CTX_STATE']: [
+        'RECV_CTX_STATE': ['recvCtxState', [
             (param.get("CHAINID"), z162_RECV_CTX_STATE_chainId),
             (param.get("NODEID"), z162_RECV_CTX_STATE_nodeId),
-            (param.get("MESSAGEBODY"), z162_RECV_CTX_STATE_messageBody)],
+            (param.get("MESSAGEBODY"), z162_RECV_CTX_STATE_messageBody)]],
 
-        ap['RECV_OTHER_CTX']: [
+        'RECV_OTHER_CTX': ['recvOtherCtx', [
             (param.get("CHAINID"), z163_RECV_OTHER_CTX_chainId),
             (param.get("NODEID"), z163_RECV_OTHER_CTX_nodeId),
-            (param.get("MESSAGEBODY"), z163_RECV_OTHER_CTX_messageBody)],
+            (param.get("MESSAGEBODY"), z163_RECV_OTHER_CTX_messageBody)]],
 
-        ap['RECV_REGCHAIN']: [
+        'RECV_REGCHAIN': ['recvRegChain', [
             (param.get("CHAINID"), z164_RECV_REGCHAIN_chainId),
             (param.get("NODEID"), z164_RECV_REGCHAIN_nodeId),
-            (param.get("MESSAGEBODY"), z164_RECV_REGCHAIN_messageBody)],
+            (param.get("MESSAGEBODY"), z164_RECV_REGCHAIN_messageBody)]],
 
-        ap['REGISTER_PROTOCOL']: [
+        'REGISTER_PROTOCOL': ['registerProtocol', [
             (param.get("CHAINID"), z166_REGISTER_PROTOCOL_chainId),
             (param.get("MODULECODE"), z166_REGISTER_PROTOCOL_moduleCode),
-            (param.get("LIST"), z166_REGISTER_PROTOCOL_list)],
+            (param.get("LIST"), z166_REGISTER_PROTOCOL_list)]],
 
-        ap['ROLLBACK_BLOCK_TXS']: [
+        'ROLLBACK_BLOCK_TXS': ['rollBackBlockTxs', [
             (param.get("CHAINID"), z167_ROLLBACK_BLOCK_TXS_chainId),
             (param.get("TXLIST"), z167_ROLLBACK_BLOCK_TXS_txList),
-            (param.get("BLOCKHEIGHT"), z167_ROLLBACK_BLOCK_TXS_blockHeight)],
+            (param.get("BLOCKHEIGHT"), z167_ROLLBACK_BLOCK_TXS_blockHeight)]],
 
-        ap['ROLLBACK_UNCONFIRM_TX']: [
+        'ROLLBACK_UNCONFIRM_TX': ['rollBackUnconfirmTx', [
             (param.get("CHAINID"), z168_ROLLBACK_UNCONFIRM_TX_chainId),
-            (param.get("TX"), z168_ROLLBACK_UNCONFIRM_TX_tx)],
+            (param.get("TX"), z168_ROLLBACK_UNCONFIRM_TX_tx)]],
 
-        ap['ROLLBACK_BLOCK']: [
+        'ROLLBACK_BLOCK': ['rollbackBlock', [
             (param.get("CHAINID"), z169_ROLLBACK_BLOCK_chainId),
-            (param.get("BLOCKHEADER"), z169_ROLLBACK_BLOCK_blockHeader)],
+            (param.get("BLOCKHEADER"), z169_ROLLBACK_BLOCK_blockHeader)]],
 
-        ap['ROLLBACK_TX_VALIDATE_STATUS']: [
+        'ROLLBACK_TX_VALIDATE_STATUS': ['rollbackTxValidateStatus', [
             (param.get("CHAINID"), z170_ROLLBACK_TX_VALIDATE_STATUS_chainId),
-            (param.get("TX"), z170_ROLLBACK_TX_VALIDATE_STATUS_tx)],
+            (param.get("TX"), z170_ROLLBACK_TX_VALIDATE_STATUS_tx)]],
 
-        ap['SAVE_BLOCK']: [
+        'SAVE_BLOCK': ['saveBlock', [
             (param.get("CHAINID"), z171_SAVE_BLOCK_chainId),
-            (param.get("BLOCKHEADER"), z171_SAVE_BLOCK_blockHeader)],
+            (param.get("BLOCKHEADER"), z171_SAVE_BLOCK_blockHeader)]],
 
-        ap['SC_BATCH_BEFORE_END']: [
+        'SC_BATCH_BEFORE_END': ['sc_batch_before_end', [
             (param.get("CHAINID"), z172_SC_BATCH_BEFORE_END_chainId),
             (param.get("BLOCKTYPE"), z172_SC_BATCH_BEFORE_END_blockType),
-            (param.get("BLOCKHEIGHT"), z172_SC_BATCH_BEFORE_END_blockHeight)],
+            (param.get("BLOCKHEIGHT"), z172_SC_BATCH_BEFORE_END_blockHeight)]],
 
-        ap['SC_BATCH_BEGIN']: [
+        'SC_BATCH_BEGIN': ['sc_batch_begin', [
             (param.get("CHAINID"), z173_SC_BATCH_BEGIN_chainId),
             (param.get("BLOCKTYPE"), z173_SC_BATCH_BEGIN_blockType),
             (param.get("BLOCKHEIGHT"), z173_SC_BATCH_BEGIN_blockHeight),
             (param.get("BLOCKTIME"), z173_SC_BATCH_BEGIN_blockTime),
             (param.get("PACKINGADDRESS"), z173_SC_BATCH_BEGIN_packingAddress),
-            (param.get("PRESTATEROOT"), z173_SC_BATCH_BEGIN_preStateRoot)],
+            (param.get("PRESTATEROOT"), z173_SC_BATCH_BEGIN_preStateRoot)]],
 
-        ap['SC_BATCH_END']: [
+        'SC_BATCH_END': ['sc_batch_end', [
             (param.get("CHAINID"), z174_SC_BATCH_END_chainId),
-            (param.get("BLOCKHEIGHT"), z174_SC_BATCH_END_blockHeight)],
+            (param.get("BLOCKHEIGHT"), z174_SC_BATCH_END_blockHeight)]],
 
-        ap['SC_CALL']: [
+        'SC_CALL': ['sc_call', [
             (param.get("CHAINID"), z175_SC_CALL_chainId),
             (param.get("SENDER"), z175_SC_CALL_sender),
             (param.get("PASSWORD"), z175_SC_CALL_password),
@@ -853,37 +850,37 @@ class NulsWsCallsDB(object):
             (param.get("METHODNAME"), z175_SC_CALL_methodName),
             (param.get("METHODDESC"), z175_SC_CALL_methodDesc),
             (param.get("ARGS"), z175_SC_CALL_args),
-            (param.get("REMARK"), z175_SC_CALL_remark)],
+            (param.get("REMARK"), z175_SC_CALL_remark)]],
 
-        ap['SC_CALL_VALIDATOR']: [
+        'SC_CALL_VALIDATOR': ['sc_call_validator', [
             (param.get("CHAINID"), z176_SC_CALL_VALIDATOR_chainId),
-            (param.get("TX"), z176_SC_CALL_VALIDATOR_tx)],
+            (param.get("TX"), z176_SC_CALL_VALIDATOR_tx)]],
 
-        ap['SC_CONSTRUCTOR']: [
+        'SC_CONSTRUCTOR': ['sc_constructor', [
             (param.get("CHAINID"), z177_SC_CONSTRUCTOR_chainId),
-            (param.get("CONTRACTCODE"), z177_SC_CONSTRUCTOR_contractCode)],
+            (param.get("CONTRACTCODE"), z177_SC_CONSTRUCTOR_contractCode)]],
 
-        ap['SC_CONTRACT_INFO']: [
+        'SC_CONTRACT_INFO': ['sc_contract_info', [
             (param.get("CHAINID"), z178_SC_CONTRACT_INFO_chainId),
-            (param.get("CONTRACTADDRESS"), z178_SC_CONTRACT_INFO_contractAddress)],
+            (param.get("CONTRACTADDRESS"), z178_SC_CONTRACT_INFO_contractAddress)]],
 
-        ap['SC_CONTRACT_OFFLINE_TX_HASH_LIST']: [
+        'SC_CONTRACT_OFFLINE_TX_HASH_LIST': ['sc_contract_offline_tx_hash_list', [
             (param.get("CHAINID"), z179_SC_CONTRACT_OFFLINE_TX_HASH_LIST_chainId),
-            (param.get("BLOCKHASH"), z179_SC_CONTRACT_OFFLINE_TX_HASH_LIST_blockHash)],
+            (param.get("BLOCKHASH"), z179_SC_CONTRACT_OFFLINE_TX_HASH_LIST_blockHash)]],
 
-        ap['SC_CONTRACT_RESULT']: [
+        'SC_CONTRACT_RESULT': ['sc_contract_result', [
             (param.get("CHAINID"), z180_SC_CONTRACT_RESULT_chainId),
-            (param.get("HASH"), z180_SC_CONTRACT_RESULT_hash)],
+            (param.get("HASH"), z180_SC_CONTRACT_RESULT_hash)]],
 
-        ap['SC_CONTRACT_RESULT_LIST']: [
+        'SC_CONTRACT_RESULT_LIST': ['sc_contract_result_list', [
             (param.get("CHAINID"), z181_SC_CONTRACT_RESULT_LIST_chainId),
-            (param.get("HASHLIST"), z181_SC_CONTRACT_RESULT_LIST_hashList)],
+            (param.get("HASHLIST"), z181_SC_CONTRACT_RESULT_LIST_hashList)]],
 
-        ap['SC_CONTRACT_TX']: [
+        'SC_CONTRACT_TX': ['sc_contract_tx', [
             (param.get("CHAINID"), z182_SC_CONTRACT_TX_chainId),
-            (param.get("HASH"), z182_SC_CONTRACT_TX_hash)],
+            (param.get("HASH"), z182_SC_CONTRACT_TX_hash)]],
 
-        ap['SC_CREATE']: [
+        'SC_CREATE': ['sc_create', [
             (param.get("CHAINID"), z183_SC_CREATE_chainId),
             (param.get("SENDER"), z183_SC_CREATE_sender),
             (param.get("PASSWORD"), z183_SC_CREATE_password),
@@ -892,104 +889,104 @@ class NulsWsCallsDB(object):
             (param.get("PRICE"), z183_SC_CREATE_price),
             (param.get("CONTRACTCODE"), z183_SC_CREATE_contractCode),
             (param.get("ARGS"), z183_SC_CREATE_args),
-            (param.get("REMARK"), z183_SC_CREATE_remark)],
+            (param.get("REMARK"), z183_SC_CREATE_remark)]],
 
-        ap['SC_CREATE_VALIDATOR']: [
+        'SC_CREATE_VALIDATOR': ['sc_create_validator', [
             (param.get("CHAINID"), z184_SC_CREATE_VALIDATOR_chainId),
-            (param.get("TX"), z184_SC_CREATE_VALIDATOR_tx)],
+            (param.get("TX"), z184_SC_CREATE_VALIDATOR_tx)]],
 
-        ap['SC_DELETE']: [
+        'SC_DELETE': ['sc_delete', [
             (param.get("CHAINID"), z185_SC_DELETE_chainId),
             (param.get("SENDER"), z185_SC_DELETE_sender),
             (param.get("PASSWORD"), z185_SC_DELETE_password),
             (param.get("CONTRACTADDRESS"), z185_SC_DELETE_contractAddress),
-            (param.get("REMARK"), z185_SC_DELETE_remark)],
+            (param.get("REMARK"), z185_SC_DELETE_remark)]],
 
-        ap['SC_DELETE_VALIDATOR']: [
+        'SC_DELETE_VALIDATOR': ['sc_delete_validator', [
             (param.get("CHAINID"), z186_SC_DELETE_VALIDATOR_chainId),
-            (param.get("TX"), z186_SC_DELETE_VALIDATOR_tx)],
+            (param.get("TX"), z186_SC_DELETE_VALIDATOR_tx)]],
 
-        ap['SC_IMPUTED_CALL_GAS']: [
+        'SC_IMPUTED_CALL_GAS': ['sc_imputed_call_gas', [
             (param.get("CHAINID"), z187_SC_IMPUTED_CALL_GAS_chainId),
             (param.get("SENDER"), z187_SC_IMPUTED_CALL_GAS_sender),
             (param.get("VALUE"), z187_SC_IMPUTED_CALL_GAS_value),
             (param.get("CONTRACTADDRESS"), z187_SC_IMPUTED_CALL_GAS_contractAddress),
             (param.get("METHODNAME"), z187_SC_IMPUTED_CALL_GAS_methodName),
             (param.get("METHODDESC"), z187_SC_IMPUTED_CALL_GAS_methodDesc),
-            (param.get("ARGS"), z187_SC_IMPUTED_CALL_GAS_args)],
+            (param.get("ARGS"), z187_SC_IMPUTED_CALL_GAS_args)]],
 
-        ap['SC_IMPUTED_CREATE_GAS']: [
+        'SC_IMPUTED_CREATE_GAS': ['sc_imputed_create_gas', [
             (param.get("CHAINID"), z188_SC_IMPUTED_CREATE_GAS_chainId),
             (param.get("SENDER"), z188_SC_IMPUTED_CREATE_GAS_sender),
             (param.get("CONTRACTCODE"), z188_SC_IMPUTED_CREATE_GAS_contractCode),
-            (param.get("ARGS"), z188_SC_IMPUTED_CREATE_GAS_args)],
+            (param.get("ARGS"), z188_SC_IMPUTED_CREATE_GAS_args)]],
 
-        ap['SC_INITIAL_ACCOUNT_TOKEN']: [
+        'SC_INITIAL_ACCOUNT_TOKEN': ['sc_initial_account_token', [
             (param.get("CHAINID"), z189_SC_INITIAL_ACCOUNT_TOKEN_chainId),
-            (param.get("ADDRESS"), z189_SC_INITIAL_ACCOUNT_TOKEN_address)],
+            (param.get("ADDRESS"), z189_SC_INITIAL_ACCOUNT_TOKEN_address)]],
 
-        ap['SC_INVOKE_CONTRACT']: [
+        'SC_INVOKE_CONTRACT': ['sc_invoke_contract', [
             (param.get("CHAINID"), z190_SC_INVOKE_CONTRACT_chainId),
             (param.get("BLOCKTYPE"), z190_SC_INVOKE_CONTRACT_blockType),
-            (param.get("TX"), z190_SC_INVOKE_CONTRACT_tx)],
+            (param.get("TX"), z190_SC_INVOKE_CONTRACT_tx)]],
 
-        ap['SC_INVOKE_VIEW']: [
+        'SC_INVOKE_VIEW': ['sc_invoke_view', [
             (param.get("CHAINID"), z191_SC_INVOKE_VIEW_chainId),
             (param.get("CONTRACTADDRESS"), z191_SC_INVOKE_VIEW_contractAddress),
             (param.get("METHODNAME"), z191_SC_INVOKE_VIEW_methodName),
             (param.get("METHODDESC"), z191_SC_INVOKE_VIEW_methodDesc),
-            (param.get("ARGS"), z191_SC_INVOKE_VIEW_args)],
+            (param.get("ARGS"), z191_SC_INVOKE_VIEW_args)]],
 
-        ap['SC_PACKAGE_BATCH_END']: [
+        'SC_PACKAGE_BATCH_END': ['sc_package_batch_end', [
             (param.get("CHAINID"), z192_SC_PACKAGE_BATCH_END_chainId),
-            (param.get("BLOCKHEIGHT"), z192_SC_PACKAGE_BATCH_END_blockHeight)],
+            (param.get("BLOCKHEIGHT"), z192_SC_PACKAGE_BATCH_END_blockHeight)]],
 
-        ap['SC_TOKEN_ASSETS_LIST']: [
+        'SC_TOKEN_ASSETS_LIST': ['sc_token_assets_list', [
             (param.get("CHAINID"), z193_SC_TOKEN_ASSETS_LIST_chainId),
             (param.get("ADDRESS"), z193_SC_TOKEN_ASSETS_LIST_address),
             (param.get("PAGENUMBER"), z193_SC_TOKEN_ASSETS_LIST_pageNumber),
-            (param.get("PAGESIZE"), z193_SC_TOKEN_ASSETS_LIST_pageSize)],
+            (param.get("PAGESIZE"), z193_SC_TOKEN_ASSETS_LIST_pageSize)]],
 
-        ap['SC_TOKEN_BALANCE']: [
+        'SC_TOKEN_BALANCE': ['sc_token_balance', [
             (param.get("CHAINID"), z194_SC_TOKEN_BALANCE_chainId),
             (param.get("CONTRACTADDRESS"), z194_SC_TOKEN_BALANCE_contractAddress),
-            (param.get("ADDRESS"), z194_SC_TOKEN_BALANCE_address)],
+            (param.get("ADDRESS"), z194_SC_TOKEN_BALANCE_address)]],
 
-        ap['SC_TOKEN_TRANSFER']: [
+        'SC_TOKEN_TRANSFER': ['sc_token_transfer', [
             (param.get("CHAINID"), z195_SC_TOKEN_TRANSFER_chainId),
             (param.get("ADDRESS"), z195_SC_TOKEN_TRANSFER_address),
             (param.get("TOADDRESS"), z195_SC_TOKEN_TRANSFER_toAddress),
             (param.get("CONTRACTADDRESS"), z195_SC_TOKEN_TRANSFER_contractAddress),
             (param.get("PASSWORD"), z195_SC_TOKEN_TRANSFER_password),
             (param.get("AMOUNT"), z195_SC_TOKEN_TRANSFER_amount),
-            (param.get("REMARK"), z195_SC_TOKEN_TRANSFER_remark)],
+            (param.get("REMARK"), z195_SC_TOKEN_TRANSFER_remark)]],
 
-        ap['SC_TOKEN_TRANSFER_LIST']: [
+        'SC_TOKEN_TRANSFER_LIST': ['sc_token_transfer_list', [
             (param.get("CHAINID"), z196_SC_TOKEN_TRANSFER_LIST_chainId),
             (param.get("ADDRESS"), z196_SC_TOKEN_TRANSFER_LIST_address),
             (param.get("PAGENUMBER"), z196_SC_TOKEN_TRANSFER_LIST_pageNumber),
-            (param.get("PAGESIZE"), z196_SC_TOKEN_TRANSFER_LIST_pageSize)],
+            (param.get("PAGESIZE"), z196_SC_TOKEN_TRANSFER_LIST_pageSize)]],
 
-        ap['SC_TRANSFER']: [
+        'SC_TRANSFER': ['sc_transfer', [
             (param.get("CHAINID"), z197_SC_TRANSFER_chainId),
             (param.get("ADDRESS"), z197_SC_TRANSFER_address),
             (param.get("TOADDRESS"), z197_SC_TRANSFER_toAddress),
             (param.get("PASSWORD"), z197_SC_TRANSFER_password),
             (param.get("AMOUNT"), z197_SC_TRANSFER_amount),
-            (param.get("REMARK"), z197_SC_TRANSFER_remark)],
+            (param.get("REMARK"), z197_SC_TRANSFER_remark)]],
 
-        ap['SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT']: [
+        'SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT': ['sc_trigger_payable_for_consensus_contract', [
             (param.get("CHAINID"), z198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_chainId),
             (param.get("STATEROOT"), z198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_stateRoot),
             (param.get("BLOCKHEIGHT"), z198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_blockHeight),
             (param.get("CONTRACTADDRESS"), z198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_contractAddress),
-            (param.get("TX"), z198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_tx)],
+            (param.get("TX"), z198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_tx)]],
 
-        ap['SC_UPLOAD']: [
+        'SC_UPLOAD': ['sc_upload', [
             (param.get("CHAINID"), z199_SC_UPLOAD_chainId),
-            (param.get("JARFILEDATA"), z199_SC_UPLOAD_jarFileData)],
+            (param.get("JARFILEDATA"), z199_SC_UPLOAD_jarFileData)]],
 
-        ap['SC_VALIDATE_CALL']: [
+        'SC_VALIDATE_CALL': ['sc_validate_call', [
             (param.get("CHAINID"), z200_SC_VALIDATE_CALL_chainId),
             (param.get("SENDER"), z200_SC_VALIDATE_CALL_sender),
             (param.get("VALUE"), z200_SC_VALIDATE_CALL_value),
@@ -998,134 +995,134 @@ class NulsWsCallsDB(object):
             (param.get("CONTRACTADDRESS"), z200_SC_VALIDATE_CALL_contractAddress),
             (param.get("METHODNAME"), z200_SC_VALIDATE_CALL_methodName),
             (param.get("METHODDESC"), z200_SC_VALIDATE_CALL_methodDesc),
-            (param.get("ARGS"), z200_SC_VALIDATE_CALL_args)],
+            (param.get("ARGS"), z200_SC_VALIDATE_CALL_args)]],
 
-        ap['SC_VALIDATE_CREATE']: [
+        'SC_VALIDATE_CREATE': ['sc_validate_create', [
             (param.get("CHAINID"), z201_SC_VALIDATE_CREATE_chainId),
             (param.get("SENDER"), z201_SC_VALIDATE_CREATE_sender),
             (param.get("GASLIMIT"), z201_SC_VALIDATE_CREATE_gasLimit),
             (param.get("PRICE"), z201_SC_VALIDATE_CREATE_price),
             (param.get("CONTRACTCODE"), z201_SC_VALIDATE_CREATE_contractCode),
-            (param.get("ARGS"), z201_SC_VALIDATE_CREATE_args)],
+            (param.get("ARGS"), z201_SC_VALIDATE_CREATE_args)]],
 
-        ap['SC_VALIDATE_DELETE']: [
+        'SC_VALIDATE_DELETE': ['sc_validate_delete', [
             (param.get("CHAINID"), z202_SC_VALIDATE_DELETE_chainId),
-            (param.get("CONTRACTADDRESS"), z202_SC_VALIDATE_DELETE_contractAddress)],
+            (param.get("CONTRACTADDRESS"), z202_SC_VALIDATE_DELETE_contractAddress)]],
 
-        ap['STOP_AGENTVALID']: [
+        'STOP_AGENTVALID': ['stopAgentValid', [
             (param.get("CHAINID"), z203_STOP_AGENTVALID_chainId),
-            (param.get("TX"), z203_STOP_AGENTVALID_tx)],
+            (param.get("TX"), z203_STOP_AGENTVALID_tx)]],
 
-        ap['TX_COMMIT']: [
+        'TX_COMMIT': ['txCommit', [
             (param.get("CHAINID"), z204_TX_COMMIT_chainId),
             (param.get("TXLIST"), z204_TX_COMMIT_txList),
-            (param.get("BLOCKHEADER"), z204_TX_COMMIT_blockHeader)],
+            (param.get("BLOCKHEADER"), z204_TX_COMMIT_blockHeader)]],
 
-        ap['TX_VALIDATOR']: [
+        'TX_VALIDATOR': ['txValidator', [
             (param.get("CHAINID"), z205_TX_VALIDATOR_chainId),
             (param.get("TXLIST"), z205_TX_VALIDATOR_txList),
-            (param.get("BLOCKHEADER"), z205_TX_VALIDATOR_blockHeader)],
+            (param.get("BLOCKHEADER"), z205_TX_VALIDATOR_blockHeader)]],
 
-        ap['TX_BACK_PACKABLE_TXS']: [
+        'TX_BACK_PACKABLE_TXS': ['tx_backPackableTxs', [
             (param.get("CHAINID"), z206_TX_BACK_PACKABLE_TXS_chainId),
-            (param.get("TXLIST"), z206_TX_BACK_PACKABLE_TXS_txList)],
+            (param.get("TXLIST"), z206_TX_BACK_PACKABLE_TXS_txList)]],
 
-        ap['TX_BATCH_VERIFY']: [
+        'TX_BATCH_VERIFY': ['tx_batchVerify', [
             (param.get("CHAINID"), z207_TX_BATCH_VERIFY_chainId),
             (param.get("TXLIST"), z207_TX_BATCH_VERIFY_txList),
             (param.get("BLOCKHEADER"), z207_TX_BATCH_VERIFY_blockHeader),
-            (param.get("PRESTATEROOT"), z207_TX_BATCH_VERIFY_preStateRoot)],
+            (param.get("PRESTATEROOT"), z207_TX_BATCH_VERIFY_preStateRoot)]],
 
-        ap['TX_BL_STATE']: [
+        'TX_BL_STATE': ['tx_bl_state', [
             (param.get("CHAINID"), z208_TX_BL_STATE_chainId),
-            (param.get("STATUS"), z208_TX_BL_STATE_status)],
+            (param.get("STATUS"), z208_TX_BL_STATE_status)]],
 
-        ap['TX_BLOCK_HEIGHT']: [
+        'TX_BLOCK_HEIGHT': ['tx_blockHeight', [
             (param.get("CHAINID"), z209_TX_BLOCK_HEIGHT_chainId),
-            (param.get("HEIGHT"), z209_TX_BLOCK_HEIGHT_height)],
+            (param.get("HEIGHT"), z209_TX_BLOCK_HEIGHT_height)]],
 
-        ap['TX_CS_STATE']: [
+        'TX_CS_STATE': ['tx_cs_state', [
             (param.get("CHAINID"), z210_TX_CS_STATE_chainId),
-            (param.get("PACKAGING"), z210_TX_CS_STATE_packaging)],
+            (param.get("PACKAGING"), z210_TX_CS_STATE_packaging)]],
 
-        ap['TX_GET_BLOCKTXS']: [
+        'TX_GET_BLOCKTXS': ['tx_getBlockTxs', [
             (param.get("CHAINID"), z211_TX_GET_BLOCKTXS_chainId),
-            (param.get("TXHASHLIST"), z211_TX_GET_BLOCKTXS_txHashList)],
+            (param.get("TXHASHLIST"), z211_TX_GET_BLOCKTXS_txHashList)]],
 
-        ap['TX_GET_BLOCKTXS_EXTEND']: [
+        'TX_GET_BLOCKTXS_EXTEND': ['tx_getBlockTxsExtend', [
             (param.get("CHAINID"), z212_TX_GET_BLOCKTXS_EXTEND_chainId),
             (param.get("TXHASHLIST"), z212_TX_GET_BLOCKTXS_EXTEND_txHashList),
-            (param.get("ALLHITS"), z212_TX_GET_BLOCKTXS_EXTEND_allHits)],
+            (param.get("ALLHITS"), z212_TX_GET_BLOCKTXS_EXTEND_allHits)]],
 
-        ap['TX_GET_CONFIRMED_TX']: [
+        'TX_GET_CONFIRMED_TX': ['tx_getConfirmedTx', [
             (param.get("CHAINID"), z213_TX_GET_CONFIRMED_TX_chainId),
-            (param.get("TXHASH"), z213_TX_GET_CONFIRMED_TX_txHash)],
+            (param.get("TXHASH"), z213_TX_GET_CONFIRMED_TX_txHash)]],
 
-        ap['TX_GET_CONFIRMED_TX_CLIENT']: [
+        'TX_GET_CONFIRMED_TX_CLIENT': ['tx_getConfirmedTxClient', [
             (param.get("CHAINID"), z214_TX_GET_CONFIRMED_TX_CLIENT_chainId),
-            (param.get("TXHASH"), z214_TX_GET_CONFIRMED_TX_CLIENT_txHash)],
+            (param.get("TXHASH"), z214_TX_GET_CONFIRMED_TX_CLIENT_txHash)]],
 
-        ap['TX_GET_NONEXISTENT_UNCONFIRMED_HASHS']: [
+        'TX_GET_NONEXISTENT_UNCONFIRMED_HASHS': ['tx_getNonexistentUnconfirmedHashs', [
             (param.get("CHAINID"), z215_TX_GET_NONEXISTENT_UNCONFIRMED_HASHS_chainId),
-            (param.get("TXHASHLIST"), z215_TX_GET_NONEXISTENT_UNCONFIRMED_HASHS_txHashList)],
+            (param.get("TXHASHLIST"), z215_TX_GET_NONEXISTENT_UNCONFIRMED_HASHS_txHashList)]],
 
-        ap['TX_GET_SYSTEMTYPES']: [
-            (param.get("CHAINID"), z216_TX_GET_SYSTEMTYPES_chainId)],
+        'TX_GET_SYSTEMTYPES': ['tx_getSystemTypes', [
+            (param.get("CHAINID"), z216_TX_GET_SYSTEMTYPES_chainId)]],
 
-        ap['TX_GET_TX']: [
+        'TX_GET_TX': ['tx_getTx', [
             (param.get("CHAINID"), z217_TX_GET_TX_chainId),
-            (param.get("TXHASH"), z217_TX_GET_TX_txHash)],
+            (param.get("TXHASH"), z217_TX_GET_TX_txHash)]],
 
-        ap['TX_GET_TX_CLIENT']: [
+        'TX_GET_TX_CLIENT': ['tx_getTxClient', [
             (param.get("CHAINID"), z218_TX_GET_TX_CLIENT_chainId),
-            (param.get("TXHASH"), z218_TX_GET_TX_CLIENT_txHash)],
+            (param.get("TXHASH"), z218_TX_GET_TX_CLIENT_txHash)]],
 
-        ap['TX_NEWTX']: [
+        'TX_NEWTX': ['tx_newTx', [
             (param.get("CHAINID"), z219_TX_NEWTX_chainId),
-            (param.get("TX"), z219_TX_NEWTX_tx)],
+            (param.get("TX"), z219_TX_NEWTX_tx)]],
 
-        ap['TX_PACKABLE_TXS']: [
+        'TX_PACKABLE_TXS': ['tx_packableTxs', [
             (param.get("CHAINID"), z220_TX_PACKABLE_TXS_chainId),
             (param.get("ENDTIMESTAMP"), z220_TX_PACKABLE_TXS_endTimestamp),
             (param.get("MAXTXDATASIZE"), z220_TX_PACKABLE_TXS_maxTxDataSize),
             (param.get("BLOCKTIME"), z220_TX_PACKABLE_TXS_blockTime),
             (param.get("PACKINGADDRESS"), z220_TX_PACKABLE_TXS_packingAddress),
-            (param.get("PRESTATEROOT"), z220_TX_PACKABLE_TXS_preStateRoot)],
+            (param.get("PRESTATEROOT"), z220_TX_PACKABLE_TXS_preStateRoot)]],
 
-        ap['TX_REGISTER']: [
+        'TX_REGISTER': ['tx_register', [
             (param.get("CHAINID"), z221_TX_REGISTER_chainId),
             (param.get("MODULECODE"), z221_TX_REGISTER_moduleCode),
             (param.get("LIST"), z221_TX_REGISTER_list),
-            (param.get("DELLIST"), z221_TX_REGISTER_delList)],
+            (param.get("DELLIST"), z221_TX_REGISTER_delList)]],
 
-        ap['TX_ROLLBACK']: [
+        'TX_ROLLBACK': ['tx_rollback', [
             (param.get("CHAINID"), z222_TX_ROLLBACK_chainId),
             (param.get("TXHASHLIST"), z222_TX_ROLLBACK_txHashList),
-            (param.get("BLOCKHEADER"), z222_TX_ROLLBACK_blockHeader)],
+            (param.get("BLOCKHEADER"), z222_TX_ROLLBACK_blockHeader)]],
 
-        ap['TX_SAVE']: [
+        'TX_SAVE': ['tx_save', [
             (param.get("CHAINID"), z223_TX_SAVE_chainId),
             (param.get("TXLIST"), z223_TX_SAVE_txList),
             (param.get("CONTRACTLIST"), z223_TX_SAVE_contractList),
-            (param.get("BLOCKHEADER"), z223_TX_SAVE_blockHeader)],
+            (param.get("BLOCKHEADER"), z223_TX_SAVE_blockHeader)]],
 
-        ap['TX_VERIFY_TX']: [
+        'TX_VERIFY_TX': ['tx_verifyTx', [
             (param.get("CHAINID"), z224_TX_VERIFY_TX_chainId),
-            (param.get("TX"), z224_TX_VERIFY_TX_tx)],
+            (param.get("TX"), z224_TX_VERIFY_TX_tx)]],
 
-        ap['UPDATE_CHAIN_ASSET']: [
+        'UPDATE_CHAIN_ASSET': ['updateChainAsset', [
             (param.get("CHAINID"), z225_UPDATE_CHAIN_ASSET_chainId),
-            (param.get("ASSETS"), z225_UPDATE_CHAIN_ASSET_assets)],
+            (param.get("ASSETS"), z225_UPDATE_CHAIN_ASSET_assets)]],
 
-        ap['VERIFY_COINDATA']: [
+        'VERIFY_COINDATA': ['verifyCoinData', [
             (param.get("CHAINID"), z226_VERIFY_COINDATA_chainId),
-            (param.get("TX"), z226_VERIFY_COINDATA_tx)],
+            (param.get("TX"), z226_VERIFY_COINDATA_tx)]],
 
-        ap['VERIFY_COINDATA_BATCH_PACKAGED']: [
+        'VERIFY_COINDATA_BATCH_PACKAGED': ['verifyCoinDataBatchPackaged', [
             (param.get("CHAINID"), z227_VERIFY_COINDATA_BATCH_PACKAGED_chainId),
-            (param.get("TXLIST"), z227_VERIFY_COINDATA_BATCH_PACKAGED_txList)],
+            (param.get("TXLIST"), z227_VERIFY_COINDATA_BATCH_PACKAGED_txList)]],
 
-        ap['WITHDRAW_VALID']: [
+        'WITHDRAW_VALID': ['withdrawValid', [
             (param.get("CHAINID"), z228_WITHDRAW_VALID_chainId),
-            (param.get("TX"), z228_WITHDRAW_VALID_tx)]
+            (param.get("TX"), z228_WITHDRAW_VALID_tx)]]
     }

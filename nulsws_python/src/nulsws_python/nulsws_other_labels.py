@@ -45,7 +45,7 @@ CHAINID_LABEL = "chainId"
 
 
 class NulsWsParams(object):
-    param_name_dict = {
+    param_dict = {
         "ADDRESS": "address",
         "ADDRESSPREFIX": "addressPrefix",
         "ADDRESSTYPE": "addressType",
