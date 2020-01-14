@@ -10,7 +10,7 @@ by Nancy Schorr for Nuls, None),
 # for use in api calls
 # fill in your default params here
 from configparser import ConfigParser
-
+import collections
 
 class NulsWsUserSet(object):
 
@@ -18,12 +18,19 @@ class NulsWsUserSet(object):
         config = ConfigParser()
         myfile = "e:\\config.ini"
         config.read(myfile)
-        clist = config.sections()
+        section_names = config.sections()
+        final_dict = collections.OrderedDict()
 
-        d = {}
-        for c in clist:
-            d.update(c)
+        dict1 = collections.OrderedDict()
+        for sect_nm in section_names:
+            opts = config.options(sect_nm)
+            for op in opts:
+                dict1[op] = config.get(sect_nm, op)
 
+            final_dict.update(dict1)
+
+
+        d = this_d
         my_minsigns, my_inputs, my_outputs, my_remark, my_signaddress = [1, 1, 1, 1, 1]
 
         z0_ADD_ADDRESS_PREFIX_prefix = d.my_addressprefix

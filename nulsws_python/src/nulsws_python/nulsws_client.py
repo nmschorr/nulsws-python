@@ -43,7 +43,7 @@ class NulsWebsocket(object):
 
     def __init__(self):
         nus = NulsWsUserSet()
-        self.un = un
+        # self.un = un
         self.mindex = 0
         self.s_time = .7
         self.NReq = NReq
