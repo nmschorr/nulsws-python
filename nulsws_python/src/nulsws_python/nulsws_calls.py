@@ -14,7 +14,7 @@ import nulsws_python.src.nulsws_python.nulsws_labels as lab
 class NulsWsCalls(object):
 
     u = NulsWsUserSet.export_settings_dict
-    param = lab.NulsWsParams()
+    param = lab.NulsWsParamLabels()
 
     calls_dict = {
         'AC_ADD_ADDRESS_PREFIX': ["ac_addAddressPrefix", [

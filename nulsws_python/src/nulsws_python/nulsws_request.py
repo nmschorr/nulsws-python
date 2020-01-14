@@ -1,66 +1,77 @@
 #!/usr/bin/python3.7
 
 from nulsws_python.src.nulsws_python.nulsws_library import NulsWsLib
-from nulsws_python.src.nulsws_python.nulsws_labels import NulsWsParams
-from nulsws_python.src.nulsws_python.user_settings.nulsws_user_set import NulsWsUserSet
-
+from nulsws_python.src.nulsws_python.nulsws_labels import NulsWsParamLabels
+# from nulsws_python.src.nulsws_python.user_settings.nulsws_user_set import NulsWsUserSet
+# just pass the dict1 into this file via methods
 
 class NulsWsRequest(object):
 
-# -----------prep_NEGOTIATE_data_type1--------------------------------------#
+    # -----------prep_NEGOTIATE_data_type1--------------------------------------#
 
     def __init__(self):
-        self.get_times = NulsWsLib.get_times
+        npl_obj = NulsWsParamLabels()
+        self.paramlab_d = npl_obj.param_labels_d
+        self.type_name_dict = npl_obj.type_name_dict
 
-    def prep_negotiate_request(self, msg_indx, d):  # return dict
-        n = self.n
-        data_part = {n.msg_data_label: {
-            n.proto_label: d.proto_ver,
-            n.compress_type_label: d.compress_type_VALUE,
-            n.compress_rate_label: d.compress_rate_VALUE}}
-        top_sect = self.make_very_top(1, msg_indx)
+    def prep_negotiate_request(self, msg_indx, dd):  # return dict
+        
+        nd = self.paramlab_d
+        data_part = {nd.get("msg_data_label"): {
+            nd.get("proto_label"): dd.get("proto_ver"),
+            nd.get("compress_type_label"): dd.get("compress_type_VALUE"),
+            nd.get("compress_rate_label"): dd.get("compress_rate_VALUE")}}
+        top_sect = self.make_very_top(1, msg_indx, dd)
         top_sect.update(data_part)
         return top_sect  # dict
 
     # -----------get_REQ_MIDDLE--------------------------------------#
 
-    def make_very_top(self, msg_type: int, msg_indx, d):  # this section builds 5 items: #0
+    def make_very_top(self, msg_type: int, msg_indx, cfd):  # this section builds 5 items: #0
         # 0  "ProtocolVersion": "0.1",
         # 1 "MessageID": "1569897424187-1",  #2 "TimeZone": "-4", # 3 "Timestamp": "1569897424187"
         # 4 "MessageType": "NegotiateConnection",
         # msg_type_name = type_name_dict.__getitem__(msg_type)
-        n = self.n
-        msg_type_name = n.type_name_dict[msg_type]
-        t_stamp, tzone, m_id = self.get_times(msg_indx)
-        very_top = {n.proto_label: d.proto_ver,
-                    n.msg_id_label: m_id,
-                    n.tmstmp_label: t_stamp,
-                    n.tmzone_label: tzone,
-                    n.msg_type_label: msg_type_name}
+
+        msg_type_name = self.type_name_dict[msg_type]
+
+        t_stamp, tzone, m_id = NulsWsLib.get_times(msg_indx)
+
+        very_top = {cfd.get("proto_label"): cfd.get("proto_ver"),
+                    cfd.get("msg_id_label"): m_id,
+                    cfd.get("tmstmp_label"): t_stamp,
+                    cfd.get("tmzone_label"): tzone,
+                    cfd.get("msg_type_label"): msg_type_name
+                    }
         return very_top
 
     # -----------get_REQ_MIDDLE--------------------------------------#
 
     def make_request_middle(self, mid_section_vals=None):  # return dict
-        n = self.n
+        n = self.paramlab_d
+        zero = n.get("ZERO")
         if not mid_section_vals:
-            mid_section_vals = [1, n.ZERO, n.ZERO, n.ZERO, n.ZERO]  # 2 = ack+date
+            mid_section_vals = [1, zero, zero, zero, zero]  # 2 = ack+date
         [rtt, sec, sp, sr, rms, bottom_part] = [*mid_section_vals]
 
+        def f(x):
+            return n.get(x)
+
+        z = f("msg_data_label")
         req_middle = {
-            n.msg_data_label: {
-                n.request_type_label: rtt,
-                n.subscrip_evnt_ct_label: sec,
-                n.subscrip_period_label: sp,
-                n.subscriptn_range_label: sr,
-                n.response_max_size_label: rms,
-                n.req_methods_label: bottom_part
+            n.get("msg_data_label"): {
+                n.get("request_type_label"): rtt,
+                n.get("subscrip_evnt_ct_label"): sec,
+                n.get("subscrip_period_label"): sp,
+                n.get("subscriptn_range_label"): sr,
+                n.get("response_max_size_label"): rms,
+                n.get("req_methods_label"): bottom_part
             }}
         return req_middle  # dict
 
     # -----------prep_REQUEST_ONESIE (request) --------------------------------------#
 
-    def prep_request(self, msg_indx, caps_name, d):  # requesttype 2 - return ack +
+    def prep_request(self, msg_indx, caps_name, dd):  # requesttype 2 - return ack +
         import nulsws_python.src.nulsws_python.nulsws_calls as ndb
         callsdb = ndb.NulsWsCalls().calls_dict
         api_text_api_params_dict = dict()
@@ -79,7 +90,7 @@ class NulsWsRequest(object):
         newlist = [request_type, subs_e_c, subs_per, subs_rg, resp_max, api_text_api_params_dict]
 
         msg_section_middle = self.make_request_middle(newlist)
-        message_section_top = self.make_very_top(3, msg_indx, d)
+        message_section_top = self.make_very_top(3, msg_indx, dd)
         message_section_top.update(msg_section_middle)
         return message_section_top  # "'"return dict
 

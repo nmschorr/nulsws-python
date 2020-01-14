@@ -107,7 +107,7 @@ Once the client and server have done their handshakes - if successful -  data tr
 1) The Client, (ClientApp\nulsws_RUNNER_client.py) later to become both a client and a server.  The client 
 uses the libraries to build JSON messages, then send them out, and receive the responses to those messages.
 
-The main class is called NulsWebsocket. It uses Python's newer asyncio communication model. 
+The main class is called NulsWsClient. It uses Python's newer asyncio communication model. 
 
 The four methods currently in nulsws_RUNNER are:
 
@@ -142,7 +142,7 @@ if __name__ == '__main__':
                 b.AC_GET_ADDRESS_LIST, b.AC_GET_ADDRESS_PREFIX_BY_CHAINID, b.AC_GET_ALL_ADDRESS_PREFIX,
                 b.AC_GET_ALL_PRIKEY, b.AC_GET_ALIASBY_ADDRESS]
     message_type = 3 
-    nws = NulsWebsocket()    
+    nws = NulsWsClient()    
     nws.main(RUN_LIST, message_type)
 '''
 
