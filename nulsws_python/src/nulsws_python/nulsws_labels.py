@@ -181,6 +181,5 @@ class NulsWsLabels(object):
         "TYPE": "type",
         "USABLE": "usable",
         "VALUE": "value",
-        "VERIFIERLIST": "verifierList",
-        "PREFIXLIST": "prefixList"
+        "VERIFIERLIST": "verifierList"
     }

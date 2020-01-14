@@ -20,8 +20,8 @@ class NulsWsCalls(object):
     param = NulsWsLabels.param_dict
 
     calls_dict = {
-        'AC_ADD_ADDRESS_PREFIX': ["ac_addAddressPrefix", [
-            param.get("PREFIXLIST"), u.get("z0_ADD_ADDRESS_PREFIX_prefix")]],
+        'AC_ADD_ADDRESS_PREFIX': {"ac_addAddressPrefix": {
+            param.get("PREFIXLIST"): u.get("z0_ADD_ADDRESS_PREFIX_prefix")}},
 
         'AC_CREATE_ACCOUNT': ["ac_createAccount", [
             param.get("CHAINID"), u.get("z1_AC_CREATE_ACCOUNT_chainId"),
