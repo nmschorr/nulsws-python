@@ -1,7 +1,7 @@
 #!/usr/bin/python3.7
 
 from nulsws_python.src.nulsws_python.nulsws_library import NulsWsLib
-from nulsws_python.src.nulsws_python.nulsws_labels import NulsWsParamLabels
+from nulsws_python.src.nulsws_python.nulsws_labels import NulsWsLabels
 # from nulsws_python.src.nulsws_python.user_settings.nulsws_user_set import NulsWsUserSet
 # just pass the dict1 into this file via methods
 
@@ -10,8 +10,8 @@ class NulsWsRequest(object):
     # -----------prep_NEGOTIATE_data_type1--------------------------------------#
 
     def __init__(self):
-        npl_obj = NulsWsParamLabels()
-        self.paramlab_d = npl_obj.param_labels_d
+        npl_obj = NulsWsLabels()
+        self.paramlab_d = npl_obj.regular_labels
         self.type_name_dict = npl_obj.type_name_dict
 
     def prep_negotiate_request(self, msg_indx, dd):  # return dict

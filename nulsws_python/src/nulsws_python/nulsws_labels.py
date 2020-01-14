@@ -6,14 +6,14 @@ January 2020
 """
 
 
-class NulsWsParamLabels(object):
+class NulsWsLabels(object):
 
     type_name_dict = {0: 'None', 1: 'NegotiateConnection',
                       2: 'NegotiateConnectionResponse',
                       3: 'Request', 4: 'Unsubscribe', 5: 'Response', 6: 'Ack',
                       7: 'RegisterCompoundMethod', 8: 'UnregisterCompoundMethod'}
 
-    param_labels_d = {
+    regular_labels = {
         "compress_type_label": "CompressionAlgorithm",
         "compress_rate_label": "CompressionRate",
         "msg_data_label": "MessageData",

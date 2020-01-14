@@ -47,7 +47,10 @@ class NulsWsClient(object):
         self.myprint = nlib.NulsWsLib.myprint
         self.json_prt = nlib.NulsWsLib.json_prt
         self.nreq_obj = NulsWsRequest()
+        self.that_dict: dict = {}
 
+    def get_that_dict(self):
+        return self.that_dict
 
     async def regular_request(self, websock_cont: WebSocketClientConnection, j_reg_dict):
         json_reg = json.dumps(j_reg_dict)
@@ -64,24 +67,24 @@ class NulsWsClient(object):
 
     async def negotiate_list(self, top_plus_mid_dict, m_indx, run_list, dd, mtpe=3):
         conn_m = eval(dd.get("connect_method"))
-
         host_r = eval(dd.get("host_req"))
-
         port_r = eval(dd.get("port_req"))
         websock_url = ''.join([conn_m, host_r, ":", port_r])
+        debug = 1
 
-        connection = await websocket_connect(websock_url)  # 1) CONNECT
-        # await a_sleep(self.s_time)
-        while not connection:
+        if not debug:
+            connection = await websocket_connect(websock_url)  # 1) CONNECT
+            # await a_sleep(self.s_time)
+            while not connection:
+                await a_sleep(self.s_time)
+            jd = json.dumps(top_plus_mid_dict)
+            self.json_prt(top_plus_mid_dict, "* * * First message going out- NEGOTIATE: \n")
+
+            await connection.write_message(jd)  # 2) WRITE
+            # await a_sleep(self.s_time)
+            negotiate_result = await connection.read_message()  # 3 READ
             await a_sleep(self.s_time)
-        jd = json.dumps(top_plus_mid_dict)
-        self.json_prt(top_plus_mid_dict, "* * * First message going out- NEGOTIATE: \n")
-
-        await connection.write_message(jd)  # 2) WRITE
-        # await a_sleep(self.s_time)
-        negotiate_result = await connection.read_message()  # 3 READ
-        await a_sleep(self.s_time)
-        self.json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
+            self.json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
         self.myprint("------end Negotiate----------------------------------------")
 
         for run_item in run_list:
@@ -89,14 +92,20 @@ class NulsWsClient(object):
 
             if mtpe == 3:
                 main_request = self.nreq_obj.prep_request(m_indx, run_item, dd)  # TEST ONLY PUT BACK WHEN DONE
-                #json_reg = json.dumps(main_request)
-                #self.json_prt(json_reg, " ")
 
-                await self.regular_request(connection, main_request)
+                if debug:
+                    json_reg = json.dumps(main_request)
+                    self.json_prt(json_reg, " ")
+
+                else:
+                    await self.regular_request(connection, main_request)
 
     def main(self, rr_list, mtpe=3):
         nus = NulsWsUserSet()
         cfd = nus.get_conf_dict()
+        import copy
+        that_dict: dict = copy.deepcopy(cfd)
+        self.that_dict = that_dict
         nreq_obj = NulsWsRequest()
         mindx = 0
         if mtpe == 3:  # if a regular request Nulstar type 3
