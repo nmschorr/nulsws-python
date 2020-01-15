@@ -21,226 +21,226 @@ class NulsWsCalls(object):
     param = NulsWsLabels.labs_params_d
 
     calls_dict = {
-        'AC_ADD_ADDRESS_PREFIX': {"ac_addAddressPrefix": {
-            param.get("PREFIXLIST"): u.get("z0_ADD_ADDRESS_PREFIX_prefix")}},
+        'AC_ADD_ADDRESS_PREFIX', {"ac_addAddressPrefix", {
+            param.get("PREFIXLIST"), u.get("z0_ADD_ADDRESS_PREFIX_prefix")}},
 
-        'AC_CREATE_ACCOUNT': ["ac_createAccount", [
+        'AC_CREATE_ACCOUNT', {"ac_createAccount", {
             param.get("CHAINID"), u.get("z1_AC_CREATE_ACCOUNT_chainId"),
             param.get("COUNT"), u.get("z1_AC_CREATE_ACCOUNT_count"),
-            param.get("PASSWORD"), u.get("z1_AC_CREATE_ACCOUNT_password")]],
+            param.get("PASSWORD"), u.get("z1_AC_CREATE_ACCOUNT_password")}},
 
-        'AC_CREATE_CONTRACT_ACCOUNT': ["ac_createContractAccount", [
-            param.get("CHAINID"), u.get("z2_AC_CREATE_CONTRACT_ACCOUNT_chainId")]],
+        'AC_CREATE_CONTRACT_ACCOUNT', {"ac_createContractAccount", {
+            param.get("CHAINID"), u.get("z2_AC_CREATE_CONTRACT_ACCOUNT_chainId")}},
 
-        'AC_CREATE_MULTI_SIGN_ACCOUNT': ["ac_createMultiSignAccount", [
+        'AC_CREATE_MULTI_SIGN_ACCOUNT', {"ac_createMultiSignAccount", {
             param.get("CHAINID"), u.get("z3_AC_CREATE_MULTI_SIGN_ACCOUNT_chainId"),
             param.get("PUBKEY"), u.get("z3_AC_CREATE_MULTI_SIGN_ACCOUNT_pubKeys"),
-            param.get("MINSIGNS"), u.get("z3_AC_CREATE_MULTI_SIGN_ACCOUNT_minSigns")]],
+            param.get("MINSIGNS"), u.get("z3_AC_CREATE_MULTI_SIGN_ACCOUNT_minSigns")}},
 
-        'AC_CREATE_MULTI_SIGN_TRANSFER': ["ac_createMultiSignTransfer", [
+        'AC_CREATE_MULTI_SIGN_TRANSFER', {"ac_createMultiSignTransfer", {
             param.get("CHAINID"), u.get("z4_AC_CREATE_MULTI_SIGN_TRANSFER_chainId"),
             param.get("INPUTS"), u.get("z4_AC_CREATE_MULTI_SIGN_TRANSFER_inputs"),
             param.get("OUTPUTS"), u.get("z4_AC_CREATE_MULTI_SIGN_TRANSFER_outputs"),
             param.get("REMARK"), u.get("z4_AC_CREATE_MULTI_SIGN_TRANSFER_remark"),
             param.get("INPUTS"), u.get("z4_AC_CREATE_MULTI_SIGN_TRANSFER_signAddress"),
             param.get("SIGNPASSWORD"), u.get("z4_AC_CREATE_MULTI_SIGN_TRANSFER_signPassword"),
-            param.get("SIGNPASSWORD"), u.get("z25_AC_SET_MULTISIGN_ALIAS_signPassword")]],
+            param.get("SIGNPASSWORD"), u.get("z25_AC_SET_MULTISIGN_ALIAS_signPassword")}},
 
-        'AC_GET_PRIKEY_BY_ADDRESS': ["ac_getPriKeyByAddress", [
+        'AC_GET_PRIKEY_BY_ADDRESS', {"ac_getPriKeyByAddress", {
             param.get("CHAINID"), u.get("z1017_AC_GET_PRIKEY_BY_ADDRESS__chainId"),
             param.get("ADDRESS"), u.get("z1017_AC_GET_PRIKEY_BY_ADDRESS_address"),
-            param.get("PASSWORD"), u.get("z1017_AC_GET_PRIKEY_BY_ADDRESS_password")]],
+            param.get("PASSWORD"), u.get("z1017_AC_GET_PRIKEY_BY_ADDRESS_password")}},
 
-        'AC_CREATE_OFFLINE_ACCOUNT': ["ac_createOfflineAccount", [
+        'AC_CREATE_OFFLINE_ACCOUNT', {"ac_createOfflineAccount", {
             param.get("CHAINID"), u.get("z5_AC_CREATE_OFFLINE_ACCOUNT_chainId"),
             param.get("COUNT"), u.get("z5_AC_CREATE_OFFLINE_ACCOUNT_count"),
-            param.get("PASSWORD"), u.get("z5_AC_CREATE_OFFLINE_ACCOUNT_password")]],
+            param.get("PASSWORD"), u.get("z5_AC_CREATE_OFFLINE_ACCOUNT_password")}},
 
-        'AC_EXPORT_ACCOUNT_KEYSTORE': ['ac_exportAccountKeyStore', [
+        'AC_EXPORT_ACCOUNT_KEYSTORE', {'ac_exportAccountKeyStore', {
             param.get("CHAINID"), u.get("z6_AC_EXPORT_ACCOUNT_KEYSTORE_chainId"),
             param.get("ADDRESS"), u.get("z6_AC_EXPORT_ACCOUNT_KEYSTORE_address"),
             param.get("PASSWORD"), u.get("z6_AC_EXPORT_ACCOUNT_KEYSTORE_password"),
-            param.get("FILEPATH"), u.get("z6_AC_EXPORT_ACCOUNT_KEYSTORE_filePath")]],
+            param.get("FILEPATH"), u.get("z6_AC_EXPORT_ACCOUNT_KEYSTORE_filePath")}},
 
-        'AC_EXPORT_KEYSTORE_JSON': ['ac_exportKeyStoreJson', [
+        'AC_EXPORT_KEYSTORE_JSON', {'ac_exportKeyStoreJson', {
             param.get("CHAINID"), u.get("z7_AC_EXPORT_KEYSTORE_JSON_chainId"),
             param.get("ADDRESS"), u.get("z7_AC_EXPORT_KEYSTORE_JSON_address"),
-            param.get("PASSWORD"), u.get("z7_AC_EXPORT_KEYSTORE_JSON_password")]],
+            param.get("PASSWORD"), u.get("z7_AC_EXPORT_KEYSTORE_JSON_password")}},
 
-        'AC_GET_ACCOUNT_BYADDRESS': ['ac_getAccountByAddress', [
+        'AC_GET_ACCOUNT_BYADDRESS', {'ac_getAccountByAddress', {
             param.get("CHAINID"), u.get("z8_AC_GET_ACCOUNT_BYADDRESS_chainId"),
-            param.get("ADDRESS"), u.get("z8_AC_GET_ACCOUNT_BYADDRESS_address")]],
+            param.get("ADDRESS"), u.get("z8_AC_GET_ACCOUNT_BYADDRESS_address")}},
 
-        'AC_GET_ACCOUNT_LIST': ['ac_getAccountList', [
-            param.get("CHAINID"), u.get("z9_AC_GET_ACCOUNT_LIST_chainId")]],
+        'AC_GET_ACCOUNT_LIST', {'ac_getAccountList', {
+            param.get("CHAINID"), u.get("z9_AC_GET_ACCOUNT_LIST_chainId")}},
 
-        'AC_GET_ADDRESS_LIST': ['ac_getAddressList', [
+        'AC_GET_ADDRESS_LIST', {'ac_getAddressList', {
             param.get("CHAINID"), u.get("z10_AC_GET_ADDRESS_LIST_chainId"),
             param.get("PAGENUMBER"), u.get("z10_AC_GET_ADDRESS_LIST_pageNumber"),
-            param.get("PAGESIZE"), u.get("z10_AC_GET_ADDRESS_LIST_pageSize")]],
+            param.get("PAGESIZE"), u.get("z10_AC_GET_ADDRESS_LIST_pageSize")}},
 
-        'AC_GET_ADDRESS_PREFIX_BY_CHAINID': ['ac_getAddressPrefixByChainId', [
-            param.get("CHAINID"), u.get("z11_AC_GET_ADDRESS_PREFIX_BY_CHAINID_chainId")]],
+        'AC_GET_ADDRESS_PREFIX_BY_CHAINID', {'ac_getAddressPrefixByChainId', {
+            param.get("CHAINID"), u.get("z11_AC_GET_ADDRESS_PREFIX_BY_CHAINID_chainId")}},
 
 
-        'AC_GET_ALIASBY_ADDRESS': ['ac_getAliasByAddress', [
+        'AC_GET_ALIASBY_ADDRESS', {'ac_getAliasByAddress', {
             param.get("CHAINID"), u.get("z12_AC_GET_ALIASBY_ADDRESS_chainId"),
-            param.get("ADDRESS"), u.get("z12_AC_GET_ALIASBY_ADDRESS_address")]],
+            param.get("ADDRESS"), u.get("z12_AC_GET_ALIASBY_ADDRESS_address")}},
 
-        'AC_GET_ALL_ADDRESS_PREFIX': ['ac_getAllAddressPrefix', [
-            param.get("CHAINID"), u.get("z13_AC_GET_ALL_ADDRESS_PREFIX_chainId")]],
+        'AC_GET_ALL_ADDRESS_PREFIX', {'ac_getAllAddressPrefix', {
+            param.get("CHAINID"), u.get("z13_AC_GET_ALL_ADDRESS_PREFIX_chainId")}},
 
-        'AC_GET_ALL_PRIKEY': ['ac_getAllPriKey', [
+        'AC_GET_ALL_PRIKEY', {'ac_getAllPriKey', {
             param.get("CHAINID"), u.get("z14_AC_GET_ALL_PRIKEY_chainId"),
-            param.get("PASSWORD"), u.get("z14_AC_GET_ALL_PRIKEY_password")]],
+            param.get("PASSWORD"), u.get("z14_AC_GET_ALL_PRIKEY_password")}},
 
-        'AC_GET_ENCRYPTED_ADDRESS_LIST': ['ac_getEncryptedAddressList', [
-            param.get("CHAINID"), u.get("z15_AC_GET_ENCRYPTED_ADDRESS_LIST_chainId")]],
+        'AC_GET_ENCRYPTED_ADDRESS_LIST', {'ac_getEncryptedAddressList', {
+            param.get("CHAINID"), u.get("z15_AC_GET_ENCRYPTED_ADDRESS_LIST_chainId")}},
 
-        'AC_GET_MULTI_SIGN_ACCOUNT': ['ac_getMultiSignAccount', [
+        'AC_GET_MULTI_SIGN_ACCOUNT', {'ac_getMultiSignAccount', {
             param.get("CHAINID"), u.get("z16_AC_GET_MULTI_SIGN_ACCOUNT_chainId"),
-            param.get("ADDRESS"), u.get("z16_AC_GET_MULTI_SIGN_ACCOUNT_address")]],
+            param.get("ADDRESS"), u.get("z16_AC_GET_MULTI_SIGN_ACCOUNT_address")}},
 
-        'AC_GET_PUBKEY': ['ac_getPubKey', [
+        'AC_GET_PUBKEY', {'ac_getPubKey', {
             param.get("CHAINID"), u.get("z17_AC_GET_PUBKEY_chainId"),
             param.get("ADDRESS"), u.get("z17_AC_GET_PUBKEY_address"),
-            param.get("PASSWORD"), u.get("z17_AC_GET_PUBKEY_password")]],
+            param.get("PASSWORD"), u.get("z17_AC_GET_PUBKEY_password")}},
 
-        'AC_IMPORT_ACCOUNT_BY_KEYSTORE': ['ac_importAccountByKeystore', [
+        'AC_IMPORT_ACCOUNT_BY_KEYSTORE', {'ac_importAccountByKeystore', {
             param.get("CHAINID"), u.get("z18_AC_IMPORT_ACCOUNT_BY_KEYSTORE_chainId"),
             param.get("PASSWORD"), u.get("z18_AC_IMPORT_ACCOUNT_BY_KEYSTORE_password"),
             param.get("KEYSTORE"), u.get("z18_AC_IMPORT_ACCOUNT_BY_KEYSTORE_keyStore"),
-            param.get("OVERWRITE"), u.get("z18_AC_IMPORT_ACCOUNT_BY_KEYSTORE_overwrite")]],
+            param.get("OVERWRITE"), u.get("z18_AC_IMPORT_ACCOUNT_BY_KEYSTORE_overwrite")}},
 
-        'AC_IMPORT_ACCOUNT_BY_PRIKEY': ['ac_importAccountByPriKey', [
+        'AC_IMPORT_ACCOUNT_BY_PRIKEY', {'ac_importAccountByPriKey', {
             param.get("CHAINID"), u.get("z19_AC_IMPORT_ACCOUNT_BY_PRIKEY_chainId"),
             param.get("PASSWORD"), u.get("z19_AC_IMPORT_ACCOUNT_BY_PRIKEY_password"),
             param.get("PRIKEY"), u.get("z19_AC_IMPORT_ACCOUNT_BY_PRIKEY_priKey"),
-            param.get("OVERWRITE"), u.get("z19_AC_IMPORT_ACCOUNT_BY_PRIKEY_overwrite")]],
+            param.get("OVERWRITE"), u.get("z19_AC_IMPORT_ACCOUNT_BY_PRIKEY_overwrite")}},
 
-        'AC_IS_ALIAS_USABLE': ['ac_isAliasUsable', [
+        'AC_IS_ALIAS_USABLE', {'ac_isAliasUsable', {
             param.get("CHAINID"), u.get("z20_AC_IS_ALIAS_USABLE_chainId"),
-            param.get("ALIAS"), u.get("z20_AC_IS_ALIAS_USABLE_alias")]],
+            param.get("ALIAS"), u.get("z20_AC_IS_ALIAS_USABLE_alias")}},
 
-        'AC_IS_MULTISIGN_ACCOUNT_BUILDER': ['ac_isMultiSignAccountBuilder', [
+        'AC_IS_MULTISIGN_ACCOUNT_BUILDER', {'ac_isMultiSignAccountBuilder', {
             param.get("CHAINID"), u.get("z21_AC_IS_MULTISIGN_ACCOUNT_BUILDER_chainId"),
             param.get("ADDRESS"), u.get("z21_AC_IS_MULTISIGN_ACCOUNT_BUILDER_address"),
-            param.get("PUBKEY"), u.get("z21_AC_IS_MULTISIGN_ACCOUNT_BUILDER_pubKey")]],
+            param.get("PUBKEY"), u.get("z21_AC_IS_MULTISIGN_ACCOUNT_BUILDER_pubKey")}},
 
-        'AC_REMOVE_ACCOUNT': ['ac_removeAccount', [
+        'AC_REMOVE_ACCOUNT', {'ac_removeAccount', {
             param.get("CHAINID"), u.get("z22_AC_REMOVE_ACCOUNT_chainId"),
             param.get("ADDRESS"), u.get("z22_AC_REMOVE_ACCOUNT_address"),
-            param.get("PASSWORD"), u.get("z22_AC_REMOVE_ACCOUNT_password")]],
+            param.get("PASSWORD"), u.get("z22_AC_REMOVE_ACCOUNT_password")}},
 
-        'AC_REMOVE_MULTISIGN_ACCOUNT': ['ac_removeMultiSignAccount', [
+        'AC_REMOVE_MULTISIGN_ACCOUNT', {'ac_removeMultiSignAccount', {
             param.get("CHAINID"), u.get("z23_AC_REMOVE_MULTISIGN_ACCOUNT_chainId"),
-            param.get("ADDRESS"), u.get("z23_AC_REMOVE_MULTISIGN_ACCOUNT_address")]],
+            param.get("ADDRESS"), u.get("z23_AC_REMOVE_MULTISIGN_ACCOUNT_address")}},
 
-        'AC_SET_ALIAS': ['ac_setAlias', [
+        'AC_SET_ALIAS', {'ac_setAlias', {
             param.get("CHAINID"), u.get("z24_AC_SET_ALIAS_chainId"),
             param.get("ADDRESS"), u.get("z24_AC_SET_ALIAS_address"),
             param.get("PASSWORD"), u.get("z24_AC_SET_ALIAS_password"),
-            param.get("ALIAS"), u.get("z24_AC_SET_ALIAS_alias")]],
+            param.get("ALIAS"), u.get("z24_AC_SET_ALIAS_alias")}},
 
-        'AC_SET_MULTISIGN_ALIAS': ['ac_setMultiSignAlias', [
+        'AC_SET_MULTISIGN_ALIAS', {'ac_setMultiSignAlias', {
             param.get("CHAINID"), u.get("z25_AC_SET_MULTISIGN_ALIAS_chainId"),
             param.get("ADDRESS"), u.get("z25_AC_SET_MULTISIGN_ALIAS_address"),
             param.get("ALIAS"), u.get("z25_AC_SET_MULTISIGN_ALIAS_alias"),
             param.get("SIGNADDRESS"), u.get("z25_AC_SET_MULTISIGN_ALIAS_signAddress"),
-            param.get("SIGNPASSWORD"), u.get("z25_AC_SET_MULTISIGN_ALIAS_signPassword")]],
+            param.get("SIGNPASSWORD"), u.get("z25_AC_SET_MULTISIGN_ALIAS_signPassword")}},
 
-        'AC_SET_REMARK': ['ac_setRemark', [
+        'AC_SET_REMARK', {'ac_setRemark', {
             param.get("CHAINID"), u.get("z26_AC_SET_REMARK_chainId"),
             param.get("ADDRESS"), u.get("z26_AC_SET_REMARK_address"),
-            param.get("REMARK"), u.get("z26_AC_SET_REMARK_remark")]],
+            param.get("REMARK"), u.get("z26_AC_SET_REMARK_remark")}},
 
-        'AC_SIGN_BLOCKDIGEST': ['ac_signBlockDigest', [
+        'AC_SIGN_BLOCKDIGEST', {'ac_signBlockDigest', {
             param.get("CHAINID"), u.get("z27_AC_SIGN_BLOCKDIGEST_chainId"),
             param.get("ADDRESS"), u.get("z27_AC_SIGN_BLOCKDIGEST_address"),
             param.get("PASSWORD"), u.get("z27_AC_SIGN_BLOCKDIGEST_password"),
-            param.get("DATA"), u.get("z27_AC_SIGN_BLOCKDIGEST_data")]],
+            param.get("DATA"), u.get("z27_AC_SIGN_BLOCKDIGEST_data")}},
 
-        'AC_SIGN_DIGEST': ['ac_signDigest', [
+        'AC_SIGN_DIGEST', {'ac_signDigest', {
             param.get("CHAINID"), u.get("z28_AC_SIGN_DIGEST_chainId"),
             param.get("ADDRESS"), u.get("z28_AC_SIGN_DIGEST_address"),
             param.get("PASSWORD"), u.get("z28_AC_SIGN_DIGEST_password"),
-            param.get("DATA"), u.get("z28_AC_SIGN_DIGEST_data")]],
+            param.get("DATA"), u.get("z28_AC_SIGN_DIGEST_data")}},
 
-        'AC_SIGN_MULTISIGN_TRANSACTION': ['ac_signMultiSignTransaction', [
+        'AC_SIGN_MULTISIGN_TRANSACTION', {'ac_signMultiSignTransaction', {
             param.get("CHAINID"), u.get("z29_AC_SIGN_MULTISIGN_TRANSACTION_chainId"),
             param.get("TX"), u.get("z29_AC_SIGN_MULTISIGN_TRANSACTION_tx"),
             param.get("SIGNADDRESS"), u.get("z29_AC_SIGN_MULTISIGN_TRANSACTION_signAddress"),
-            param.get("SIGNPASSWORD"), u.get("z29_AC_SIGN_MULTISIGN_TRANSACTION_signPassword")]],
+            param.get("SIGNPASSWORD"), u.get("z29_AC_SIGN_MULTISIGN_TRANSACTION_signPassword")}},
 
-        'AC_TRANSFER': ['ac_transfer', [
+        'AC_TRANSFER', {'ac_transfer', {
             param.get("CHAINID"), u.get("z30_AC_TRANSFER_chainId"),
             param.get("INPUTS"), u.get("z30_AC_TRANSFER_inputs"),
             param.get("OUTPUTS"), u.get("z30_AC_TRANSFER_outputs"),
-            param.get("REMARK"), u.get("z30_AC_TRANSFER_remark")]],
+            param.get("REMARK"), u.get("z30_AC_TRANSFER_remark")}},
 
-        'AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD': ['ac_updateOfflineAccountPassword', [
+        'AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD', {'ac_updateOfflineAccountPassword', {
             param.get("CHAINID"), u.get("z31_AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD_chainId"),
             param.get("ADDRESS"), u.get("z31_AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD_address"),
             param.get("PASSWORD"), u.get("z31_AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD_password"),
             param.get("NEWPASSWORD"), u.get("z31_AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD_newPassword"),
-            param.get("PRIKEY"), u.get("z31_AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD_priKey")]],
+            param.get("PRIKEY"), u.get("z31_AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD_priKey")}},
 
-        'AC_UPDATE_PASSWORD': ['ac_updatePassword', [
+        'AC_UPDATE_PASSWORD', {'ac_updatePassword', {
             param.get("CHAINID"), u.get("z32_AC_UPDATE_PASSWORD_chainId"),
             param.get("ADDRESS"), u.get("z32_AC_UPDATE_PASSWORD_address"),
             param.get("PASSWORD"), u.get("z32_AC_UPDATE_PASSWORD_password"),
-            param.get("NEWPASSWORD"), u.get("z32_AC_UPDATE_PASSWORD_newPassword")]],
+            param.get("NEWPASSWORD"), u.get("z32_AC_UPDATE_PASSWORD_newPassword")}},
 
-        'AC_VALIDATION_PASSWORD': ['ac_validationPassword', [
+        'AC_VALIDATION_PASSWORD', {'ac_validationPassword', {
             param.get("CHAINID"), u.get("z33_AC_VALIDATION_PASSWORD_chainId"),
             param.get("ADDRESS"), u.get("z33_AC_VALIDATION_PASSWORD_address"),
-            param.get("PASSWORD"), u.get("z33_AC_VALIDATION_PASSWORD_password")]],
+            param.get("PASSWORD"), u.get("z33_AC_VALIDATION_PASSWORD_password")}},
 
-        'AC_VERIFY_SIGN_DATA': ['ac_verifySignData', [
+        'AC_VERIFY_SIGN_DATA', {'ac_verifySignData', {
             param.get("PUBKEY"), u.get("z34_AC_VERIFY_SIGN_DATA_pubKey"),
             param.get("SIG"), u.get("z34_AC_VERIFY_SIGN_DATA_sig"),
-            param.get("DATA"), u.get("z34_AC_VERIFY_SIGN_DATA_data")]],
+            param.get("DATA"), u.get("z34_AC_VERIFY_SIGN_DATA_data")}},
 
-        'BATCH_VALIDATE_BEGIN': ['batchValidateBegin', [
-            param.get("CHAINID"), u.get("z35_BATCH_VALIDATE_BEGIN_chainId")]],
+        'BATCH_VALIDATE_BEGIN', {'batchValidateBegin', {
+            param.get("CHAINID"), u.get("z35_BATCH_VALIDATE_BEGIN_chainId")}},
 
-        'BLOCK_VALIDATE': ['blockValidate', [
+        'BLOCK_VALIDATE', {'blockValidate', {
             param.get("CHAINID"), u.get("z36_BLOCK_VALIDATE_chainId"),
-            param.get("TXLIST"), u.get("z36_BLOCK_VALIDATE_txList")]],
+            param.get("TXLIST"), u.get("z36_BLOCK_VALIDATE_txList")}},
 
-        'CANCEL_CROSSCHAIN': ['cancelCrossChain', [
+        'CANCEL_CROSSCHAIN', {'cancelCrossChain', {
             param.get("CHAINID"), u.get("z38_CANCEL_CROSSCHAIN_chainId"),
-            param.get("ASSETID"), u.get("z38_CANCEL_CROSSCHAIN_assetId")]],
+            param.get("ASSETID"), u.get("z38_CANCEL_CROSSCHAIN_assetId")}},
 
-        'CHECK_BLOCK_VERSION': ['checkBlockVersion', [
+        'CHECK_BLOCK_VERSION', {'checkBlockVersion', {
             param.get("CHAINID"), u.get("z39_CHECK_BLOCK_VERSION_chainId"),
-            param.get("EXTENDSDATA"), u.get("z39_CHECK_BLOCK_VERSION_extendsData")]],
+            param.get("EXTENDSDATA"), u.get("z39_CHECK_BLOCK_VERSION_extendsData")}},
 
-        'CM_ASSET': ['cm_asset', [
+        'CM_ASSET', {'cm_asset', {
             param.get("CHAINID"), u.get("z40_CM_ASSET_chainId"),
-            param.get("ASSETID"), u.get("z40_CM_ASSET_assetId")]],
+            param.get("ASSETID"), u.get("z40_CM_ASSET_assetId")}},
 
-        'CM_ASSET_CIRCULATE_COMMIT': ['cm_assetCirculateCommit', [
+        'CM_ASSET_CIRCULATE_COMMIT', {'cm_assetCirculateCommit', {
             param.get("CHAINID"), u.get("z41_CM_ASSET_CIRCULATE_COMMIT_chainId"),
             param.get("TXLIST"), u.get("z41_CM_ASSET_CIRCULATE_COMMIT_txList"),
-            param.get("BLOCKHEADER"), u.get("z41_CM_ASSET_CIRCULATE_COMMIT_blockHeader")]],
+            param.get("BLOCKHEADER"), u.get("z41_CM_ASSET_CIRCULATE_COMMIT_blockHeader")}},
 
-        'CM_ASSET_CIRCULATE_ROLLBACK': ['cm_assetCirculateRollBack', [
+        'CM_ASSET_CIRCULATE_ROLLBACK', {'cm_assetCirculateRollBack', {
             param.get("CHAINID"), u.get("z42_CM_ASSET_CIRCULATE_ROLLBACK_chainId"),
             param.get("TXLIST"), u.get("z42_CM_ASSET_CIRCULATE_ROLLBACK_txList"),
-            param.get("BLOCKHEADER"), u.get("z42_CM_ASSET_CIRCULATE_ROLLBACK_blockHeader")]],
+            param.get("BLOCKHEADER"), u.get("z42_CM_ASSET_CIRCULATE_ROLLBACK_blockHeader")}},
 
-        'CM_ASSET_CIRCULATE_VALIDATOR': ['cm_assetCirculateValidator', [
+        'CM_ASSET_CIRCULATE_VALIDATOR', {'cm_assetCirculateValidator', {
             param.get("CHAINID"), u.get("z43_CM_ASSET_CIRCULATE_VALIDATOR_chainId"),
-            param.get("TX"), u.get("z43_CM_ASSET_CIRCULATE_VALIDATOR_tx")]],
+            param.get("TX"), u.get("z43_CM_ASSET_CIRCULATE_VALIDATOR_tx")}},
 
-        'CM_ASSET_DISABLE': ['cm_assetDisable', [
+        'CM_ASSET_DISABLE', {'cm_assetDisable', {
             param.get("CHAINID"), u.get("z44_CM_ASSET_DISABLE_chainId"),
             param.get("ASSETID"), u.get("z44_CM_ASSET_DISABLE_assetId"),
             param.get("ADDRESS"), u.get("z44_CM_ASSET_DISABLE_address"),
-            param.get("PASSWORD"), u.get("z44_CM_ASSET_DISABLE_password")]],
+            param.get("PASSWORD"), u.get("z44_CM_ASSET_DISABLE_password")}},
 
-        'CM_ASSET_REG': ['cm_assetReg', [
+        'CM_ASSET_REG', {'cm_assetReg', {
             param.get("CHAINID"), u.get("z45_CM_ASSET_REG_chainId"),
             param.get("ASSETID"), u.get("z45_CM_ASSET_REG_assetId"),
             param.get("SYMBOL"), u.get("z45_CM_ASSET_REG_symbol"),
@@ -248,12 +248,12 @@ class NulsWsCalls(object):
             param.get("INITNUMBER"), u.get("z45_CM_ASSET_REG_initNumber"),
             param.get("DECIMALPLACES"), u.get("z45_CM_ASSET_REG_decimalPlaces"),
             param.get("ADDRESS"), u.get("z45_CM_ASSET_REG_address"),
-            param.get("PASSWORD"), u.get("z45_CM_ASSET_REG_password")]],
+            param.get("PASSWORD"), u.get("z45_CM_ASSET_REG_password")}},
 
-        'CM_CHAIN': ['cm_chain', [
-            param.get("CHAINID"), u.get("z46_CM_CHAIN_chainId")]],
+        'CM_CHAIN', {'cm_chain', {
+            param.get("CHAINID"), u.get("z46_CM_CHAIN_chainId")}},
 
-        'CM_CHAIN_ACTIVE': ['cm_chainActive', [
+        'CM_CHAIN_ACTIVE', {'cm_chainActive', {
             param.get("CHAINID"), u.get("z47_CM_CHAIN_ACTIVE_chainId"),
             param.get("CHAINNAME"), u.get("z47_CM_CHAIN_ACTIVE_chainName"),
             param.get("ADDRESSTYPE"), u.get("z47_CM_CHAIN_ACTIVE_addressType"),
@@ -269,9 +269,9 @@ class NulsWsCalls(object):
             param.get("PASSWORD"), u.get("z47_CM_CHAIN_ACTIVE_password"),
             param.get("VERIFIERLIST"), u.get("z47_CM_CHAIN_ACTIVE_verifierList"),
             param.get("SIGNATUREBFTRATIO"), u.get("z47_CM_CHAIN_ACTIVE_signatureBFTRatio"),
-            param.get("MAXSIGNATURECOUNT"), u.get("z47_CM_CHAIN_ACTIVE_maxSignatureCount")]],
+            param.get("MAXSIGNATURECOUNT"), u.get("z47_CM_CHAIN_ACTIVE_maxSignatureCount")}},
 
-        'CM_CHAIN_REG': ['cm_chainReg', [
+        'CM_CHAIN_REG', {'cm_chainReg', {
             param.get("CHAINID"), u.get("z48_CM_CHAIN_REG_chainId"),
             param.get("CHAINNAME"), u.get("z48_CM_CHAIN_REG_chainName"),
             param.get("ADDRESSTYPE"), u.get("z48_CM_CHAIN_REG_addressType"),
@@ -287,58 +287,58 @@ class NulsWsCalls(object):
             param.get("PASSWORD"), u.get("z48_CM_CHAIN_REG_password"),
             param.get("VERIFIERLIST"), u.get("z48_CM_CHAIN_REG_verifierList"),
             param.get("SIGNATUREBFTRATIO"), u.get("z48_CM_CHAIN_REG_signatureBFTRatio"),
-            param.get("MAXSIGNATURECOUNT"), u.get("z48_CM_CHAIN_REG_maxSignatureCount")]],
+            param.get("MAXSIGNATURECOUNT"), u.get("z48_CM_CHAIN_REG_maxSignatureCount")}},
 
-        'CM_GET_CHAIN_ASSET': ['cm_getChainAsset', [
+        'CM_GET_CHAIN_ASSET', {'cm_getChainAsset', {
             param.get("CHAINID"), u.get("z49_CM_GET_CHAIN_ASSET_chainId"),
             param.get("ASSETCHAINID"), u.get("z49_CM_GET_CHAIN_ASSET_assetChainId"),
-            param.get("ASSETID"), u.get("z49_CM_GET_CHAIN_ASSET_assetId")]],
+            param.get("ASSETID"), u.get("z49_CM_GET_CHAIN_ASSET_assetId")}},
 
-        'CM_GET_CIRCULATE_CHAIN_ASSET': ['cm_getCirculateChainAsset', [
+        'CM_GET_CIRCULATE_CHAIN_ASSET', {'cm_getCirculateChainAsset', {
             param.get("CIRCULATECHAINID"), u.get("z50_CM_GET_CIRCULATE_CHAIN_ASSET_circulateChainId"),
             param.get("ASSETCHAINID"), u.get("z50_CM_GET_CIRCULATE_CHAIN_ASSET_assetChainId"),
-            param.get("ASSETID"), u.get("z50_CM_GET_CIRCULATE_CHAIN_ASSET_assetId")]],
+            param.get("ASSETID"), u.get("z50_CM_GET_CIRCULATE_CHAIN_ASSET_assetId")}},
 
-        'COMMIT_BATCH_UNCONFIRMED_TXS': ['commitBatchUnconfirmedTxs', [
+        'COMMIT_BATCH_UNCONFIRMED_TXS', {'commitBatchUnconfirmedTxs', {
             param.get("CHAINID"), u.get("z51_COMMIT_BATCH_UNCONFIRMED_TXS_chainId"),
-            param.get("TXLIST"), u.get("z51_COMMIT_BATCH_UNCONFIRMED_TXS_txList")]],
+            param.get("TXLIST"), u.get("z51_COMMIT_BATCH_UNCONFIRMED_TXS_txList")}},
 
-        'COMMIT_BLOCKTXS': ['commitBlockTxs', [
+        'COMMIT_BLOCKTXS', {'commitBlockTxs', {
             param.get("CHAINID"), u.get("z52_COMMIT_BLOCKTXS_chainId"),
             param.get("TXLIST"), u.get("z52_COMMIT_BLOCKTXS_txList"),
-            param.get("BLOCKHEIGHT"), u.get("z52_COMMIT_BLOCKTXS_blockHeight")]],
+            param.get("BLOCKHEIGHT"), u.get("z52_COMMIT_BLOCKTXS_blockHeight")}},
 
-        'COMMIT_UNCONFIRMEDTX': ['commitUnconfirmedTx', [
+        'COMMIT_UNCONFIRMEDTX', {'commitUnconfirmedTx', {
             param.get("CHAINID"), u.get("z53_COMMIT_UNCONFIRMEDTX_chainId"),
-            param.get("TX"), u.get("z53_COMMIT_UNCONFIRMEDTX_tx")]],
+            param.get("TX"), u.get("z53_COMMIT_UNCONFIRMEDTX_tx")}},
 
-        'CREATE_AGENT_VALID': ['createAgentValid', [
+        'CREATE_AGENT_VALID', {'createAgentValid', {
             param.get("CHAINID"), u.get("z55_CREATE_AGENT_VALID_chainId"),
-            param.get("TX"), u.get("z55_CREATE_AGENT_VALID_tx")]],
+            param.get("TX"), u.get("z55_CREATE_AGENT_VALID_tx")}},
 
-        'CREATE_CROSSTX': ['createCrossTx', [
+        'CREATE_CROSSTX', {'createCrossTx', {
             param.get("CHAINID"), u.get("z56_CREATE_CROSSTX_chainId"),
             param.get("LISTFROM"), u.get("z56_CREATE_CROSSTX_listFrom"),
             param.get("LISTTO"), u.get("z56_CREATE_CROSSTX_listTo"),
-            param.get("REMARK"), u.get("z56_CREATE_CROSSTX_remark")]],
+            param.get("REMARK"), u.get("z56_CREATE_CROSSTX_remark")}},
 
-        'CROSSCHAIN_REGISTER_CHANGE': ['crossChainRegisterChange', [
-            param.get("CHAINID"), u.get("z57_CROSSCHAIN_REGISTER_CHANGE_chainId")]],
+        'CROSSCHAIN_REGISTER_CHANGE', {'crossChainRegisterChange', {
+            param.get("CHAINID"), u.get("z57_CROSSCHAIN_REGISTER_CHANGE_chainId")}},
 
-        'CS_ADD_BLOCK': ['cs_addBlock', [
+        'CS_ADD_BLOCK', {'cs_addBlock', {
             param.get("CHAINID"), u.get("z58_CS_ADD_BLOCK_chainId"),
-            param.get("BLOCKHEADER"), u.get("z58_CS_ADD_BLOCK_blockHeader")]],
+            param.get("BLOCKHEADER"), u.get("z58_CS_ADD_BLOCK_blockHeader")}},
 
-        'CS_ADD_EVIDENCE_RECORD': ['cs_addEvidenceRecord', [
+        'CS_ADD_EVIDENCE_RECORD', {'cs_addEvidenceRecord', {
             param.get("CHAINID"), u.get("z59_CS_ADD_EVIDENCE_RECORD_chainId"),
             param.get("BLOCKHEADER"), u.get("z59_CS_ADD_EVIDENCE_RECORD_blockHeader"),
-            param.get("EVIDENCEHEADER"), u.get("z59_CS_ADD_EVIDENCE_RECORD_evidenceHeader")]],
+            param.get("EVIDENCEHEADER"), u.get("z59_CS_ADD_EVIDENCE_RECORD_evidenceHeader")}},
 
-        'CS_CHAIN_ROLLBACK': ['cs_chainRollBack', [
+        'CS_CHAIN_ROLLBACK', {'cs_chainRollBack', {
             param.get("CHAINID"), u.get("z60_CS_CHAIN_ROLLBACK_chainId"),
-            param.get("HEIGHT"), u.get("z60_CS_CHAIN_ROLLBACK_height")]],
+            param.get("HEIGHT"), u.get("z60_CS_CHAIN_ROLLBACK_height")}},
 
-        'CS_CONTRACT_DEPOSIT': ['cs_contractDeposit', [
+        'CS_CONTRACT_DEPOSIT', {'cs_contractDeposit', {
             param.get("CHAINID"), u.get("z61_CS_CONTRACT_DEPOSIT_chainId"),
             param.get("AGENTHASH"), u.get("z61_CS_CONTRACT_DEPOSIT_agentHash"),
             param.get("DEPOSIT"), u.get("z61_CS_CONTRACT_DEPOSIT_deposit"),
@@ -346,27 +346,27 @@ class NulsWsCalls(object):
             param.get("CONTRACTSENDER"), u.get("z61_CS_CONTRACT_DEPOSIT_contractSender"),
             param.get("CONTRACTBALANCE"), u.get("z61_CS_CONTRACT_DEPOSIT_contractBalance"),
             param.get("CONTRACTNONCE"), u.get("z61_CS_CONTRACT_DEPOSIT_contractNonce"),
-            param.get("BLOCKTIME"), u.get("z61_CS_CONTRACT_DEPOSIT_blockTime")]],
+            param.get("BLOCKTIME"), u.get("z61_CS_CONTRACT_DEPOSIT_blockTime")}},
 
-        'CS_CONTRACT_WITHDRAW': ['cs_contractWithdraw', [
+        'CS_CONTRACT_WITHDRAW', {'cs_contractWithdraw', {
             param.get("CHAINID"), u.get("z62_CS_CONTRACT_WITHDRAW_chainId"),
             param.get("JOINAGENTHASH"), u.get("z62_CS_CONTRACT_WITHDRAW_joinAgentHash"),
             param.get("CONTRACTADDRESS"), u.get("z62_CS_CONTRACT_WITHDRAW_contractAddress"),
             param.get("CONTRACTSENDER"), u.get("z62_CS_CONTRACT_WITHDRAW_contractSender"),
             param.get("CONTRACTBALANCE"), u.get("z62_CS_CONTRACT_WITHDRAW_contractBalance"),
             param.get("CONTRACTNONCE"), u.get("z62_CS_CONTRACT_WITHDRAW_contractNonce"),
-            param.get("BLOCKTIME"), u.get("z62_CS_CONTRACT_WITHDRAW_blockTime")]],
+            param.get("BLOCKTIME"), u.get("z62_CS_CONTRACT_WITHDRAW_blockTime")}},
 
-        'CS_CREATE_AGENT': ['cs_createAgent', [
+        'CS_CREATE_AGENT', {'cs_createAgent', {
             param.get("CHAINID"), u.get("z63_CS_CREATE_AGENT_chainId"),
             param.get("AGENTADDRESS"), u.get("z63_CS_CREATE_AGENT_agentAddress"),
             param.get("PACKINGADDRESS"), u.get("z63_CS_CREATE_AGENT_packingAddress"),
             param.get("REWARDADDRESS"), u.get("z63_CS_CREATE_AGENT_rewardAddress"),
             param.get("COMMISSIONRATE"), u.get("z63_CS_CREATE_AGENT_commissionRate"),
             param.get("DEPOSIT"), u.get("z63_CS_CREATE_AGENT_deposit"),
-            param.get("PASSWORD"), u.get("z63_CS_CREATE_AGENT_password")]],
+            param.get("PASSWORD"), u.get("z63_CS_CREATE_AGENT_password")}},
 
-        'CS_CREATE_CONTRACT_AGENT': ['cs_createContractAgent', [
+        'CS_CREATE_CONTRACT_AGENT', {'cs_createContractAgent', {
             param.get("CHAINID"), u.get("z64_CS_CREATE_CONTRACT_AGENT_chainId"),
             param.get("PACKINGADDRESS"), u.get("z64_CS_CREATE_CONTRACT_AGENT_packingAddress"),
             param.get("DEPOSIT"), u.get("z64_CS_CREATE_CONTRACT_AGENT_deposit"),
@@ -375,9 +375,9 @@ class NulsWsCalls(object):
             param.get("CONTRACTSENDER"), u.get("z64_CS_CREATE_CONTRACT_AGENT_contractSender"),
             param.get("CONTRACTBALANCE"), u.get("z64_CS_CREATE_CONTRACT_AGENT_contractBalance"),
             param.get("CONTRACTNONCE"), u.get("z64_CS_CREATE_CONTRACT_AGENT_contractNonce"),
-            param.get("BLOCKTIME"), u.get("z64_CS_CREATE_CONTRACT_AGENT_blockTime")]],
+            param.get("BLOCKTIME"), u.get("z64_CS_CREATE_CONTRACT_AGENT_blockTime")}},
 
-        'CS_CREATE_MULTI_AGENT': ['cs_createMultiAgent', [
+        'CS_CREATE_MULTI_AGENT', {'cs_createMultiAgent', {
             param.get("CHAINID"), u.get("z65_CS_CREATE_MULTI_AGENT_chainId"),
             param.get("AGENTADDRESS"), u.get("z65_CS_CREATE_MULTI_AGENT_agentAddress"),
             param.get("PACKINGADDRESS"), u.get("z65_CS_CREATE_MULTI_AGENT_packingAddress"),
@@ -385,491 +385,491 @@ class NulsWsCalls(object):
             param.get("COMMISSIONRATE"), u.get("z65_CS_CREATE_MULTI_AGENT_commissionRate"),
             param.get("DEPOSIT"), u.get("z65_CS_CREATE_MULTI_AGENT_deposit"),
             param.get("PASSWORD"), u.get("z65_CS_CREATE_MULTI_AGENT_password"),
-            param.get("SIGNADDRESS"), u.get("z65_CS_CREATE_MULTI_AGENT_signAddress")]],
+            param.get("SIGNADDRESS"), u.get("z65_CS_CREATE_MULTI_AGENT_signAddress")}},
 
-        'CS_DEPOSIT_TOAGENT': ['cs_depositToAgent', [
+        'CS_DEPOSIT_TOAGENT', {'cs_depositToAgent', {
             param.get("CHAINID"), u.get("z66_CS_DEPOSIT_TOAGENT_chainId"),
             param.get("ADDRESS"), u.get("z66_CS_DEPOSIT_TOAGENT_address"),
             param.get("AGENTHASH"), u.get("z66_CS_DEPOSIT_TOAGENT_agentHash"),
             param.get("DEPOSIT"), u.get("z66_CS_DEPOSIT_TOAGENT_deposit"),
-            param.get("PASSWORD"), u.get("z66_CS_DEPOSIT_TOAGENT_password")]],
+            param.get("PASSWORD"), u.get("z66_CS_DEPOSIT_TOAGENT_password")}},
 
-        'CS_DOUBLE_SPEND_RECORD': ['cs_doubleSpendRecord', [
+        'CS_DOUBLE_SPEND_RECORD', {'cs_doubleSpendRecord', {
             param.get("CHAINID"), u.get("z67_CS_DOUBLE_SPEND_RECORD_chainId"),
             param.get("BLOCK"), u.get("z67_CS_DOUBLE_SPEND_RECORD_block"),
-            param.get("TX"), u.get("z67_CS_DOUBLE_SPEND_RECORD_tx")]],
+            param.get("TX"), u.get("z67_CS_DOUBLE_SPEND_RECORD_tx")}},
 
-        'CS_GET_AGENT_ADDRESS_LIST': ['cs_get_AgentAddressList', [
-            param.get("CHAINID"), u.get("z68_CS_GET_AGENT_ADDRESS_LIST_chainId")]],
+        'CS_GET_AGENT_ADDRESS_LIST', {'cs_get_AgentAddressList', {
+            param.get("CHAINID"), u.get("z68_CS_GET_AGENT_ADDRESS_LIST_chainId")}},
 
-        'CS_GET_AGENT_CHANGE_INFO': ['cs_getAgentChangeInfo', [
-            param.get("CHAINID"), u.get("z69_CS_GET_AGENT_CHANGE_INFO_chainId")]],
+        'CS_GET_AGENT_CHANGE_INFO', {'cs_getAgentChangeInfo', {
+            param.get("CHAINID"), u.get("z69_CS_GET_AGENT_CHANGE_INFO_chainId")}},
 
-        'CS_GET_AGENT_INFO': ['cs_getAgentInfo', [
+        'CS_GET_AGENT_INFO', {'cs_getAgentInfo', {
             param.get("CHAINID"), u.get("z70_CS_GET_AGENT_INFO_chainId"),
-            param.get("AGENTHASH"), u.get("z70_CS_GET_AGENT_INFO_agentHash")]],
+            param.get("AGENTHASH"), u.get("z70_CS_GET_AGENT_INFO_agentHash")}},
 
-        'CS_GET_AGENT_LIST': ['cs_getAgentList', [
+        'CS_GET_AGENT_LIST', {'cs_getAgentList', {
             param.get("CHAINID"), u.get("z71_CS_GET_AGENT_LIST_chainId"),
             param.get("PAGENUMBER"), u.get("z71_CS_GET_AGENT_LIST_pageNumber"),
             param.get("PAGESIZE"), u.get("z71_CS_GET_AGENT_LIST_pageSize"),
-            param.get("KEYWORD"), u.get("z71_CS_GET_AGENT_LIST_keyWord")]],
+            param.get("KEYWORD"), u.get("z71_CS_GET_AGENT_LIST_keyWord")}},
 
-        'CS_GET_AGENT_STATUS': ['cs_getAgentStatus', [
+        'CS_GET_AGENT_STATUS', {'cs_getAgentStatus', {
             param.get("CHAINID"), u.get("z72_CS_GET_AGENT_STATUS_chainId"),
-            param.get("AGENTHASH"), u.get("z72_CS_GET_AGENT_STATUS_agentHash")]],
+            param.get("AGENTHASH"), u.get("z72_CS_GET_AGENT_STATUS_agentHash")}},
 
-        'CS_GET_CONSENSUS_CONFIG': ['cs_getConsensusConfig', [
-            param.get("CHAINID"), u.get("z73_CS_GET_CONSENSUS_CONFIG_chainId")]],
+        'CS_GET_CONSENSUS_CONFIG', {'cs_getConsensusConfig', {
+            param.get("CHAINID"), u.get("z73_CS_GET_CONSENSUS_CONFIG_chainId")}},
 
-        'CS_GET_CONTRACT_AGENT_INFO': ['cs_getContractAgentInfo', [
+        'CS_GET_CONTRACT_AGENT_INFO', {'cs_getContractAgentInfo', {
             param.get("CHAINID"), u.get("z74_CS_GET_CONTRACT_AGENT_INFO_chainId"),
             param.get("AGENTHASH"), u.get("z74_CS_GET_CONTRACT_AGENT_INFO_agentHash"),
             param.get("CONTRACTADDRESS"), u.get("z74_CS_GET_CONTRACT_AGENT_INFO_contractAddress"),
-            param.get("CONTRACTSENDER"), u.get("z74_CS_GET_CONTRACT_AGENT_INFO_contractSender")]],
+            param.get("CONTRACTSENDER"), u.get("z74_CS_GET_CONTRACT_AGENT_INFO_contractSender")}},
 
-        'CS_GET_CONTRACT_DEPOSIT_INFO': ['cs_getContractDepositInfo', [
+        'CS_GET_CONTRACT_DEPOSIT_INFO', {'cs_getContractDepositInfo', {
             param.get("CHAINID"), u.get("z75_CS_GET_CONTRACT_DEPOSIT_INFO_chainId"),
             param.get("JOINAGENTHASH"), u.get("z75_CS_GET_CONTRACT_DEPOSIT_INFO_joinAgentHash"),
             param.get("CONTRACTADDRESS"), u.get("z75_CS_GET_CONTRACT_DEPOSIT_INFO_contractAddress"),
-            param.get("CONTRACTSENDER"), u.get("z75_CS_GET_CONTRACT_DEPOSIT_INFO_contractSender")]],
+            param.get("CONTRACTSENDER"), u.get("z75_CS_GET_CONTRACT_DEPOSIT_INFO_contractSender")}},
 
-        'CS_GET_DEPOSIT_LIST': ['cs_getDepositList', [
+        'CS_GET_DEPOSIT_LIST', {'cs_getDepositList', {
             param.get("CHAINID"), u.get("z76_CS_GET_DEPOSIT_LIST_chainId"),
             param.get("PAGENUMBER"), u.get("z76_CS_GET_DEPOSIT_LIST_pageNumber"),
             param.get("PAGESIZE"), u.get("z76_CS_GET_DEPOSIT_LIST_pageSize"),
             param.get("ADDRESS"), u.get("z76_CS_GET_DEPOSIT_LIST_address"),
-            param.get("AGENTHASH"), u.get("z76_CS_GET_DEPOSIT_LIST_agentHash")]],
+            param.get("AGENTHASH"), u.get("z76_CS_GET_DEPOSIT_LIST_agentHash")}},
 
-        'CS_GET_INFO': ['cs_getInfo', [
+        'CS_GET_INFO', {'cs_getInfo', {
             param.get("CHAINID"), u.get("z77_CS_GET_INFO_chainId"),
-            param.get("ADDRESS"), u.get("z77_CS_GET_INFO_address")]],
+            param.get("ADDRESS"), u.get("z77_CS_GET_INFO_address")}},
 
-        'CS_GET_PACKER_INFO': ['cs_getPackerInfo', [
-            param.get("CHAINID"), u.get("z78_CS_GET_PACKER_INFO_chainId")]],
+        'CS_GET_PACKER_INFO', {'cs_getPackerInfo', {
+            param.get("CHAINID"), u.get("z78_CS_GET_PACKER_INFO_chainId")}},
 
-        'CS_GET_PUBLISH_LIST': ['cs_getPublishList', [
+        'CS_GET_PUBLISH_LIST', {'cs_getPublishList', {
             param.get("CHAINID"), u.get("z79_CS_GET_PUBLISH_LIST_chainId"),
             param.get("ADDRESS"), u.get("z79_CS_GET_PUBLISH_LIST_address"),
-            param.get("TYPE"), u.get("z79_CS_GET_PUBLISH_LIST_type")]],
+            param.get("TYPE"), u.get("z79_CS_GET_PUBLISH_LIST_type")}},
 
-        'CS_GET_ROUND_INFO': ['cs_getRoundInfo', [
-            param.get("CHAINID"), u.get("z80_CS_GET_ROUND_INFO_chainId")]],
+        'CS_GET_ROUND_INFO', {'cs_getRoundInfo', {
+            param.get("CHAINID"), u.get("z80_CS_GET_ROUND_INFO_chainId")}},
 
-        'CS_GET_ROUND_MEMBER_LIST': ['cs_getRoundMemberList', [
+        'CS_GET_ROUND_MEMBER_LIST', {'cs_getRoundMemberList', {
             param.get("CHAINID"), u.get("z81_CS_GET_ROUND_MEMBER_LIST_chainId"),
-            param.get("EXTEND"), u.get("z81_CS_GET_ROUND_MEMBER_LIST_extend")]],
+            param.get("EXTEND"), u.get("z81_CS_GET_ROUND_MEMBER_LIST_extend")}},
 
-        'CS_GET_SEED_NODE_INFO': ['cs_getSeedNodeInfo', [
-            param.get("CHAINID"), u.get("z82_CS_GET_SEED_NODE_INFO_chainId")]],
+        'CS_GET_SEED_NODE_INFO', {'cs_getSeedNodeInfo', {
+            param.get("CHAINID"), u.get("z82_CS_GET_SEED_NODE_INFO_chainId")}},
 
-        'CS_GET_WHOLEINFO': ['cs_getwholeinfo', [
-            param.get("CHAINID"), u.get("z83_CS_GET_WHOLEINFO_chainId")]],
+        'CS_GET_WHOLEINFO', {'cs_getwholeinfo', {
+            param.get("CHAINID"), u.get("z83_CS_GET_WHOLEINFO_chainId")}},
 
-        'CS_MULTI_DEPOSIT': ['cs_multiDeposit', [
+        'CS_MULTI_DEPOSIT', {'cs_multiDeposit', {
             param.get("CHAINID"), u.get("z84_CS_MULTI_DEPOSIT_chainId"),
             param.get("ADDRESS"), u.get("z84_CS_MULTI_DEPOSIT_address"),
             param.get("AGENTHASH"), u.get("z84_CS_MULTI_DEPOSIT_agentHash"),
             param.get("DEPOSIT"), u.get("z84_CS_MULTI_DEPOSIT_deposit"),
             param.get("PASSWORD"), u.get("z84_CS_MULTI_DEPOSIT_password"),
-            param.get("SIGNADDRESS"), u.get("z84_CS_MULTI_DEPOSIT_signAddress")]],
+            param.get("SIGNADDRESS"), u.get("z84_CS_MULTI_DEPOSIT_signAddress")}},
 
-        'CS_MULTI_WITHDRAW': ['cs_multiWithdraw', [
+        'CS_MULTI_WITHDRAW', {'cs_multiWithdraw', {
             param.get("CHAINID"), u.get("z85_CS_MULTI_WITHDRAW_chainId"),
             param.get("ADDRESS"), u.get("z85_CS_MULTI_WITHDRAW_address"),
             param.get("TXHASH"), u.get("z85_CS_MULTI_WITHDRAW_txHash"),
             param.get("PASSWORD"), u.get("z85_CS_MULTI_WITHDRAW_password"),
-            param.get("SIGNADDRESS"), u.get("z85_CS_MULTI_WITHDRAW_signAddress")]],
+            param.get("SIGNADDRESS"), u.get("z85_CS_MULTI_WITHDRAW_signAddress")}},
 
-        'CS_RANDOM_RAW_SEEDS_COUNT': ['cs_random_raw_seeds_count', [
+        'CS_RANDOM_RAW_SEEDS_COUNT', {'cs_random_raw_seeds_count', {
             param.get("CHAINID"), u.get("z86_CS_RANDOM_RAW_SEEDS_COUNT_chainId"),
             param.get("HEIGHT"), u.get("z86_CS_RANDOM_RAW_SEEDS_COUNT_height"),
-            param.get("COUNT"), u.get("z86_CS_RANDOM_RAW_SEEDS_COUNT_count")]],
+            param.get("COUNT"), u.get("z86_CS_RANDOM_RAW_SEEDS_COUNT_count")}},
 
-        'CS_RANDOM_RAW_SEEDS_HEIGHT': ['cs_random_raw_seeds_height', [
+        'CS_RANDOM_RAW_SEEDS_HEIGHT', {'cs_random_raw_seeds_height', {
             param.get("CHAINID"), u.get("z87_CS_RANDOM_RAW_SEEDS_HEIGHT_chainId"),
             param.get("STARTHEIGHT"), u.get("z87_CS_RANDOM_RAW_SEEDS_HEIGHT_startHeight"),
-            param.get("ENDHEIGHT"), u.get("z87_CS_RANDOM_RAW_SEEDS_HEIGHT_endHeight")]],
+            param.get("ENDHEIGHT"), u.get("z87_CS_RANDOM_RAW_SEEDS_HEIGHT_endHeight")}},
 
-        'CS_RANDOM_SEED_COUNT': ['cs_random_seed_count', [
+        'CS_RANDOM_SEED_COUNT', {'cs_random_seed_count', {
             param.get("CHAINID"), u.get("z88_CS_RANDOM_SEED_COUNT_chainId"),
             param.get("HEIGHT"), u.get("z88_CS_RANDOM_SEED_COUNT_height"),
             param.get("COUNT"), u.get("z88_CS_RANDOM_SEED_COUNT_count"),
-            param.get("ALGORITHM"), u.get("z88_CS_RANDOM_SEED_COUNT_algorithm")]],
+            param.get("ALGORITHM"), u.get("z88_CS_RANDOM_SEED_COUNT_algorithm")}},
 
-        'CS_RANDOM_SEED_HEIGHT': ['cs_random_seed_height', [
+        'CS_RANDOM_SEED_HEIGHT', {'cs_random_seed_height', {
             param.get("CHAINID"), u.get("z89_CS_RANDOM_SEED_HEIGHT_chainId"),
             param.get("STARTHEIGHT"), u.get("z89_CS_RANDOM_SEED_HEIGHT_startHeight"),
             param.get("ENDHEIGHT"), u.get("z89_CS_RANDOM_SEED_HEIGHT_endHeight"),
-            param.get("ALGORITHM"), u.get("z89_CS_RANDOM_SEED_HEIGHT_algorithm")]],
+            param.get("ALGORITHM"), u.get("z89_CS_RANDOM_SEED_HEIGHT_algorithm")}},
 
-        'CS_RECEIVE_HEADERLIST': ['cs_receiveHeaderList', [
+        'CS_RECEIVE_HEADERLIST', {'cs_receiveHeaderList', {
             param.get("CHAINID"), u.get("z90_CS_RECEIVE_HEADERLIST_chainId"),
-            param.get("HEADERLIST"), u.get("z90_CS_RECEIVE_HEADERLIST_headerList")]],
+            param.get("HEADERLIST"), u.get("z90_CS_RECEIVE_HEADERLIST_headerList")}},
 
-        'CS_RUN_CHAIN': ['cs_runChain', [
-            param.get("CHAINID"), u.get("z91_CS_RUN_CHAIN_chainId")]],
+        'CS_RUN_CHAIN', {'cs_runChain', {
+            param.get("CHAINID"), u.get("z91_CS_RUN_CHAIN_chainId")}},
 
-        'CS_RUN_MAINCHAIN': ['cs_runMainChain', [
-            param.get("CHAINID"), u.get("z92_CS_RUN_MAINCHAIN_chainId")]],
+        'CS_RUN_MAINCHAIN', {'cs_runMainChain', {
+            param.get("CHAINID"), u.get("z92_CS_RUN_MAINCHAIN_chainId")}},
 
-        'CS_STOPAGENT': ['cs_stopAgent', [
+        'CS_STOPAGENT', {'cs_stopAgent', {
             param.get("CHAINID"), u.get("z93_CS_STOPAGENT_chainId"),
             param.get("ADDRESS"), u.get("z93_CS_STOPAGENT_address"),
-            param.get("PASSWORD"), u.get("z93_CS_STOPAGENT_password")]],
+            param.get("PASSWORD"), u.get("z93_CS_STOPAGENT_password")}},
 
-        'CS_STOP_AGENT': ['cs_stopagent', [
+        'CS_STOP_AGENT', {'cs_stopagent', {
             param.get("CHAINID"), u.get("z94_CS_STOP_AGENT_chainId"),
             param.get("ADDRESS"), u.get("z94_CS_STOP_AGENT_address"),
-            param.get("PASSWORD"), u.get("z94_CS_STOP_AGENT_password")]],
+            param.get("PASSWORD"), u.get("z94_CS_STOP_AGENT_password")}},
 
-        'CS_STOPCHAIN': ['cs_stopChain', [
-            param.get("CHAINID"), u.get("z95_CS_STOPCHAIN_chainId")]],
+        'CS_STOPCHAIN', {'cs_stopChain', {
+            param.get("CHAINID"), u.get("z95_CS_STOPCHAIN_chainId")}},
 
-        'CS_STOP_CHAIN': ['cs_stopchain', [
-            param.get("CHAINID"), u.get("z96_CS_STOP_CHAIN_chainId")]],
+        'CS_STOP_CHAIN', {'cs_stopchain', {
+            param.get("CHAINID"), u.get("z96_CS_STOP_CHAIN_chainId")}},
 
-        'CS_STOP_CONTRACT_AGENT': ['cs_stopContractAgent', [
+        'CS_STOP_CONTRACT_AGENT', {'cs_stopContractAgent', {
             param.get("CHAINID"), u.get("z97_CS_STOP_CONTRACT_AGENT_chainId"),
             param.get("CONTRACTADDRESS"), u.get("z97_CS_STOP_CONTRACT_AGENT_contractAddress"),
             param.get("CONTRACTSENDER"), u.get("z97_CS_STOP_CONTRACT_AGENT_contractSender"),
             param.get("CONTRACTBALANCE"), u.get("z97_CS_STOP_CONTRACT_AGENT_contractBalance"),
             param.get("CONTRACTNONCE"), u.get("z97_CS_STOP_CONTRACT_AGENT_contractNonce"),
-            param.get("BLOCKTIME"), u.get("z97_CS_STOP_CONTRACT_AGENT_blockTime")]],
+            param.get("BLOCKTIME"), u.get("z97_CS_STOP_CONTRACT_AGENT_blockTime")}},
 
-        'CS_STOP_MULTI_AGENT': ['cs_stopMultiAgent', [
+        'CS_STOP_MULTI_AGENT', {'cs_stopMultiAgent', {
             param.get("CHAINID"), u.get("z98_CS_STOP_MULTI_AGENT_chainId"),
             param.get("ADDRESS"), u.get("z98_CS_STOP_MULTI_AGENT_address"),
             param.get("PASSWORD"), u.get("z98_CS_STOP_MULTI_AGENT_password"),
-            param.get("SIGNADDRESS"), u.get("z98_CS_STOP_MULTI_AGENT_signAddress")]],
+            param.get("SIGNADDRESS"), u.get("z98_CS_STOP_MULTI_AGENT_signAddress")}},
 
-        'CS_TRIGGER_COINBASE_CONTRACT': ['cs_triggerCoinBaseContract', [
+        'CS_TRIGGER_COINBASE_CONTRACT', {'cs_triggerCoinBaseContract', {
             param.get("CHAINID"), u.get("z99_CS_TRIGGER_COINBASE_CONTRACT_chainId"),
             param.get("TX"), u.get("z99_CS_TRIGGER_COINBASE_CONTRACT_tx"),
             param.get("BLOCKHEADER"), u.get("z99_CS_TRIGGER_COINBASE_CONTRACT_blockHeader"),
-            param.get("STATEROOT"), u.get("z99_CS_TRIGGER_COINBASE_CONTRACT_stateRoot")]],
+            param.get("STATEROOT"), u.get("z99_CS_TRIGGER_COINBASE_CONTRACT_stateRoot")}},
 
-        'CS_UPDATE_AGENT_CONSENSUS_STATUS': ['cs_updateAgentConsensusStatus', [
-            param.get("CHAINID"), u.get("z100_CS_UPDATE_AGENT_CONSENSUS_STATUS_chainId")]],
+        'CS_UPDATE_AGENT_CONSENSUS_STATUS', {'cs_updateAgentConsensusStatus', {
+            param.get("CHAINID"), u.get("z100_CS_UPDATE_AGENT_CONSENSUS_STATUS_chainId")}},
 
-        'CS_UPDATE_AGENT_STATUS': ['cs_updateAgentStatus', [
+        'CS_UPDATE_AGENT_STATUS', {'cs_updateAgentStatus', {
             param.get("CHAINID"), u.get("z101_CS_UPDATE_AGENT_STATUS_chainId"),
-            param.get("STATUS"), u.get("z101_CS_UPDATE_AGENT_STATUS_status")]],
+            param.get("STATUS"), u.get("z101_CS_UPDATE_AGENT_STATUS_status")}},
 
-        'CS_VALIDBLOCK': ['cs_validBlock', [
+        'CS_VALIDBLOCK', {'cs_validBlock', {
             param.get("CHAINID"), u.get("z102_CS_VALIDBLOCK_chainId"),
             param.get("DOWNLOAD"), u.get("z102_CS_VALIDBLOCK_download"),
-            param.get("BLOCK"), u.get("z102_CS_VALIDBLOCK_block")]],
+            param.get("BLOCK"), u.get("z102_CS_VALIDBLOCK_block")}},
 
-        'CS_WITHDRAW': ['cs_withdraw', [
+        'CS_WITHDRAW', {'cs_withdraw', {
             param.get("CHAINID"), u.get("z103_CS_WITHDRAW_chainId"),
             param.get("ADDRESS"), u.get("z103_CS_WITHDRAW_address"),
             param.get("TXHASH"), u.get("z103_CS_WITHDRAW_txHash"),
-            param.get("PASSWORD"), u.get("z103_CS_WITHDRAW_password")]],
+            param.get("PASSWORD"), u.get("z103_CS_WITHDRAW_password")}},
 
-        'DEPOSIT_VALID': ['depositValid', [
+        'DEPOSIT_VALID', {'depositValid', {
             param.get("CHAINID"), u.get("z104_DEPOSIT_VALID_chainId"),
-            param.get("TX"), u.get("z104_DEPOSIT_VALID_tx")]],
+            param.get("TX"), u.get("z104_DEPOSIT_VALID_tx")}},
 
-        'GET_ASSETS_BY_ID': ['getAssetsById', [
+        'GET_ASSETS_BY_ID', {'getAssetsById', {
             param.get("CHAINID"), u.get("z105_GET_ASSETS_BY_ID_chainId"),
-            param.get("ASSETIDS"), u.get("z105_GET_ASSETS_BY_ID_assetIds")]],
+            param.get("ASSETIDS"), u.get("z105_GET_ASSETS_BY_ID_assetIds")}},
 
-        'GET_BALANCE': ['getBalance', [
+        'GET_BALANCE', {'getBalance', {
             param.get("CHAINID"), u.get("z106_GET_BALANCE_chainId"),
             param.get("ASSETCHAINID"), u.get("z106_GET_BALANCE_assetChainId"),
             param.get("ASSETID"), u.get("z106_GET_BALANCE_assetId"),
-            param.get("ADDRESS"), u.get("z106_GET_BALANCE_address")]],
+            param.get("ADDRESS"), u.get("z106_GET_BALANCE_address")}},
 
-        'GET_BALANCE_NONCE': ['getBalanceNonce', [
+        'GET_BALANCE_NONCE', {'getBalanceNonce', {
             param.get("CHAINID"), u.get("z107_GET_BALANCE_NONCE_chainId"),
             param.get("ASSETCHAINID"), u.get("z107_GET_BALANCE_NONCE_assetChainId"),
             param.get("ASSETID"), u.get("z107_GET_BALANCE_NONCE_assetId"),
             param.get("ADDRESS"), u.get("z107_GET_BALANCE_NONCE_address"),
-            param.get("ISCONFIRMED"), u.get("z107_GET_BALANCE_NONCE_isConfirmed")]],
+            param.get("ISCONFIRMED"), u.get("z107_GET_BALANCE_NONCE_isConfirmed")}},
 
-        'GET_BLOCK_BY_HASH': ['getBlockByHash', [
+        'GET_BLOCK_BY_HASH', {'getBlockByHash', {
             param.get("CHAINID"), u.get("z108_GET_BLOCK_BY_HASH_chainId"),
-            param.get("HASH"), u.get("z108_GET_BLOCK_BY_HASH_hash")]],
+            param.get("HASH"), u.get("z108_GET_BLOCK_BY_HASH_hash")}},
 
-        'GET_BLOCK_BY_HEIGHT': ['getBlockByHeight', [
+        'GET_BLOCK_BY_HEIGHT', {'getBlockByHeight', {
             param.get("CHAINID"), u.get("z109_GET_BLOCK_BY_HEIGHT_chainId"),
-            param.get("HEIGHT"), u.get("z109_GET_BLOCK_BY_HEIGHT_height")]],
+            param.get("HEIGHT"), u.get("z109_GET_BLOCK_BY_HEIGHT_height")}},
 
-        'GET_BLOCKHEADER_BY_HASH': ['getBlockHeaderByHash', [
+        'GET_BLOCKHEADER_BY_HASH', {'getBlockHeaderByHash', {
             param.get("CHAINID"), u.get("z110_GET_BLOCKHEADER_BY_HASH_chainId"),
-            param.get("HASH"), u.get("z110_GET_BLOCKHEADER_BY_HASH_hash")]],
+            param.get("HASH"), u.get("z110_GET_BLOCKHEADER_BY_HASH_hash")}},
 
-        'GET_BLOCKHEADER_BY_HEIGHT': ['getBlockHeaderByHeight', [
+        'GET_BLOCKHEADER_BY_HEIGHT', {'getBlockHeaderByHeight', {
             param.get("CHAINID"), u.get("z111_GET_BLOCKHEADER_BY_HEIGHT_chainId"),
-            param.get("HEIGHT"), u.get("z111_GET_BLOCKHEADER_BY_HEIGHT_height")]],
+            param.get("HEIGHT"), u.get("z111_GET_BLOCKHEADER_BY_HEIGHT_height")}},
 
-        'GET_BLOCKHEADER_PO_BY_HASH': ['getBlockHeaderPoByHash', [
+        'GET_BLOCKHEADER_PO_BY_HASH', {'getBlockHeaderPoByHash', {
             param.get("CHAINID"), u.get("z112_GET_BLOCKHEADER_PO_BY_HASH_chainId"),
-            param.get("HASH"), u.get("z112_GET_BLOCKHEADER_PO_BY_HASH_hash")]],
+            param.get("HASH"), u.get("z112_GET_BLOCKHEADER_PO_BY_HASH_hash")}},
 
-        'GET_BLOCKHEADER_POBY_HEIGHT': ['getBlockHeaderPoByHeight', [
+        'GET_BLOCKHEADER_POBY_HEIGHT', {'getBlockHeaderPoByHeight', {
             param.get("CHAINID"), u.get("z113_GET_BLOCKHEADER_POBY_HEIGHT_chainId"),
-            param.get("HEIGHT"), u.get("z113_GET_BLOCKHEADER_POBY_HEIGHT_height")]],
+            param.get("HEIGHT"), u.get("z113_GET_BLOCKHEADER_POBY_HEIGHT_height")}},
 
-        'GET_BLOCKHEADERS_BY_HEIGHT_RANGE': ['getBlockHeadersByHeightRange', [
+        'GET_BLOCKHEADERS_BY_HEIGHT_RANGE', {'getBlockHeadersByHeightRange', {
             param.get("CHAINID"), u.get("z114_GET_BLOCKHEADERS_BY_HEIGHT_RANGE_chainId"),
             param.get("BEGIN"), u.get("z114_GET_BLOCKHEADERS_BY_HEIGHT_RANGE_begin"),
-            param.get("END"), u.get("z114_GET_BLOCKHEADERS_BY_HEIGHT_RANGE_end")]],
+            param.get("END"), u.get("z114_GET_BLOCKHEADERS_BY_HEIGHT_RANGE_end")}},
 
-        'GET_BLOCKHEADERS_FOR_PROTOCOL': ['getBlockHeadersForProtocol', [
+        'GET_BLOCKHEADERS_FOR_PROTOCOL', {'getBlockHeadersForProtocol', {
             param.get("CHAINID"), u.get("z115_GET_BLOCKHEADERS_FOR_PROTOCOL_chainId"),
-            param.get("INTERVAL"), u.get("z115_GET_BLOCKHEADERS_FOR_PROTOCOL_interval")]],
+            param.get("INTERVAL"), u.get("z115_GET_BLOCKHEADERS_FOR_PROTOCOL_interval")}},
 
-        'GET_BYZANTINE_COUNT': ['getByzantineCount', [
-            param.get("CHAINID"), u.get("z116_GET_BYZANTINE_COUNT_chainId")]],
+        'GET_BYZANTINE_COUNT', {'getByzantineCount', {
+            param.get("CHAINID"), u.get("z116_GET_BYZANTINE_COUNT_chainId")}},
 
-        'GET_CIRCULAT': ['getCirculat', [
+        'GET_CIRCULAT', {'getCirculat', {
             param.get("CHAINID"), u.get("z117_GET_CIRCULAT_chainId"),
             param.get("NODEID"), u.get("z117_GET_CIRCULAT_nodeId"),
-            param.get("MESSAGEBODY"), u.get("z117_GET_CIRCULAT_messageBody")]],
+            param.get("MESSAGEBODY"), u.get("z117_GET_CIRCULAT_messageBody")}},
 
-        'GET_CROSSTX_STATE': ['getCrossTxState', [
+        'GET_CROSSTX_STATE', {'getCrossTxState', {
             param.get("CHAINID"), u.get("z119_GET_CROSSTX_STATE_chainId"),
-            param.get("TXHASH"), u.get("z119_GET_CROSSTX_STATE_txHash")]],
+            param.get("TXHASH"), u.get("z119_GET_CROSSTX_STATE_txHash")}},
 
-        'GET_CTX': ['getCtx', [
+        'GET_CTX', {'getCtx', {
             param.get("CHAINID"), u.get("z120_GET_CTX_chainId"),
             param.get("NODEID"), u.get("z120_GET_CTX_nodeId"),
-            param.get("MESSAGEBODY"), u.get("z120_GET_CTX_messageBody")]],
+            param.get("MESSAGEBODY"), u.get("z120_GET_CTX_messageBody")}},
 
-        'GET_CTX_STATE': ['getCtxState', [
+        'GET_CTX_STATE', {'getCtxState', {
             param.get("CHAINID"), u.get("z121_GET_CTX_STATE_chainId"),
             param.get("NODEID"), u.get("z121_GET_CTX_STATE_nodeId"),
-            param.get("MESSAGEBODY"), u.get("z121_GET_CTX_STATE_messageBody")]],
+            param.get("MESSAGEBODY"), u.get("z121_GET_CTX_STATE_messageBody")}},
 
-        'GET_FRIEND_CHAIN_CIRCULATE': ['getFriendChainCirculate', [
+        'GET_FRIEND_CHAIN_CIRCULATE', {'getFriendChainCirculate', {
             param.get("CHAINID"), u.get("z122_GET_FRIEND_CHAIN_CIRCULATE_chainId"),
-            param.get("ASSETIDS"), u.get("z122_GET_FRIEND_CHAIN_CIRCULATE_assetIds")]],
+            param.get("ASSETIDS"), u.get("z122_GET_FRIEND_CHAIN_CIRCULATE_assetIds")}},
 
-        'GET_LATEST_BLOCKHEADERS': ['getLatestBlockHeaders', [
+        'GET_LATEST_BLOCKHEADERS', {'getLatestBlockHeaders', {
             param.get("CHAINID"), u.get("z123_GET_LATEST_BLOCKHEADERS_chainId"),
-            param.get("SIZE"), u.get("z123_GET_LATEST_BLOCKHEADERS_size")]],
+            param.get("SIZE"), u.get("z123_GET_LATEST_BLOCKHEADERS_size")}},
 
-        'GET_LATEST_ROUND_BLOCKHEADERS': ['getLatestRoundBlockHeaders', [
+        'GET_LATEST_ROUND_BLOCKHEADERS', {'getLatestRoundBlockHeaders', {
             param.get("CHAINID"), u.get("z124_GET_LATEST_ROUND_BLOCKHEADERS_chainId"),
-            param.get("ROUND"), u.get("z124_GET_LATEST_ROUND_BLOCKHEADERS_round")]],
+            param.get("ROUND"), u.get("z124_GET_LATEST_ROUND_BLOCKHEADERS_round")}},
 
-        'GET_NONCE': ['getNonce', [
+        'GET_NONCE', {'getNonce', {
             param.get("CHAINID"), u.get("z125_GET_NONCE_chainId"),
             param.get("ASSETCHAINID"), u.get("z125_GET_NONCE_assetChainId"),
             param.get("ASSETID"), u.get("z125_GET_NONCE_assetId"),
             param.get("ADDRESS"), u.get("z125_GET_NONCE_address"),
-            param.get("ISCONFIRMED"), u.get("z125_GET_NONCE_isConfirmed")]],
+            param.get("ISCONFIRMED"), u.get("z125_GET_NONCE_isConfirmed")}},
 
-        'GET_OTHERCTX': ['getOtherCtx', [
+        'GET_OTHERCTX', {'getOtherCtx', {
             param.get("CHAINID"), u.get("z126_GET_OTHERCTX_chainId"),
             param.get("NODEID"), u.get("z126_GET_OTHERCTX_nodeId"),
-            param.get("MESSAGEBODY"), u.get("z126_GET_OTHERCTX_messageBody")]],
+            param.get("MESSAGEBODY"), u.get("z126_GET_OTHERCTX_messageBody")}},
 
-        'GET_ROUND_BLOCKHEADERS': ['getRoundBlockHeaders', [
+        'GET_ROUND_BLOCKHEADERS', {'getRoundBlockHeaders', {
             param.get("CHAINID"), u.get("z128_GET_ROUND_BLOCKHEADERS_chainId"),
             param.get("HEIGHT"), u.get("z128_GET_ROUND_BLOCKHEADERS_height"),
-            param.get("ROUND"), u.get("z128_GET_ROUND_BLOCKHEADERS_round")]],
+            param.get("ROUND"), u.get("z128_GET_ROUND_BLOCKHEADERS_round")}},
 
-        'GET_STATUS': ['getStatus', [
-            param.get("CHAINID"), u.get("z129_GET_STATUS_chainId")]],
+        'GET_STATUS', {'getStatus', {
+            param.get("CHAINID"), u.get("z129_GET_STATUS_chainId")}},
 
-        'GET_VERSION': ['getVersion', [
-            param.get("CHAINID"), u.get("z130_GET_VERSION_chainId")]],
+        'GET_VERSION', {'getVersion', {
+            param.get("CHAINID"), u.get("z130_GET_VERSION_chainId")}},
 
-        'INFO': ['info', [
-            param.get("CHAINID"), u.get("z131_INFO_chainId")]],
+        'INFO', {'info', {
+            param.get("CHAINID"), u.get("z131_INFO_chainId")}},
 
-        'LATEST_BLOCK': ['latestBlock', [
-            param.get("CHAINID"), u.get("z132_LATEST_BLOCK_chainId")]],
+        'LATEST_BLOCK', {'latestBlock', {
+            param.get("CHAINID"), u.get("z132_LATEST_BLOCK_chainId")}},
 
-        'LATEST_BLOCKHEADER': ['latestBlockHeader', [
-            param.get("CHAINID"), u.get("z133_LATEST_BLOCKHEADER_chainId")]],
+        'LATEST_BLOCKHEADER', {'latestBlockHeader', {
+            param.get("CHAINID"), u.get("z133_LATEST_BLOCKHEADER_chainId")}},
 
-        'LATEST_BLOCKHEADER_PO': ['latestBlockHeaderPo', [
-            param.get("CHAINID"), u.get("z134_LATEST_BLOCKHEADER_PO_chainId")]],
+        'LATEST_BLOCKHEADER_PO', {'latestBlockHeaderPo', {
+            param.get("CHAINID"), u.get("z134_LATEST_BLOCKHEADER_PO_chainId")}},
 
-        'LATEST_HEIGHT': ['latestHeight', [
-            param.get("CHAINID"), u.get("z135_LATEST_HEIGHT_chainId")]],
+        'LATEST_HEIGHT', {'latestHeight', {
+            param.get("CHAINID"), u.get("z135_LATEST_HEIGHT_chainId")}},
 
-        'MSG_PROCESS': ['msgProcess', [
+        'MSG_PROCESS', {'msgProcess', {
             param.get("CHAINID"), u.get("z137_MSG_PROCESS_chainId"),
             param.get("NODEID"), u.get("z137_MSG_PROCESS_nodeId"),
             param.get("CMD"), u.get("z137_MSG_PROCESS_cmd"),
-            param.get("MESSAGEBODY"), u.get("z137_MSG_PROCESS_messageBody")]],
+            param.get("MESSAGEBODY"), u.get("z137_MSG_PROCESS_messageBody")}},
 
-        'NEW_BLOCK_HEIGHT': ['newBlockHeight', [
+        'NEW_BLOCK_HEIGHT', {'newBlockHeight', {
             param.get("CHAINID"), u.get("z138_NEW_BLOCK_HEIGHT_chainId"),
-            param.get("HEIGHT"), u.get("z138_NEW_BLOCK_HEIGHT_height")]],
+            param.get("HEIGHT"), u.get("z138_NEW_BLOCK_HEIGHT_height")}},
 
-        'NW_ACTIVE_CROSS': ['nw_activeCross', [
+        'NW_ACTIVE_CROSS', {'nw_activeCross', {
             param.get("CHAINID"), u.get("z139_NW_ACTIVE_CROSS_chainId"),
             param.get("MAXOUT"), u.get("z139_NW_ACTIVE_CROSS_maxOut"),
             param.get("MAXIN"), u.get("z139_NW_ACTIVE_CROSS_maxIn"),
-            param.get("SEEDIPS"), u.get("z139_NW_ACTIVE_CROSS_seedIps")]],
+            param.get("SEEDIPS"), u.get("z139_NW_ACTIVE_CROSS_seedIps")}},
 
-        'NW_ADD_NODES': ['nw_addNodes', [
+        'NW_ADD_NODES', {'nw_addNodes', {
             param.get("CHAINID"), u.get("z140_NW_ADD_NODES_chainId"),
             param.get("ISCROSS"), u.get("z140_NW_ADD_NODES_isCross"),
-            param.get("NODES"), u.get("z140_NW_ADD_NODES_nodes")]],
+            param.get("NODES"), u.get("z140_NW_ADD_NODES_nodes")}},
 
-        'NW_BROADCAST': ['nw_broadcast', [
+        'NW_BROADCAST', {'nw_broadcast', {
             param.get("CHAINID"), u.get("z141_NW_BROADCAST_chainId"),
             param.get("EXCLUDENODES"), u.get("z141_NW_BROADCAST_excludeNodes"),
             param.get("MESSAGEBODY"), u.get("z141_NW_BROADCAST_messageBody"),
             param.get("COMMAND"), u.get("z141_NW_BROADCAST_command"),
             param.get("ISCROSS"), u.get("z141_NW_BROADCAST_isCross"),
-            param.get("PERCENT"), u.get("z141_NW_BROADCAST_percent")]],
+            param.get("PERCENT"), u.get("z141_NW_BROADCAST_percent")}},
 
-        'NW_CREATE_NODEGROUP': ['nw_createNodeGroup', [
+        'NW_CREATE_NODEGROUP', {'nw_createNodeGroup', {
             param.get("CHAINID"), u.get("z142_NW_CREATE_NODEGROUP_chainId"),
             param.get("MAGICNUMBER"), u.get("z142_NW_CREATE_NODEGROUP_magicNumber"),
             param.get("MAXOUT"), u.get("z142_NW_CREATE_NODEGROUP_maxOut"),
             param.get("MAXIN"), u.get("z142_NW_CREATE_NODEGROUP_maxIn"),
             param.get("MINAVAILABLECOUNT"), u.get("z142_NW_CREATE_NODEGROUP_minAvailableCount"),
-            param.get("ISCROSSGROUP"), u.get("z142_NW_CREATE_NODEGROUP_isCrossGroup")]],
+            param.get("ISCROSSGROUP"), u.get("z142_NW_CREATE_NODEGROUP_isCrossGroup")}},
 
-        'NW_DEL_NODES': ['nw_delNodes', [
+        'NW_DEL_NODES', {'nw_delNodes', {
             param.get("CHAINID"), u.get("z143_NW_DEL_NODES_chainId"),
-            param.get("NODES"), u.get("z143_NW_DEL_NODES_nodes")]],
+            param.get("NODES"), u.get("z143_NW_DEL_NODES_nodes")}},
 
-        'NW_GET_CHAIN_CONNECT_AMOUNT': ['nw_getChainConnectAmount', [
+        'NW_GET_CHAIN_CONNECT_AMOUNT', {'nw_getChainConnectAmount', {
             param.get("CHAINID"), u.get("z144_NW_GET_CHAIN_CONNECT_AMOUNT_chainId"),
-            param.get("ISCROSS"), u.get("z144_NW_GET_CHAIN_CONNECT_AMOUNT_isCross")]],
+            param.get("ISCROSS"), u.get("z144_NW_GET_CHAIN_CONNECT_AMOUNT_isCross")}},
 
-        'NW_GET_GROUP_BY_CHAINID': ['nw_getGroupByChainId', [
-            param.get("CHAINID"), u.get("z145_NW_GET_GROUP_BY_CHAINID_chainId")]],
+        'NW_GET_GROUP_BY_CHAINID', {'nw_getGroupByChainId', {
+            param.get("CHAINID"), u.get("z145_NW_GET_GROUP_BY_CHAINID_chainId")}},
 
-        'NW_GET_GROUPS': ['nw_getGroups', [
+        'NW_GET_GROUPS', {'nw_getGroups', {
             param.get("STARTPAGE"), u.get("z146_NW_GET_GROUPS_startPage"),
-            param.get("PAGESIZE"), u.get("z146_NW_GET_GROUPS_pageSize")]],
+            param.get("PAGESIZE"), u.get("z146_NW_GET_GROUPS_pageSize")}},
 
-        'NW_GET_NODES': ['nw_getNodes', [
+        'NW_GET_NODES', {'nw_getNodes', {
             param.get("CHAINID"), u.get("z147_NW_GET_NODES_chainId"),
             param.get("STATE"), u.get("z147_NW_GET_NODES_state"),
             param.get("ISCROSS"), u.get("z147_NW_GET_NODES_isCross"),
             param.get("STARTPAGE"), u.get("z147_NW_GET_NODES_startPage"),
-            param.get("PAGESIZE"), u.get("z147_NW_GET_NODES_pageSize")]],
+            param.get("PAGESIZE"), u.get("z147_NW_GET_NODES_pageSize")}},
 
-        'NW_INFO': ['nw_info', [
-            param.get("CHAINID"), u.get("z149_NW_INFO_chainId")]],
+        'NW_INFO', {'nw_info', {
+            param.get("CHAINID"), u.get("z149_NW_INFO_chainId")}},
 
-        'NW_NODES': ['nw_nodes', [
-            param.get("CHAINID"), u.get("z150_NW_NODES_chainId")]],
+        'NW_NODES', {'nw_nodes', {
+            param.get("CHAINID"), u.get("z150_NW_NODES_chainId")}},
 
-        'NW_PROTOCOL_REGISTER': ['nw_protocolRegister', [
+        'NW_PROTOCOL_REGISTER', {'nw_protocolRegister', {
             param.get("ROLE"), u.get("z151_NW_PROTOCOL_REGISTER_role"),
-            param.get("PROTOCOLCMDS"), u.get("z151_NW_PROTOCOL_REGISTER_protocolCmds")]],
+            param.get("PROTOCOLCMDS"), u.get("z151_NW_PROTOCOL_REGISTER_protocolCmds")}},
 
-        'NW_RECONNECT': ['nw_reconnect', [
-            param.get("CHAINID"), u.get("z152_NW_RECONNECT_chainId")]],
+        'NW_RECONNECT', {'nw_reconnect', {
+            param.get("CHAINID"), u.get("z152_NW_RECONNECT_chainId")}},
 
-        'NW_SEND_PEERS_MSG': ['nw_sendPeersMsg', [
+        'NW_SEND_PEERS_MSG', {'nw_sendPeersMsg', {
             param.get("CHAINID"), u.get("z153_NW_SEND_PEERS_MSG_chainId"),
             param.get("NODES"), u.get("z153_NW_SEND_PEERS_MSG_nodes"),
             param.get("MESSAGEBODY"), u.get("z153_NW_SEND_PEERS_MSG_messageBody"),
-            param.get("COMMAND"), u.get("z153_NW_SEND_PEERS_MSG_command")]],
+            param.get("COMMAND"), u.get("z153_NW_SEND_PEERS_MSG_command")}},
 
-        'NW_UPDATE_NODE_INFO': ['nw_updateNodeInfo', [
+        'NW_UPDATE_NODE_INFO', {'nw_updateNodeInfo', {
             param.get("CHAINID"), u.get("z154_NW_UPDATE_NODE_INFO_chainId"),
             param.get("NODEID"), u.get("z154_NW_UPDATE_NODE_INFO_nodeId"),
             param.get("BLOCKHEIGHT"), u.get("z154_NW_UPDATE_NODE_INFO_blockHeight"),
-            param.get("BLOCKHASH"), u.get("z154_NW_UPDATE_NODE_INFO_blockHash")]],
+            param.get("BLOCKHASH"), u.get("z154_NW_UPDATE_NODE_INFO_blockHash")}},
 
-        'PARAM_TEST_CMD': ['paramTestCmd', [
+        'PARAM_TEST_CMD', {'paramTestCmd', {
             param.get("INTCOUNT"), u.get("z155_PARAM_TEST_CMD_intCount"),
             param.get("BYTECOUNT"), u.get("z155_PARAM_TEST_CMD_byteCount"),
             param.get("SHORTCOUNT"), u.get("z155_PARAM_TEST_CMD_shortCount"),
-            param.get("LONGCOUNT"), u.get("z155_PARAM_TEST_CMD_longCount")]],
+            param.get("LONGCOUNT"), u.get("z155_PARAM_TEST_CMD_longCount")}},
 
-        'PROTOCOL_VERSION_CHANGE': ['protocolVersionChange', [
+        'PROTOCOL_VERSION_CHANGE', {'protocolVersionChange', {
             param.get("CHAINID"), u.get("z156_PROTOCOL_VERSION_CHANGE_chainId"),
-            param.get("PROTOCOLVERSION"), u.get("z156_PROTOCOL_VERSION_CHANGE_protocolVersion")]],
+            param.get("PROTOCOLVERSION"), u.get("z156_PROTOCOL_VERSION_CHANGE_protocolVersion")}},
 
-        'RECEIVE_PACKING_BLOCK': ['receivePackingBlock', [
+        'RECEIVE_PACKING_BLOCK', {'receivePackingBlock', {
             param.get("CHAINID"), u.get("z157_RECEIVE_PACKING_BLOCK_chainId"),
-            param.get("BLOCK"), u.get("z157_RECEIVE_PACKING_BLOCK_block")]],
+            param.get("BLOCK"), u.get("z157_RECEIVE_PACKING_BLOCK_block")}},
 
-        'RECV_CIRCULAT': ['recvCirculat', [
+        'RECV_CIRCULAT', {'recvCirculat', {
             param.get("CHAINID"), u.get("z158_RECV_CIRCULAT_chainId"),
             param.get("NODEID"), u.get("z158_RECV_CIRCULAT_nodeId"),
-            param.get("MESSAGEBODY"), u.get("z158_RECV_CIRCULAT_messageBody")]],
+            param.get("MESSAGEBODY"), u.get("z158_RECV_CIRCULAT_messageBody")}},
 
-        'RECV_CTX': ['recvCtx', [
+        'RECV_CTX', {'recvCtx', {
             param.get("CHAINID"), u.get("z159_RECV_CTX_chainId"),
             param.get("NODEID"), u.get("z159_RECV_CTX_nodeId"),
-            param.get("MESSAGEBODY"), u.get("z159_RECV_CTX_messageBody")]],
+            param.get("MESSAGEBODY"), u.get("z159_RECV_CTX_messageBody")}},
 
-        'RECV_CTX_HASH': ['recvCtxHash', [
+        'RECV_CTX_HASH', {'recvCtxHash', {
             param.get("CHAINID"), u.get("z160_RECV_CTX_HASH_chainId"),
             param.get("NODEID"), u.get("z160_RECV_CTX_HASH_nodeId"),
-            param.get("MESSAGEBODY"), u.get("z160_RECV_CTX_HASH_messageBody")]],
+            param.get("MESSAGEBODY"), u.get("z160_RECV_CTX_HASH_messageBody")}},
 
-        'RECV_CTX_SIGN': ['recvCtxSign', [
+        'RECV_CTX_SIGN', {'recvCtxSign', {
             param.get("CHAINID"), u.get("z161_RECV_CTX_SIGN_chainId"),
             param.get("NODEID"), u.get("z161_RECV_CTX_SIGN_nodeId"),
-            param.get("MESSAGEBODY"), u.get("z161_RECV_CTX_SIGN_messageBody")]],
+            param.get("MESSAGEBODY"), u.get("z161_RECV_CTX_SIGN_messageBody")}},
 
-        'RECV_CTX_STATE': ['recvCtxState', [
+        'RECV_CTX_STATE', {'recvCtxState', {
             param.get("CHAINID"), u.get("z162_RECV_CTX_STATE_chainId"),
             param.get("NODEID"), u.get("z162_RECV_CTX_STATE_nodeId"),
-            param.get("MESSAGEBODY"), u.get("z162_RECV_CTX_STATE_messageBody")]],
+            param.get("MESSAGEBODY"), u.get("z162_RECV_CTX_STATE_messageBody")}},
 
-        'RECV_OTHER_CTX': ['recvOtherCtx', [
+        'RECV_OTHER_CTX', {'recvOtherCtx', {
             param.get("CHAINID"), u.get("z163_RECV_OTHER_CTX_chainId"),
             param.get("NODEID"), u.get("z163_RECV_OTHER_CTX_nodeId"),
-            param.get("MESSAGEBODY"), u.get("z163_RECV_OTHER_CTX_messageBody")]],
+            param.get("MESSAGEBODY"), u.get("z163_RECV_OTHER_CTX_messageBody")}},
 
-        'RECV_REGCHAIN': ['recvRegChain', [
+        'RECV_REGCHAIN', {'recvRegChain', {
             param.get("CHAINID"), u.get("z164_RECV_REGCHAIN_chainId"),
             param.get("NODEID"), u.get("z164_RECV_REGCHAIN_nodeId"),
-            param.get("MESSAGEBODY"), u.get("z164_RECV_REGCHAIN_messageBody")]],
+            param.get("MESSAGEBODY"), u.get("z164_RECV_REGCHAIN_messageBody")}},
 
-        'REGISTER_PROTOCOL': ['registerProtocol', [
+        'REGISTER_PROTOCOL', {'registerProtocol', {
             param.get("CHAINID"), u.get("z166_REGISTER_PROTOCOL_chainId"),
             param.get("MODULECODE"), u.get("z166_REGISTER_PROTOCOL_moduleCode"),
-            param.get("LIST"), u.get("z166_REGISTER_PROTOCOL_list")]],
+            param.get("LIST"), u.get("z166_REGISTER_PROTOCOL_list")}},
 
-        'ROLLBACK_BLOCK_TXS': ['rollBackBlockTxs', [
+        'ROLLBACK_BLOCK_TXS', {'rollBackBlockTxs', {
             param.get("CHAINID"), u.get("z167_ROLLBACK_BLOCK_TXS_chainId"),
             param.get("TXLIST"), u.get("z167_ROLLBACK_BLOCK_TXS_txList"),
-            param.get("BLOCKHEIGHT"), u.get("z167_ROLLBACK_BLOCK_TXS_blockHeight")]],
+            param.get("BLOCKHEIGHT"), u.get("z167_ROLLBACK_BLOCK_TXS_blockHeight")}},
 
-        'ROLLBACK_UNCONFIRM_TX': ['rollBackUnconfirmTx', [
+        'ROLLBACK_UNCONFIRM_TX', {'rollBackUnconfirmTx', {
             param.get("CHAINID"), u.get("z168_ROLLBACK_UNCONFIRM_TX_chainId"),
-            param.get("TX"), u.get("z168_ROLLBACK_UNCONFIRM_TX_tx")]],
+            param.get("TX"), u.get("z168_ROLLBACK_UNCONFIRM_TX_tx")}},
 
-        'ROLLBACK_BLOCK': ['rollbackBlock', [
+        'ROLLBACK_BLOCK', {'rollbackBlock', {
             param.get("CHAINID"), u.get("z169_ROLLBACK_BLOCK_chainId"),
-            param.get("BLOCKHEADER"), u.get("z169_ROLLBACK_BLOCK_blockHeader")]],
+            param.get("BLOCKHEADER"), u.get("z169_ROLLBACK_BLOCK_blockHeader")}},
 
-        'ROLLBACK_TX_VALIDATE_STATUS': ['rollbackTxValidateStatus', [
+        'ROLLBACK_TX_VALIDATE_STATUS', {'rollbackTxValidateStatus', {
             param.get("CHAINID"), u.get("z170_ROLLBACK_TX_VALIDATE_STATUS_chainId"),
-            param.get("TX"), u.get("z170_ROLLBACK_TX_VALIDATE_STATUS_tx")]],
+            param.get("TX"), u.get("z170_ROLLBACK_TX_VALIDATE_STATUS_tx")}},
 
-        'SAVE_BLOCK': ['saveBlock', [
+        'SAVE_BLOCK', {'saveBlock', {
             param.get("CHAINID"), u.get("z171_SAVE_BLOCK_chainId"),
-            param.get("BLOCKHEADER"), u.get("z171_SAVE_BLOCK_blockHeader")]],
+            param.get("BLOCKHEADER"), u.get("z171_SAVE_BLOCK_blockHeader")}},
 
-        'SC_BATCH_BEFORE_END': ['sc_batch_before_end', [
+        'SC_BATCH_BEFORE_END', {'sc_batch_before_end', {
             param.get("CHAINID"), u.get("z172_SC_BATCH_BEFORE_END_chainId"),
             param.get("BLOCKTYPE"), u.get("z172_SC_BATCH_BEFORE_END_blockType"),
-            param.get("BLOCKHEIGHT"), u.get("z172_SC_BATCH_BEFORE_END_blockHeight")]],
+            param.get("BLOCKHEIGHT"), u.get("z172_SC_BATCH_BEFORE_END_blockHeight")}},
 
-        'SC_BATCH_BEGIN': ['sc_batch_begin', [
+        'SC_BATCH_BEGIN', {'sc_batch_begin', {
             param.get("CHAINID"), u.get("z173_SC_BATCH_BEGIN_chainId"),
             param.get("BLOCKTYPE"), u.get("z173_SC_BATCH_BEGIN_blockType"),
             param.get("BLOCKHEIGHT"), u.get("z173_SC_BATCH_BEGIN_blockHeight"),
             param.get("BLOCKTIME"), u.get("z173_SC_BATCH_BEGIN_blockTime"),
             param.get("PACKINGADDRESS"), u.get("z173_SC_BATCH_BEGIN_packingAddress"),
-            param.get("PRESTATEROOT"), u.get("z173_SC_BATCH_BEGIN_preStateRoot")]],
+            param.get("PRESTATEROOT"), u.get("z173_SC_BATCH_BEGIN_preStateRoot")}},
 
-        'SC_BATCH_END': ['sc_batch_end', [
+        'SC_BATCH_END', {'sc_batch_end', {
             param.get("CHAINID"), u.get("z174_SC_BATCH_END_chainId"),
-            param.get("BLOCKHEIGHT"), u.get("z174_SC_BATCH_END_blockHeight")]],
+            param.get("BLOCKHEIGHT"), u.get("z174_SC_BATCH_END_blockHeight")}},
 
-        'SC_CALL': ['sc_call', [
+        'SC_CALL', {'sc_call', {
             param.get("CHAINID"), u.get("z175_SC_CALL_chainId"),
             param.get("SENDER"), u.get("z175_SC_CALL_sender"),
             param.get("PASSWORD"), u.get("z175_SC_CALL_password"),
@@ -880,37 +880,37 @@ class NulsWsCalls(object):
             param.get("METHODNAME"), u.get("z175_SC_CALL_methodName"),
             param.get("METHODDESC"), u.get("z175_SC_CALL_methodDesc"),
             param.get("ARGS"), u.get("z175_SC_CALL_args"),
-            param.get("REMARK"), u.get("z175_SC_CALL_remark")]],
+            param.get("REMARK"), u.get("z175_SC_CALL_remark")}},
 
-        'SC_CALL_VALIDATOR': ['sc_call_validator', [
+        'SC_CALL_VALIDATOR', {'sc_call_validator', {
             param.get("CHAINID"), u.get("z176_SC_CALL_VALIDATOR_chainId"),
-            param.get("TX"), u.get("z176_SC_CALL_VALIDATOR_tx")]],
+            param.get("TX"), u.get("z176_SC_CALL_VALIDATOR_tx")}},
 
-        'SC_CONSTRUCTOR': ['sc_constructor', [
+        'SC_CONSTRUCTOR', {'sc_constructor', {
             param.get("CHAINID"), u.get("z177_SC_CONSTRUCTOR_chainId"),
-            param.get("CONTRACTCODE"), u.get("z177_SC_CONSTRUCTOR_contractCode")]],
+            param.get("CONTRACTCODE"), u.get("z177_SC_CONSTRUCTOR_contractCode")}},
 
-        'SC_CONTRACT_INFO': ['sc_contract_info', [
+        'SC_CONTRACT_INFO', {'sc_contract_info', {
             param.get("CHAINID"), u.get("z178_SC_CONTRACT_INFO_chainId"),
-            param.get("CONTRACTADDRESS"), u.get("z178_SC_CONTRACT_INFO_contractAddress")]],
+            param.get("CONTRACTADDRESS"), u.get("z178_SC_CONTRACT_INFO_contractAddress")}},
 
-        'SC_CONTRACT_OFFLINE_TX_HASH_LIST': ['sc_contract_offline_tx_hash_list', [
+        'SC_CONTRACT_OFFLINE_TX_HASH_LIST', {'sc_contract_offline_tx_hash_list', {
             param.get("CHAINID"), u.get("z179_SC_CONTRACT_OFFLINE_TX_HASH_LIST_chainId"),
-            param.get("BLOCKHASH"), u.get("z179_SC_CONTRACT_OFFLINE_TX_HASH_LIST_blockHash")]],
+            param.get("BLOCKHASH"), u.get("z179_SC_CONTRACT_OFFLINE_TX_HASH_LIST_blockHash")}},
 
-        'SC_CONTRACT_RESULT': ['sc_contract_result', [
+        'SC_CONTRACT_RESULT', {'sc_contract_result', {
             param.get("CHAINID"), u.get("z180_SC_CONTRACT_RESULT_chainId"),
-            param.get("HASH"), u.get("z180_SC_CONTRACT_RESULT_hash")]],
+            param.get("HASH"), u.get("z180_SC_CONTRACT_RESULT_hash")}},
 
-        'SC_CONTRACT_RESULT_LIST': ['sc_contract_result_list', [
+        'SC_CONTRACT_RESULT_LIST', {'sc_contract_result_list', {
             param.get("CHAINID"), u.get("z181_SC_CONTRACT_RESULT_LIST_chainId"),
-            param.get("HASHLIST"), u.get("z181_SC_CONTRACT_RESULT_LIST_hashList")]],
+            param.get("HASHLIST"), u.get("z181_SC_CONTRACT_RESULT_LIST_hashList")}},
 
-        'SC_CONTRACT_TX': ['sc_contract_tx', [
+        'SC_CONTRACT_TX', {'sc_contract_tx', {
             param.get("CHAINID"), u.get("z182_SC_CONTRACT_TX_chainId"),
-            param.get("HASH"), u.get("z182_SC_CONTRACT_TX_hash")]],
+            param.get("HASH"), u.get("z182_SC_CONTRACT_TX_hash")}},
 
-        'SC_CREATE': ['sc_create', [
+        'SC_CREATE', {'sc_create', {
             param.get("CHAINID"), u.get("z183_SC_CREATE_chainId"),
             param.get("SENDER"), u.get("z183_SC_CREATE_sender"),
             param.get("PASSWORD"), u.get("z183_SC_CREATE_password"),
@@ -919,104 +919,104 @@ class NulsWsCalls(object):
             param.get("PRICE"), u.get("z183_SC_CREATE_price"),
             param.get("CONTRACTCODE"), u.get("z183_SC_CREATE_contractCode"),
             param.get("ARGS"), u.get("z183_SC_CREATE_args"),
-            param.get("REMARK"), u.get("z183_SC_CREATE_remark")]],
+            param.get("REMARK"), u.get("z183_SC_CREATE_remark")}},
 
-        'SC_CREATE_VALIDATOR': ['sc_create_validator', [
+        'SC_CREATE_VALIDATOR', {'sc_create_validator', {
             param.get("CHAINID"), u.get("z184_SC_CREATE_VALIDATOR_chainId"),
-            param.get("TX"), u.get("z184_SC_CREATE_VALIDATOR_tx")]],
+            param.get("TX"), u.get("z184_SC_CREATE_VALIDATOR_tx")}},
 
-        'SC_DELETE': ['sc_delete', [
+        'SC_DELETE', {'sc_delete', {
             param.get("CHAINID"), u.get("z185_SC_DELETE_chainId"),
             param.get("SENDER"), u.get("z185_SC_DELETE_sender"),
             param.get("PASSWORD"), u.get("z185_SC_DELETE_password"),
             param.get("CONTRACTADDRESS"), u.get("z185_SC_DELETE_contractAddress"),
-            param.get("REMARK"), u.get("z185_SC_DELETE_remark")]],
+            param.get("REMARK"), u.get("z185_SC_DELETE_remark")}},
 
-        'SC_DELETE_VALIDATOR': ['sc_delete_validator', [
+        'SC_DELETE_VALIDATOR', {'sc_delete_validator', {
             param.get("CHAINID"), u.get("z186_SC_DELETE_VALIDATOR_chainId"),
-            param.get("TX"), u.get("z186_SC_DELETE_VALIDATOR_tx")]],
+            param.get("TX"), u.get("z186_SC_DELETE_VALIDATOR_tx")}},
 
-        'SC_IMPUTED_CALL_GAS': ['sc_imputed_call_gas', [
+        'SC_IMPUTED_CALL_GAS', {'sc_imputed_call_gas', {
             param.get("CHAINID"), u.get("z187_SC_IMPUTED_CALL_GAS_chainId"),
             param.get("SENDER"), u.get("z187_SC_IMPUTED_CALL_GAS_sender"),
             param.get("VALUE"), u.get("z187_SC_IMPUTED_CALL_GAS_value"),
             param.get("CONTRACTADDRESS"), u.get("z187_SC_IMPUTED_CALL_GAS_contractAddress"),
             param.get("METHODNAME"), u.get("z187_SC_IMPUTED_CALL_GAS_methodName"),
             param.get("METHODDESC"), u.get("z187_SC_IMPUTED_CALL_GAS_methodDesc"),
-            param.get("ARGS"), u.get("z187_SC_IMPUTED_CALL_GAS_args")]],
+            param.get("ARGS"), u.get("z187_SC_IMPUTED_CALL_GAS_args")}},
 
-        'SC_IMPUTED_CREATE_GAS': ['sc_imputed_create_gas', [
+        'SC_IMPUTED_CREATE_GAS', {'sc_imputed_create_gas', {
             param.get("CHAINID"), u.get("z188_SC_IMPUTED_CREATE_GAS_chainId"),
             param.get("SENDER"), u.get("z188_SC_IMPUTED_CREATE_GAS_sender"),
             param.get("CONTRACTCODE"), u.get("z188_SC_IMPUTED_CREATE_GAS_contractCode"),
-            param.get("ARGS"), u.get("z188_SC_IMPUTED_CREATE_GAS_args")]],
+            param.get("ARGS"), u.get("z188_SC_IMPUTED_CREATE_GAS_args")}},
 
-        'SC_INITIAL_ACCOUNT_TOKEN': ['sc_initial_account_token', [
+        'SC_INITIAL_ACCOUNT_TOKEN', {'sc_initial_account_token', {
             param.get("CHAINID"), u.get("z189_SC_INITIAL_ACCOUNT_TOKEN_chainId"),
-            param.get("ADDRESS"), u.get("z189_SC_INITIAL_ACCOUNT_TOKEN_address")]],
+            param.get("ADDRESS"), u.get("z189_SC_INITIAL_ACCOUNT_TOKEN_address")}},
 
-        'SC_INVOKE_CONTRACT': ['sc_invoke_contract', [
+        'SC_INVOKE_CONTRACT', {'sc_invoke_contract', {
             param.get("CHAINID"), u.get("z190_SC_INVOKE_CONTRACT_chainId"),
             param.get("BLOCKTYPE"), u.get("z190_SC_INVOKE_CONTRACT_blockType"),
-            param.get("TX"), u.get("z190_SC_INVOKE_CONTRACT_tx")]],
+            param.get("TX"), u.get("z190_SC_INVOKE_CONTRACT_tx")}},
 
-        'SC_INVOKE_VIEW': ['sc_invoke_view', [
+        'SC_INVOKE_VIEW', {'sc_invoke_view', {
             param.get("CHAINID"), u.get("z191_SC_INVOKE_VIEW_chainId"),
             param.get("CONTRACTADDRESS"), u.get("z191_SC_INVOKE_VIEW_contractAddress"),
             param.get("METHODNAME"), u.get("z191_SC_INVOKE_VIEW_methodName"),
             param.get("METHODDESC"), u.get("z191_SC_INVOKE_VIEW_methodDesc"),
-            param.get("ARGS"), u.get("z191_SC_INVOKE_VIEW_args")]],
+            param.get("ARGS"), u.get("z191_SC_INVOKE_VIEW_args")}},
 
-        'SC_PACKAGE_BATCH_END': ['sc_package_batch_end', [
+        'SC_PACKAGE_BATCH_END', {'sc_package_batch_end', {
             param.get("CHAINID"), u.get("z192_SC_PACKAGE_BATCH_END_chainId"),
-            param.get("BLOCKHEIGHT"), u.get("z192_SC_PACKAGE_BATCH_END_blockHeight")]],
+            param.get("BLOCKHEIGHT"), u.get("z192_SC_PACKAGE_BATCH_END_blockHeight")}},
 
-        'SC_TOKEN_ASSETS_LIST': ['sc_token_assets_list', [
+        'SC_TOKEN_ASSETS_LIST', {'sc_token_assets_list', {
             param.get("CHAINID"), u.get("z193_SC_TOKEN_ASSETS_LIST_chainId"),
             param.get("ADDRESS"), u.get("z193_SC_TOKEN_ASSETS_LIST_address"),
             param.get("PAGENUMBER"), u.get("z193_SC_TOKEN_ASSETS_LIST_pageNumber"),
-            param.get("PAGESIZE"), u.get("z193_SC_TOKEN_ASSETS_LIST_pageSize")]],
+            param.get("PAGESIZE"), u.get("z193_SC_TOKEN_ASSETS_LIST_pageSize")}},
 
-        'SC_TOKEN_BALANCE': ['sc_token_balance', [
+        'SC_TOKEN_BALANCE', {'sc_token_balance', {
             param.get("CHAINID"), u.get("z194_SC_TOKEN_BALANCE_chainId"),
             param.get("CONTRACTADDRESS"), u.get("z194_SC_TOKEN_BALANCE_contractAddress"),
-            param.get("ADDRESS"), u.get("z194_SC_TOKEN_BALANCE_address")]],
+            param.get("ADDRESS"), u.get("z194_SC_TOKEN_BALANCE_address")}},
 
-        'SC_TOKEN_TRANSFER': ['sc_token_transfer', [
+        'SC_TOKEN_TRANSFER', {'sc_token_transfer', {
             param.get("CHAINID"), u.get("z195_SC_TOKEN_TRANSFER_chainId"),
             param.get("ADDRESS"), u.get("z195_SC_TOKEN_TRANSFER_address"),
             param.get("TOADDRESS"), u.get("z195_SC_TOKEN_TRANSFER_toAddress"),
             param.get("CONTRACTADDRESS"), u.get("z195_SC_TOKEN_TRANSFER_contractAddress"),
             param.get("PASSWORD"), u.get("z195_SC_TOKEN_TRANSFER_password"),
             param.get("AMOUNT"), u.get("z195_SC_TOKEN_TRANSFER_amount"),
-            param.get("REMARK"), u.get("z195_SC_TOKEN_TRANSFER_remark")]],
+            param.get("REMARK"), u.get("z195_SC_TOKEN_TRANSFER_remark")}},
 
-        'SC_TOKEN_TRANSFER_LIST': ['sc_token_transfer_list', [
+        'SC_TOKEN_TRANSFER_LIST', {'sc_token_transfer_list', {
             param.get("CHAINID"), u.get("z196_SC_TOKEN_TRANSFER_LIST_chainId"),
             param.get("ADDRESS"), u.get("z196_SC_TOKEN_TRANSFER_LIST_address"),
             param.get("PAGENUMBER"), u.get("z196_SC_TOKEN_TRANSFER_LIST_pageNumber"),
-            param.get("PAGESIZE"), u.get("z196_SC_TOKEN_TRANSFER_LIST_pageSize")]],
+            param.get("PAGESIZE"), u.get("z196_SC_TOKEN_TRANSFER_LIST_pageSize")}},
 
-        'SC_TRANSFER': ['sc_transfer', [
+        'SC_TRANSFER', {'sc_transfer', {
             param.get("CHAINID"), u.get("z197_SC_TRANSFER_chainId"),
             param.get("ADDRESS"), u.get("z197_SC_TRANSFER_address"),
             param.get("TOADDRESS"), u.get("z197_SC_TRANSFER_toAddress"),
             param.get("PASSWORD"), u.get("z197_SC_TRANSFER_password"),
             param.get("AMOUNT"), u.get("z197_SC_TRANSFER_amount"),
-            param.get("REMARK"), u.get("z197_SC_TRANSFER_remark")]],
+            param.get("REMARK"), u.get("z197_SC_TRANSFER_remark")}},
 
-        'SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT': ['sc_trigger_payable_for_consensus_contract', [
+        'SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT', {'sc_trigger_payable_for_consensus_contract', {
             param.get("CHAINID"), u.get("z198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_chainId"),
             param.get("STATEROOT"), u.get("z198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_stateRoot"),
             param.get("BLOCKHEIGHT"), u.get("z198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_blockHeight"),
             param.get("CONTRACTADDRESS"), u.get("z198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_contractAddress"),
-            param.get("TX"), u.get("z198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_tx")]],
+            param.get("TX"), u.get("z198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_tx")}},
 
-        'SC_UPLOAD': ['sc_upload', [
+        'SC_UPLOAD', {'sc_upload', {
             param.get("CHAINID"), u.get("z199_SC_UPLOAD_chainId"),
-            param.get("JARFILEDATA"), u.get("z199_SC_UPLOAD_jarFileData")]],
+            param.get("JARFILEDATA"), u.get("z199_SC_UPLOAD_jarFileData")}},
 
-        'SC_VALIDATE_CALL': ['sc_validate_call', [
+        'SC_VALIDATE_CALL', {'sc_validate_call', {
             param.get("CHAINID"), u.get("z200_SC_VALIDATE_CALL_chainId"),
             param.get("SENDER"), u.get("z200_SC_VALIDATE_CALL_sender"),
             param.get("VALUE"), u.get("z200_SC_VALIDATE_CALL_value"),
@@ -1025,134 +1025,134 @@ class NulsWsCalls(object):
             param.get("CONTRACTADDRESS"), u.get("z200_SC_VALIDATE_CALL_contractAddress"),
             param.get("METHODNAME"), u.get("z200_SC_VALIDATE_CALL_methodName"),
             param.get("METHODDESC"), u.get("z200_SC_VALIDATE_CALL_methodDesc"),
-            param.get("ARGS"), u.get("z200_SC_VALIDATE_CALL_args")]],
+            param.get("ARGS"), u.get("z200_SC_VALIDATE_CALL_args")}},
 
-        'SC_VALIDATE_CREATE': ['sc_validate_create', [
+        'SC_VALIDATE_CREATE', {'sc_validate_create', {
             param.get("CHAINID"), u.get("z201_SC_VALIDATE_CREATE_chainId"),
             param.get("SENDER"), u.get("z201_SC_VALIDATE_CREATE_sender"),
             param.get("GASLIMIT"), u.get("z201_SC_VALIDATE_CREATE_gasLimit"),
             param.get("PRICE"), u.get("z201_SC_VALIDATE_CREATE_price"),
             param.get("CONTRACTCODE"), u.get("z201_SC_VALIDATE_CREATE_contractCode"),
-            param.get("ARGS"), u.get("z201_SC_VALIDATE_CREATE_args")]],
+            param.get("ARGS"), u.get("z201_SC_VALIDATE_CREATE_args")}},
 
-        'SC_VALIDATE_DELETE': ['sc_validate_delete', [
+        'SC_VALIDATE_DELETE', {'sc_validate_delete', {
             param.get("CHAINID"), u.get("z202_SC_VALIDATE_DELETE_chainId"),
-            param.get("CONTRACTADDRESS"), u.get("z202_SC_VALIDATE_DELETE_contractAddress")]],
+            param.get("CONTRACTADDRESS"), u.get("z202_SC_VALIDATE_DELETE_contractAddress")}},
 
-        'STOP_AGENTVALID': ['stopAgentValid', [
+        'STOP_AGENTVALID', {'stopAgentValid', {
             param.get("CHAINID"), u.get("z203_STOP_AGENTVALID_chainId"),
-            param.get("TX"), u.get("z203_STOP_AGENTVALID_tx")]],
+            param.get("TX"), u.get("z203_STOP_AGENTVALID_tx")}},
 
-        'TX_COMMIT': ['txCommit', [
+        'TX_COMMIT', {'txCommit', {
             param.get("CHAINID"), u.get("z204_TX_COMMIT_chainId"),
             param.get("TXLIST"), u.get("z204_TX_COMMIT_txList"),
-            param.get("BLOCKHEADER"), u.get("z204_TX_COMMIT_blockHeader")]],
+            param.get("BLOCKHEADER"), u.get("z204_TX_COMMIT_blockHeader")}},
 
-        'TX_VALIDATOR': ['txValidator', [
+        'TX_VALIDATOR', {'txValidator', {
             param.get("CHAINID"), u.get("z205_TX_VALIDATOR_chainId"),
             param.get("TXLIST"), u.get("z205_TX_VALIDATOR_txList"),
-            param.get("BLOCKHEADER"), u.get("z205_TX_VALIDATOR_blockHeader")]],
+            param.get("BLOCKHEADER"), u.get("z205_TX_VALIDATOR_blockHeader")}},
 
-        'TX_BACK_PACKABLE_TXS': ['tx_backPackableTxs', [
+        'TX_BACK_PACKABLE_TXS', {'tx_backPackableTxs', {
             param.get("CHAINID"), u.get("z206_TX_BACK_PACKABLE_TXS_chainId"),
-            param.get("TXLIST"), u.get("z206_TX_BACK_PACKABLE_TXS_txList")]],
+            param.get("TXLIST"), u.get("z206_TX_BACK_PACKABLE_TXS_txList")}},
 
-        'TX_BATCH_VERIFY': ['tx_batchVerify', [
+        'TX_BATCH_VERIFY', {'tx_batchVerify', {
             param.get("CHAINID"), u.get("z207_TX_BATCH_VERIFY_chainId"),
             param.get("TXLIST"), u.get("z207_TX_BATCH_VERIFY_txList"),
             param.get("BLOCKHEADER"), u.get("z207_TX_BATCH_VERIFY_blockHeader"),
-            param.get("PRESTATEROOT"), u.get("z207_TX_BATCH_VERIFY_preStateRoot")]],
+            param.get("PRESTATEROOT"), u.get("z207_TX_BATCH_VERIFY_preStateRoot")}},
 
-        'TX_BL_STATE': ['tx_bl_state', [
+        'TX_BL_STATE', {'tx_bl_state', {
             param.get("CHAINID"), u.get("z208_TX_BL_STATE_chainId"),
-            param.get("STATUS"), u.get("z208_TX_BL_STATE_status")]],
+            param.get("STATUS"), u.get("z208_TX_BL_STATE_status")}},
 
-        'TX_BLOCK_HEIGHT': ['tx_blockHeight', [
+        'TX_BLOCK_HEIGHT', {'tx_blockHeight', {
             param.get("CHAINID"), u.get("z209_TX_BLOCK_HEIGHT_chainId"),
-            param.get("HEIGHT"), u.get("z209_TX_BLOCK_HEIGHT_height")]],
+            param.get("HEIGHT"), u.get("z209_TX_BLOCK_HEIGHT_height")}},
 
-        'TX_CS_STATE': ['tx_cs_state', [
+        'TX_CS_STATE', {'tx_cs_state', {
             param.get("CHAINID"), u.get("z210_TX_CS_STATE_chainId"),
-            param.get("PACKAGING"), u.get("z210_TX_CS_STATE_packaging")]],
+            param.get("PACKAGING"), u.get("z210_TX_CS_STATE_packaging")}},
 
-        'TX_GET_BLOCKTXS': ['tx_getBlockTxs', [
+        'TX_GET_BLOCKTXS', {'tx_getBlockTxs', {
             param.get("CHAINID"), u.get("z211_TX_GET_BLOCKTXS_chainId"),
-            param.get("TXHASHLIST"), u.get("z211_TX_GET_BLOCKTXS_txHashList")]],
+            param.get("TXHASHLIST"), u.get("z211_TX_GET_BLOCKTXS_txHashList")}},
 
-        'TX_GET_BLOCKTXS_EXTEND': ['tx_getBlockTxsExtend', [
+        'TX_GET_BLOCKTXS_EXTEND', {'tx_getBlockTxsExtend', {
             param.get("CHAINID"), u.get("z212_TX_GET_BLOCKTXS_EXTEND_chainId"),
             param.get("TXHASHLIST"), u.get("z212_TX_GET_BLOCKTXS_EXTEND_txHashList"),
-            param.get("ALLHITS"), u.get("z212_TX_GET_BLOCKTXS_EXTEND_allHits")]],
+            param.get("ALLHITS"), u.get("z212_TX_GET_BLOCKTXS_EXTEND_allHits")}},
 
-        'TX_GET_CONFIRMED_TX': ['tx_getConfirmedTx', [
+        'TX_GET_CONFIRMED_TX', {'tx_getConfirmedTx', {
             param.get("CHAINID"), u.get("z213_TX_GET_CONFIRMED_TX_chainId"),
-            param.get("TXHASH"), u.get("z213_TX_GET_CONFIRMED_TX_txHash")]],
+            param.get("TXHASH"), u.get("z213_TX_GET_CONFIRMED_TX_txHash")}},
 
-        'TX_GET_CONFIRMED_TX_CLIENT': ['tx_getConfirmedTxClient', [
+        'TX_GET_CONFIRMED_TX_CLIENT', {'tx_getConfirmedTxClient', {
             param.get("CHAINID"), u.get("z214_TX_GET_CONFIRMED_TX_CLIENT_chainId"),
-            param.get("TXHASH"), u.get("z214_TX_GET_CONFIRMED_TX_CLIENT_txHash")]],
+            param.get("TXHASH"), u.get("z214_TX_GET_CONFIRMED_TX_CLIENT_txHash")}},
 
-        'TX_GET_NONEXISTENT_UNCONFIRMED_HASHS': ['tx_getNonexistentUnconfirmedHashs', [
+        'TX_GET_NONEXISTENT_UNCONFIRMED_HASHS', {'tx_getNonexistentUnconfirmedHashs', {
             param.get("CHAINID"), u.get("z215_TX_GET_NONEXISTENT_UNCONFIRMED_HASHS_chainId"),
-            param.get("TXHASHLIST"), u.get("z215_TX_GET_NONEXISTENT_UNCONFIRMED_HASHS_txHashList")]],
+            param.get("TXHASHLIST"), u.get("z215_TX_GET_NONEXISTENT_UNCONFIRMED_HASHS_txHashList")}},
 
-        'TX_GET_SYSTEMTYPES': ['tx_getSystemTypes', [
-            param.get("CHAINID"), u.get("z216_TX_GET_SYSTEMTYPES_chainId")]],
+        'TX_GET_SYSTEMTYPES', {'tx_getSystemTypes', {
+            param.get("CHAINID"), u.get("z216_TX_GET_SYSTEMTYPES_chainId")}},
 
-        'TX_GET_TX': ['tx_getTx', [
+        'TX_GET_TX', {'tx_getTx', {
             param.get("CHAINID"), u.get("z217_TX_GET_TX_chainId"),
-            param.get("TXHASH"), u.get("z217_TX_GET_TX_txHash")]],
+            param.get("TXHASH"), u.get("z217_TX_GET_TX_txHash")}},
 
-        'TX_GET_TX_CLIENT': ['tx_getTxClient', [
+        'TX_GET_TX_CLIENT', {'tx_getTxClient', {
             param.get("CHAINID"), u.get("z218_TX_GET_TX_CLIENT_chainId"),
-            param.get("TXHASH"), u.get("z218_TX_GET_TX_CLIENT_txHash")]],
+            param.get("TXHASH"), u.get("z218_TX_GET_TX_CLIENT_txHash")}},
 
-        'TX_NEWTX': ['tx_newTx', [
+        'TX_NEWTX', {'tx_newTx', {
             param.get("CHAINID"), u.get("z219_TX_NEWTX_chainId"),
-            param.get("TX"), u.get("z219_TX_NEWTX_tx")]],
+            param.get("TX"), u.get("z219_TX_NEWTX_tx")}},
 
-        'TX_PACKABLE_TXS': ['tx_packableTxs', [
+        'TX_PACKABLE_TXS', {'tx_packableTxs', {
             param.get("CHAINID"), u.get("z220_TX_PACKABLE_TXS_chainId"),
             param.get("ENDTIMESTAMP"), u.get("z220_TX_PACKABLE_TXS_endTimestamp"),
             param.get("MAXTXDATASIZE"), u.get("z220_TX_PACKABLE_TXS_maxTxDataSize"),
             param.get("BLOCKTIME"), u.get("z220_TX_PACKABLE_TXS_blockTime"),
             param.get("PACKINGADDRESS"), u.get("z220_TX_PACKABLE_TXS_packingAddress"),
-            param.get("PRESTATEROOT"), u.get("z220_TX_PACKABLE_TXS_preStateRoot")]],
+            param.get("PRESTATEROOT"), u.get("z220_TX_PACKABLE_TXS_preStateRoot")}},
 
-        'TX_REGISTER': ['tx_register', [
+        'TX_REGISTER', {'tx_register', {
             param.get("CHAINID"), u.get("z221_TX_REGISTER_chainId"),
             param.get("MODULECODE"), u.get("z221_TX_REGISTER_moduleCode"),
             param.get("LIST"), u.get("z221_TX_REGISTER_list"),
-            param.get("DELLIST"), u.get("z221_TX_REGISTER_delList")]],
+            param.get("DELLIST"), u.get("z221_TX_REGISTER_delList")}},
 
-        'TX_ROLLBACK': ['tx_rollback', [
+        'TX_ROLLBACK', {'tx_rollback', {
             param.get("CHAINID"), u.get("z222_TX_ROLLBACK_chainId"),
             param.get("TXHASHLIST"), u.get("z222_TX_ROLLBACK_txHashList"),
-            param.get("BLOCKHEADER"), u.get("z222_TX_ROLLBACK_blockHeader")]],
+            param.get("BLOCKHEADER"), u.get("z222_TX_ROLLBACK_blockHeader")}},
 
-        'TX_SAVE': ['tx_save', [
+        'TX_SAVE', {'tx_save', {
             param.get("CHAINID"), u.get("z223_TX_SAVE_chainId"),
             param.get("TXLIST"), u.get("z223_TX_SAVE_txList"),
             param.get("CONTRACTLIST"), u.get("z223_TX_SAVE_contractList"),
-            param.get("BLOCKHEADER"), u.get("z223_TX_SAVE_blockHeader")]],
+            param.get("BLOCKHEADER"), u.get("z223_TX_SAVE_blockHeader")}},
 
-        'TX_VERIFY_TX': ['tx_verifyTx', [
+        'TX_VERIFY_TX', {'tx_verifyTx', {
             param.get("CHAINID"), u.get("z224_TX_VERIFY_TX_chainId"),
-            param.get("TX"), u.get("z224_TX_VERIFY_TX_tx")]],
+            param.get("TX"), u.get("z224_TX_VERIFY_TX_tx")}},
 
-        'UPDATE_CHAIN_ASSET': ['updateChainAsset', [
+        'UPDATE_CHAIN_ASSET', {'updateChainAsset', {
             param.get("CHAINID"), u.get("z225_UPDATE_CHAIN_ASSET_chainId"),
-            param.get("ASSETS"), u.get("z225_UPDATE_CHAIN_ASSET_assets")]],
+            param.get("ASSETS"), u.get("z225_UPDATE_CHAIN_ASSET_assets")}},
 
-        'VERIFY_COINDATA': ['verifyCoinData', [
+        'VERIFY_COINDATA', {'verifyCoinData', {
             param.get("CHAINID"), u.get("z226_VERIFY_COINDATA_chainId"),
-            param.get("TX"), u.get("z226_VERIFY_COINDATA_tx")]],
+            param.get("TX"), u.get("z226_VERIFY_COINDATA_tx")}},
 
-        'VERIFY_COINDATA_BATCH_PACKAGED': ['verifyCoinDataBatchPackaged', [
+        'VERIFY_COINDATA_BATCH_PACKAGED', {'verifyCoinDataBatchPackaged', {
             param.get("CHAINID"), u.get("z227_VERIFY_COINDATA_BATCH_PACKAGED_chainId"),
-            param.get("TXLIST"), u.get("z227_VERIFY_COINDATA_BATCH_PACKAGED_txList")]],
+            param.get("TXLIST"), u.get("z227_VERIFY_COINDATA_BATCH_PACKAGED_txList")}},
 
-        'WITHDRAW_VALID': ['withdrawValid', [
+        'WITHDRAW_VALID', {'withdrawValid', {
             param.get("CHAINID"), u.get("z228_WITHDRAW_VALID_chainId"),
-            param.get("TX"), u.get("z228_WITHDRAW_VALID_tx")]]
+            param.get("TX"), u.get("z228_WITHDRAW_VALID_tx")}}
     }

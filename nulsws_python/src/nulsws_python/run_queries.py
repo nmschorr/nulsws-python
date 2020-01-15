@@ -22,7 +22,7 @@ class RunQueries(object):
         conn_m = eval(conf_ini_d.get("connect_method"))
         host_r = eval(conf_ini_d.get("host_req"))
         port_r = eval(conf_ini_d.get("port_req"))
-        websock_url = ''.join([conn_m, host_r, ":", port_r])
+        websock_url = ''.join([conn_m, host_r, ":", str(port_r)])
         debug = 1
 
         if not debug:

@@ -6,15 +6,24 @@ from nulsws_python.src.nulsws_python.make_very_top import MakeVeryTop
 
 class MakeTop(object):
 
+    def strip_quotes(self, p):
+        xtra_qt = '\''
+        if p.startswith(xtra_qt):
+            p = p[1:]
+        if p.endswith(xtra_qt):
+            p = p[:-1]
+        return p
+
     def make_top(self, msg_indx, conf_inid):  # return dict
+        p = conf_inid.get("proto_ver")
+        proto_ver = self.strip_quotes(p)
 
         nd = NulsWsLabels().labs_req_field_d
         data_part = {nd.get("msg_data_label"): {
-            nd.get("proto_label"): conf_inid.get("proto_ver"),
+            nd.get("proto_label"): proto_ver,
             nd.get("compress_type_label"): conf_inid.get("compress_type_value"),
             nd.get("compress_rate_label"): conf_inid.get("compress_rate_value")}}
 
-        proto_ver = conf_inid.get("proto_ver")
         large_top = MakeVeryTop.make_very_top(1, msg_indx, proto_ver)
         large_top.update(data_part)
         return large_top  # dict
