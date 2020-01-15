@@ -30,90 +30,32 @@
 #     "CompressionRate": "3"
 # Note: Maybe don't use typing.Dict - it can cause json problems when converted
 
-import json
 from asyncio import run as asyncio_run
-from asyncio import sleep as a_sleep
-from tornado.websocket import websocket_connect, WebSocketClientConnection  # WebSocketClosedError
-import nulsws_python.src.nulsws_python.nulsws_library as nlib
+import nulsws_python.src.nulsws_python.nulsws_library as nulsws_library
 from nulsws_python.src.nulsws_python.user_settings.nulsws_user_set import NulsWsUserSet
-from nulsws_python.src.nulsws_python.nulsws_request import NulsWsRequest
+import nulsws_python.src.nulsws_python.nulsws_request as nulsws_request
+from nulsws_python.src.nulsws_python.negotiate_list import NegotiateList
 
 
 class NulsWsClient(object):
 
     def __init__(self):
-        self.s_time = .7
-        self.nreq_obj = NulsWsRequest()
-        self.myprint = nlib.NulsWsLib.myprint
-        self.json_prt = nlib.NulsWsLib.json_prt
-        self.nreq_obj = NulsWsRequest()
-        self.that_dict: dict = {}
-
-    def get_that_dict(self):
-        return self.that_dict
-
-    async def regular_request(self, websock_cont: WebSocketClientConnection, j_reg_dict):
-        json_reg = json.dumps(j_reg_dict)
-        await websock_cont.write_message(json_reg)  # 2 WRITE
-        self.json_prt(json_reg, "\n* * * REGULAR message going out: \n")
-        await a_sleep(self.s_time)
-        read_reg = await websock_cont.read_message()  # 3 READ
-        await a_sleep(self.s_time)
-        if len(read_reg) > 0:
-            self.json_prt(read_reg, "   -----------> ! ! ! REGULAR response received: ")
-        nlib.NulsWsLib.myprint("--------------end previous / begin next "
-                                   "request--------------------------")
-        nlib.NulsWsLib.myprint(0, "x")
-
-    async def negotiate_list(self, top_plus_mid_dict, m_indx, run_list, dd, mtpe=3):
-        conn_m = eval(dd.get("connect_method"))
-        host_r = eval(dd.get("host_req"))
-        port_r = eval(dd.get("port_req"))
-        websock_url = ''.join([conn_m, host_r, ":", port_r])
-        debug = 1
-
-        if not debug:
-            connection = await websocket_connect(websock_url)  # 1) CONNECT
-            # await a_sleep(self.s_time)
-            while not connection:
-                await a_sleep(self.s_time)
-            jd = json.dumps(top_plus_mid_dict)
-            self.json_prt(top_plus_mid_dict, "* * * First message going out- NEGOTIATE: \n")
-
-            await connection.write_message(jd)  # 2) WRITE
-            # await a_sleep(self.s_time)
-            negotiate_result = await connection.read_message()  # 3 READ
-            await a_sleep(self.s_time)
-            self.json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
-        self.myprint("------end Negotiate----------------------------------------")
-
-        for run_item in run_list:
-            m_indx += 1
-
-            if mtpe == 3:
-                main_request = self.nreq_obj.prep_request(m_indx, run_item, dd)  # TEST ONLY PUT BACK WHEN DONE
-
-                if debug:
-                    json_reg = json.dumps(main_request)
-                    self.json_prt(json_reg, " ")
-
-                else:
-                    await self.regular_request(connection, main_request)
+        self.myprint = nulsws_library.NulsWsLib.myprint
+        self.json_prt = nulsws_library.NulsWsLib.json_prt
 
     def main(self, rr_list, mtpe=3):
+        negtiat_obj = NegotiateList()
+
         nus = NulsWsUserSet()
-        cfd = nus.get_conf_dict()
-        import copy
-        that_dict: dict = copy.deepcopy(cfd)
-        self.that_dict = that_dict
-        nreq_obj = NulsWsRequest()
+        conf_d = nus.get_conf_dict()
+        nreq_obj = nulsws_request.NulsWsRequest()
         mindx = 0
         if mtpe == 3:  # if a regular request Nulstar type 3
-            top_pls_middle_dict = nreq_obj.prep_negotiate_request(mindx, cfd)  # must be done
-            # first (self, msg_indx, dd):
+            top_pls_middle_dict = nreq_obj.prep_negotiate_request(mindx, conf_d)  # must be done
             asyncio_run(
-                self.negotiate_list(
-                    top_pls_middle_dict, mindx, rr_list, cfd, mtpe))  # starts event
+                negtiat_obj.negotiate_list(
+                    top_pls_middle_dict, mindx, rr_list, conf_d, mtpe))  # starts event
+
 
 if __name__ == "__main__":
     nws = NulsWsClient()

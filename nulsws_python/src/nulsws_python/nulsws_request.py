@@ -1,16 +1,10 @@
 #!/usr/bin/python3.7
 
-from nulsws_python.src.nulsws_python.nulsws_library import NulsWsLib
 from nulsws_python.src.nulsws_python.nulsws_labels import NulsWsLabels
 from nulsws_python.src.nulsws_python.make_very_top import MakeTop
 
 
-# from nulsws_python.src.nulsws_python.user_settings.nulsws_user_set import NulsWsUserSet
-# just pass the dict1 into this file via methods
-
 class NulsWsRequest(object):
-
-    # -----------prep_NEGOTIATE_data_type1--------------------------------------#
 
     def __init__(self):
         self.labs_param = NulsWsLabels().labs_req_field_d
@@ -28,12 +22,6 @@ class NulsWsRequest(object):
         top_sect.update(data_part)
         return top_sect  # dict
 
-    # -----------get_REQ_MIDDLE--------------------------------------#
-
-
-
-    # -----------get_REQ_MIDDLE--------------------------------------#
-
     def make_request_middle(self, mid_section_vals=None):  # return dict
         nnn = self.labs_param
         zero = nnn.get("ZERO")
@@ -46,7 +34,6 @@ class NulsWsRequest(object):
 
         # need labs_req_field_d
         n = NulsWsLabels.labs_req_field_d
-        rf = NulsWsLabels.labs_req_field_d
 
         z = f("msg_data_label")
         req_middle = {
@@ -60,28 +47,8 @@ class NulsWsRequest(object):
             }}
         return req_middle  # dict
 
-    # -----------prep_REQUEST_ONESIE (request) --------------------------------------#
 
-    def prep_request(self, msg_indx, caps_name, dd):  # requesttype 2 - return ack +
-        import nulsws_python.src.nulsws_python.nulsws_calls as ndb
-        callsdb = ndb.NulsWsCalls().calls_dict
-        api_text_api_params_dict = dict()
-        itm_d: dict = callsdb[caps_name]
 
-        api_text_api_params_dict.update(itm_d)
-
-        request_type = "1"  # 1 or 2 for message requests
-        subs_e_c = "0"  # subscription event_counter
-        subs_per = "0"  # subscription period
-        subs_rg = "0"  # subscription range
-        resp_max = "0"  # response max size range
-
-        newlist = [request_type, subs_e_c, subs_per, subs_rg, resp_max, api_text_api_params_dict]
-
-        msg_section_middle = self.make_request_middle(newlist)
-        message_section_top = MakeTop.make_very_top(3, msg_indx, dd)
-        message_section_top.update(msg_section_middle)
-        return message_section_top  # "'"return dict
 
 # ----------- end library file --------------------------------------#
 
