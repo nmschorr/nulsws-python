@@ -1,15 +1,15 @@
 #!/usr/bin/python3.7
 
-from nulsws_python.src.nulsws_python.nulsws_labels import NulsWsLabels
+from nulsws_python.src.nulsws_python.labels import Labels
 from nulsws_python.src.nulsws_python.make_very_top import MakeVeryTop
 
 
 class MakeTop(object):
 
-    def make_top(self, msg_indx, conf_inid):  # return dict
+    def make_top(self, msg_indx, conf_inid):  # must pass in user config.ini dict
         proto_ver = conf_inid.get("proto_ver")
 
-        nd = NulsWsLabels().labs_req_field_d
+        nd = Labels().labs_field_d
         data_part = {nd.get("msg_data_label"): {
             nd.get("proto_label"): proto_ver,
             nd.get("compress_type_label"): conf_inid.get("compress_type_value"),

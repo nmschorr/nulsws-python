@@ -31,26 +31,24 @@
 # Note: Maybe don't use typing.Dict - it can cause json problems when converted
 
 from asyncio import run as asyncio_run
-import nulsws_python.src.nulsws_python.nulsws_library as nulsws_library
-from nulsws_python.src.nulsws_python.user_settings.nulsws_user_set import NulsWsUserSet
-import nulsws_python.src.nulsws_python.run_queries
+import nulsws_python.src.nulsws_python.routines as routines
+from nulsws_python.src.nulsws_python.user_settings.usersettings import UserSettings
+import nulsws_python.src.nulsws_python.queries
 import nulsws_python.src.nulsws_python.regular_request
 
 
-class NulsWsClient(object):
+class Client(object):
 
     def __init__(self):
         pass
 
-    def main(self, run_list, mtpe=3):
-        runq_obj = nulsws_python.src.nulsws_python.run_queries.RunQueries()
-        nu_obj = NulsWsUserSet()
-        conf_ini_d = nu_obj.get_conf_dict()   # make this just once
-        mindx = 0
+    def main(self, run_list, mtp=3):
+        runq_obj = nulsws_python.src.nulsws_python.queries.RunQueries()
+        conf_ini_d = UserSettings().get_conf_dict()   # make this just once
 
-        if mtpe == 3:  # if a regular request Nulstar type 3
+        if mtp == 3:  # if a regular request Nulstar type 3
             asyncio_run(
-                runq_obj.run_queries(mindx, run_list, conf_ini_d, mtpe))  # starts event
+                runq_obj.run_queries(run_list, conf_ini_d))  # starts event
 
 
 if __name__ == "__main__":
@@ -138,11 +136,12 @@ if __name__ == "__main__":
            'TX_REGISTER', 'TX_ROLLBACK', 'TX_SAVE', 'TX_VALIDATOR', 'TX_VERIFY_TX', 'UPDATE_CHAIN_ASSET',
            'VERIFY_COINDATA', 'VERIFY_COINDATA_BATCH_PACKAGED', 'WITHDRAW_VALID']
 
-    runlist = r_1 + r_2 + r_3 + r_4
+    #runlist = r_1 + r_2 + r_3 + r_4
     runlist = r_5
     message_type = 3  # 3 is request, 99 is test, 77 is negotiate only
-    nws = NulsWsClient()
-    nws.main(r_5, message_type)
+    nws = Client()
+    mtpe = 3
+    nws.main(r_5, mtpe)
 
 
 

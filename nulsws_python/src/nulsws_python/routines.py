@@ -52,10 +52,7 @@ from json import dumps as json_dumps
 from time import time, timezone
 
 
-class NulsWsLib(object):
-    def __init__(self):
-        pass
-    # -----------get_times--------------------------------------#
+class Routines(object):
 
     @classmethod
     def get_times(cls, msg_index: int):
@@ -66,14 +63,11 @@ class NulsWsLib(object):
         t_stamp = str(t_stamp)
         return t_stamp, str(tzone), m_id
 
-    # -----------myprint--------------------------------------#
-
     @classmethod
     def myprint(cls, x, y=None, debug=True):
         if debug:
             print(x) if not y else print(str(x) + ' ' + str(y))
 
-    # -----------json_prt--------------------------------------#
     @classmethod
     def json_prt(cls, json_str, str_msg="", debug=True):
         if not isinstance(json_str, dict):
@@ -83,7 +77,7 @@ class NulsWsLib(object):
                 aname = ''.join(str_msg)
                 print(aname + str(json_dumps(json_str, indent=3)))
             else:
-                NulsWsLib.myprint(0, "nothing returned")
+                Routines.myprint(0, "nothing returned")
 
 
 

@@ -1,12 +1,12 @@
 #!/usr/bin/python3.7
 
-from nulsws_python.src.nulsws_python.nulsws_labels import NulsWsLabels
+from nulsws_python.src.nulsws_python.labels import Labels
 
 
 class MakeMiddle(object):
 
     def make_middle(self, bottom_d, mid_section_vals=(1, 0, 0, 0, 0)):  # return dict
-        n = NulsWsLabels.labs_req_field_d
+        n = Labels.labs_field_d
 
         [rtyp, sevt, sper, srng, rmax] = [*mid_section_vals]
 

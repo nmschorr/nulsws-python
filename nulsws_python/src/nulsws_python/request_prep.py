@@ -2,17 +2,17 @@
 # requesttype 2 - return ack +
 
 
-from nulsws_python.src.nulsws_python.nulsws_calls import NulsWsCalls
+from nulsws_python.src.nulsws_python.calls_d import CallsD
 from nulsws_python.src.nulsws_python.make_middle import MakeMiddle
 from nulsws_python.src.nulsws_python.make_top import MakeTop
 
 
-class PrepRequest(object):
+class RequestPrep(object):
 
     def prep_request(self, msg_indx, caps_name, configini_d):
         mm_obj = MakeMiddle()
         mtop_obj = MakeTop()
-        bottom_callsd = NulsWsCalls().calls_dict[caps_name]
+        bottom_callsd = CallsD().calls_dict[caps_name]
 
         request_type = "1"  # 1 or 2 for message requests   2=return ack+
         subs_e_c = "0"  # subscription event_counter
