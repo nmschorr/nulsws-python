@@ -33,32 +33,30 @@
 from asyncio import run as asyncio_run
 import nulsws_python.src.nulsws_python.nulsws_library as nulsws_library
 from nulsws_python.src.nulsws_python.user_settings.nulsws_user_set import NulsWsUserSet
-import nulsws_python.src.nulsws_python.nulsws_request as nulsws_request
-from nulsws_python.src.nulsws_python.negotiate_list import NegotiateList
+import nulsws_python.src.nulsws_python.make_top as nulsws_request
+import nulsws_python.src.nulsws_python.run_queries
 
 
 class NulsWsClient(object):
 
     def __init__(self):
-        self.myprint = nulsws_library.NulsWsLib.myprint
-        self.json_prt = nulsws_library.NulsWsLib.json_prt
+        pass
 
-    def main(self, rr_list, mtpe=3):
-        negtiat_obj = NegotiateList()
-
-        nus = NulsWsUserSet()
-        conf_d = nus.get_conf_dict()
+    def main(self, run_list, mtpe=3):
+        negtiat_obj = nulsws_python.src.nulsws_python.run_queries.RunQueries()
+        nu_obj = NulsWsUserSet()
         nreq_obj = nulsws_request.NulsWsRequest()
+        conf_ini_d = nu_obj.get_conf_dict()   # make this just once
         mindx = 0
+
         if mtpe == 3:  # if a regular request Nulstar type 3
-            top_pls_middle_dict = nreq_obj.prep_negotiate_request(mindx, conf_d)  # must be done
+            top_dict = nreq_obj.make_top(mindx, conf_ini_d)  # must be done
             asyncio_run(
-                negtiat_obj.negotiate_list(
-                    top_pls_middle_dict, mindx, rr_list, conf_d, mtpe))  # starts event
+                negtiat_obj.run_queries(
+                    top_dict, mindx, run_list, conf_ini_d, mtpe))  # starts event
 
 
 if __name__ == "__main__":
-    nws = NulsWsClient()
 
     r_1 = ['AC_GET_ACCOUNT_BYADDRESS', 'AC_GET_ALL_ADDRESS_PREFIX', 'AC_GET_ACCOUNT_LIST',
            'AC_GET_ADDRESS_LIST', 'AC_GET_ADDRESS_PREFIX_BY_CHAINID',
@@ -146,6 +144,7 @@ if __name__ == "__main__":
     runlist = r_1 + r_2 + r_3 + r_4
     runlist = r_4
     message_type = 3  # 3 is request, 99 is test, 77 is negotiate only
+    nws = NulsWsClient()
     nws.main(r_5, message_type)
 
 

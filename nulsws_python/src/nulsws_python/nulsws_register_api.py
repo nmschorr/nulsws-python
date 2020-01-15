@@ -7,7 +7,7 @@
 by Nancy Schorr for Nuls, December 2, 2019
 """
 import json
-from nulsws_python.src.nulsws_python.nulsws_request import NulsWsRequest
+from nulsws_python.src.nulsws_python.make_top import NulsWsRequest
 
 # this can be a list once other versions are supported
 

@@ -11,23 +11,21 @@ from nulsws_python.src.nulsws_python.nulsws_labels import NulsWsLabels
 # msg_type_name = labs_type_name_d.__getitem__(msg_type)
 
 
-class MakeTop(object):
+class MakeVeryTop(object):
     def __init__(self):
         pass
 
     @staticmethod
-    def make_very_top(msg_type: int, msg_indx: int, cifd):
+    def make_very_top(msg_type: int, msg_indx: int, proto_ver):
         t_stamp, tzone, m_id = NulsWsLib.get_times(msg_indx)
         msg_type_name = NulsWsLabels.labs_type_name_d[msg_type]
 
-        labrf = NulsWsLabels().labs_req_field_d
+        lab_d = NulsWsLabels().labs_req_field_d
 
-        proto_ver = cifd.get("proto_ver")
-
-        very_top = {labrf.get("proto_label"): proto_ver,
-                    labrf.get("msg_id_label"): m_id,
-                    labrf.get("tmstmp_label"): t_stamp,
-                    labrf.get("tmzone_label"): tzone,
-                    labrf.get("msg_type_label"): msg_type_name
-                    }
-        return very_top
+        very_top_d = {lab_d.get("proto_label"): proto_ver,
+                      lab_d.get("msg_id_label"): m_id,
+                      lab_d.get("tmstmp_label"): t_stamp,
+                      lab_d.get("tmzone_label"): tzone,
+                      lab_d.get("msg_type_label"): msg_type_name
+                      }
+        return very_top_d
