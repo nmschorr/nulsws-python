@@ -8,12 +8,12 @@ January 2020
 
 class NulsWsLabels(object):
 
-    type_name_dict = {0: 'None', 1: 'NegotiateConnection',
-                      2: 'NegotiateConnectionResponse',
-                      3: 'Request', 4: 'Unsubscribe', 5: 'Response', 6: 'Ack',
-                      7: 'RegisterCompoundMethod', 8: 'UnregisterCompoundMethod'}
+    labs_type_name_d = {0: 'None', 1: 'NegotiateConnection',
+                        2: 'NegotiateConnectionResponse',
+                        3: 'Request', 4: 'Unsubscribe', 5: 'Response', 6: 'Ack',
+                        7: 'RegisterCompoundMethod', 8: 'UnregisterCompoundMethod'}
 
-    regular_labels = {
+    labs_req_field_d = {
         "compress_type_label": "CompressionAlgorithm",
         "compress_rate_label": "CompressionRate",
         "msg_data_label": "MessageData",
@@ -47,7 +47,7 @@ class NulsWsLabels(object):
 
     # The following shouldn't be changed by user except for major modifications
 
-    param_dict = {
+    labs_params_d = {
         "ADDRESS": "address",
         "ADDRESSPREFIX": "addressPrefix",
         "ADDRESSTYPE": "addressType",
