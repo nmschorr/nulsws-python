@@ -7,6 +7,8 @@ import nulsws_python.src.nulsws_python.nulsws_library as nulsws_library
 
 
 class RegularRequest(object):
+    def __init__(self):
+        pass
 
     async def regular_request(self, websock_cont: WebSocketClientConnection, j_reg_dict):
         pause_time = .7

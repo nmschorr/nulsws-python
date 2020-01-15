@@ -33,9 +33,8 @@
 from asyncio import run as asyncio_run
 import nulsws_python.src.nulsws_python.nulsws_library as nulsws_library
 from nulsws_python.src.nulsws_python.user_settings.nulsws_user_set import NulsWsUserSet
-import nulsws_python.src.nulsws_python.make_top as nulsws_request
 import nulsws_python.src.nulsws_python.run_queries
-
+import nulsws_python.src.nulsws_python.regular_request
 
 class NulsWsClient(object):
 
@@ -43,17 +42,14 @@ class NulsWsClient(object):
         pass
 
     def main(self, run_list, mtpe=3):
-        negtiat_obj = nulsws_python.src.nulsws_python.run_queries.RunQueries()
+        runq_obj = nulsws_python.src.nulsws_python.run_queries.RunQueries()
         nu_obj = NulsWsUserSet()
-        nreq_obj = nulsws_request.NulsWsRequest()
         conf_ini_d = nu_obj.get_conf_dict()   # make this just once
         mindx = 0
 
         if mtpe == 3:  # if a regular request Nulstar type 3
-            top_dict = nreq_obj.make_top(mindx, conf_ini_d)  # must be done
             asyncio_run(
-                negtiat_obj.run_queries(
-                    top_dict, mindx, run_list, conf_ini_d, mtpe))  # starts event
+                runq_obj.run_queries(mindx, run_list, conf_ini_d, mtpe))  # starts event
 
 
 if __name__ == "__main__":
