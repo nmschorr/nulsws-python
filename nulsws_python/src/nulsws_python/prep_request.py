@@ -19,9 +19,9 @@ class PrepRequest(object):
         subs_per = "0"  # subscription period
         subs_rg = "0"  # subscription range
         resp_max = "0"  # response max size range
-        mid_list = [request_type, subs_e_c, subs_per, subs_rg, resp_max]
+        mid_tup = (request_type, subs_e_c, subs_per, subs_rg, resp_max)
 
-        msg_section_middle = mm_obj.make_middle(bottom_callsd, mid_list)
+        msg_section_middle = mm_obj.make_middle(bottom_callsd, mid_tup)
         lg_top = mtop_obj.make_top(msg_indx, configini_d)
 
         lg_top.update(msg_section_middle)

@@ -4,7 +4,6 @@
 from nulsws_python.src.nulsws_python.nulsws_library import NulsWsLib
 from nulsws_python.src.nulsws_python.nulsws_labels import NulsWsLabels
 
-
 # 0  "ProtocolVersion": "0.1",
 # 1 "MessageID": "1569897424187-1",  #2 "TimeZone": "-4", # 3 "Timestamp": "1569897424187"
 # 4 "MessageType": "NegotiateConnection",
@@ -12,8 +11,6 @@ from nulsws_python.src.nulsws_python.nulsws_labels import NulsWsLabels
 
 
 class MakeVeryTop(object):
-    def __init__(self):
-        pass
 
     @staticmethod
     def make_very_top(msg_type: int, msg_indx: int, proto_ver):

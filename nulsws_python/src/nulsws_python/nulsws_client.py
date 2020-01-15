@@ -36,6 +36,7 @@ from nulsws_python.src.nulsws_python.user_settings.nulsws_user_set import NulsWs
 import nulsws_python.src.nulsws_python.run_queries
 import nulsws_python.src.nulsws_python.regular_request
 
+
 class NulsWsClient(object):
 
     def __init__(self):
@@ -138,7 +139,7 @@ if __name__ == "__main__":
            'VERIFY_COINDATA', 'VERIFY_COINDATA_BATCH_PACKAGED', 'WITHDRAW_VALID']
 
     runlist = r_1 + r_2 + r_3 + r_4
-    runlist = r_4
+    runlist = r_5
     message_type = 3  # 3 is request, 99 is test, 77 is negotiate only
     nws = NulsWsClient()
     nws.main(r_5, message_type)

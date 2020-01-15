@@ -2,6 +2,8 @@
 
 import json
 from asyncio import sleep as a_sleep
+import asyncio
+
 from tornado.websocket import websocket_connect  # WebSocketClosedError
 import nulsws_python.src.nulsws_python.nulsws_library as nulsws_library
 from nulsws_python.src.nulsws_python.prep_request import PrepRequest
@@ -17,12 +19,11 @@ class RunQueries(object):
         prepr_obj = PrepRequest()
         prep_request = prepr_obj.prep_request
 
-        reg_req_obj = RegularRequest
         connection = None
-        conn_m = eval(conf_ini_d.get("connect_method"))
-        host_r = eval(conf_ini_d.get("host_req"))
-        port_r = eval(conf_ini_d.get("port_req"))
-        websock_url = ''.join([conn_m, host_r, ":", str(port_r)])
+        conn_m = conf_ini_d.get("connect_method")
+        host_r = conf_ini_d.get("host_req")
+        port_r = conf_ini_d.get("port_req")
+        websock_url = ''.join([conn_m, "://", host_r, ":", str(port_r)])
         debug = 1
 
         if not debug:
@@ -42,6 +43,7 @@ class RunQueries(object):
             await a_sleep(pause_time)
             nlib_obj.json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
         nlib_obj.myprint("------end Negotiate----------------------------------------")
+        rr_obj = RegularRequest()
 
         for run_item in run_list:
             m_indx += 1
@@ -54,4 +56,4 @@ class RunQueries(object):
                     nlib_obj.json_prt(json_reg, " ")
 
                 else:
-                    await nlib_obj.regular_request(connection, main_request)
+                    await rr_obj.regular_request(connection, main_request)

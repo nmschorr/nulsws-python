@@ -50,38 +50,21 @@ This file right now provides support for the the client only.
 import json
 from json import dumps as json_dumps
 from time import time, timezone
-from nulsws_python.src.nulsws_python.nulsws_labels import NulsWsLabels
 
 
 class NulsWsLib(object):
     def __init__(self):
-        self.n = NulsWsLabels()
-
+        pass
     # -----------get_times--------------------------------------#
 
     @classmethod
     def get_times(cls, msg_index: int):
-        t_stamp = int(time() * 100000)  # change float to int
-        tzone = int(timezone / 3600)  # change float to int to str
+        answer = time() * 100000
+        t_stamp = answer.__int__()  # change float to int
+        tzone = (timezone / 3600).__int__()  # change float to int to str
         m_id = str(t_stamp) + "-" + str(msg_index)
         t_stamp = str(t_stamp)
         return t_stamp, str(tzone), m_id
-
-    # -----------check_json_answer--------------------------------------#
-
-    def check_json_answer(self, answer) -> bool:
-        n = self.n
-        jload = json.loads(answer)
-        self.json_prt(jload, "check answer jds value= ")
-        msg_d_answer = jload.get(n.msg_data_label)
-        mt = jload.get(n.msg_type_label)
-        if mt == n.negotiate_conn_resp_label:
-            final_int = msg_d_answer.get(n.negotiate_stat_label)
-            if final_int == '1':
-                print("Negotiate Status was 1. All is good")
-                return True
-            else:
-                return False
 
     # -----------myprint--------------------------------------#
 
@@ -101,6 +84,26 @@ class NulsWsLib(object):
                 print(aname + str(json_dumps(json_str, indent=3)))
             else:
                 NulsWsLib.myprint(0, "nothing returned")
+
+
+
+    # -----------check_json_answer--------------------------------------#
+
+    # def check_json_answer(self, answer) -> bool:
+    #     n = self.n
+    #     jload = json.loads(answer)
+    #     self.json_prt(jload, "check answer jds value= ")
+    #     msg_d_answer = jload.get(n.labs_params_d)
+    #     mt = jload.get(n.msg_type_label)
+    #     if mt == n.negotiate_conn_resp_label:
+    #         final_int = msg_d_answer.get(n.negotiate_stat_label)
+    #         if final_int == '1':
+    #             print("Negotiate Status was 1. All is good")
+    #             return True
+    #         else:
+    #             return False
+
+
 
 # ---------------- Example -------------------------------------------------------------------
 

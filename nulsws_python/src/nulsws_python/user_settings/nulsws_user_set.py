@@ -15,8 +15,9 @@ from configparser import ConfigParser
 class NulsWsUserSet(object):
 
     def __init__(self):
+
         config = ConfigParser()
-        myfile = "e:\\config.ini"   # nms: fix this soon
+        myfile = "config.ini"
         config.read(myfile)
         section_names = config.sections()
 

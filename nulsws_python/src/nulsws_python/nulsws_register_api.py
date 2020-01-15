@@ -7,7 +7,7 @@
 by Nancy Schorr for Nuls, December 2, 2019
 """
 import json
-from nulsws_python.src.nulsws_python.make_top import NulsWsRequest
+from nulsws_python.src.nulsws_python.make_top import MakeTop
 
 # this can be a list once other versions are supported
 
@@ -42,7 +42,7 @@ get_cpu_info = "GetCPUInfo"
 
 
 def make_nulsws_register_method(mm_index):
-    n = NulsWsRequest()
+    n = MakeTop()
     # oldtop = {   "MessageData": {   "RequestAck": zero,   "RequestMethods": {   "RegisterAPI": {
     # "GetBalance": 0}  }}}
 
@@ -99,6 +99,7 @@ def make_nulsws_register_method(mm_index):
     top_sec.update(nulsws_register_j)
     print(json.dumps(top_sec, indent=2))
     return top_sec
+
 
 if __name__ == "__main__":
     make_nulsws_register_method(1)

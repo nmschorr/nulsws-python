@@ -5,7 +5,7 @@ from nulsws_python.src.nulsws_python.nulsws_labels import NulsWsLabels
 
 class MakeMiddle(object):
 
-    def make_middle(self, bottom_d, mid_section_vals=[1, 0, 0, 0, 0]):  # return dict
+    def make_middle(self, bottom_d, mid_section_vals=(1, 0, 0, 0, 0)):  # return dict
         n = NulsWsLabels.labs_req_field_d
 
         [rtyp, sevt, sper, srng, rmax] = [*mid_section_vals]
@@ -19,4 +19,4 @@ class MakeMiddle(object):
                 n.get("response_max_size_label"): rmax,
                 n.get("req_methods_label"): bottom_d
             }}
-        return req_middle_d  # dict
+        return req_middle_d
