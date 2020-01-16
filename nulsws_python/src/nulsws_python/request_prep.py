@@ -9,7 +9,7 @@ from nulsws_python.src.nulsws_python.make_top import MakeTop
 
 class RequestPrep(object):
 
-    def prep_request(self, msg_indx, caps_name, configini_d):
+    def prep_request(self, msg_type, msg_indx, caps_name, configini_d):
         mtop_obj = MakeTop()
         mid_obj = MakeMiddle()
         bottom_sect = CallsD().calls_dict[caps_name]
@@ -21,7 +21,7 @@ class RequestPrep(object):
         resp_max = "0"  # response max size range
         middle_sect = (request_type, subs_e_c, subs_per, subs_rg, resp_max)
 
-        mid_plus_bottom_section = mid_obj.make_middle(bottom_sect, middle_sect)
-        full_request = mtop_obj.make_top(msg_indx, configini_d)
+        mid_plus_bottom_section = mid_obj.make_middle_m(bottom_sect, middle_sect)
+        full_request = mtop_obj.make_top_m(msg_type, msg_indx, configini_d)
         full_request.update(mid_plus_bottom_section)
         return full_request

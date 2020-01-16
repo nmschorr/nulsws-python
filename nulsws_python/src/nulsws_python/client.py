@@ -48,27 +48,27 @@ class Client(object):
 
         if mtp == 3:  # if a regular request Nulstar type 3
             asyncio_run(
-                runq_obj.run_queries(run_list, conf_ini_d))  # starts event
+                runq_obj.run_queries_m(mtp, run_list, conf_ini_d))  # starts event
 
 
 if __name__ == "__main__":
-    r_1 = ['AC_GET_ACCOUNT_BYADDRESS', 'AC_GET_ALL_ADDRESS_PREFIX', 'AC_GET_ACCOUNT_LIST',
-           'AC_GET_ADDRESS_LIST', 'AC_GET_ADDRESS_PREFIX_BY_CHAINID',
-           'AC_GET_ALL_ADDRESS_PREFIX',
-           'AC_GET_ALL_PRIKEY', 'AC_GET_ALIASBY_ADDRESS']
+    # r_1 = ['AC_GET_ACCOUNT_BYADDRESS', 'AC_GET_ALL_ADDRESS_PREFIX', 'AC_GET_ACCOUNT_LIST',
+    #        'AC_GET_ADDRESS_LIST', 'AC_GET_ADDRESS_PREFIX_BY_CHAINID',
+    #        'AC_GET_ALL_ADDRESS_PREFIX',
+    #        'AC_GET_ALL_PRIKEY', 'AC_GET_ALIASBY_ADDRESS']
 
-    r_2 = [
-        'AC_EXPORT_ACCOUNT_KEYSTORE', 'AC_EXPORT_KEYSTORE_JSON',
-        'AC_GET_ACCOUNT_BYADDRESS',
-        'AC_GET_ACCOUNT_LIST', 'AC_GET_ADDRESS_LIST', 'AC_GET_ADDRESS_PREFIX_BY_CHAINID',
-        'AC_GET_ALIASBY_ADDRESS', 'AC_GET_ALL_ADDRESS_PREFIX', 'AC_GET_ALL_PRIKEY',
-        'AC_GET_ENCRYPTED_ADDRESS_LIST', 'AC_GET_MULTI_SIGN_ACCOUNT',
-        'AC_GET_PUBKEY']
+    # r_2 = [
+    #     'AC_EXPORT_ACCOUNT_KEYSTORE', 'AC_EXPORT_KEYSTORE_JSON',
+    #     'AC_GET_ACCOUNT_BYADDRESS',
+    #     'AC_GET_ACCOUNT_LIST', 'AC_GET_ADDRESS_LIST', 'AC_GET_ADDRESS_PREFIX_BY_CHAINID',
+    #     'AC_GET_ALIASBY_ADDRESS', 'AC_GET_ALL_ADDRESS_PREFIX', 'AC_GET_ALL_PRIKEY',
+    #     'AC_GET_ENCRYPTED_ADDRESS_LIST', 'AC_GET_MULTI_SIGN_ACCOUNT',
+    #     'AC_GET_PUBKEY']
 
-    r_3 = ['GET_LATEST_BLOCKHEADERS', 'GET_LATEST_ROUND_BLOCKHEADERS',
-           'GET_OTHERCTX', 'GET_ROUND_BLOCKHEADERS',
-           'GET_STATUS', 'GET_VERSION', 'INFO', 'LATEST_BLOCK', 'LATEST_BLOCKHEADER',
-           'LATEST_BLOCKHEADER_PO', 'LATEST_HEIGHT']
+    # r_3 = ['GET_LATEST_BLOCKHEADERS', 'GET_LATEST_ROUND_BLOCKHEADERS',
+    #        'GET_OTHERCTX', 'GET_ROUND_BLOCKHEADERS',
+    #        'GET_STATUS', 'GET_VERSION', 'INFO', 'LATEST_BLOCK', 'LATEST_BLOCKHEADER',
+    #        'LATEST_BLOCKHEADER_PO', 'LATEST_HEIGHT']
 
     # RUN_LIST = runlist_2
     # runlist = runlist_1 + runlist_2 + runlist_3
@@ -76,6 +76,8 @@ if __name__ == "__main__":
     r_4 = ['GET_STATUS', 'GET_VERSION', 'INFO', 'LATEST_BLOCK', 'LATEST_BLOCKHEADER',
            'LATEST_BLOCKHEADER_PO', 'LATEST_HEIGHT']
 
+
+    '''
     r_5 = ['AC_ADD_ADDRESS_PREFIX', 'AC_CREATE_ACCOUNT', 'AC_CREATE_CONTRACT_ACCOUNT',
            'AC_CREATE_MULTI_SIGN_ACCOUNT', 'AC_CREATE_MULTI_SIGN_TRANSFER',
            'AC_CREATE_OFFLINE_ACCOUNT',
@@ -179,10 +181,11 @@ if __name__ == "__main__":
            'TX_REGISTER', 'TX_ROLLBACK', 'TX_SAVE', 'TX_VALIDATOR', 'TX_VERIFY_TX',
            'UPDATE_CHAIN_ASSET',
            'VERIFY_COINDATA', 'VERIFY_COINDATA_BATCH_PACKAGED', 'WITHDRAW_VALID']
+    '''
 
     # runlist = r_1 + r_2 + r_3 + r_4
-    runlist = r_5
+    runlist = r_4
     message_type = 3  # 3 is request, 99 is test, 77 is negotiate only
-    nws = Client()
+    client = Client()
     mtpe = 3
-    nws.main(r_5, mtpe)
+    client.main(runlist, mtpe)

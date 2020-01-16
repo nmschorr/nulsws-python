@@ -40,13 +40,13 @@ get_cpu_info = "GetCPUInfo"
 # -----------------------------------------------------------------------------------
 
 
-def make_nulsws_register_method(mm_index):
+def register_m(mm_index):
     mvt_obj = MakeVeryTop()
     # oldtop = {   "MessageData": {   "RequestAck": zero,
     # "RequestMethods": {   "RegisterAPI": {
     # "GetBalance": 0}  }}}
 
-    top_sec = mvt_obj.make_very_top(3, mm_index)
+    top_sec = mvt_obj.make_very_top_m(3, mm_index)
     nulsws_register_j = {
         "MessageData": {
             "RequestAck": zero,
@@ -102,4 +102,4 @@ def make_nulsws_register_method(mm_index):
 
 
 if __name__ == "__main__":
-    make_nulsws_register_method(1)
+    register_m(1)

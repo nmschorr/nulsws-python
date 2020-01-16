@@ -14,34 +14,37 @@ from tornado.httpclient import AsyncHTTPClient
 
 class RunQueries(object):
 
-    async def run_queries(self, run_list, conf_ini_d):
+    async def run_queries_m(self, msg_type, run_list, conf_ini_d):
         ws = True
         m_indx = 0
         pause_time = .7
         rout_obj = routines.Routines()
         req_obj = RequestPrep()
         prep_request = req_obj.prep_request
-        http_port = '7772'
+        http_port = '80'
 
         connection = None
         conn_m = conf_ini_d.get("connect_method")
         host_r = conf_ini_d.get("host_req")
-        port_r = conf_ini_d.get("port_req")
-        websock_url = ''.join([conn_m, "://", host_r, ":", str(port_r)])
-        http_url = ''.join(["http", "://", host_r, ":", str(http_port)])
-        debug = 1
+        ws_port = conf_ini_d.get("port_req")
+        websock_url = ''.join([conn_m, "://", host_r, ":", str(ws_port)])
+        http1_url = ''.join(["http", "://", host_r, ":", str(http_port)])
+        debug = 0
         str_m1 = "* * * First message going out- NEGOTIATE: \n"
         str_m2 = "--------- ! ! ! NEGOTIATE response received: "
         str_m3 = "------end Negotiate----------------------------------------"
+        msg_type_negotiate = 1
 
         if not debug:
             mt_obj = MakeTop()
-            top_plus_mid_dict = mt_obj.make_top(m_indx, conf_ini_d)  # must be done
+            top_plus_mid_dict = mt_obj.make_top_m(msg_type_negotiate, m_indx, conf_ini_d)  # must be done
 
             if ws:
+                print("Using this connection: ", websock_url)
                 connection = await websocket_connect(websock_url)  # 1) CONNECT
             else:
-                connection = await AsyncHTTPClient(http_url)  # 1) CONNECT
+                print("Using this connection: ", http1_url)
+                connection = await AsyncHTTPClient(http1_url)  # 1) CONNECT
 
             while not connection:
                 await a_sleep(pause_time)
@@ -59,13 +62,15 @@ class RunQueries(object):
         for run_item in run_list:
             m_indx += 1
 
-            if True:
-                # if mtpe == 3:
-                main_request = prep_request(m_indx, run_item, conf_ini_d)
+            if msg_type == 3:
+                main_request = prep_request(msg_type, m_indx, run_item, conf_ini_d)
 
                 if debug:
                     json_reg = json.dumps(main_request)
                     rout_obj.print_json_request(json_reg, " ")
 
                 else:
-                    await rr_obj.regular_request(connection, main_request)
+                    await rr_obj.regular_request_m(connection, main_request)
+            a = 0
+        b = 0
+

@@ -5,7 +5,7 @@ from nulsws_python.src.nulsws_python.labels import Labels
 
 class MakeMiddle(object):
 
-    def make_middle(self, bottom_d, mid_section_vals=(1, 0, 0, 0, 0)):  # return dict
+    def make_middle_m(self, bottom_d, mid_section_vals=(1, 0, 0, 0, 0)):  # return dict
         n = Labels.labs_field_d
 
         [rtyp, sevt, sper, srng, rmax] = [*mid_section_vals]

@@ -14,7 +14,7 @@ from nulsws_python.src.nulsws_python.labels import Labels
 class MakeVeryTop(object):
 
     @staticmethod
-    def make_very_top(msg_type: int, msg_indx: int, proto_ver: str):
+    def make_very_top_m(msg_type: int, msg_indx: int, proto_ver: str):
         t_stamp, tzone, m_id = Routines.get_times(msg_indx)
         msg_type_name = Labels.labs_type_d[msg_type]
 
