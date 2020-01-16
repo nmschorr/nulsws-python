@@ -9,21 +9,26 @@ from nulsws_python.src.nulsws_python.request_prep import RequestPrep
 from nulsws_python.src.nulsws_python.make_top import MakeTop
 from nulsws_python.src.nulsws_python.regular_request import RegularRequest
 
+from tornado.httpclient import AsyncHTTPClient
+
 
 class RunQueries(object):
 
     async def run_queries(self, run_list, conf_ini_d):
+        ws = True
         m_indx = 0
         pause_time = .7
         rout_obj = routines.Routines()
         req_obj = RequestPrep()
         prep_request = req_obj.prep_request
+        http_port = '7772'
 
         connection = None
         conn_m = conf_ini_d.get("connect_method")
         host_r = conf_ini_d.get("host_req")
         port_r = conf_ini_d.get("port_req")
         websock_url = ''.join([conn_m, "://", host_r, ":", str(port_r)])
+        http_url = ''.join(["http", "://", host_r, ":", str(http_port)])
         debug = 1
         str_m1 = "* * * First message going out- NEGOTIATE: \n"
         str_m2 = "--------- ! ! ! NEGOTIATE response received: "
@@ -33,7 +38,11 @@ class RunQueries(object):
             mt_obj = MakeTop()
             top_plus_mid_dict = mt_obj.make_top(m_indx, conf_ini_d)  # must be done
 
-            connection = await websocket_connect(websock_url)  # 1) CONNECT
+            if ws:
+                connection = await websocket_connect(websock_url)  # 1) CONNECT
+            else:
+                connection = await AsyncHTTPClient(http_url)  # 1) CONNECT
+
             while not connection:
                 await a_sleep(pause_time)
             top_plus_mid_dict_json = json.dumps(top_plus_mid_dict)
