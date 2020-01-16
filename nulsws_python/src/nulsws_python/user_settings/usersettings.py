@@ -12,12 +12,12 @@ by Nancy Schorr for Nuls, None),
 from configparser import ConfigParser
 
 
-class NulsWsUserSet(object):
+class UserSettings(object):
 
     def __init__(self):
 
         config = ConfigParser()
-        myfile = "config.ini"
+        myfile = "user_settings/config.ini"
         config.read(myfile)
         section_names = config.sections()
 
