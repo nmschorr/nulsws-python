@@ -12,7 +12,6 @@ import nulsws_python.src.nulsws_python.user_settings.usersettings as usersetting
 
 
 class CallsD(object):
-
     u_obj = usersettings.UserSettings()
     u = u_obj.get_user_set_dict()
     par_d = Labels.labs_params_d
@@ -40,7 +39,8 @@ class CallsD(object):
             par_d.get("OUTPUTS"): u.get("z4_AC_CREATE_MULTI_SIGN_TRANSFER_outputs"),
             par_d.get("REMARK"): u.get("z4_AC_CREATE_MULTI_SIGN_TRANSFER_remark"),
             par_d.get("INPUTS"): u.get("z4_AC_CREATE_MULTI_SIGN_TRANSFER_signAddress"),
-            par_d.get("SIGNPASSWORD"): u.get("z4_AC_CREATE_MULTI_SIGN_TRANSFER_signPassword"),
+            par_d.get("SIGNPASSWORD"):
+                u.get("z4_AC_CREATE_MULTI_SIGN_TRANSFER_signPassword"),
             par_d.get("SIGNPASSWORD"): u.get("z25_AC_SET_MULTISIGN_ALIAS_signPassword")}},
 
         'AC_GET_PRIKEY_BY_ADDRESS': {"ac_getPriKeyByAddress": {
@@ -79,7 +79,6 @@ class CallsD(object):
         'AC_GET_ADDRESS_PREFIX_BY_CHAINID': {'ac_getAddressPrefixByChainId': {
             par_d.get("CHAINID"): u.get("z11_AC_GET_ADDRESS_PREFIX_BY_CHAINID_chainId")}},
 
-
         'AC_GET_ALIASBY_ADDRESS': {'ac_getAliasByAddress': {
             par_d.get("CHAINID"): u.get("z12_AC_GET_ALIASBY_ADDRESS_chainId"),
             par_d.get("ADDRESS"): u.get("z12_AC_GET_ALIASBY_ADDRESS_address")}},
@@ -107,7 +106,8 @@ class CallsD(object):
             par_d.get("CHAINID"): u.get("z18_AC_IMPORT_ACCOUNT_BY_KEYSTORE_chainId"),
             par_d.get("PASSWORD"): u.get("z18_AC_IMPORT_ACCOUNT_BY_KEYSTORE_password"),
             par_d.get("KEYSTORE"): u.get("z18_AC_IMPORT_ACCOUNT_BY_KEYSTORE_keyStore"),
-            par_d.get("OVERWRITE"): u.get("z18_AC_IMPORT_ACCOUNT_BY_KEYSTORE_overwrite")}},
+            par_d.get("OVERWRITE"):
+                u.get("z18_AC_IMPORT_ACCOUNT_BY_KEYSTORE_overwrite")}},
 
         'AC_IMPORT_ACCOUNT_BY_PRIKEY': {'ac_importAccountByPriKey': {
             par_d.get("CHAINID"): u.get("z19_AC_IMPORT_ACCOUNT_BY_PRIKEY_chainId"),
@@ -166,8 +166,10 @@ class CallsD(object):
         'AC_SIGN_MULTISIGN_TRANSACTION': {'ac_signMultiSignTransaction': {
             par_d.get("CHAINID"): u.get("z29_AC_SIGN_MULTISIGN_TRANSACTION_chainId"),
             par_d.get("TX"): u.get("z29_AC_SIGN_MULTISIGN_TRANSACTION_tx"),
-            par_d.get("SIGNADDRESS"): u.get("z29_AC_SIGN_MULTISIGN_TRANSACTION_signAddress"),
-            par_d.get("SIGNPASSWORD"): u.get("z29_AC_SIGN_MULTISIGN_TRANSACTION_signPassword")}},
+            par_d.get("SIGNADDRESS"):
+                u.get("z29_AC_SIGN_MULTISIGN_TRANSACTION_signAddress"),
+            par_d.get("SIGNPASSWORD"):
+                u.get("z29_AC_SIGN_MULTISIGN_TRANSACTION_signPassword")}},
 
         'AC_TRANSFER': {'ac_transfer': {
             par_d.get("CHAINID"): u.get("z30_AC_TRANSFER_chainId"),
@@ -178,8 +180,10 @@ class CallsD(object):
         'AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD': {'ac_updateOfflineAccountPassword': {
             par_d.get("CHAINID"): u.get("z31_AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD_chainId"),
             par_d.get("ADDRESS"): u.get("z31_AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD_address"),
-            par_d.get("PASSWORD"): u.get("z31_AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD_password"),
-            par_d.get("NEWPASSWORD"): u.get("z31_AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD_newPassword"),
+            par_d.get("PASSWORD"):
+                u.get("z31_AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD_password"),
+            par_d.get("NEWPASSWORD"): u.get(
+                "z31_AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD_newPassword"),
             par_d.get("PRIKEY"): u.get("z31_AC_UPDATE_OFFLINE_ACCOUNT_PASSWORD_priKey")}},
 
         'AC_UPDATE_PASSWORD': {'ac_updatePassword': {
@@ -220,12 +224,14 @@ class CallsD(object):
         'CM_ASSET_CIRCULATE_COMMIT': {'cm_assetCirculateCommit': {
             par_d.get("CHAINID"): u.get("z41_CM_ASSET_CIRCULATE_COMMIT_chainId"),
             par_d.get("TXLIST"): u.get("z41_CM_ASSET_CIRCULATE_COMMIT_txList"),
-            par_d.get("BLOCKHEADER"): u.get("z41_CM_ASSET_CIRCULATE_COMMIT_blockHeader")}},
+            par_d.get("BLOCKHEADER"): u.get(
+                "z41_CM_ASSET_CIRCULATE_COMMIT_blockHeader")}},
 
         'CM_ASSET_CIRCULATE_ROLLBACK': {'cm_assetCirculateRollBack': {
             par_d.get("CHAINID"): u.get("z42_CM_ASSET_CIRCULATE_ROLLBACK_chainId"),
             par_d.get("TXLIST"): u.get("z42_CM_ASSET_CIRCULATE_ROLLBACK_txList"),
-            par_d.get("BLOCKHEADER"): u.get("z42_CM_ASSET_CIRCULATE_ROLLBACK_blockHeader")}},
+            par_d.get("BLOCKHEADER"): u.get(
+                "z42_CM_ASSET_CIRCULATE_ROLLBACK_blockHeader")}},
 
         'CM_ASSET_CIRCULATE_VALIDATOR': {'cm_assetCirculateValidator': {
             par_d.get("CHAINID"): u.get("z43_CM_ASSET_CIRCULATE_VALIDATOR_chainId"),
@@ -256,7 +262,8 @@ class CallsD(object):
             par_d.get("ADDRESSTYPE"): u.get("z47_CM_CHAIN_ACTIVE_addressType"),
             par_d.get("ADDRESSPREFIX"): u.get("z47_CM_CHAIN_ACTIVE_addressPrefix"),
             par_d.get("MAGICNUMBER"): u.get("z47_CM_CHAIN_ACTIVE_magicNumber"),
-            par_d.get("MINAVAILABLENODENUM"): u.get("z47_CM_CHAIN_ACTIVE_minAvailableNodeNum"),
+            par_d.get("MINAVAILABLENODENUM"): u.get(
+                "z47_CM_CHAIN_ACTIVE_minAvailableNodeNum"),
             par_d.get("ASSETID"): u.get("z47_CM_CHAIN_ACTIVE_assetId"),
             par_d.get("SYMBOL"): u.get("z47_CM_CHAIN_ACTIVE_symbol"),
             par_d.get("ASSETNAME"): u.get("z47_CM_CHAIN_ACTIVE_assetName"),
@@ -265,8 +272,10 @@ class CallsD(object):
             par_d.get("ADDRESS"): u.get("z47_CM_CHAIN_ACTIVE_address"),
             par_d.get("PASSWORD"): u.get("z47_CM_CHAIN_ACTIVE_password"),
             par_d.get("VERIFIERLIST"): u.get("z47_CM_CHAIN_ACTIVE_verifierList"),
-            par_d.get("SIGNATUREBFTRATIO"): u.get("z47_CM_CHAIN_ACTIVE_signatureBFTRatio"),
-            par_d.get("MAXSIGNATURECOUNT"): u.get("z47_CM_CHAIN_ACTIVE_maxSignatureCount")}},
+            par_d.get("SIGNATUREBFTRATIO"): u.get(
+                "z47_CM_CHAIN_ACTIVE_signatureBFTRatio"),
+            par_d.get("MAXSIGNATURECOUNT"): u.get(
+                "z47_CM_CHAIN_ACTIVE_maxSignatureCount")}},
 
         'CM_CHAIN_REG': {'cm_chainReg': {
             par_d.get("CHAINID"): u.get("z48_CM_CHAIN_REG_chainId"),
@@ -274,7 +283,8 @@ class CallsD(object):
             par_d.get("ADDRESSTYPE"): u.get("z48_CM_CHAIN_REG_addressType"),
             par_d.get("ADDRESSPREFIX"): u.get("z48_CM_CHAIN_REG_addressPrefix"),
             par_d.get("MAGICNUMBER"): u.get("z48_CM_CHAIN_REG_magicNumber"),
-            par_d.get("MINAVAILABLENODENUM"): u.get("z48_CM_CHAIN_REG_minAvailableNodeNum"),
+            par_d.get("MINAVAILABLENODENUM"): u.get(
+                "z48_CM_CHAIN_REG_minAvailableNodeNum"),
             par_d.get("ASSETID"): u.get("z48_CM_CHAIN_REG_assetId"),
             par_d.get("SYMBOL"): u.get("z48_CM_CHAIN_REG_symbol"),
             par_d.get("ASSETNAME"): u.get("z48_CM_CHAIN_REG_assetName"),
@@ -292,8 +302,10 @@ class CallsD(object):
             par_d.get("ASSETID"): u.get("z49_CM_GET_CHAIN_ASSET_assetId")}},
 
         'CM_GET_CIRCULATE_CHAIN_ASSET': {'cm_getCirculateChainAsset': {
-            par_d.get("CIRCULATECHAINID"): u.get("z50_CM_GET_CIRCULATE_CHAIN_ASSET_circulateChainId"),
-            par_d.get("ASSETCHAINID"): u.get("z50_CM_GET_CIRCULATE_CHAIN_ASSET_assetChainId"),
+            par_d.get("CIRCULATECHAINID"): u.get(
+                "z50_CM_GET_CIRCULATE_CHAIN_ASSET_circulateChainId"),
+            par_d.get("ASSETCHAINID"): u.get(
+                "z50_CM_GET_CIRCULATE_CHAIN_ASSET_assetChainId"),
             par_d.get("ASSETID"): u.get("z50_CM_GET_CIRCULATE_CHAIN_ASSET_assetId")}},
 
         'COMMIT_BATCH_UNCONFIRMED_TXS': {'commitBatchUnconfirmedTxs': {
@@ -329,7 +341,8 @@ class CallsD(object):
         'CS_ADD_EVIDENCE_RECORD': {'cs_addEvidenceRecord': {
             par_d.get("CHAINID"): u.get("z59_CS_ADD_EVIDENCE_RECORD_chainId"),
             par_d.get("BLOCKHEADER"): u.get("z59_CS_ADD_EVIDENCE_RECORD_blockHeader"),
-            par_d.get("EVIDENCEHEADER"): u.get("z59_CS_ADD_EVIDENCE_RECORD_evidenceHeader")}},
+            par_d.get("EVIDENCEHEADER"): u.get(
+                "z59_CS_ADD_EVIDENCE_RECORD_evidenceHeader")}},
 
         'CS_CHAIN_ROLLBACK': {'cs_chainRollBack': {
             par_d.get("CHAINID"): u.get("z60_CS_CHAIN_ROLLBACK_chainId"),
@@ -339,18 +352,22 @@ class CallsD(object):
             par_d.get("CHAINID"): u.get("z61_CS_CONTRACT_DEPOSIT_chainId"),
             par_d.get("AGENTHASH"): u.get("z61_CS_CONTRACT_DEPOSIT_agentHash"),
             par_d.get("DEPOSIT"): u.get("z61_CS_CONTRACT_DEPOSIT_deposit"),
-            par_d.get("CONTRACTADDRESS"): u.get("z61_CS_CONTRACT_DEPOSIT_contractAddress"),
+            par_d.get("CONTRACTADDRESS"): u.get(
+                "z61_CS_CONTRACT_DEPOSIT_contractAddress"),
             par_d.get("CONTRACTSENDER"): u.get("z61_CS_CONTRACT_DEPOSIT_contractSender"),
-            par_d.get("CONTRACTBALANCE"): u.get("z61_CS_CONTRACT_DEPOSIT_contractBalance"),
+            par_d.get("CONTRACTBALANCE"): u.get(
+                "z61_CS_CONTRACT_DEPOSIT_contractBalance"),
             par_d.get("CONTRACTNONCE"): u.get("z61_CS_CONTRACT_DEPOSIT_contractNonce"),
             par_d.get("BLOCKTIME"): u.get("z61_CS_CONTRACT_DEPOSIT_blockTime")}},
 
         'CS_CONTRACT_WITHDRAW': {'cs_contractWithdraw': {
             par_d.get("CHAINID"): u.get("z62_CS_CONTRACT_WITHDRAW_chainId"),
             par_d.get("JOINAGENTHASH"): u.get("z62_CS_CONTRACT_WITHDRAW_joinAgentHash"),
-            par_d.get("CONTRACTADDRESS"): u.get("z62_CS_CONTRACT_WITHDRAW_contractAddress"),
+            par_d.get("CONTRACTADDRESS"): u.get(
+                "z62_CS_CONTRACT_WITHDRAW_contractAddress"),
             par_d.get("CONTRACTSENDER"): u.get("z62_CS_CONTRACT_WITHDRAW_contractSender"),
-            par_d.get("CONTRACTBALANCE"): u.get("z62_CS_CONTRACT_WITHDRAW_contractBalance"),
+            par_d.get("CONTRACTBALANCE"): u.get(
+                "z62_CS_CONTRACT_WITHDRAW_contractBalance"),
             par_d.get("CONTRACTNONCE"): u.get("z62_CS_CONTRACT_WITHDRAW_contractNonce"),
             par_d.get("BLOCKTIME"): u.get("z62_CS_CONTRACT_WITHDRAW_blockTime")}},
 
@@ -365,21 +382,29 @@ class CallsD(object):
 
         'CS_CREATE_CONTRACT_AGENT': {'cs_createContractAgent': {
             par_d.get("CHAINID"): u.get("z64_CS_CREATE_CONTRACT_AGENT_chainId"),
-            par_d.get("PACKINGADDRESS"): u.get("z64_CS_CREATE_CONTRACT_AGENT_packingAddress"),
+            par_d.get("PACKINGADDRESS"): u.get(
+                "z64_CS_CREATE_CONTRACT_AGENT_packingAddress"),
             par_d.get("DEPOSIT"): u.get("z64_CS_CREATE_CONTRACT_AGENT_deposit"),
-            par_d.get("COMMISSIONRATE"): u.get("z64_CS_CREATE_CONTRACT_AGENT_commissionRate"),
-            par_d.get("CONTRACTADDRESS"): u.get("z64_CS_CREATE_CONTRACT_AGENT_contractAddress"),
-            par_d.get("CONTRACTSENDER"): u.get("z64_CS_CREATE_CONTRACT_AGENT_contractSender"),
-            par_d.get("CONTRACTBALANCE"): u.get("z64_CS_CREATE_CONTRACT_AGENT_contractBalance"),
-            par_d.get("CONTRACTNONCE"): u.get("z64_CS_CREATE_CONTRACT_AGENT_contractNonce"),
+            par_d.get("COMMISSIONRATE"): u.get(
+                "z64_CS_CREATE_CONTRACT_AGENT_commissionRate"),
+            par_d.get("CONTRACTADDRESS"): u.get(
+                "z64_CS_CREATE_CONTRACT_AGENT_contractAddress"),
+            par_d.get("CONTRACTSENDER"): u.get(
+                "z64_CS_CREATE_CONTRACT_AGENT_contractSender"),
+            par_d.get("CONTRACTBALANCE"): u.get(
+                "z64_CS_CREATE_CONTRACT_AGENT_contractBalance"),
+            par_d.get("CONTRACTNONCE"): u.get(
+                "z64_CS_CREATE_CONTRACT_AGENT_contractNonce"),
             par_d.get("BLOCKTIME"): u.get("z64_CS_CREATE_CONTRACT_AGENT_blockTime")}},
 
         'CS_CREATE_MULTI_AGENT': {'cs_createMultiAgent': {
             par_d.get("CHAINID"): u.get("z65_CS_CREATE_MULTI_AGENT_chainId"),
             par_d.get("AGENTADDRESS"): u.get("z65_CS_CREATE_MULTI_AGENT_agentAddress"),
-            par_d.get("PACKINGADDRESS"): u.get("z65_CS_CREATE_MULTI_AGENT_packingAddress"),
+            par_d.get("PACKINGADDRESS"): u.get(
+                "z65_CS_CREATE_MULTI_AGENT_packingAddress"),
             par_d.get("REWARDADDRESS"): u.get("z65_CS_CREATE_MULTI_AGENT_rewardAddress"),
-            par_d.get("COMMISSIONRATE"): u.get("z65_CS_CREATE_MULTI_AGENT_commissionRate"),
+            par_d.get("COMMISSIONRATE"): u.get(
+                "z65_CS_CREATE_MULTI_AGENT_commissionRate"),
             par_d.get("DEPOSIT"): u.get("z65_CS_CREATE_MULTI_AGENT_deposit"),
             par_d.get("PASSWORD"): u.get("z65_CS_CREATE_MULTI_AGENT_password"),
             par_d.get("SIGNADDRESS"): u.get("z65_CS_CREATE_MULTI_AGENT_signAddress")}},
@@ -422,14 +447,19 @@ class CallsD(object):
         'CS_GET_CONTRACT_AGENT_INFO': {'cs_getContractAgentInfo': {
             par_d.get("CHAINID"): u.get("z74_CS_GET_CONTRACT_AGENT_INFO_chainId"),
             par_d.get("AGENTHASH"): u.get("z74_CS_GET_CONTRACT_AGENT_INFO_agentHash"),
-            par_d.get("CONTRACTADDRESS"): u.get("z74_CS_GET_CONTRACT_AGENT_INFO_contractAddress"),
-            par_d.get("CONTRACTSENDER"): u.get("z74_CS_GET_CONTRACT_AGENT_INFO_contractSender")}},
+            par_d.get("CONTRACTADDRESS"): u.get(
+                "z74_CS_GET_CONTRACT_AGENT_INFO_contractAddress"),
+            par_d.get("CONTRACTSENDER"): u.get(
+                "z74_CS_GET_CONTRACT_AGENT_INFO_contractSender")}},
 
         'CS_GET_CONTRACT_DEPOSIT_INFO': {'cs_getContractDepositInfo': {
             par_d.get("CHAINID"): u.get("z75_CS_GET_CONTRACT_DEPOSIT_INFO_chainId"),
-            par_d.get("JOINAGENTHASH"): u.get("z75_CS_GET_CONTRACT_DEPOSIT_INFO_joinAgentHash"),
-            par_d.get("CONTRACTADDRESS"): u.get("z75_CS_GET_CONTRACT_DEPOSIT_INFO_contractAddress"),
-            par_d.get("CONTRACTSENDER"): u.get("z75_CS_GET_CONTRACT_DEPOSIT_INFO_contractSender")}},
+            par_d.get("JOINAGENTHASH"): u.get(
+                "z75_CS_GET_CONTRACT_DEPOSIT_INFO_joinAgentHash"),
+            par_d.get("CONTRACTADDRESS"): u.get(
+                "z75_CS_GET_CONTRACT_DEPOSIT_INFO_contractAddress"),
+            par_d.get("CONTRACTSENDER"): u.get(
+                "z75_CS_GET_CONTRACT_DEPOSIT_INFO_contractSender")}},
 
         'CS_GET_DEPOSIT_LIST': {'cs_getDepositList': {
             par_d.get("CHAINID"): u.get("z76_CS_GET_DEPOSIT_LIST_chainId"),
@@ -528,9 +558,12 @@ class CallsD(object):
 
         'CS_STOP_CONTRACT_AGENT': {'cs_stopContractAgent': {
             par_d.get("CHAINID"): u.get("z97_CS_STOP_CONTRACT_AGENT_chainId"),
-            par_d.get("CONTRACTADDRESS"): u.get("z97_CS_STOP_CONTRACT_AGENT_contractAddress"),
-            par_d.get("CONTRACTSENDER"): u.get("z97_CS_STOP_CONTRACT_AGENT_contractSender"),
-            par_d.get("CONTRACTBALANCE"): u.get("z97_CS_STOP_CONTRACT_AGENT_contractBalance"),
+            par_d.get("CONTRACTADDRESS"): u.get(
+                "z97_CS_STOP_CONTRACT_AGENT_contractAddress"),
+            par_d.get("CONTRACTSENDER"): u.get(
+                "z97_CS_STOP_CONTRACT_AGENT_contractSender"),
+            par_d.get("CONTRACTBALANCE"): u.get(
+                "z97_CS_STOP_CONTRACT_AGENT_contractBalance"),
             par_d.get("CONTRACTNONCE"): u.get("z97_CS_STOP_CONTRACT_AGENT_contractNonce"),
             par_d.get("BLOCKTIME"): u.get("z97_CS_STOP_CONTRACT_AGENT_blockTime")}},
 
@@ -543,11 +576,13 @@ class CallsD(object):
         'CS_TRIGGER_COINBASE_CONTRACT': {'cs_triggerCoinBaseContract': {
             par_d.get("CHAINID"): u.get("z99_CS_TRIGGER_COINBASE_CONTRACT_chainId"),
             par_d.get("TX"): u.get("z99_CS_TRIGGER_COINBASE_CONTRACT_tx"),
-            par_d.get("BLOCKHEADER"): u.get("z99_CS_TRIGGER_COINBASE_CONTRACT_blockHeader"),
+            par_d.get("BLOCKHEADER"): u.get(
+                "z99_CS_TRIGGER_COINBASE_CONTRACT_blockHeader"),
             par_d.get("STATEROOT"): u.get("z99_CS_TRIGGER_COINBASE_CONTRACT_stateRoot")}},
 
         'CS_UPDATE_AGENT_CONSENSUS_STATUS': {'cs_updateAgentConsensusStatus': {
-            par_d.get("CHAINID"): u.get("z100_CS_UPDATE_AGENT_CONSENSUS_STATUS_chainId")}},
+            par_d.get("CHAINID"): u.get(
+                "z100_CS_UPDATE_AGENT_CONSENSUS_STATUS_chainId")}},
 
         'CS_UPDATE_AGENT_STATUS': {'cs_updateAgentStatus': {
             par_d.get("CHAINID"): u.get("z101_CS_UPDATE_AGENT_STATUS_chainId"),
@@ -724,7 +759,8 @@ class CallsD(object):
             par_d.get("MAGICNUMBER"): u.get("z142_NW_CREATE_NODEGROUP_magicNumber"),
             par_d.get("MAXOUT"): u.get("z142_NW_CREATE_NODEGROUP_maxOut"),
             par_d.get("MAXIN"): u.get("z142_NW_CREATE_NODEGROUP_maxIn"),
-            par_d.get("MINAVAILABLECOUNT"): u.get("z142_NW_CREATE_NODEGROUP_minAvailableCount"),
+            par_d.get("MINAVAILABLECOUNT"): u.get(
+                "z142_NW_CREATE_NODEGROUP_minAvailableCount"),
             par_d.get("ISCROSSGROUP"): u.get("z142_NW_CREATE_NODEGROUP_isCrossGroup")}},
 
         'NW_DEL_NODES': {'nw_delNodes': {
@@ -782,7 +818,8 @@ class CallsD(object):
 
         'PROTOCOL_VERSION_CHANGE': {'protocolVersionChange': {
             par_d.get("CHAINID"): u.get("z156_PROTOCOL_VERSION_CHANGE_chainId"),
-            par_d.get("PROTOCOLVERSION"): u.get("z156_PROTOCOL_VERSION_CHANGE_protocolVersion")}},
+            par_d.get("PROTOCOLVERSION"): u.get(
+                "z156_PROTOCOL_VERSION_CHANGE_protocolVersion")}},
 
         'RECEIVE_PACKING_BLOCK': {'receivePackingBlock': {
             par_d.get("CHAINID"): u.get("z157_RECEIVE_PACKING_BLOCK_chainId"),
@@ -889,11 +926,13 @@ class CallsD(object):
 
         'SC_CONTRACT_INFO': {'sc_contract_info': {
             par_d.get("CHAINID"): u.get("z178_SC_CONTRACT_INFO_chainId"),
-            par_d.get("CONTRACTADDRESS"): u.get("z178_SC_CONTRACT_INFO_contractAddress")}},
+            par_d.get("CONTRACTADDRESS"): u.get(
+                "z178_SC_CONTRACT_INFO_contractAddress")}},
 
         'SC_CONTRACT_OFFLINE_TX_HASH_LIST': {'sc_contract_offline_tx_hash_list': {
             par_d.get("CHAINID"): u.get("z179_SC_CONTRACT_OFFLINE_TX_HASH_LIST_chainId"),
-            par_d.get("BLOCKHASH"): u.get("z179_SC_CONTRACT_OFFLINE_TX_HASH_LIST_blockHash")}},
+            par_d.get("BLOCKHASH"): u.get(
+                "z179_SC_CONTRACT_OFFLINE_TX_HASH_LIST_blockHash")}},
 
         'SC_CONTRACT_RESULT': {'sc_contract_result': {
             par_d.get("CHAINID"): u.get("z180_SC_CONTRACT_RESULT_chainId"),
@@ -937,7 +976,8 @@ class CallsD(object):
             par_d.get("CHAINID"): u.get("z187_SC_IMPUTED_CALL_GAS_chainId"),
             par_d.get("SENDER"): u.get("z187_SC_IMPUTED_CALL_GAS_sender"),
             par_d.get("VALUE"): u.get("z187_SC_IMPUTED_CALL_GAS_value"),
-            par_d.get("CONTRACTADDRESS"): u.get("z187_SC_IMPUTED_CALL_GAS_contractAddress"),
+            par_d.get("CONTRACTADDRESS"): u.get(
+                "z187_SC_IMPUTED_CALL_GAS_contractAddress"),
             par_d.get("METHODNAME"): u.get("z187_SC_IMPUTED_CALL_GAS_methodName"),
             par_d.get("METHODDESC"): u.get("z187_SC_IMPUTED_CALL_GAS_methodDesc"),
             par_d.get("ARGS"): u.get("z187_SC_IMPUTED_CALL_GAS_args")}},
@@ -1002,12 +1042,18 @@ class CallsD(object):
             par_d.get("AMOUNT"): u.get("z197_SC_TRANSFER_amount"),
             par_d.get("REMARK"): u.get("z197_SC_TRANSFER_remark")}},
 
-        'SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT': {'sc_trigger_payable_for_consensus_contract': {
-            par_d.get("CHAINID"): u.get("z198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_chainId"),
-            par_d.get("STATEROOT"): u.get("z198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_stateRoot"),
-            par_d.get("BLOCKHEIGHT"): u.get("z198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_blockHeight"),
-            par_d.get("CONTRACTADDRESS"): u.get("z198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_contractAddress"),
-            par_d.get("TX"): u.get("z198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_tx")}},
+        'SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT': {
+            'sc_trigger_payable_for_consensus_contract': {
+                par_d.get("CHAINID"): u.get(
+                    "z198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_chainId"),
+                par_d.get("STATEROOT"): u.get(
+                    "z198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_stateRoot"),
+                par_d.get("BLOCKHEIGHT"): u.get(
+                    "z198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_blockHeight"),
+                par_d.get("CONTRACTADDRESS"): u.get(
+                    "z198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_contractAddress"),
+                par_d.get("TX"): u.get(
+                    "z198_SC_TRIGGER_PAYABLE_FOR_CONSENSUS_CONTRACT_tx")}},
 
         'SC_UPLOAD': {'sc_upload': {
             par_d.get("CHAINID"): u.get("z199_SC_UPLOAD_chainId"),
@@ -1034,7 +1080,8 @@ class CallsD(object):
 
         'SC_VALIDATE_DELETE': {'sc_validate_delete': {
             par_d.get("CHAINID"): u.get("z202_SC_VALIDATE_DELETE_chainId"),
-            par_d.get("CONTRACTADDRESS"): u.get("z202_SC_VALIDATE_DELETE_contractAddress")}},
+            par_d.get("CONTRACTADDRESS"): u.get(
+                "z202_SC_VALIDATE_DELETE_contractAddress")}},
 
         'STOP_AGENTVALID': {'stopAgentValid': {
             par_d.get("CHAINID"): u.get("z203_STOP_AGENTVALID_chainId"),
@@ -1090,8 +1137,10 @@ class CallsD(object):
             par_d.get("TXHASH"): u.get("z214_TX_GET_CONFIRMED_TX_CLIENT_txHash")}},
 
         'TX_GET_NONEXISTENT_UNCONFIRMED_HASHS': {'tx_getNonexistentUnconfirmedHashs': {
-            par_d.get("CHAINID"): u.get("z215_TX_GET_NONEXISTENT_UNCONFIRMED_HASHS_chainId"),
-            par_d.get("TXHASHLIST"): u.get("z215_TX_GET_NONEXISTENT_UNCONFIRMED_HASHS_txHashList")}},
+            par_d.get("CHAINID"): u.get(
+                "z215_TX_GET_NONEXISTENT_UNCONFIRMED_HASHS_chainId"),
+            par_d.get("TXHASHLIST"): u.get(
+                "z215_TX_GET_NONEXISTENT_UNCONFIRMED_HASHS_txHashList")}},
 
         'TX_GET_SYSTEMTYPES': {'tx_getSystemTypes': {
             par_d.get("CHAINID"): u.get("z216_TX_GET_SYSTEMTYPES_chainId")}},

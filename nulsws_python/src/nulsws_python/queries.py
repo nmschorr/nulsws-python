@@ -25,6 +25,9 @@ class RunQueries(object):
         port_r = conf_ini_d.get("port_req")
         websock_url = ''.join([conn_m, "://", host_r, ":", str(port_r)])
         debug = 1
+        str_m1 = "* * * First message going out- NEGOTIATE: \n"
+        str_m2 = "--------- ! ! ! NEGOTIATE response received: "
+        str_m3 = "------end Negotiate----------------------------------------"
 
         if not debug:
             mt_obj = MakeTop()
@@ -34,26 +37,26 @@ class RunQueries(object):
             while not connection:
                 await a_sleep(pause_time)
             top_plus_mid_dict_json = json.dumps(top_plus_mid_dict)
-            rout_obj.json_prt(top_plus_mid_dict, "* * * First message going out- NEGOTIATE: \n")
+            rout_obj.print_json_request(top_plus_mid_dict, str_m1)
 
             await connection.write_message(top_plus_mid_dict_json)  # 2) WRITE
             # await a_sleep(self.s_time)
             negotiate_result = await connection.read_message()  # 3 READ
             await a_sleep(pause_time)
-            rout_obj.json_prt(negotiate_result, "--------- ! ! ! NEGOTIATE response received: ")
-        rout_obj.myprint("------end Negotiate----------------------------------------")
+            rout_obj.print_json_request(negotiate_result, str_m2)
+        rout_obj.myprint(str_m3)
         rr_obj = RegularRequest()
 
         for run_item in run_list:
             m_indx += 1
 
             if True:
-            # if mtpe == 3:
+                # if mtpe == 3:
                 main_request = prep_request(m_indx, run_item, conf_ini_d)
 
                 if debug:
                     json_reg = json.dumps(main_request)
-                    rout_obj.json_prt(json_reg, " ")
+                    rout_obj.print_json_request(json_reg, " ")
 
                 else:
                     await rr_obj.regular_request(connection, main_request)

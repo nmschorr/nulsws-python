@@ -5,7 +5,8 @@ from nulsws_python.src.nulsws_python.routines import Routines
 from nulsws_python.src.nulsws_python.labels import Labels
 
 # 0  "ProtocolVersion": "0.1",
-# 1 "MessageID": "1569897424187-1",  #2 "TimeZone": "-4", # 3 "Timestamp": "1569897424187"
+# 1 "MessageID": "1569897424187-1",  #2 "TimeZone": "-4",
+# 3 "Timestamp": "1569897424187"
 # 4 "MessageType": "NegotiateConnection",
 # msg_type_name = labs_type_d.__getitem__(msg_type)
 
@@ -13,7 +14,7 @@ from nulsws_python.src.nulsws_python.labels import Labels
 class MakeVeryTop(object):
 
     @staticmethod
-    def make_very_top(msg_type: int, msg_indx: int, proto_ver):
+    def make_very_top(msg_type: int, msg_indx: int, proto_ver: str):
         t_stamp, tzone, m_id = Routines.get_times(msg_indx)
         msg_type_name = Labels.labs_type_d[msg_type]
 

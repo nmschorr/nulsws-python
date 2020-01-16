@@ -9,6 +9,7 @@ by Nancy Schorr for Nuls, None),
 # change user_settings to suit
 # for use in api calls
 # fill in your default params here
+
 from configparser import ConfigParser
 
 
@@ -16,17 +17,17 @@ class UserSettings(object):
 
     def __init__(self):
 
-        config = ConfigParser()
-        myfile = "user_settings/config.ini"
-        config.read(myfile)
-        section_names = config.sections()
+        config_parser = ConfigParser()
+        config_file = "user_settings/config.ini"
+        config_parser.read(config_file)
+        config_sections = config_parser.sections()
 
         usr_config_ini_d = dict()
-        for sect_nm in section_names:
-            optts = config.options(sect_nm)
-            for op in optts:
-                myval = config.get(sect_nm, op)
-                usr_config_ini_d.update({op: myval})
+        for section in config_sections:
+            options_c = config_parser.options(section)
+            for op in options_c:
+                conf_val = config_parser.get(section, op)
+                usr_config_ini_d.update({op: conf_val})
 
         self.usr_config_ini_d = usr_config_ini_d
         ucid = usr_config_ini_d
@@ -721,7 +722,8 @@ class UserSettings(object):
             "z1017_AC_GET_PRIKEY_BY_ADDRESS_password": ucid.get('my_password')
         }
 
-    # the last above were added after the above numbers were created.get(' The consist of 1000 + the
+    # the last above were added after the above numbers (over z1000)
+    # were created.get(' The consist of 1000 + the
     # number that it should have been approximately'
 
     def get_conf_dict(self):

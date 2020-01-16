@@ -5,6 +5,12 @@ January 2020
 
 """
 
+# Reason for labels: all uppers is easier for the user to use
+# correctly because of mixed case
+# and underlines in values
+
+# The following shouldn't be changed by user except for major modifications
+
 
 class Labels(object):
 
@@ -42,7 +48,8 @@ class Labels(object):
         "ONE": "1",
         "CHAINID_LABEL": "chainId"}
 
-    # Reason for labels: all uppers is easier for the user to use correctly because of mixed case
+    # Reason for labels: all uppers is easier for the user to use
+    # correctly because of mixed case
     # and underlines in values
 
     # The following shouldn't be changed by user except for major modifications

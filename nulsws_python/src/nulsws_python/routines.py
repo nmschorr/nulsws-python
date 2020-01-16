@@ -69,7 +69,7 @@ class Routines(object):
             print(x) if not y else print(str(x) + ' ' + str(y))
 
     @classmethod
-    def json_prt(cls, json_str, str_msg="", debug=True):
+    def print_json_request(cls, json_str, str_msg="", debug=True):
         if not isinstance(json_str, dict):
             json_str = json.loads(json_str)
         if debug:
@@ -86,7 +86,7 @@ class Routines(object):
     # def check_json_answer(self, answer) -> bool:
     #     n = self.n
     #     jload = json.loads(answer)
-    #     self.json_prt(jload, "check answer jds value= ")
+    #     self.print_json_request(jload, "check answer jds value= ")
     #     msg_d_answer = jload.get(n.labs_params_d)
     #     mt = jload.get(n.msg_type_label)
     #     if mt == n.negotiate_conn_resp_label:

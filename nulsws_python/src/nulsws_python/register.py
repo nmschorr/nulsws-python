@@ -7,10 +7,9 @@
 by Nancy Schorr for Nuls, December 2, 2019
 """
 import json
-from nulsws_python.src.nulsws_python.make_top import MakeTop
+from nulsws_python.src.nulsws_python.make_very_top import MakeVeryTop
 
 # this can be a list once other versions are supported
-
 
 # ------ msg_type --------------------
 #  Message Type - string
@@ -42,11 +41,12 @@ get_cpu_info = "GetCPUInfo"
 
 
 def make_nulsws_register_method(mm_index):
-    n = MakeTop()
-    # oldtop = {   "MessageData": {   "RequestAck": zero,   "RequestMethods": {   "RegisterAPI": {
+    mvt_obj = MakeVeryTop()
+    # oldtop = {   "MessageData": {   "RequestAck": zero,
+    # "RequestMethods": {   "RegisterAPI": {
     # "GetBalance": 0}  }}}
 
-    top_sec = n.make_very_top(3, mm_index)
+    top_sec = mvt_obj.make_very_top(3, mm_index)
     nulsws_register_j = {
         "MessageData": {
             "RequestAck": zero,

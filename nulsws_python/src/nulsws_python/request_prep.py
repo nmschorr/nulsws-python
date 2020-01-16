@@ -10,19 +10,18 @@ from nulsws_python.src.nulsws_python.make_top import MakeTop
 class RequestPrep(object):
 
     def prep_request(self, msg_indx, caps_name, configini_d):
-        mm_obj = MakeMiddle()
         mtop_obj = MakeTop()
-        bottom_callsd = CallsD().calls_dict[caps_name]
+        mid_obj = MakeMiddle()
+        bottom_sect = CallsD().calls_dict[caps_name]
 
         request_type = "1"  # 1 or 2 for message requests   2=return ack+
         subs_e_c = "0"  # subscription event_counter
         subs_per = "0"  # subscription period
         subs_rg = "0"  # subscription range
         resp_max = "0"  # response max size range
-        mid_tup = (request_type, subs_e_c, subs_per, subs_rg, resp_max)
+        middle_sect = (request_type, subs_e_c, subs_per, subs_rg, resp_max)
 
-        msg_section_middle = mm_obj.make_middle(bottom_callsd, mid_tup)
-        lg_top = mtop_obj.make_top(msg_indx, configini_d)
-
-        lg_top.update(msg_section_middle)
-        return lg_top
+        mid_plus_bottom_section = mid_obj.make_middle(bottom_sect, middle_sect)
+        full_request = mtop_obj.make_top(msg_indx, configini_d)
+        full_request.update(mid_plus_bottom_section)
+        return full_request
