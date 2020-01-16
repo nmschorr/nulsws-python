@@ -5,7 +5,7 @@
 
 import json
 from nulsws_python.src.nulsws_python.make_top import get_top_section
-from nulsws_python.src.nulsws_python.user_settings.nulsws_user_set import *
+from nulsws_python.src.nulsws_python.user_settings.usersettings import *
 from nulsws_python.src.nulsws_python.constants.nulsws_api_labels import NulsWsApiLabel
 from nulsws_python.src.nulsws_python.constants.nulsws_other_labels import *
 
