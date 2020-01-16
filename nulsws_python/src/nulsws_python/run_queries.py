@@ -15,13 +15,14 @@ from tornado.httpclient import AsyncHTTPClient
 class RunQueries(object):
 
     async def run_queries(self, run_list, conf_ini_d):
-        ws = True
+        debug = 0
+        ws = False   # False is for http
         m_indx = 0
         pause_time = .7
         rout_obj = routines.Routines()
         req_obj = RequestPrep()
         prep_request = req_obj.prep_request
-        http_port = '7772'
+        http_port = '80'
 
         connection = None
         conn_m = conf_ini_d.get("connect_method")
@@ -29,7 +30,6 @@ class RunQueries(object):
         port_r = conf_ini_d.get("port_req")
         websock_url = ''.join([conn_m, "://", host_r, ":", str(port_r)])
         http_url = ''.join(["http", "://", host_r, ":", str(http_port)])
-        debug = 1
         str_m1 = "* * * First message going out- NEGOTIATE: \n"
         str_m2 = "--------- ! ! ! NEGOTIATE response received: "
         str_m3 = "------end Negotiate----------------------------------------"
