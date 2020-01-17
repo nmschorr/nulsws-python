@@ -8,11 +8,23 @@ import nulsws_python.src.nulsws_python.routines as routines
 from nulsws_python.src.nulsws_python.request_prep import RequestPrep
 from nulsws_python.src.nulsws_python.make_top import MakeTop
 from nulsws_python.src.nulsws_python.regular_request import RegularRequest
-
-from tornado.httpclient import AsyncHTTPClient
+import tornado.httpclient as httpclient
 
 
 class RunQueries(object):
+
+    async def httpfetch(self, connect_url):
+        result = None
+        async_http_client = httpclient.AsyncHTTPClient()
+        try:
+            response = async_http_client.fetch(connect_url)
+
+            result = await response
+            print("done waiting. ")
+        except httpclient.HTTPError as e:
+            print("Error:", e)
+        return result
+
 
     async def run_queries_m(self, msg_type, run_list, conf_ini_d):
         debug = 0
@@ -36,9 +48,12 @@ class RunQueries(object):
         if int(conn_m) == 1:
             conn_method = 'ws'  # add wss later
             conn_port = ws_port
-        else:
+
+        elif int(conn_m) == 2:
             conn_method = 'https'
-            conn_port = http1_port
+            #conn_port = http1_port
+            conn_port = 18003
+
 
         conn_url = ''.join([conn_method, "://", host_ip, ":", str(conn_port)])
 
@@ -47,7 +62,23 @@ class RunQueries(object):
             top_plus_mid_dict = mt_obj.make_top_m(msg_type_negotiate, m_indx, conf_ini_d)  # must be done
 
             print("Using this connection: ", conn_url)
-            connection = await websocket_connect(conn_url)  # 1) CONNECT
+            if int(conn_m) == 1:
+                connection = await websocket_connect(conn_url)  # 1) CONNECT
+
+            elif int(conn_m) == 2:
+                msg = {
+                    "jsonrpc": "2.0",
+                    "method": "methodCMD",
+                    "params": [],
+                    "id": 1234
+                }
+
+                result = await self.httpfetch(conn_url)
+                # result = await result_future
+                result = await self.httpfetch(conn_url)
+
+
+                print("done result: ", result.body)
 
             while not connection:
                 await a_sleep(pause_time)
