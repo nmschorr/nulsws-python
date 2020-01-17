@@ -49,11 +49,10 @@ class RunQueries(object):
             conn_method = 'ws'  # add wss later
             conn_port = ws_port
 
-        elif int(conn_m) == 2:
-            conn_method = 'https'
-            #conn_port = http1_port
-            conn_port = 18003
-
+        # elif int(conn_m) == 2:
+        #     conn_method = 'https'
+        #     #conn_port = http1_port
+        #     conn_port = 18003
 
         conn_url = ''.join([conn_method, "://", host_ip, ":", str(conn_port)])
 

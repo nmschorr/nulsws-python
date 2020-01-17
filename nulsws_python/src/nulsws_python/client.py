@@ -77,7 +77,7 @@ if __name__ == "__main__":
            'LATEST_BLOCKHEADER_PO', 'LATEST_HEIGHT']
 
 
-    '''
+
     r_5 = ['AC_ADD_ADDRESS_PREFIX', 'AC_CREATE_ACCOUNT', 'AC_CREATE_CONTRACT_ACCOUNT',
            'AC_CREATE_MULTI_SIGN_ACCOUNT', 'AC_CREATE_MULTI_SIGN_TRANSFER',
            'AC_CREATE_OFFLINE_ACCOUNT',
@@ -181,7 +181,7 @@ if __name__ == "__main__":
            'TX_REGISTER', 'TX_ROLLBACK', 'TX_SAVE', 'TX_VALIDATOR', 'TX_VERIFY_TX',
            'UPDATE_CHAIN_ASSET',
            'VERIFY_COINDATA', 'VERIFY_COINDATA_BATCH_PACKAGED', 'WITHDRAW_VALID']
-    '''
+
 
     # runlist = r_1 + r_2 + r_3 + r_4
     runlist = r_4
