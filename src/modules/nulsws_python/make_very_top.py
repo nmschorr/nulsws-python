@@ -1,8 +1,8 @@
 #!/usr/bin/python3.7
 
 
-from nulsws_python.src.nulsws_python.routines import Routines
-from nulsws_python.src.nulsws_python.labels import Labels
+from src.modules.nulsws_python.routines import Routines
+from src.modules.nulsws_python.labels import Labels
 
 # 0  "ProtocolVersion": "0.1",
 # 1 "MessageID": "1569897424187-1",  #2 "TimeZone": "-4",

@@ -4,10 +4,10 @@ import json
 from asyncio import sleep as a_sleep
 
 from tornado.websocket import websocket_connect  # WebSocketClosedError
-import nulsws_python.src.nulsws_python.routines as routines
-from nulsws_python.src.nulsws_python.request_prep import RequestPrep
-from nulsws_python.src.nulsws_python.make_top import MakeTop
-from nulsws_python.src.nulsws_python.regular_request import RegularRequest
+import src.modules.nulsws_python.routines as routines
+from src.modules.nulsws_python.request_prep import RequestPrep
+from src.modules.nulsws_python.make_top import MakeTop
+from src.modules.nulsws_python.regular_request import RegularRequest
 import tornado.httpclient as httpclient
 
 

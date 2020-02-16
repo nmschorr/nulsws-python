@@ -1,7 +1,7 @@
 #!/usr/bin/python3.7
 
-from nulsws_python.src.nulsws_python.labels import Labels
-from nulsws_python.src.nulsws_python.make_very_top import MakeVeryTop
+from src.modules.nulsws_python.labels import Labels
+from src.modules.nulsws_python.make_very_top import MakeVeryTop
 
 
 class MakeTop(object):

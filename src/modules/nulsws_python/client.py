@@ -32,9 +32,9 @@
 # Note: Maybe don't use typing.Dict - it can cause json problems when converted
 
 from asyncio import run as asyncio_run
-import nulsws_python.src.nulsws_python.run_queries
-import nulsws_python.src.nulsws_python.regular_request
-from nulsws_python.src.nulsws_python.user_settings.usersettings import UserSettings
+import src.nulsws_python.run_queries as run_queries
+import src.nulsws_python.regular_request
+import src.modules.nulsws_python.user_settings.usersettings as usersettings
 
 
 class Client(object):
@@ -43,8 +43,8 @@ class Client(object):
         pass
 
     def main(self, run_list, mtp=3):
-        runq_obj = nulsws_python.src.nulsws_python.run_queries.RunQueries()
-        conf_ini_d = UserSettings().get_conf_dict()  # make this just once
+        runq_obj = run_queries.RunQueries()
+        conf_ini_d = usersettings.UserSettings().get_conf_dict()  # make this just once
 
         if mtp == 3:  # if a regular request Nulstar type 3
             asyncio_run(

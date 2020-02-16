@@ -1,6 +1,6 @@
 #!/usr/bin/python3.7
 
-from nulsws_python.src.nulsws_python.labels import Labels
+from src.modules.nulsws_python.labels import Labels
 
 
 class MakeMiddle(object):

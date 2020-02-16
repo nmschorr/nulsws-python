@@ -2,7 +2,7 @@
 
 import json
 from asyncio import sleep as a_sleep
-import nulsws_python.src.nulsws_python.routines as routines
+import src.modules.nulsws_python.routines as routines
 
 
 class RegularRequest(object):

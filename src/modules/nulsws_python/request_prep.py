@@ -2,9 +2,9 @@
 # requesttype 2 - return ack +
 
 
-from nulsws_python.src.nulsws_python.calls_d import CallsD
-from nulsws_python.src.nulsws_python.make_middle import MakeMiddle
-from nulsws_python.src.nulsws_python.make_top import MakeTop
+from src.modules.nulsws_python.calls_d import CallsD
+from src.modules.nulsws_python.make_middle import MakeMiddle
+from src.modules.nulsws_python.make_top import MakeTop
 
 
 class RequestPrep(object):
