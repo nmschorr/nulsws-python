@@ -139,15 +139,15 @@ run_queries_m() calls "negotiate list". This method set's up the connection with
   
 The runlist is put at the bottom of the main client file like this:
 
-'''
-if __name__ == '__main__':
-    RUNLIST = [b.AC_GET_ACCOUNT_BYADDRESS, b.AC_GET_ALL_ADDRESS_PREFIX, b.AC_GET_ACCOUNT_LIST,
-                b.AC_GET_ADDRESS_LIST, b.AC_GET_ADDRESS_PREFIX_BY_CHAINID, b.AC_GET_ALL_ADDRESS_PREFIX,
-                b.AC_GET_ALL_PRIKEY, b.AC_GET_ALIASBY_ADDRESS]
-    message_type = 3 
-    nws = Client()    
-    nws.main(RUN_LIST, message_type)
-'''
+
+    if __name__ == '__main__':
+        RUNLIST = [b.AC_GET_ACCOUNT_BYADDRESS, b.AC_GET_ALL_ADDRESS_PREFIX, b.AC_GET_ACCOUNT_LIST,
+                   b.AC_GET_ADDRESS_LIST, b.AC_GET_ADDRESS_PREFIX_BY_CHAINID, b.AC_GET_ALL_ADDRESS_PREFIX,
+                   b.AC_GET_ALL_PRIKEY, b.AC_GET_ALIASBY_ADDRESS]
+        message_type = 3 
+        nws = Client()    
+        nws.main(RUN_LIST, message_type) 
+
 
 The framework includes a set of Constants libraries contained in the file "call_d" which is a
  dictionary used to lookup settings and call names for each call.
@@ -174,8 +174,7 @@ __Here's a sample:__
             par_d.get("OUTPUTS"): u.get("z4_AC_CREATE_MULTI_SIGN_TRANSFER_outputs"),
             par_d.get("REMARK"): u.get("z4_AC_CREATE_MULTI_SIGN_TRANSFER_remark"),
             par_d.get("INPUTS"): u.get("z4_AC_CREATE_MULTI_SIGN_TRANSFER_signAddress"),
-            par_d.get("SIGNPASSWORD"):
-                u.get("z4_AC_CREATE_MULTI_SIGN_TRANSFER_signPassword"),
+            par_d.get("SIGNPASSWORD"): u.get("z4_AC_CREATE_MULTI_SIGN_TRANSFER_signPassword"),
             par_d.get("SIGNPASSWORD"): u.get("z25_AC_SET_MULTISIGN_ALIAS_signPassword")}},
 
 
