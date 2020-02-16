@@ -118,7 +118,7 @@ There is just one method in the main class Client - main(). This method calls
   like JSON messages - so converting back and forth is simple and easy.
  
 
-- Inside client.py is main(self, runlist, msg_type=3):  This method takes input from the scripting
+- Inside client.py is main(self, runlist, msg_type):  This method takes input from the scripting
  area below the
  class in the
  class file - ie, the runlist and the message type. Currently the message default is set to 3. The 
@@ -149,20 +149,17 @@ The runlist is put at the bottom of the main client file like this:
         nws.main(RUN_LIST, message_type) 
 
 
-The framework includes a set of Constants libraries contained in the file "call_d" which is a
- dictionary used to lookup settings and call names for each call.
-. This is a somewhat complex 
-behind-the-scenes mechanism that make setting preferences for each of the 228 or so 
-types of message easy for the developer.  Within those 228 types of requests are 124 
-different parameters. Many of the requests only require one or parameters, but some as 
+The framework includes a set of constants in a python dictionary in the file "call_d".  It is
+ used to lookup settings and call names for each call.
+. Within these 228 types of requests are 124 
+different parameters. Many of the requests only require one or parameters, but some require as 
 many as eight or so. With the average being maybe 3-4 - that gives us a total of around
 1,000 possible specific parameters for this nuls-python-connect library.
 
-The user/developer initially only needs to set parameter for those functions he/she is 
-interested in. The settings go into two user parameter files in the NulsWsRequest 
-directory. 
+The user/developer initially only needs to set parameters for those functions he/she is 
+interested in. The settings go into the usersettings.py file in the user_settings directory.
 
-The first file, calls_d.py, contains every one of the possible parameters. 
+The dictionary inside calls_d.py contains every possible parameter for every call.
 Once set in this file, it is fed into the library, and no further setup is needed to 
 access the as-is nuls blockchain via the Nulstar Connector module. 
 
@@ -189,29 +186,29 @@ This file never changes unless you are developing.  In that case - it is in dict
 #### usersettings.py
 Most user editing will be done in the user_settings/usersettings.py file. Here's a sample:
 
-connect_method = "ws://"   # could be wss
-host_req = "127.0.0.1"
-port_req = "7772"    
-compress_type_VALUE = "zlib"
-compress_rate_VALUE = 0                      # 0-9
-my_pubkeys: 1
-my_chainid: int = 1               # int
-my_account: str = "NULSd6Hggvrij3MPW9QTHJGBv7uiyMKw41i7t"             # java-type-String
-my_password = 'nuls123456'   # str
-my_addresstype: int = 0               # int
-my_assetchainid: int = 1               # int
-my_assetid: int = 1               # int
-my_blocktype: int = 0               # int
-my_circulatechainid: int = 0               # int
-my_commissionrate: int = 0               # int
-my_height: int = 0               # int
-my_address: str = "NULSd6Hggvrij3MPW9QTHJGBv7uiyMKw41i7t"             # java-type-String
-my_addressprefix: str = 'NULS'           # java-type-String
+    connect_method = "ws://"   # can change to wss
+    host_req = "127.0.0.1"
+    port_req = "7772"    
+    compress_type_VALUE = "zlib"
+    compress_rate_VALUE = 0      # 0-9
+    my_pubkeys: 1
+    my_chainid: int = 1           
+    my_account: str = "NULSd6Hggvrij3MPW9QTHJGBv7uiyMKw41i7t"
+    my_password = 'nuls123456'   
+    my_addresstype: int = 0             
+    my_assetchainid: int = 1           
+    my_assetid: int = 1             
+    my_blocktype: int = 0               
+    my_circulatechainid: int = 0             
+    my_commissionrate: int = 0             
+    my_height: int = 0         
+    my_address: str = "NULSd6Hggvrij3MPW9QTHJGBv7uiyMKw41i7t"
+    my_addressprefix: str = 'NULS'
 
 
-### Further project goals
-- Complete implementation of the python library as described in Berzeck's documents
-- Further document this framework
+### Further Project Goals
+- Complete implementation of the python library as described in Berzeck's documents.
+- Further document this framework.
 - Properly package it according to Python standards so it can be easily installed, 
 accessed, and built-upon. See https://packaging.python.org/overview/ for details.
 
