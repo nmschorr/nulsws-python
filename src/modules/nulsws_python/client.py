@@ -32,10 +32,10 @@
 # Note: Maybe don't use typing.Dict - it can cause json problems when converted
 
 from asyncio import run as asyncio_run
-import src.nulsws_python.run_queries as run_queries
-import src.nulsws_python.regular_request
-import src.modules.nulsws_python.user_settings.usersettings as usersettings
-
+from src.modules.nulsws_python.run_queries import RunQueries
+# import src.modules.nulsws_python.
+# import src.modules.nulsws_python.user_settings.usersettings as usersettings
+from src.modules.nulsws_python.user_settings import usersettings
 
 class Client(object):
 
@@ -43,7 +43,7 @@ class Client(object):
         pass
 
     def main(self, run_list, mtp=3):
-        runq_obj = run_queries.RunQueries()
+        runq_obj = RunQueries()
         conf_ini_d = usersettings.UserSettings().get_conf_dict()  # make this just once
 
         if mtp == 3:  # if a regular request Nulstar type 3
@@ -74,9 +74,7 @@ if __name__ == "__main__":
     # runlist = runlist_1 + runlist_2 + runlist_3
 
     r_4 = ['GET_STATUS', 'GET_VERSION', 'INFO', 'LATEST_BLOCK', 'LATEST_BLOCKHEADER',
-           'LATEST_BLOCKHEADER_PO', 'LATEST_HEIGHT']
-
-
+           'LATEST_BLOCKHEADER_PO', 'LATEST_HEIGHT', 'AC_TRANSFER', 'AC_GET_ADDRESS_PREFIX_BY_CHAINID']
 
     r_5 = ['AC_ADD_ADDRESS_PREFIX', 'AC_CREATE_ACCOUNT', 'AC_CREATE_CONTRACT_ACCOUNT',
            'AC_CREATE_MULTI_SIGN_ACCOUNT', 'AC_CREATE_MULTI_SIGN_TRANSFER',
@@ -181,7 +179,6 @@ if __name__ == "__main__":
            'TX_REGISTER', 'TX_ROLLBACK', 'TX_SAVE', 'TX_VALIDATOR', 'TX_VERIFY_TX',
            'UPDATE_CHAIN_ASSET',
            'VERIFY_COINDATA', 'VERIFY_COINDATA_BATCH_PACKAGED', 'WITHDRAW_VALID']
-
 
     # runlist = r_1 + r_2 + r_3 + r_4
     runlist = r_4
