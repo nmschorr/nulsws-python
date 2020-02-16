@@ -1,7 +1,0 @@
-{
-	"MessageType": "NegotiateConnectionReponse",
-	"MessageData": {
-		"NegotiationStatus": "0",
-		"NegotiationComment": "Incompatible protocol version"
-	}
-}
