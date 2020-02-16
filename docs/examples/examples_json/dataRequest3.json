@@ -1,0 +1,41 @@
+
+
+# this works:
+{
+   "ProtocolVersion": "0.1",
+   "MessageID": "157588462348569-1",
+   "Timestamp": 157588462348569,
+   "TimeZone": 8,
+   "MessageType": "Request",
+   "MessageData": {
+      "RequestType": "2",
+      "SubscriptionEventCounter": "0",
+      "SubscriptionPeriod": "0",
+      "SubscriptionRange": "0",
+      "ResponseMaxSize": "0",
+      "RequestMethods": {
+         "ListAPI": {}
+      }
+   }
+}
+
+
+
+# this works:
+{
+   "ProtocolVersion": "0.1",
+   "MessageID": "157588462348569-1",
+   "Timestamp": 157588462348569,
+   "TimeZone": 8,
+   "MessageType": "Request",
+   "MessageData": {
+      "RequestType": "2",
+      "SubscriptionEventCounter": "0",
+      "SubscriptionPeriod": "0",
+      "SubscriptionRange": "0",
+      "ResponseMaxSize": "0",
+      "RequestMethods": {
+         "GetHeight": {}
+      }
+   }
+}

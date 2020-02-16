@@ -1,0 +1,10 @@
+{
+   "ProtocolVersion": "0.1",
+   "MessageID": "157588462348569-2",
+   "Timestamp": 157588462348569,
+   "TimeZone": 8,
+	"MessageType": "Ack",
+	"MessageData": {
+		"RequestID": "sdj8jcf8899ekffEFefee"
+	}
+}

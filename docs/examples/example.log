@@ -1,0 +1,326 @@
+/usr/local/bin/python3.7 /home/admin/workspace/nulsws-python/nulsws_python/src/nulsws_python/nulsws_client.py
+the url:   ws://127.0.0.1:7772
+* * * First message going out- NEGOTIATE: 
+{
+   "ProtocolVersion": "0.1",
+   "MessageID": "157873380221403-0",
+   "Timestamp": "157873380221403",
+   "TimeZone": "8",
+   "MessageType": "NegotiateConnection",
+   "MessageData": {
+      "ProtocolVersion": "0.1",
+      "CompressionAlgorithm": "zlib",
+      "CompressionRate": 0
+   }
+}
+--------- ! ! ! NEGOTIATE response received: {
+   "MessageData": {
+      "NegotiationComment": "Negotiation successful!",
+      "NegotiationStatus": "1",
+      "RequestID": "157873380221403-0"
+   },
+   "MessageID": "1578730306452-236",
+   "MessageType": "NegotiateConnectionResponse",
+   "TimeZone": "-8",
+   "Timestamp": "1578733802220"
+}
+------end Negotiate----------------------------------------
+
+* * * REGULAR message going out: 
+{
+   "ProtocolVersion": "0.1",
+   "MessageID": "157873380292281-1",
+   "Timestamp": "157873380292281",
+   "TimeZone": "8",
+   "MessageType": "Request",
+   "MessageData": {
+      "RequestType": "1",
+      "SubscriptionEventCounter": "0",
+      "SubscriptionPeriod": "0",
+      "SubscriptionRange": "0",
+      "ResponseMaxSize": "0",
+      "RequestMethods": {
+         "getStatus": {
+            "chainId": 1
+         }
+      }
+   }
+}
+   -----------> ! ! ! REGULAR response received: {
+   "MessageData": {
+      "RequestID": "157873380292281-1",
+      "ResponseComment": "",
+      "ResponseData": {
+         "getStatus": {
+            "status": 1
+         }
+      },
+      "ResponseErrorCode": "",
+      "ResponseMaxSize": "0",
+      "ResponseProcessingTime": "1",
+      "ResponseStatus": 0
+   },
+   "MessageID": "1578730306452-238",
+   "MessageType": "Response",
+   "TimeZone": "-8",
+   "Timestamp": "1578733802924"
+}
+--------------end previous / begin next request--------------------------
+
+* * * REGULAR message going out: 
+{
+   "ProtocolVersion": "0.1",
+   "MessageID": "157873380432691-2",
+   "Timestamp": "157873380432691",
+   "TimeZone": "8",
+   "MessageType": "Request",
+   "MessageData": {
+      "RequestType": "1",
+      "SubscriptionEventCounter": "0",
+      "SubscriptionPeriod": "0",
+      "SubscriptionRange": "0",
+      "ResponseMaxSize": "0",
+      "RequestMethods": {
+         "getVersion": {
+            "chainId": 1
+         }
+      }
+   }
+}
+   -----------> ! ! ! REGULAR response received: {
+   "MessageData": {
+      "RequestID": "157873380432691-2",
+      "ResponseComment": "",
+      "ResponseData": {
+         "getVersion": {
+            "currentProtocolVersion": {
+               "continuousIntervalCount": 10,
+               "effectiveRatio": 80,
+               "version": 3
+            },
+            "localProtocolVersion": {
+               "continuousIntervalCount": 10,
+               "effectiveRatio": 80,
+               "version": 3
+            }
+         }
+      },
+      "ResponseErrorCode": "",
+      "ResponseMaxSize": "0",
+      "ResponseProcessingTime": "4",
+      "ResponseStatus": 0
+   },
+   "MessageID": "1578730306452-240",
+   "MessageType": "Response",
+   "TimeZone": "-8",
+   "Timestamp": "1578733804331"
+}
+--------------end previous / begin next request--------------------------
+
+* * * REGULAR message going out: 
+{
+   "ProtocolVersion": "0.1",
+   "MessageID": "157873380573217-3",
+   "Timestamp": "157873380573217",
+   "TimeZone": "8",
+   "MessageType": "Request",
+   "MessageData": {
+      "RequestType": "1",
+      "SubscriptionEventCounter": "0",
+      "SubscriptionPeriod": "0",
+      "SubscriptionRange": "0",
+      "ResponseMaxSize": "0",
+      "RequestMethods": {
+         "info": {
+            "chainId": 1
+         }
+      }
+   }
+}
+   -----------> ! ! ! REGULAR response received: {
+   "MessageData": {
+      "RequestID": "157873380573217-3",
+      "ResponseComment": "",
+      "ResponseData": {
+         "info": {
+            "localHeight": 1044371,
+            "networkHeight": 1044371
+         }
+      },
+      "ResponseErrorCode": "",
+      "ResponseMaxSize": "0",
+      "ResponseProcessingTime": "2",
+      "ResponseStatus": 0
+   },
+   "MessageID": "1578730306452-242",
+   "MessageType": "Response",
+   "TimeZone": "-8",
+   "Timestamp": "1578733805734"
+}
+--------------end previous / begin next request--------------------------
+
+* * * REGULAR message going out: 
+{
+   "ProtocolVersion": "0.1",
+   "MessageID": "157873380713684-4",
+   "Timestamp": "157873380713684",
+   "TimeZone": "8",
+   "MessageType": "Request",
+   "MessageData": {
+      "RequestType": "1",
+      "SubscriptionEventCounter": "0",
+      "SubscriptionPeriod": "0",
+      "SubscriptionRange": "0",
+      "ResponseMaxSize": "0",
+      "RequestMethods": {
+         "latestBlock": {
+            "chainId": 1
+         }
+      }
+   }
+}
+   -----------> ! ! ! REGULAR response received: {
+   "MessageData": {
+      "RequestID": "157873380713684-4",
+      "ResponseComment": "",
+      "ResponseData": {
+         "latestBlock": {
+            "value": "b35768847c1fb3e1b084bc22ac37a76fc4ac14851d27565c27cd982987d27b2a6c0b569dc4059ebf2345cafbf6272b4fd91d6a4a0ad23f1edc919b995426ed65f290195e94ef0f00020000005c9e3000006c00bc8f195e1f0003000300500a0020e02a7727b88d0b7ac0e962efc38f2a919aa1920d7972287d346a19e0b5a995ee968e501b6f57efb20c77407bd03a5b554ac626046401d59790fd3e7fb6afa66b3d9e876af167bb2e210317307c053249f43236db64f926c7a555cc820c91510a6f97d1e1339e36f588324730450221008c04b84a38296b6be15137a84bbdae91ca1d507ec69064add55671d1da6eb57302203eada86cc175bcd6f447c0a251750a67c786147cc47879bca20282f686b50f9d0100f290195e0000fd0e050013170100017b02a46d2ceee1e5e33334092f5c22a55c1cb7f30100010028c62000000000000000000000000000000000000000000000000000000000000000000000000000170100014a490bd0f737b7dcd8a0eb975b92aa64421962a40100010054db0c000000000000000000000000000000000000000000000000000000000000000000000000001701000136e2cea0600175417b2f57eb936922adf71462830100010031e12d030000000000000000000000000000000000000000000000000000000000000000000000001701000131f67cb5e5e0e11ecae27e2ea476eacb60422a0f01000100eb3d1901000000000000000000000000000000000000000000000000000000000000000000000000170100016e91646a5cb2a41e0bfa0891bc7515b61f12dfd301000100e7682000000000000000000000000000000000000000000000000000000000000000000000000000170100018f5eda7f12f3d579c84aa2bde12633fbdd9babec01000100bdfa1e000000000000000000000000000000000000000000000000000000000000000000000000001701000177adb1dddaa12d56b46e12cc920ca6b6b0eb99530100010008000e0000000000000000000000000000000000000000000000000000000000000000000000000017010001b8cf124d7aacdac84c637942edaa93ae7e044ced010001009ced0d00000000000000000000000000000000000000000000000000000000000000000000000000170100016d1178702283b429d2559b7b3dc6b53d5bd20c5301000100c7b60a0000000000000000000000000000000000000000000000000000000000000000000000000017010001b25784f9f1207ba164938c359cadbc603e9f9594010001008eb6280000000000000000000000000000000000000000000000000000000000000000000000000017010001ba3972a563627b519a7804364761987d4bef49e70100010097f87e0100000000000000000000000000000000000000000000000000000000000000000000000017010001c6c2aead0a36fd3911ad8a1c1f984d57cd81ed07010001003bbf290000000000000000000000000000000000000000000000000000000000000000000000000017010001f59ce7605fd80d78f3bc4b7681e93876eb6a08fb010001009f8f7000000000000000000000000000000000000000000000000000000000000000000000000000170100013f16ab3d7f8a313eaae69328968f87a45631a81f010001003a870b0000000000000000000000000000000000000000000000000000000000000000000000000017010001f2f7fc14d7f11ac8367501d84216824f14789a1701000100c2e76401000000000000000000000000000000000000000000000000000000000000000000000000170100019c097e3d49f16e12c1aa2801ed947a15f6dbc2ec0100010029121000000000000000000000000000000000000000000000000000000000000000000000000000170100018d0b0e6ba72d29d7a8183d51a92c449895149b3e010001007d240b0000000000000000000000000000000000000000000000000000000000000000000000000017010001d1520e2ebf3d80dc30ffddc40f72b44a266c24c5010001009f3b0d010000000000000000000000000000000000000000000000000000000000000000000000001701000193eabc2c48a405c1cfdc9d0cea574b357fe8f08301000100e8ff0b00000000000000000000000000000000000000000000000000000000000000000000000000000200e990195e0f62696e616e6365207377656570657200d2021701000166f45986ce447e23e5932566281c3ab72856bf5e0100010000d0ed902e000000000000000000000000000000000000000000000000000000082cf01b613be5e95d00170100016cc5ba95b075a0f9e82c1459e0c5278052a5a5d90100010000cd562700000000000000000000000000000000000000000000000000000000084c9f9a5cc6705e660001170100013ba3e3c56062266262514c74fafb01852af99fec01000100601643b82e0000000000000000000000000000000000000000000000000000000000000000000000d3210302a8a4c026810d6b701239492a31ede958e050e2842aa03a9a8d7582aab63a37463044022007488b581e12025e02523aaee614db1d7b04252d1f515972059d03f247732ca6022023d13195e6ff8325bb2a0ed9c1ca05749ca59460ae7ca0331e75aa6fbd767e1a2103f526a1bdb4ead49d891d6c7d61869589ece37a5c056a46a7be767ef2a09ae241473045022100b74371d4ccead2abf7318e45bac0f4992ef1c34456d17eea9bc67cd589e1d78d022071f8e2db155f0a8bdee31a6b886be22fa83f40ed07730b1e5d70f1fbeb7a91ab"
+         }
+      },
+      "ResponseErrorCode": "",
+      "ResponseMaxSize": "0",
+      "ResponseProcessingTime": "2",
+      "ResponseStatus": 0
+   },
+   "MessageID": "1578730306452-244",
+   "MessageType": "Response",
+   "TimeZone": "-8",
+   "Timestamp": "1578733807139"
+}
+--------------end previous / begin next request--------------------------
+
+* * * REGULAR message going out: 
+{
+   "ProtocolVersion": "0.1",
+   "MessageID": "157873380854088-5",
+   "Timestamp": "157873380854088",
+   "TimeZone": "8",
+   "MessageType": "Request",
+   "MessageData": {
+      "RequestType": "1",
+      "SubscriptionEventCounter": "0",
+      "SubscriptionPeriod": "0",
+      "SubscriptionRange": "0",
+      "ResponseMaxSize": "0",
+      "RequestMethods": {
+         "latestBlockHeader": {
+            "chainId": 1
+         }
+      }
+   }
+}
+   -----------> ! ! ! REGULAR response received: {
+   "MessageData": {
+      "RequestID": "157873380854088-5",
+      "ResponseComment": "",
+      "ResponseData": {
+         "latestBlockHeader": {
+            "value": "b35768847c1fb3e1b084bc22ac37a76fc4ac14851d27565c27cd982987d27b2a6c0b569dc4059ebf2345cafbf6272b4fd91d6a4a0ad23f1edc919b995426ed65f290195e94ef0f00020000005c9e3000006c00bc8f195e1f0003000300500a0020e02a7727b88d0b7ac0e962efc38f2a919aa1920d7972287d346a19e0b5a995ee968e501b6f57efb20c77407bd03a5b554ac626046401d59790fd3e7fb6afa66b3d9e876af167bb2e210317307c053249f43236db64f926c7a555cc820c91510a6f97d1e1339e36f588324730450221008c04b84a38296b6be15137a84bbdae91ca1d507ec69064add55671d1da6eb57302203eada86cc175bcd6f447c0a251750a67c786147cc47879bca20282f686b50f9d"
+         }
+      },
+      "ResponseErrorCode": "",
+      "ResponseMaxSize": "0",
+      "ResponseProcessingTime": "1",
+      "ResponseStatus": 0
+   },
+   "MessageID": "1578730306452-246",
+   "MessageType": "Response",
+   "TimeZone": "-8",
+   "Timestamp": "1578733808542"
+}
+--------------end previous / begin next request--------------------------
+
+* * * REGULAR message going out: 
+{
+   "ProtocolVersion": "0.1",
+   "MessageID": "157873380994509-6",
+   "Timestamp": "157873380994509",
+   "TimeZone": "8",
+   "MessageType": "Request",
+   "MessageData": {
+      "RequestType": "1",
+      "SubscriptionEventCounter": "0",
+      "SubscriptionPeriod": "0",
+      "SubscriptionRange": "0",
+      "ResponseMaxSize": "0",
+      "RequestMethods": {
+         "latestBlockHeaderPo": {
+            "chainId": 1
+         }
+      }
+   }
+}
+   -----------> ! ! ! REGULAR response received: {
+   "MessageData": {
+      "RequestID": "157873380994509-6",
+      "ResponseComment": "",
+      "ResponseData": {
+         "latestBlockHeaderPo": {
+            "value": "019de10fc56f44eafd61c488248bd5f784d2c75b3e6e492a2229748733ecf4d238b35768847c1fb3e1b084bc22ac37a76fc4ac14851d27565c27cd982987d27b2a6c0b569dc4059ebf2345cafbf6272b4fd91d6a4a0ad23f1edc919b995426ed65f290195e94ef0f0002000000eb0700005c9e3000006c00bc8f195e1f0003000300500a0020e02a7727b88d0b7ac0e962efc38f2a919aa1920d7972287d346a19e0b5a995ee968e501b6f57efb20c77407bd03a5b554ac626046401d59790fd3e7fb6afa66b3d9e876af167bb2e210317307c053249f43236db64f926c7a555cc820c91510a6f97d1e1339e36f588324730450221008c04b84a38296b6be15137a84bbdae91ca1d507ec69064add55671d1da6eb57302203eada86cc175bcd6f447c0a251750a67c786147cc47879bca20282f686b50f9d188a27b97b46032f9d03a416820222ead384bbd30768c11eba4f177872426fb36214b285d944f9177a0bfc2a4fd89f7ba733231edb0e1f390b717d767a29c99f"
+         }
+      },
+      "ResponseErrorCode": "",
+      "ResponseMaxSize": "0",
+      "ResponseProcessingTime": "2",
+      "ResponseStatus": 0
+   },
+   "MessageID": "1578730306452-248",
+   "MessageType": "Response",
+   "TimeZone": "-8",
+   "Timestamp": "1578733809947"
+}
+--------------end previous / begin next request--------------------------
+
+* * * REGULAR message going out: 
+{
+   "ProtocolVersion": "0.1",
+   "MessageID": "157873381134985-7",
+   "Timestamp": "157873381134985",
+   "TimeZone": "8",
+   "MessageType": "Request",
+   "MessageData": {
+      "RequestType": "1",
+      "SubscriptionEventCounter": "0",
+      "SubscriptionPeriod": "0",
+      "SubscriptionRange": "0",
+      "ResponseMaxSize": "0",
+      "RequestMethods": {
+         "latestHeight": {
+            "chainId": 1
+         }
+      }
+   }
+}
+   -----------> ! ! ! REGULAR response received: {
+   "MessageData": {
+      "RequestID": "157873381134985-7",
+      "ResponseComment": "",
+      "ResponseData": {
+         "latestHeight": {
+            "value": 1044372
+         }
+      },
+      "ResponseErrorCode": "",
+      "ResponseMaxSize": "0",
+      "ResponseProcessingTime": "1",
+      "ResponseStatus": 0
+   },
+   "MessageID": "1578730306452-250",
+   "MessageType": "Response",
+   "TimeZone": "-8",
+   "Timestamp": "1578733811351"
+}
+--------------end previous / begin next request--------------------------
+
+Process finished with exit code 0
