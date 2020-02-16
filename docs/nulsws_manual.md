@@ -157,7 +157,7 @@ many as eight or so. With the average being maybe 3-4 - that gives us a total of
 1,000 possible specific parameters for this nuls-python-connect library.
 
 The user/developer initially only needs to set parameters for those functions he/she is 
-interested in. The settings go into the usersettings.py file in the user_settings directory.
+interested in. The settings go into the config.ini file in the user_settings directory.
 
 The dictionary inside calls_d.py contains every possible parameter for every call.
 Once set in this file, it is fed into the library, and no further setup is needed to 
@@ -183,27 +183,27 @@ up being 1 or 0.
 This file never changes unless you are developing.  In that case - it is in dictionary format, so
  care needs to be taken if it is edited.
 
-#### usersettings.py
-Most user editing will be done in the user_settings/usersettings.py file. Here's a sample:
+#### config.ini
+Most user editing will be done in the user_settings/config.ini file. Here's a sample:
+        
+        [SectionOne]
+        connect_method=1
+        
+        #host_ip=47.244.186.65
+        host_ip=127.0.0.1
+        #host_ip=116.202.157.151
+        ws_port=7772
+        http1_port=80
+        
+        proto_ver=0.1
+        compatible_proto_versions=[proto_ver]
+        compress_type_VALUE=zlib
+        compress_rate_VALUE=0
+        subscriptionRange=0
+        request_int=1
+        sub_event_ct=0
+        sub_period_int =1
 
-    connect_method = "ws://"   # can change to wss
-    host_req = "127.0.0.1"
-    port_req = "7772"    
-    compress_type_VALUE = "zlib"
-    compress_rate_VALUE = 0      # 0-9
-    my_pubkeys: 1
-    my_chainid: int = 1           
-    my_account: str = "NULSd6Hggvrij3MPW9QTHJGBv7uiyMKw41i7t"
-    my_password = 'nuls123456'   
-    my_addresstype: int = 0             
-    my_assetchainid: int = 1           
-    my_assetid: int = 1             
-    my_blocktype: int = 0               
-    my_circulatechainid: int = 0             
-    my_commissionrate: int = 0             
-    my_height: int = 0         
-    my_address: str = "NULSd6Hggvrij3MPW9QTHJGBv7uiyMKw41i7t"
-    my_addressprefix: str = 'NULS'
 
 
 ### Further Project Goals
